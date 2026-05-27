@@ -1766,33 +1766,109 @@ input {
 @media (max-width: 720px) {
   .hero-section,
   .hero-content {
-    min-height: 820px;
+    min-height: 963px;
   }
 
   .hero-content {
-    padding: 120px 20px 44px;
+    padding: 120px 16px 50px;
+  }
+
+  .hero-copy {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+    max-width: 358px;
+  }
+
+  .hero-pill {
+    height: 28px;
+    margin-bottom: 20px;
+    min-height: 28px;
+    padding: 0 12px;
   }
 
   .hero-title {
-    font-size: clamp(42px, 14vw, 62px);
+    font-size: 40px;
+    line-height: 1.16;
+    max-width: 358px;
+  }
+
+  .hero-actions {
+    align-items: center;
+    flex-direction: column;
+    gap: 11px;
+    margin-top: 19px;
   }
 
   .hero-benefits {
-    gap: 14px;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 48px;
   }
 
   .hero-benefits span {
     font-size: 16px;
+    line-height: 1.5;
   }
 
   .hero-stats {
-    gap: 20px;
+    gap: 24px;
     grid-template-columns: 1fr;
-    margin-top: 34px;
+    margin-top: 50px;
+  }
+
+  .trusted-strip {
+    min-height: 226px;
+    padding: 60px 0;
+  }
+
+  .trusted-strip p {
+    line-height: 1.6;
+    margin: 0 0 50px;
   }
 
   .section {
     padding: 72px 0;
+  }
+
+  .features-section {
+    min-height: 2196px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .features-section .intro-top {
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .features-section .eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .features-section .intro-top .word-heading {
+    font-size: 34px;
+    line-height: 1.06;
+  }
+
+  .features-section .strengths {
+    margin: 24px 0;
+  }
+
+  .features-section .intro-copy {
+    display: grid;
+    gap: 16px;
+  }
+
+  .features-section .intro-copy h3 {
+    font-size: 24px;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .features-section .intro-copy p {
+    line-height: 1.5;
+    margin: 0;
   }
 
   .intro-top {
@@ -1800,14 +1876,14 @@ input {
   }
 
   .feature-stack {
-    gap: 24px;
+    gap: 30px;
     min-height: auto;
   }
 
   .feature-card {
     height: auto;
     margin-bottom: 0;
-    min-height: 500px;
+    min-height: 400px;
     position: relative;
     top: auto;
     transform: none !important;
@@ -1819,23 +1895,71 @@ input {
 
   .services-section {
     min-height: 1884px;
-    padding-top: 72px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .services-section .section-center {
+    margin-bottom: 30px;
   }
 
   .services-section .section-center .word-heading {
-    font-size: clamp(36px, 10vw, 42px);
+    font-size: 31px;
+    line-height: 1.18;
+  }
+
+  .services-section .eyebrow {
+    margin-bottom: 6px;
+  }
+
+  .services-section .section-lede {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 22px auto 24px;
+  }
+
+  .services-section .section-center .button {
+    min-height: 44px;
   }
 
   .service-stack {
-    gap: 24px;
+    gap: 30px;
     min-height: auto;
   }
 
   .service-card {
-    height: 493px;
+    height: 460px;
     position: relative;
     top: auto;
     transform: none !important;
+  }
+
+  .awards-section {
+    gap: 30px;
+    min-height: 1176px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .awards-copy {
+    display: grid;
+    gap: 11px;
+  }
+
+  .awards-copy .eyebrow {
+    margin-bottom: 0;
+  }
+
+  .awards-copy .word-heading {
+    font-size: 34px;
+    line-height: 1.08;
+    margin-bottom: 0;
+  }
+
+  .awards-copy p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
   }
 
   .award-grid {
@@ -1845,32 +1969,108 @@ input {
   .award-card {
     border-bottom: 1px solid var(--line);
     border-right: 0;
+    height: 297px;
+    min-height: 297px;
+  }
+
+  .process-section {
+    min-height: 1080px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .process-section .section-center {
+    margin-bottom: 30px;
+  }
+
+  .process-section .eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .process-section .section-center .word-heading {
+    font-size: 36px;
+    line-height: 1.06;
+  }
+
+  .process-section .section-lede {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 20px auto 0;
+  }
+
+  .process-card {
+    height: 232px;
+    min-height: 232px;
+  }
+
+  .benefits-section {
+    min-height: 2184px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .benefits-section .section-center {
+    margin-bottom: 30px;
+  }
+
+  .benefits-section .eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .benefits-section .section-center .word-heading {
+    font-size: 31px;
+    line-height: 1.18;
+  }
+
+  .benefits-section .section-lede {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 24px auto 0;
   }
 
   .benefit-timeline {
-    display: block;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 42px minmax(0, 1fr);
   }
 
   .timeline-progress {
-    display: none;
+    display: flex;
+    height: 1818px;
+    position: sticky;
+    top: 80px;
+  }
+
+  .timeline-progress-badge {
+    font-size: 20px;
+    height: 40px;
+    width: 40px;
   }
 
   .timeline-steps {
-    gap: 24px;
+    gap: 30px;
   }
 
   .timeline-row {
-    align-items: start;
-    grid-template-columns: 52px 1fr;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
     min-height: auto;
+    width: 100%;
+  }
+
+  .timeline-row .round-icon {
+    display: none;
   }
 
   .timeline-row img {
-    grid-column: 1 / -1;
+    height: 260px;
   }
 
   .testimonial-marquee {
-    height: auto;
+    height: 1786px;
+    margin-top: 42px;
     mask-image: none;
     overflow: visible;
     -webkit-mask-image: none;
@@ -1881,7 +2081,7 @@ input {
   }
 
   .testimonial-column {
-    transform: none !important;
+    transform: translateY(150px) !important;
   }
 
   .testimonial-column:nth-child(2),
@@ -1889,13 +2089,277 @@ input {
     padding-top: 0;
   }
 
+  .testimonials-section {
+    min-height: 2112px;
+    overflow: visible;
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .testimonial-card {
+    height: 240px;
+    min-height: auto;
+  }
+
+  .testimonial-card.yellow,
+  .testimonial-card.dark {
+    height: 245px;
+  }
+
+  .testimonial-cta {
+    margin-top: 30px;
+  }
+
   .section-row-heading {
     flex-direction: column;
     gap: 28px;
   }
 
+  .projects-section {
+    min-height: 3130px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .projects-section .section-row-heading {
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+
+  .project-list {
+    gap: 30px;
+  }
+
+  .project-card {
+    border: 0;
+    min-height: auto;
+  }
+
+  .project-card > img {
+    height: 318px;
+  }
+
+  .project-copy {
+    padding: 40px 0 0;
+  }
+
+  .project-copy h3 {
+    font-size: 24px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .project-copy > p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+
+  .blog-section {
+    min-height: 1503px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .blog-section .section-row-heading {
+    gap: 24px;
+    margin-bottom: 30px;
+  }
+
+  .blog-section .eyebrow {
+    margin-bottom: 6px;
+  }
+
+  .blog-section .section-row-heading .word-heading {
+    font-size: 34px;
+    line-height: 1.08;
+  }
+
+  .blog-card {
+    height: 600px;
+    min-height: 600px;
+  }
+
+  .partners-section {
+    min-height: 1243px;
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .partners-section .section-center {
+    margin-bottom: 30px;
+  }
+
+  .partners-section .eyebrow {
+    margin-bottom: 6px;
+  }
+
+  .partners-section .section-center .word-heading {
+    font-size: 34px;
+    line-height: 1.08;
+  }
+
+  .partner-grid {
+    gap: 0;
+  }
+
+  .partner-card {
+    height: 128px;
+  }
+
+  .faq-section {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    min-height: 1179px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+
+  .faq-copy .eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .faq-copy .word-heading {
+    font-size: 44px;
+    line-height: 1.05;
+  }
+
+  .faq-copy > p {
+    font-size: 18px;
+    line-height: 1.55;
+    margin: 30px 0 0;
+  }
+
+  .faq-tabs {
+    border-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .faq-tabs button {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    height: 40px;
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  .faq-tab-underline {
+    display: none;
+  }
+
+  .faq-item > button {
+    font-size: 18px;
+    line-height: 1.2;
+    padding: 27px 0;
+  }
+
+  .faq-item p {
+    line-height: 1.45;
+    padding: 0 0 18px;
+  }
+
+  .faq-contact {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .locations-section {
+    min-height: 446px;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  .locations-section .eyebrow {
+    margin-bottom: 5px;
+  }
+
+  .locations-section > .word-heading {
+    font-size: 35px;
+    line-height: 1.07;
+    margin-bottom: 30px;
+  }
+
+  .map-wrap {
+    height: 310px;
+  }
+
+  .map-wrap > img {
+    height: 310px;
+    object-fit: cover;
+  }
+
+  .map-pin {
+    height: 16px;
+    width: 16px;
+  }
+
+  .map-pin svg {
+    height: 9px;
+    width: 9px;
+  }
+
   .footer {
     border-radius: 12px 12px 0 0;
-    padding: 42px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-height: 1493px;
+    padding: 50px 20px;
+  }
+
+  .footer-cta {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 20px;
+    padding-bottom: 0;
+  }
+
+  .footer-cta h2 {
+    font-size: 32px;
+    line-height: 1.08;
+  }
+
+  .footer-main {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 0;
+  }
+
+  .footer-main > img {
+    display: none;
+  }
+
+  .footer h3 {
+    margin-bottom: 28px;
+  }
+
+  .footer-main a,
+  .footer-main p {
+    margin-bottom: 20px;
+  }
+
+  .footer-contact {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 24px;
+    padding: 0;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: flex-start;
+    min-height: 104px;
+    padding-top: 0;
+  }
+
+  .footer-bottom div {
+    flex-direction: column;
+    gap: 16px;
   }
 }

@@ -870,7 +870,7 @@ function Blog() {
 
 function PartnersFaqLocation() {
   const [activeTab, setActiveTab] = useState('Getting stared')
-  const [openFaq, setOpenFaq] = useState(0)
+  const [openFaq, setOpenFaq] = useState(-1)
   const tabs = ['Getting stared', 'Collaboration', 'Support']
 
   return (
@@ -894,10 +894,6 @@ function PartnersFaqLocation() {
           <Eyebrow>FAQs</Eyebrow>
           <WordHeading>Got questions?</WordHeading>
           <p>We’re here to make biogas easy to understand. Find answers to the most common questions below.</p>
-          <div className="faq-contact">
-            <span>Still got questions?</span>
-            <a href="mailto:hey@biogax.com">hey@biogax.com</a>
-          </div>
         </div>
         <motion.div className="faq-panel" variants={sourceFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }}>
           <div className="faq-tabs" role="tablist" aria-label="FAQ categories">
@@ -926,6 +922,10 @@ function PartnersFaqLocation() {
             ))}
           </div>
         </motion.div>
+        <div className="faq-contact">
+          <span>Still got questions?</span>
+          <a href="mailto:hey@biogax.com">hey@biogax.com</a>
+        </div>
       </section>
       <section className="section locations-section">
         <Eyebrow>LOCATIONS</Eyebrow>
@@ -933,12 +933,12 @@ function PartnersFaqLocation() {
         <div className="map-wrap">
           <img src={assets.map} alt="" />
           {[
-            ['22%', '52%'],
-            ['45%', '48%'],
-            ['54%', '55%'],
-            ['68%', '42%'],
-            ['60%', '68%'],
-            ['50%', '32%'],
+            ['83%', '47%'],
+            ['29%', '68%'],
+            ['65%', '39%'],
+            ['73%', '50%'],
+            ['65%', '56%'],
+            ['16%', '49%'],
           ].map(([left, top], index) => (
             <motion.span
               animate={{ scale: [1, 1.18, 1] }}
