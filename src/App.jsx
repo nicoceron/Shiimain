@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { animate, motion, useInView, useScroll, useTransform } from 'framer-motion'
 import {
-  BadgeCheck,
   Hammer,
   Leaf,
   Mail,
@@ -605,8 +604,17 @@ function AwardsProcess() {
           <p className="section-lede">Take a quick look at the intricate implementation process as our contributions grow everyday</p>
         </div>
         <div className="process-grid">
-          {processCards.map(({ title, text, icon: Icon }) => (
-            <motion.article className="process-card" key={title} variants={sourceReveal} initial="hidden" whileHover={surfaceHover} whileInView="show" viewport={{ once: true }}>
+          {processCards.map(({ title, text, icon: Icon }, index) => (
+            <motion.article
+              className="process-card"
+              data-card-index={index + 1}
+              key={title}
+              variants={sourceReveal}
+              initial="hidden"
+              whileHover={surfaceHover}
+              whileInView="show"
+              viewport={{ once: true }}
+            >
               <span className="round-icon">
                 <Icon size={24} />
               </span>
@@ -702,17 +710,12 @@ function TestimonialCard({ index, item }) {
       whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
     >
       <strong>
-        <BadgeCheck size={18} />
-        BioGax
+        <img className="testimonial-logo" src={assets.logo} alt="" />
       </strong>
       <p>“A team of young people who wake up the market, have expertise in-house and gain experience in the field, offer a tailor-made solution to the customer.”</p>
       <div>
         <img src={item.avatar} alt="" />
-        <span>
-          {item.name}
-          <br />
-          {item.role}
-        </span>
+        <span>{item.name}</span>
       </div>
     </motion.article>
   )
@@ -892,6 +895,8 @@ function PartnersFaqLocation() {
             ['45%', '48%'],
             ['54%', '55%'],
             ['68%', '42%'],
+            ['60%', '68%'],
+            ['50%', '32%'],
           ].map(([left, top], index) => (
             <motion.span
               animate={{ scale: [1, 1.18, 1] }}
@@ -913,51 +918,58 @@ function Footer() {
   return (
     <footer className="footer" id="contact">
       <div className="footer-cta">
-        <h2>Ready to Turn Farm Waste into Clean Energy?</h2>
+        <h2>Ready to Transform Your Farm With Biogax?</h2>
         <Button>Free Energy Assessment</Button>
       </div>
       <div className="footer-main">
         <img src={assets.footerLogo} alt="Biogax" />
         <div>
-          <h3>Pages</h3>
-          {['Home', 'About', 'Services', 'Projects', 'Blogs'].map((item) => (
-            <a key={item} href={item === 'Home' ? '#home' : `#${item.toLowerCase()}`}>
+          <h3>Links</h3>
+          {['About', 'Services', 'Projects', 'Blog'].map((item) => (
+            <a key={item} href={item === 'Blog' ? '#blogs' : `#${item.toLowerCase()}`}>
               {item}
             </a>
           ))}
         </div>
         <div>
-          <h3>Utility Pages</h3>
-          {['Style Guide', 'Licenses', 'Changelog', '404'].map((item) => (
+          <h3>Socials</h3>
+          {['LinkedIn', 'X', 'Instagram'].map((item) => (
             <a key={item} href="#contact">
               {item}
             </a>
           ))}
         </div>
         <div>
-          <h3>Join our newsletter</h3>
-          <p>Get the latest clean energy insights and farm-ready biogas ideas.</p>
+          <h3>Subscribe Newsletter</h3>
+          <p>Sign up to get updates & news.</p>
           <form>
             <input aria-label="Email address" placeholder="Your email" type="email" />
-            <button type="button">Subscribe</button>
+            <button type="button">Submit</button>
           </form>
         </div>
       </div>
       <div className="footer-contact">
         <div>
-          <Mail />
-          <span>Email</span>
-          <strong>hey@biogax.com</strong>
+          <Phone />
+          <span>Phone No:</span>
+          <strong>+542 456 789 963</strong>
         </div>
         <div>
-          <Phone />
-          <span>Phone</span>
-          <strong>+1 234 567 890</strong>
+          <Mail />
+          <span>Email Address:</span>
+          <strong>biogax@gmail.com</strong>
         </div>
         <div>
           <MapPin />
-          <span>Address</span>
-          <strong>Farm Innovation District</strong>
+          <span>Location:</span>
+          <strong>No: 59 A East Madison Street Baltimore, MD, USA, 4508</strong>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <span>©Biogax</span>
+        <div>
+          <a href="#contact">Privacy Policy</a>
+          <a href="#contact">Terms & Conditions</a>
         </div>
       </div>
     </footer>
