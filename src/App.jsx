@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { animate, motion, useScroll, useTransform } from 'framer-motion'
+import { animate, motion, useInView, useScroll, useTransform } from 'framer-motion'
 import {
   BadgeCheck,
   Hammer,
@@ -477,6 +477,33 @@ function BrandTicker() {
   )
 }
 
+function FeatureScrollCard({ card, index }) {
+  const cardRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: cardRef, offset: ['start end', 'end start'] })
+  const scale = useTransform(scrollYProgress, [0, 0.38, 1], [0.985, 1, 0.94 - index * 0.018])
+  const y = useTransform(scrollYProgress, [0, 0.48, 1], [42 + index * 18, 0, -26 - index * 18])
+
+  return (
+    <motion.article
+      className="feature-card"
+      initial="hidden"
+      key={card.title}
+      ref={cardRef}
+      style={{ scale, y, zIndex: featureCards.length + index, '--stack-offset': `${index * 24}px` }}
+      variants={sourceReveal}
+      viewport={{ once: false, amount: 0.35 }}
+      whileInView="show"
+    >
+      <img src={card.image} alt="" />
+      <div>
+        <h3>{card.title}</h3>
+        <p>Reduce carbon emissions and your environmental footprint with clean, renewable biogas energy.</p>
+        <Button>Free Energy Assessment</Button>
+      </div>
+    </motion.article>
+  )
+}
+
 function Features() {
   return (
     <section className="section features-section" id="about">
@@ -505,23 +532,8 @@ function Features() {
         </motion.div>
       </div>
       <div className="feature-stack">
-        {featureCards.map((card) => (
-          <motion.article
-            className="feature-card"
-            key={card.title}
-            variants={sourceReveal}
-            initial="hidden"
-            whileHover={surfaceHover}
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            <img src={card.image} alt="" />
-            <div>
-              <h3>{card.title}</h3>
-              <p>Reduce carbon emissions and your environmental footprint with clean, renewable biogas energy.</p>
-              <Button>Free Energy Assessment</Button>
-            </div>
-          </motion.article>
+        {featureCards.map((card, index) => (
+          <FeatureScrollCard card={card} index={index} key={card.title} />
         ))}
       </div>
     </section>
@@ -608,7 +620,44 @@ function AwardsProcess() {
   )
 }
 
+function TimelineStep({ active, index, item, onActive }) {
+  const rowRef = useRef(null)
+  const inView = useInView(rowRef, { margin: '-42% 0px -42% 0px' })
+
+  useEffect(() => {
+    if (inView) onActive(index)
+  }, [inView, index, onActive])
+
+  return (
+    <motion.article
+      className={`timeline-row ${active ? 'active' : ''}`}
+      id={`step-${index + 1}`}
+      initial={{ opacity: 0.001, y: 150, filter: 'blur(10px)' }}
+      key={item.title}
+      ref={rowRef}
+      transition={{ bounce: 0.18, delay: index * 0.04, duration: 1.4, type: 'spring' }}
+      viewport={{ once: false, amount: 0.35 }}
+      whileHover={surfaceHover}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+    >
+      <span className="round-icon">
+        <Zap size={22} />
+      </span>
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+      </div>
+      <img src={item.image} alt="" />
+    </motion.article>
+  )
+}
+
 function Benefits() {
+  const timelineRef = useRef(null)
+  const [activeStep, setActiveStep] = useState(0)
+  const { scrollYProgress } = useScroll({ target: timelineRef, offset: ['start 62%', 'end 42%'] })
+  const progressScale = useTransform(scrollYProgress, [0, 1], [0, 1])
+
   return (
     <section className="section benefits-section">
       <div className="section-center">
@@ -618,29 +667,85 @@ function Benefits() {
           Our biogas systems are designed to solve the everyday problems farmers face — from rising fuel costs to waste management.
         </p>
       </div>
-      <div className="benefit-timeline">
-        {timelineItems.map((item, index) => (
-          <motion.article
-            className="timeline-row"
-            key={item.title}
-            variants={sourceReveal}
-            initial="hidden"
-            whileHover={surfaceHover}
-            whileInView="show"
-            viewport={{ once: true, amount: 0.35 }}
-          >
-            <span className="timeline-index">{index + 1}</span>
-            <span className="round-icon">
-              <Zap size={22} />
-            </span>
-            <div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
-            <img src={item.image} alt="" />
-          </motion.article>
-        ))}
+      <div className="benefit-timeline" ref={timelineRef}>
+        <div className="timeline-progress" aria-hidden="true">
+          <span className="timeline-progress-track">
+            <motion.span className="timeline-progress-fill" style={{ scaleY: progressScale }} />
+          </span>
+          <div className="timeline-progress-badges">
+            {timelineItems.map((item, index) => (
+              <span className={`timeline-progress-badge ${activeStep >= index ? 'active' : ''}`} key={item.title}>
+                {index + 1}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="timeline-steps">
+          {timelineItems.map((item, index) => (
+            <TimelineStep active={activeStep === index} index={index} item={item} key={item.title} onActive={setActiveStep} />
+          ))}
+        </div>
       </div>
+    </section>
+  )
+}
+
+function TestimonialCard({ index, item }) {
+  return (
+    <motion.article
+      className={`testimonial-card ${item.featured ? 'featured' : ''}`}
+      initial={{ opacity: 0.001, y: 150, filter: 'blur(10px)' }}
+      key={`${item.name}-${index}`}
+      transition={{ bounce: 0.18, delay: Math.min(index, 6) * 0.04, duration: 1.4, type: 'spring' }}
+      viewport={{ once: false, amount: 0.18 }}
+      whileHover={surfaceHover}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+    >
+      <strong>
+        <BadgeCheck size={18} />
+        BioGax
+      </strong>
+      <p>“A team of young people who wake up the market, have expertise in-house and gain experience in the field, offer a tailor-made solution to the customer.”</p>
+      <div>
+        <img src={item.avatar} alt="" />
+        <span>
+          {item.name}
+          <br />
+          {item.role}
+        </span>
+      </div>
+    </motion.article>
+  )
+}
+
+function Testimonials() {
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
+  const leftColumnY = useTransform(scrollYProgress, [0, 1], [124, -150])
+  const centerColumnY = useTransform(scrollYProgress, [0, 1], [210, -210])
+  const rightColumnY = useTransform(scrollYProgress, [0, 1], [156, -176])
+  const columns = [
+    { items: testimonials.slice(0, 3), y: leftColumnY },
+    { items: testimonials.slice(3, 6), y: centerColumnY },
+    { items: [testimonials[6], testimonials[1], testimonials[4]], y: rightColumnY },
+  ]
+
+  return (
+    <section className="section testimonials-section" ref={sectionRef}>
+      <Eyebrow>TESTIMONIALS</Eyebrow>
+      <WordHeading>Trusted by Leading Agricultural Innovators</WordHeading>
+      <div className="testimonial-marquee">
+        <div>
+          {columns.map((column, columnIndex) => (
+            <motion.div className="testimonial-column" key={`testimonial-column-${columnIndex}`} style={{ y: column.y }}>
+              {column.items.map((item, itemIndex) => (
+                <TestimonialCard index={columnIndex * 3 + itemIndex} item={item} key={`${item.name}-${columnIndex}-${itemIndex}`} />
+              ))}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+      <Button className="testimonial-cta">Free Energy Assessment</Button>
     </section>
   )
 }
@@ -717,44 +822,6 @@ function Blog() {
   )
 }
 
-function Testimonials() {
-  return (
-    <section className="section testimonials-section">
-      <Eyebrow>TESTIMONIALS</Eyebrow>
-      <WordHeading>Trusted by Leading Agricultural Innovators</WordHeading>
-      <div className="testimonial-marquee">
-        <div>
-          {[...testimonials, ...testimonials].map((item, index) => (
-            <motion.article
-              className={`testimonial-card ${item.featured ? 'featured' : ''}`}
-              initial={{ opacity: 0.001, y: 28, filter: 'blur(10px)' }}
-              key={`${item.name}-${index}`}
-              transition={{ delay: Math.min(index, 6) * 0.04, duration: 1.2, type: 'spring', bounce: 0.2 }}
-              viewport={{ once: true, amount: 0.2 }}
-              whileHover={surfaceHover}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            >
-              <strong>
-                <BadgeCheck size={18} />
-                BioGax
-              </strong>
-              <p>“A team of young people who wake up the market, have expertise in-house and gain experience in the field, offer a tailor-made solution to the customer.”</p>
-              <div>
-                <img src={item.avatar} alt="" />
-                <span>
-                  {item.name}
-                  <br />
-                  {item.role}
-                </span>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </div>
-      <Button className="testimonial-cta">Free Energy Assessment</Button>
-    </section>
-  )
-}
 
 function PartnersFaqLocation() {
   const [activeTab, setActiveTab] = useState('Getting stared')

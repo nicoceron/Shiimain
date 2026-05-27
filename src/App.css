@@ -484,7 +484,7 @@ input {
 }
 
 .features-section {
-  min-height: 2620px;
+  min-height: 3040px;
 }
 
 .services-section {
@@ -500,7 +500,7 @@ input {
 }
 
 .benefits-section {
-  min-height: 1376px;
+  min-height: 1490px;
 }
 
 .projects-section {
@@ -512,7 +512,7 @@ input {
 }
 
 .testimonials-section {
-  min-height: 1386px;
+  min-height: 1320px;
 }
 
 .partners-section {
@@ -648,19 +648,30 @@ input {
   margin: 0 0 26px;
 }
 
-.feature-stack,
 .service-stack,
 .project-list {
   display: grid;
   gap: 48px;
 }
 
+.feature-stack {
+  align-items: start;
+  display: grid;
+  gap: 0;
+  min-height: 1900px;
+}
+
 .feature-card {
   border-radius: var(--radius);
   color: #fff;
+  height: min(650px, calc(100vh - 128px));
+  margin-bottom: 96px;
   min-height: 570px;
   overflow: hidden;
-  position: relative;
+  position: sticky;
+  top: calc(92px + var(--stack-offset, 0px));
+  transform-origin: top center;
+  will-change: transform;
 }
 
 .feature-card img,
@@ -885,24 +896,102 @@ input {
   margin: 0;
 }
 
-.benefit-timeline {
-  display: grid;
-  gap: 28px;
-  margin: 0 auto;
-  max-width: 920px;
-}
-
 .benefits-section {
   padding-bottom: 72px;
   padding-top: 72px;
 }
 
+.benefit-timeline {
+  align-items: start;
+  display: grid;
+  gap: 34px;
+  grid-template-columns: 86px minmax(0, 1fr);
+  margin: 0 auto;
+  max-width: 980px;
+  position: relative;
+}
+
+.timeline-progress {
+  display: flex;
+  height: min(650px, calc(100vh - 140px));
+  justify-content: center;
+  position: sticky;
+  top: 112px;
+}
+
+.timeline-progress-track {
+  background: var(--line);
+  border-radius: 999px;
+  bottom: 24px;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 24px;
+  transform: translateX(-50%);
+  width: 2px;
+}
+
+.timeline-progress-fill {
+  background: var(--deep);
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+  transform-origin: 50% 0%;
+  width: 100%;
+}
+
+.timeline-progress-badges {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-progress-badge {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--muted);
+  display: flex;
+  font-family: 'Inter Display', Inter, system-ui, sans-serif;
+  font-size: 20px;
+  height: 52px;
+  justify-content: center;
+  transition:
+    background 260ms ease,
+    border-color 260ms ease,
+    color 260ms ease,
+    transform 260ms ease;
+  width: 52px;
+}
+
+.timeline-progress-badge.active {
+  background: var(--lime);
+  border-color: rgba(0, 45, 37, 0.32);
+  color: var(--deep);
+  transform: scale(1.08);
+}
+
+.timeline-steps {
+  display: grid;
+  gap: 38px;
+}
+
 .timeline-row {
   align-items: center;
+  border-top: 1px solid var(--line);
   display: grid;
   gap: 24px;
-  grid-template-columns: 54px 58px minmax(0, 1fr) minmax(280px, 438px);
+  grid-template-columns: 58px minmax(0, 1fr) minmax(280px, 438px);
+  min-height: 244px;
+  padding: 20px 0 0;
   position: relative;
+  transform-origin: center top;
+  will-change: transform, opacity, filter;
 }
 
 .timeline-index {
@@ -919,9 +1008,23 @@ input {
 
 .timeline-row img {
   border-radius: 4px;
-  height: 180px;
+  height: 213px;
   object-fit: cover;
   width: 100%;
+}
+
+.timeline-row .round-icon {
+  margin-bottom: 0;
+  transition:
+    background 260ms ease,
+    color 260ms ease,
+    transform 260ms ease;
+}
+
+.timeline-row.active .round-icon {
+  background: var(--deep);
+  color: var(--lime);
+  transform: scale(1.08);
 }
 
 .section-row-heading {
@@ -1057,14 +1160,35 @@ input {
 }
 
 .testimonial-marquee {
+  height: 760px;
   margin-top: 58px;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 10%, #000 88%, transparent 100%);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 10%, #000 88%, transparent 100%);
 }
 
 .testimonial-marquee > div {
-  animation: marquee 34s linear infinite;
-  display: flex;
+  align-items: start;
+  display: grid;
   gap: 16px;
-  width: max-content;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 auto;
+  max-width: 1120px;
+  width: 100%;
+}
+
+.testimonial-column {
+  display: grid;
+  gap: 16px;
+  will-change: transform;
+}
+
+.testimonial-column:nth-child(2) {
+  padding-top: 84px;
+}
+
+.testimonial-column:nth-child(3) {
+  padding-top: 38px;
 }
 
 .testimonial-card {
@@ -1073,11 +1197,12 @@ input {
   border-radius: 6px;
   display: flex;
   flex-direction: column;
-  height: 254px;
   justify-content: space-between;
+  min-height: 254px;
   padding: 22px;
   text-align: left;
-  width: 374px;
+  width: 100%;
+  will-change: transform, opacity, filter;
 }
 
 .testimonial-card.featured {
@@ -1498,6 +1623,15 @@ input {
     grid-template-columns: 1fr;
   }
 
+  .benefit-timeline {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .timeline-progress-badge {
+    height: 46px;
+    width: 46px;
+  }
+
   .project-card {
     grid-template-columns: 1fr;
   }
@@ -1549,8 +1683,17 @@ input {
     gap: 52px;
   }
 
+  .feature-stack {
+    gap: 24px;
+    min-height: auto;
+  }
+
   .feature-card {
+    height: auto;
+    margin-bottom: 0;
     min-height: 500px;
+    position: relative;
+    top: auto;
   }
 
   .feature-card > div {
@@ -1570,13 +1713,46 @@ input {
     border-right: 0;
   }
 
+  .benefit-timeline {
+    display: block;
+  }
+
+  .timeline-progress {
+    display: none;
+  }
+
+  .timeline-steps {
+    gap: 24px;
+  }
+
   .timeline-row {
     align-items: start;
-    grid-template-columns: 44px 52px 1fr;
+    grid-template-columns: 52px 1fr;
+    min-height: auto;
   }
 
   .timeline-row img {
     grid-column: 1 / -1;
+  }
+
+  .testimonial-marquee {
+    height: auto;
+    mask-image: none;
+    overflow: visible;
+    -webkit-mask-image: none;
+  }
+
+  .testimonial-marquee > div {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-column {
+    transform: none !important;
+  }
+
+  .testimonial-column:nth-child(2),
+  .testimonial-column:nth-child(3) {
+    padding-top: 0;
   }
 
   .section-row-heading {
