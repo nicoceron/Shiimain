@@ -886,15 +886,17 @@ input {
   position: relative;
 }
 
-.process-card::after {
+.process-faded-icon {
   color: rgba(6, 31, 27, 0.04);
-  content: attr(data-card-index);
-  font-family: 'Inter Display', Inter, system-ui, sans-serif;
-  font-size: 120px;
-  line-height: 1;
   position: absolute;
-  right: 12px;
-  top: -8px;
+  right: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.process-card > *:not(.process-faded-icon) {
+  position: relative;
+  z-index: 1;
 }
 
 .round-icon {
@@ -1261,9 +1263,24 @@ input {
   will-change: transform, opacity, filter;
 }
 
-.testimonial-card.featured {
+.testimonial-card.yellow,
+.testimonial-card.dark {
   background: var(--lime);
-  min-height: 418px;
+  height: 418px;
+}
+
+.testimonial-card.dark {
+  background: var(--deep);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.testimonial-card.dark div {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.testimonial-card.dark .testimonial-logo {
+  filter: invert(1) brightness(3);
 }
 
 .testimonial-card strong {
@@ -1280,7 +1297,7 @@ input {
 }
 
 .testimonial-card p {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.35;
   margin: 20px 0;
 }

@@ -189,7 +189,7 @@ const testimonials = [
   name,
   role: index % 2 === 0 ? 'Farm Owner' : 'Agricultural Partner',
   avatar: avatars[index % avatars.length],
-  featured: index === 1 || index === 4,
+  tone: index === 0 ? 'yellow' : index === 6 ? 'dark' : 'base',
 }))
 
 const partnerLogos = [
@@ -231,12 +231,20 @@ const faqs = [
 ]
 
 const sourceReveal = {
-  hidden: { opacity: 0.001, y: 28, filter: 'blur(10px)' },
+  hidden: { opacity: 0.001, y: 0, filter: 'blur(0px)' },
   show: {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: { type: 'spring', bounce: 0.2, duration: 2 },
+    transition: { type: 'spring', bounce: 0.2, duration: 0.9 },
+  },
+}
+
+const sourceFade = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { type: 'spring', bounce: 0.2, duration: 0.9 },
   },
 }
 
@@ -344,7 +352,8 @@ function Header() {
 
     const update = () => {
       frame = 0
-      setScrolled(window.scrollY > 80)
+      const hero = document.getElementById('home')
+      setScrolled(hero ? hero.getBoundingClientRect().bottom <= 0 : window.scrollY > 80)
     }
 
     const handleScroll = () => {
@@ -587,15 +596,15 @@ function AwardsProcess() {
           <WordHeading>Awards & Recognition</WordHeading>
           <p>Proudly Recognized for Impact, Innovation, and Sustainability</p>
         </div>
-        <div className="award-grid">
+        <motion.div className="award-grid" variants={sourceFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }}>
           {[1, 2, 3].map((item) => (
-            <motion.article className="award-card" key={item} variants={sourceReveal} initial="hidden" whileHover={surfaceHover} whileInView="show" viewport={{ once: true }}>
+            <motion.article className="award-card" key={item} whileHover={surfaceHover}>
               <strong>5X</strong>
               <img src={assets.award} alt="" />
               <span>GreenTech Innovation Award 2024</span>
             </motion.article>
           ))}
-        </div>
+        </motion.div>
       </section>
       <section className="section process-section">
         <div className="section-center">
@@ -603,26 +612,23 @@ function AwardsProcess() {
           <WordHeading>Implementation Process.</WordHeading>
           <p className="section-lede">Take a quick look at the intricate implementation process as our contributions grow everyday</p>
         </div>
-        <div className="process-grid">
+        <motion.div className="process-grid" variants={sourceFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
           {processCards.map(({ title, text, icon: Icon }, index) => (
             <motion.article
               className="process-card"
               data-card-index={index + 1}
               key={title}
-              variants={sourceReveal}
-              initial="hidden"
               whileHover={surfaceHover}
-              whileInView="show"
-              viewport={{ once: true }}
             >
               <span className="round-icon">
                 <Icon size={24} />
               </span>
+              <Icon className="process-faded-icon" size={120} strokeWidth={1.1} />
               <h3>{title}</h3>
               <p>{text}</p>
             </motion.article>
           ))}
-        </div>
+        </motion.div>
       </section>
     </>
   )
@@ -640,13 +646,14 @@ function TimelineStep({ active, index, item, onActive }) {
     <motion.article
       className={`timeline-row ${active ? 'active' : ''}`}
       id={`step-${index + 1}`}
-      initial={{ opacity: 0.001, y: 150, filter: 'blur(10px)' }}
+      initial="hidden"
       key={item.title}
       ref={rowRef}
       transition={{ bounce: 0.18, delay: index * 0.04, duration: 1.4, type: 'spring' }}
+      variants={sourceFade}
       viewport={{ once: false, amount: 0.35 }}
       whileHover={surfaceHover}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      whileInView="show"
     >
       <span className="round-icon">
         <Zap size={22} />
@@ -701,13 +708,9 @@ function Benefits() {
 function TestimonialCard({ index, item }) {
   return (
     <motion.article
-      className={`testimonial-card ${item.featured ? 'featured' : ''}`}
-      initial={{ opacity: 0.001, y: 150, filter: 'blur(10px)' }}
+      className={`testimonial-card ${item.tone !== 'base' ? item.tone : ''}`}
       key={`${item.name}-${index}`}
-      transition={{ bounce: 0.18, delay: Math.min(index, 6) * 0.04, duration: 1.4, type: 'spring' }}
-      viewport={{ once: false, amount: 0.18 }}
       whileHover={surfaceHover}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
     >
       <strong>
         <img className="testimonial-logo" src={assets.logo} alt="" />
@@ -728,9 +731,9 @@ function Testimonials() {
   const centerColumnY = useTransform(scrollYProgress, [0, 1], [210, -210])
   const rightColumnY = useTransform(scrollYProgress, [0, 1], [156, -176])
   const columns = [
-    { items: testimonials.slice(0, 3), y: leftColumnY },
-    { items: testimonials.slice(3, 6), y: centerColumnY },
-    { items: [testimonials[6], testimonials[1], testimonials[4]], y: rightColumnY },
+    { items: testimonials.slice(0, 2), y: leftColumnY },
+    { items: testimonials.slice(2, 5), y: centerColumnY },
+    { items: testimonials.slice(5, 7), y: rightColumnY },
   ]
 
   return (
@@ -768,11 +771,11 @@ function Projects() {
           <motion.article
             className="project-card"
             key={project.title}
-            variants={sourceReveal}
+            variants={sourceFade}
             initial="hidden"
             whileHover={surfaceHover}
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.18 }}
           >
             <img src={project.image} alt="" />
             <div className="project-copy">
@@ -857,7 +860,7 @@ function PartnersFaqLocation() {
             <a href="mailto:hey@biogax.com">hey@biogax.com</a>
           </div>
         </div>
-        <div>
+        <motion.div className="faq-panel" variants={sourceFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }}>
           <div className="faq-tabs" role="tablist" aria-label="FAQ categories">
             {tabs.map((tab) => (
               <button className={tab === activeTab ? 'active' : ''} key={tab} type="button" onClick={() => setActiveTab(tab)}>
@@ -866,9 +869,9 @@ function PartnersFaqLocation() {
               </button>
             ))}
           </div>
-          <motion.div initial="hidden" variants={listContainer} viewport={{ once: true, amount: 0.25 }} whileInView="show">
+          <div>
             {faqs.map(([question, answer], index) => (
-              <motion.article className={`faq-item ${openFaq === index ? 'open' : ''}`} key={question} variants={sourceReveal}>
+              <article className={`faq-item ${openFaq === index ? 'open' : ''}`} key={question}>
                 <button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)}>
                   {question}
                   <Plus size={20} />
@@ -880,10 +883,10 @@ function PartnersFaqLocation() {
                 >
                   <p>{answer}</p>
                 </motion.div>
-              </motion.article>
+              </article>
             ))}
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </section>
       <section className="section locations-section">
         <Eyebrow>LOCATIONS</Eyebrow>
