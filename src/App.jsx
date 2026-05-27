@@ -337,7 +337,10 @@ function Count({ value }) {
 function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const lastScrollY = useRef(0)
+  const upwardScroll = useRef(0)
   const { scrollYProgress } = useScroll()
   const links = [
     ['Home', '#home'],
@@ -353,7 +356,23 @@ function Header() {
     const update = () => {
       frame = 0
       const hero = document.getElementById('home')
+      const nextScrollY = window.scrollY
+      const delta = nextScrollY - lastScrollY.current
+
       setScrolled(hero ? hero.getBoundingClientRect().bottom <= 0 : window.scrollY > 80)
+
+      if (open || nextScrollY <= 24) {
+        upwardScroll.current = 0
+        setHidden(false)
+      } else if (delta > 2) {
+        upwardScroll.current = 0
+        setHidden(true)
+      } else if (delta < -2) {
+        upwardScroll.current += Math.abs(delta)
+        if (upwardScroll.current > 180) setHidden(false)
+      }
+
+      lastScrollY.current = nextScrollY
     }
 
     const handleScroll = () => {
@@ -368,7 +387,7 @@ function Header() {
       window.removeEventListener('scroll', handleScroll)
       if (frame) window.cancelAnimationFrame(frame)
     }
-  }, [])
+  }, [open])
 
   useEffect(() => {
     const updateViewport = () => {
@@ -386,7 +405,8 @@ function Header() {
     <motion.header
       className={['site-header', scrolled ? 'site-header-scrolled' : '', open ? 'site-header-open' : ''].filter(Boolean).join(' ')}
       initial={{ opacity: 0, y: -100, x: '-50%' }}
-      animate={{ opacity: 1, y: 0, x: '-50%' }}
+      animate={{ opacity: hidden ? 0 : 1, y: hidden ? -100 : 0, x: '-50%' }}
+      style={{ pointerEvents: hidden ? 'none' : 'auto' }}
       transition={{ type: 'spring', bounce: 0.2, duration: 1.1 }}
     >
       <motion.div className="nav-progress" style={{ scaleX: scrollYProgress }} />
@@ -548,9 +568,46 @@ function Features() {
   )
 }
 
-function Services() {
+function ServiceScrollCard({ card, index, progress }) {
+  const scaleRanges = [
+    [0.98, 0.915, 0.9],
+    [0.99, 0.958, 0.95],
+    [1, 1, 1],
+  ]
+  const rotateRanges = [
+    ['-0.2deg', '-0.85deg', '-1deg'],
+    ['0.2deg', '0.85deg', '1deg'],
+    ['0deg', '0deg', '0deg'],
+  ]
+  const scale = useTransform(progress, [0.25, 0.62, 0.8], scaleRanges[index])
+  const rotate = useTransform(progress, [0.25, 0.62, 0.8], rotateRanges[index])
+
   return (
-    <section className="section services-section" id="services">
+    <motion.article
+      className="service-card"
+      key={card.title}
+      style={{ rotate, scale, zIndex: index + 1, '--service-stack-offset': `${index * 10}px` }}
+      whileHover={surfaceHover}
+    >
+      <img className="service-bg" src={card.image} alt="" />
+      <div className="service-icon">
+        <img src={card.icon} alt="" />
+      </div>
+      <div className="service-body">
+        <h3>{card.title}</h3>
+        <p>{card.text}</p>
+        <Button>Free Energy Assessment</Button>
+      </div>
+    </motion.article>
+  )
+}
+
+function Services() {
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
+
+  return (
+    <section className="section services-section" id="services" ref={sectionRef}>
       <div className="section-center">
         <Eyebrow>SERVICES WE OFFER</Eyebrow>
         <WordHeading>Clean energy solutions built for farms</WordHeading>
@@ -561,26 +618,8 @@ function Services() {
         <Button>View all services</Button>
       </div>
       <div className="service-stack">
-        {serviceCards.map((card) => (
-          <motion.article
-            className="service-card"
-            key={card.title}
-            variants={sourceReveal}
-            initial="hidden"
-            whileHover={surfaceHover}
-            whileInView="show"
-            viewport={{ once: true }}
-          >
-            <img className="service-bg" src={card.image} alt="" />
-            <div className="service-icon">
-              <img src={card.icon} alt="" />
-            </div>
-            <div className="service-body">
-              <h3>{card.title}</h3>
-              <p>{card.text}</p>
-              <Button>Free Energy Assessment</Button>
-            </div>
-          </motion.article>
+        {serviceCards.map((card, index) => (
+          <ServiceScrollCard card={card} index={index} key={card.title} progress={scrollYProgress} />
         ))}
       </div>
     </section>

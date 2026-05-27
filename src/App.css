@@ -733,20 +733,30 @@ input {
 }
 
 .services-section {
-  padding-top: 112px;
+  padding-top: 88px;
+}
+
+.services-section .section-center .word-heading {
+  font-size: clamp(40px, 4vw, 52px);
+  max-width: 620px;
 }
 
 .service-stack {
+  align-items: start;
   margin: 0 auto;
   max-width: 560px;
+  min-height: 2070px;
 }
 
 .service-card {
   border-radius: var(--radius);
   color: #fff;
-  height: 610px;
+  height: 650px;
   overflow: hidden;
-  position: relative;
+  position: sticky;
+  top: calc(72px + var(--service-stack-offset, 0px));
+  transform-origin: center top;
+  will-change: transform;
 }
 
 .service-icon {
@@ -1806,8 +1816,25 @@ input {
     inset: 30px 24px auto;
   }
 
+  .services-section {
+    min-height: 1884px;
+    padding-top: 72px;
+  }
+
+  .services-section .section-center .word-heading {
+    font-size: clamp(36px, 10vw, 42px);
+  }
+
+  .service-stack {
+    gap: 24px;
+    min-height: auto;
+  }
+
   .service-card {
-    height: 560px;
+    height: 493px;
+    position: relative;
+    top: auto;
+    transform: none !important;
   }
 
   .award-grid {
