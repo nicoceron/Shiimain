@@ -675,8 +675,8 @@ input {
   height: 600px;
   overflow: hidden;
   position: sticky;
-  top: calc(92px + var(--stack-offset, 0px));
-  transform-origin: top center;
+  top: calc(48px + var(--stack-offset, 0px));
+  transform-origin: center center;
   will-change: transform;
 }
 
@@ -1810,6 +1810,7 @@ input {
     min-height: 500px;
     position: relative;
     top: auto;
+    transform: none !important;
   }
 
   .feature-card > div {

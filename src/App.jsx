@@ -505,36 +505,36 @@ function BrandTicker() {
   )
 }
 
-function FeatureScrollCard({ card, index }) {
-  const cardRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: cardRef, offset: ['start end', 'end start'] })
-  const scale = useTransform(scrollYProgress, [0, 0.38, 1], [0.985, 1, 0.94 - index * 0.018])
-  const y = useTransform(scrollYProgress, [0, 0.48, 1], [42 + index * 18, 0, -26 - index * 18])
+function FeatureScrollCard({ card, index, progress }) {
+  const scaleRanges = [
+    [1, 0.8],
+    [1, 0.9],
+    [1, 1],
+  ]
+  const scale = useTransform(progress, [0.25, 0.86], scaleRanges[index])
 
   return (
     <motion.article
       className="feature-card"
-      initial="hidden"
       key={card.title}
-      ref={cardRef}
-      style={{ scale, y, zIndex: featureCards.length + index, '--stack-offset': `${index * 24}px` }}
-      variants={sourceReveal}
-      viewport={{ once: false, amount: 0.35 }}
-      whileInView="show"
+      style={{ scale, zIndex: featureCards.length + index, '--stack-offset': `${index * 16}px` }}
     >
       <img src={card.image} alt="" />
       <div>
         <h3>{card.title}</h3>
         <p>Reduce carbon emissions and your environmental footprint with clean, renewable biogas energy.</p>
-        <Button>Free Energy Assessment</Button>
+        <Button variant="white">Free Energy Assessment</Button>
       </div>
     </motion.article>
   )
 }
 
 function Features() {
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
+
   return (
-    <section className="section features-section" id="about">
+    <section className="section features-section" id="about" ref={sectionRef}>
       <div className="intro-top">
         <div>
           <Eyebrow>WHAT WE DO</Eyebrow>
@@ -561,7 +561,7 @@ function Features() {
       </div>
       <div className="feature-stack">
         {featureCards.map((card, index) => (
-          <FeatureScrollCard card={card} index={index} key={card.title} />
+          <FeatureScrollCard card={card} index={index} key={card.title} progress={scrollYProgress} />
         ))}
       </div>
     </section>
