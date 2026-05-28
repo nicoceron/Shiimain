@@ -311,11 +311,13 @@ function Count({ value }) {
 
 function Header() {
   const [open, setOpen] = useState(false)
+  const [barLoaded, setBarLoaded] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 1200)
-  const { scrollYProgress } = useScroll()
-  const mobileNavProgress = useTransform(scrollYProgress, (value) => Math.max(value, 0.01))
+  const hiddenRef = useRef(false)
+  const hiddenFromYRef = useRef(0)
+  const lastScrollYRef = useRef(0)
   const links = [
     ['Inicio', '#home'],
     ['Qué hacemos', '#about'],
@@ -325,15 +327,36 @@ function Header() {
   ]
 
   useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setBarLoaded(true))
+    return () => window.cancelAnimationFrame(frame)
+  }, [])
+
+  useEffect(() => {
+    const setHiddenState = (nextHidden, scrollY) => {
+      hiddenRef.current = nextHidden
+      if (nextHidden) hiddenFromYRef.current = scrollY
+      setHidden(nextHidden)
+    }
+
     let frame = 0
 
     const update = () => {
       frame = 0
       const hero = document.getElementById('home')
       const nextScrollY = window.scrollY
+      const deltaY = nextScrollY - lastScrollYRef.current
 
       setScrolled(hero ? hero.getBoundingClientRect().bottom <= 0 : window.scrollY > 80)
-      setHidden(!open && nextScrollY > 1)
+
+      if (open || nextScrollY <= 1) {
+        setHiddenState(false, nextScrollY)
+      } else if (deltaY > 8) {
+        setHiddenState(true, nextScrollY)
+      } else if (deltaY < -8 && hiddenRef.current && hiddenFromYRef.current - nextScrollY >= 180) {
+        setHiddenState(false, nextScrollY)
+      }
+
+      lastScrollYRef.current = nextScrollY
     }
 
     const handleScroll = () => {
@@ -368,9 +391,9 @@ function Header() {
       initial={{ opacity: 0, y: -100, x: '-50%' }}
       animate={{ opacity: hidden ? 0 : 1, y: hidden ? -100 : 0, x: '-50%' }}
       style={{ pointerEvents: hidden ? 'none' : 'auto' }}
-      transition={{ type: 'spring', bounce: 0.2, duration: 1.1 }}
+      transition={{ type: 'spring', bounce: 0.12, duration: 0.65 }}
     >
-      <motion.div className="nav-progress" style={{ scaleX: !isMobile || open ? 1 : mobileNavProgress }} />
+      <motion.div className="nav-progress" style={{ scaleX: barLoaded && (!isMobile || open) ? 1 : 0.01 }} />
       <div className="nav-top-row">
         <a className="brand" href="#home" aria-label="Inicio Shiimain">
           <img src={assets.logo} alt="Shiimain" />

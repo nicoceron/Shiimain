@@ -184,9 +184,13 @@ input {
 }
 
 .site-header nav a {
+  align-items: center;
   border-radius: 999px;
   color: #fff;
+  display: flex;
   font-size: 16px;
+  height: 40px;
+  justify-content: center;
   line-height: 1;
   min-height: 40px;
   padding: 0 14px;
@@ -211,7 +215,7 @@ input {
 .rolling-link-mask {
   align-items: center;
   display: flex;
-  height: 18px;
+  height: 20px;
   justify-content: center;
   overflow: hidden;
   width: 100%;
