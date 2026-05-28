@@ -46,7 +46,7 @@ html.lenis body {
   overflow: clip;
 }
 
-.lenis.lenis-scrolling iframe {
+.lenis.lenis-smooth iframe {
   pointer-events: none;
 }
 
