@@ -252,54 +252,46 @@ input {
   padding: 0 18px;
   position: relative;
   transition:
-    transform 200ms ease,
-    box-shadow 200ms ease,
-    background 200ms ease;
+    box-shadow 240ms ease,
+    background 240ms ease,
+    border-color 240ms ease;
   white-space: nowrap;
 }
 
 .button:hover {
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
-  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
 }
 
 .animated-button {
+  transform-origin: center;
   transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .button-title-wrap {
-  display: inline-block;
+  display: block;
+  height: 1em;
   line-height: 1;
-  min-height: 1em;
   overflow: hidden;
   position: relative;
 }
 
-.button-title {
-  backface-visibility: hidden;
+.button-title-stack {
   display: block;
-  left: 0;
+  transition: transform 520ms cubic-bezier(0.93, 0.21, 0.42, 0.97);
+  will-change: transform;
+}
+
+.button:hover .button-title-stack,
+.button:focus-visible .button-title-stack {
+  transform: translateY(-50%);
+}
+
+.button-title {
+  display: block;
+  line-height: 1;
   pointer-events: none;
-  position: absolute;
-  top: 0;
-  transform-origin: 50% 50%;
-  transform-style: preserve-3d;
   white-space: pre;
-  will-change: opacity, transform;
-}
-
-.button-title-one {
-  opacity: 1;
-}
-
-.button-title-two {
-  opacity: 0;
-  z-index: 1;
-}
-
-.button-sr-text {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .button-arrow-track {
@@ -312,20 +304,21 @@ input {
 
 .button-arrow-track img {
   grid-area: 1 / 1;
-  transition: transform 420ms cubic-bezier(0.93, 0.21, 0.42, 0.97);
+  transition: transform 520ms cubic-bezier(0.93, 0.21, 0.42, 0.97);
+  will-change: transform;
 }
 
 .button-arrow-two {
   transform: translateX(-140%);
 }
 
-.button.hover .button-arrow-one,
-.button:hover .button-arrow-one {
+.button:hover .button-arrow-one,
+.button:focus-visible .button-arrow-one {
   transform: translateX(140%);
 }
 
-.button.hover .button-arrow-two,
-.button:hover .button-arrow-two {
+.button:hover .button-arrow-two,
+.button:focus-visible .button-arrow-two {
   transform: translateX(0);
 }
 
