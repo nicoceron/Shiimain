@@ -27,9 +27,11 @@ export function SmoothScroll() {
       autoToggle: true,
       duration: 1.2,
       gestureOrientation: 'vertical',
+      lerp: 0.065,
       orientation: 'vertical',
       smoothWheel: true,
       syncTouch: false,
+      wheelMultiplier: 0.9,
     })
     lenisRef.current = lenis
     window.lenis = lenis
