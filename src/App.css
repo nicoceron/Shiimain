@@ -80,47 +80,39 @@ input {
 .site-header {
   align-items: center;
   display: flex;
-  gap: 28px;
+  gap: 0;
   height: 68px;
   isolation: isolate;
+  justify-content: space-between;
   left: 50%;
-  max-width: var(--container);
-  padding: 0 0 0 0;
+  max-width: none;
+  padding: 14px max(64px, calc((100vw - 1300px) / 2));
   position: fixed;
   top: 0;
   transform: translateX(-50%);
-  transition:
-    height 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    max-width 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    width 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: height 420ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
-  width: calc(100% - 128px);
+  width: 100%;
   z-index: 40;
 }
 
 .site-header::before {
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 999px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.1);
   content: '';
+  display: none;
   inset: 8px -14px 4px;
-  opacity: 0;
-  pointer-events: none;
   position: absolute;
-  transition: opacity 320ms ease;
   z-index: -1;
 }
 
 .site-header-scrolled::before,
 .site-header-open::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 .site-header-scrolled {
-  height: 74px;
-  max-width: 1240px;
-  width: calc(100% - 56px);
+  height: 68px;
+  max-width: none;
+  width: 100%;
 }
 
 .nav-progress {
@@ -134,48 +126,56 @@ input {
   z-index: 2;
 }
 
+.nav-top-row {
+  align-items: center;
+  display: flex;
+  flex: 0 0 230px;
+  height: 30px;
+  justify-content: flex-start;
+  width: 230px;
+}
+
 .brand {
   align-items: center;
   display: flex;
-  height: 48px;
-  min-width: 108px;
+  height: 30px;
+  min-width: 0;
+  width: 103px;
 }
 
 .brand img {
   filter: brightness(0) invert(1);
   height: 30px;
+  object-fit: contain;
   transition: filter 260ms ease;
-  width: auto;
+  width: 103px;
 }
 
 .site-header-scrolled .brand img,
 .site-header-open .brand img {
-  filter: none;
+  filter: brightness(0) invert(1);
 }
 
 .site-header nav {
   align-items: center;
-  background: rgba(20, 24, 25, 0.18);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
+  background: transparent;
+  backdrop-filter: none;
+  border: 0;
+  border-radius: 0;
   display: flex;
-  gap: 8px;
+  gap: 0;
+  height: 40px;
   justify-content: center;
-  margin: 0 auto;
-  padding: 6px;
-  transition:
-    background 360ms ease,
-    border-color 360ms ease,
-    box-shadow 360ms ease,
-    padding 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  margin: 0;
+  padding: 0;
+  transition: opacity 180ms ease;
 }
 
 .site-header-scrolled nav,
 .site-header-open nav {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.12);
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .site-header nav > span {
@@ -187,7 +187,8 @@ input {
   color: #fff;
   font-size: 16px;
   line-height: 1;
-  padding: 12px 14px;
+  min-height: 40px;
+  padding: 0 14px;
   transition: background 180ms ease;
   white-space: nowrap;
 }
@@ -198,12 +199,12 @@ input {
 
 .site-header-scrolled nav a,
 .site-header-open nav a {
-  color: #050706;
+  color: #fff;
 }
 
 .site-header-scrolled nav a:hover,
 .site-header-open nav a:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .rolling-link-mask {
@@ -336,15 +337,21 @@ input {
   flex: 0 0 auto;
 }
 
+.site-header nav > span.mobile-nav-cta {
+  display: none;
+}
+
 .menu-toggle {
   align-items: center;
-  background: var(--lime);
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 50%;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #fff;
   display: none;
-  height: 42px;
+  height: 28px;
   justify-content: center;
-  width: 42px;
+  padding: 0;
+  width: 28px;
 }
 
 .hero-section {
@@ -1935,41 +1942,81 @@ input {
 
 @media (max-width: 1199.98px) {
   .site-header {
-    width: calc(100% - 40px);
+    align-items: center;
+    flex-direction: column;
+    height: 62px;
+    justify-content: flex-start;
+    max-width: none;
+    min-height: 62px;
+    overflow: visible;
+    padding: 0 40px;
+    width: 100%;
+  }
+
+  .site-header-scrolled {
+    height: 62px;
+    width: 100%;
+  }
+
+  .site-header-open {
+    height: 390px;
+  }
+
+  .nav-top-row {
+    flex: 0 0 62px;
+    height: 62px;
+    justify-content: space-between;
+    padding: 16px 0;
+    width: 100%;
   }
 
   .site-header nav {
-    background: rgba(255, 255, 255, 0.94);
-    border-radius: 18px;
+    align-items: flex-start;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    display: none;
     flex-direction: column;
-    gap: 4px;
-    opacity: 0;
-    padding: 18px 14px;
+    gap: 24px;
+    height: auto;
+    opacity: 1;
+    padding: 24px 0;
     pointer-events: none;
-    position: absolute;
-    right: 0;
-    top: 74px;
-    transform: translateY(-10px);
-    transition:
-      opacity 180ms ease,
-      transform 180ms ease;
-    width: 220px;
+    position: static;
+    transform: none;
+    transition: none;
+    width: 100%;
   }
 
   .site-header nav.nav-open {
-    opacity: 1;
+    display: flex;
     pointer-events: auto;
-    transform: translateY(0);
   }
 
   .site-header nav a {
-    color: #050706;
+    color: #fff;
+    font-size: 16px;
+    height: 24px;
     justify-content: flex-start;
-    width: 100%;
+    line-height: 1.5;
+    min-height: 24px;
+    padding: 0;
+    width: auto;
   }
 
   .site-header nav > span {
-    width: 100%;
+    width: auto;
+  }
+
+  .site-header nav > span.mobile-nav-cta {
+    display: inline-flex;
+  }
+
+  .site-header nav .mobile-header-cta {
+    height: 40px;
+    min-height: 40px;
+    padding: 0 24px;
   }
 
   .header-cta {
@@ -1981,8 +2028,7 @@ input {
     margin-left: auto;
   }
 
-  .section,
-  .site-header {
+  .section {
     width: calc(100% - 40px);
   }
 
@@ -2325,6 +2371,10 @@ input {
 }
 
 @media (max-width: 809.98px) {
+  .site-header {
+    padding: 0 20px;
+  }
+
   .hero-section,
   .hero-content {
     min-height: 963px;

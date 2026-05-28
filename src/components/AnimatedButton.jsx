@@ -6,13 +6,14 @@ const hoverTransition = {
   type: 'tween',
 }
 
-export function AnimatedButton({ arrow, className = '', href = '#contact', label, variant = 'lime' }) {
+export function AnimatedButton({ arrow, className = '', href = '#contact', label, onClick, variant = 'lime' }) {
   return (
     <motion.a
       aria-label={label}
       className={`button button-${variant} animated-button ${className}`}
       data-framer-name="Primary Button"
       href={href}
+      onClick={onClick}
       transition={hoverTransition}
       whileHover={{ scale: 1.025, y: -2 }}
       whileTap={{ scale: 0.985, y: 0 }}

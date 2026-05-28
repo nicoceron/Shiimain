@@ -259,8 +259,8 @@ const mobileMenuItemVariants = {
   }),
 }
 
-function Button({ children, href = '#contact', variant = 'lime', className = '' }) {
-  return <AnimatedButton arrow={assets.arrow} className={className} href={href} label={String(children)} variant={variant} />
+function Button({ children, href = '#contact', variant = 'lime', className = '', onClick }) {
+  return <AnimatedButton arrow={assets.arrow} className={className} href={href} label={String(children).trim()} onClick={onClick} variant={variant} />
 }
 
 function Eyebrow({ children, dark = false }) {
@@ -351,7 +351,7 @@ function Header() {
 
   useEffect(() => {
     const updateViewport = () => {
-      const nextMobile = window.innerWidth <= 1040
+      const nextMobile = window.innerWidth < 1200
       setIsMobile(nextMobile)
       if (!nextMobile) setOpen(false)
     }
@@ -370,9 +370,14 @@ function Header() {
       transition={{ type: 'spring', bounce: 0.2, duration: 1.1 }}
     >
       <motion.div className="nav-progress" style={{ scaleX: scrollYProgress }} />
-      <a className="brand" href="#home" aria-label="Inicio Shiimain">
-        <img src={assets.logo} alt="Shiimain" />
-      </a>
+      <div className="nav-top-row">
+        <a className="brand" href="#home" aria-label="Inicio Shiimain">
+          <img src={assets.logo} alt="Shiimain" />
+        </a>
+        <button className="menu-toggle" type="button" aria-label={open ? 'Cerrar menú' : 'Abrir menú'} onClick={() => setOpen((value) => !value)}>
+          {open ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
       <motion.nav className={open ? 'nav-open' : ''} aria-label="Navegación principal" layout transition={navLayoutTransition}>
         {links.map(([label, href], index) => (
           <motion.span
@@ -385,11 +390,19 @@ function Header() {
             <RollingLink href={href} hoverEnabled={!isMobile} label={label} onClick={() => setOpen(false)} />
           </motion.span>
         ))}
+        <motion.span
+          animate={isMobile ? (open ? 'open' : 'closed') : 'open'}
+          className="mobile-nav-cta"
+          custom={0.32}
+          initial={false}
+          variants={mobileMenuItemVariants}
+        >
+          <Button className="mobile-header-cta" href="#/demo" onClick={() => setOpen(false)}>
+            Ver demo
+          </Button>
+        </motion.span>
       </motion.nav>
       <Button className="header-cta" href="#/demo">Ver demo</Button>
-      <button className="menu-toggle" type="button" aria-label={open ? 'Cerrar menú' : 'Abrir menú'} onClick={() => setOpen((value) => !value)}>
-        {open ? <X size={20} /> : <Menu size={20} />}
-      </button>
     </motion.header>
   )
 }
