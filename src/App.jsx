@@ -248,6 +248,15 @@ const sourceFade = {
   },
 }
 
+const testimonialReveal = {
+  hidden: { opacity: 0, y: 150 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', bounce: 0.2, duration: 1.1 },
+  },
+}
+
 const surfaceHover = {
   y: -8,
   transition: { type: 'spring', stiffness: 260, damping: 24 },
@@ -733,8 +742,12 @@ function TestimonialCard({ index, item }) {
   return (
     <motion.article
       className={`testimonial-card ${item.tone !== 'base' ? item.tone : ''}`}
+      initial="hidden"
       key={`${item.name}-${index}`}
+      variants={testimonialReveal}
+      viewport={{ once: true, amount: 0.5 }}
       whileHover={surfaceHover}
+      whileInView="show"
     >
       <strong>
         <img className="testimonial-logo" src={assets.logo} alt="" />
@@ -750,14 +763,10 @@ function TestimonialCard({ index, item }) {
 
 function Testimonials() {
   const sectionRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
-  const leftColumnY = useTransform(scrollYProgress, [0, 1], [124, -150])
-  const centerColumnY = useTransform(scrollYProgress, [0, 1], [210, -210])
-  const rightColumnY = useTransform(scrollYProgress, [0, 1], [156, -176])
   const columns = [
-    { items: testimonials.slice(0, 2), y: leftColumnY },
-    { items: testimonials.slice(2, 5), y: centerColumnY },
-    { items: testimonials.slice(5, 7), y: rightColumnY },
+    { items: testimonials.slice(0, 2) },
+    { items: testimonials.slice(2, 5) },
+    { items: testimonials.slice(5, 7) },
   ]
 
   return (
@@ -767,11 +776,11 @@ function Testimonials() {
       <div className="testimonial-marquee">
         <div>
           {columns.map((column, columnIndex) => (
-            <motion.div className="testimonial-column" key={`testimonial-column-${columnIndex}`} style={{ y: column.y }}>
+            <div className="testimonial-column" key={`testimonial-column-${columnIndex}`}>
               {column.items.map((item, itemIndex) => (
                 <TestimonialCard index={columnIndex * 3 + itemIndex} item={item} key={`${item.name}-${columnIndex}-${itemIndex}`} />
               ))}
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

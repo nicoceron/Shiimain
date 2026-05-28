@@ -1807,6 +1807,32 @@ input {
     height: 793px;
   }
 
+  .testimonial-marquee > div {
+    max-width: 1300px;
+  }
+
+  .testimonial-column {
+    gap: 10px;
+  }
+
+  .testimonial-column:nth-child(2) {
+    gap: 20px;
+    padding-top: 0;
+  }
+
+  .testimonial-column:nth-child(3) {
+    padding-top: 0;
+  }
+
+  .testimonial-card {
+    min-height: 252px;
+  }
+
+  .testimonial-card.yellow,
+  .testimonial-card.dark {
+    height: 379px;
+  }
+
   .faq-section {
     gap: 64px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2587,7 +2613,7 @@ input {
   }
 
   .testimonial-column {
-    transform: translateY(150px) !important;
+    transform: none !important;
   }
 
   .testimonial-column:nth-child(2),
