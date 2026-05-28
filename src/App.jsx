@@ -313,8 +313,9 @@ function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 1200)
   const { scrollYProgress } = useScroll()
+  const mobileNavProgress = useTransform(scrollYProgress, (value) => Math.max(value, 0.01))
   const links = [
     ['Inicio', '#home'],
     ['Qué hacemos', '#about'],
@@ -369,7 +370,7 @@ function Header() {
       style={{ pointerEvents: hidden ? 'none' : 'auto' }}
       transition={{ type: 'spring', bounce: 0.2, duration: 1.1 }}
     >
-      <motion.div className="nav-progress" style={{ scaleX: open && isMobile ? 1 : scrollYProgress }} />
+      <motion.div className="nav-progress" style={{ scaleX: !isMobile || open ? 1 : mobileNavProgress }} />
       <div className="nav-top-row">
         <a className="brand" href="#home" aria-label="Inicio Shiimain">
           <img src={assets.logo} alt="Shiimain" />
