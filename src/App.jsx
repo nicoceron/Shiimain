@@ -1,15 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { animate, motion, useInView, useScroll, useTransform } from 'framer-motion'
 import {
-  Hammer,
   Leaf,
   Mail,
   MapPin,
   Menu,
   Phone,
   Plus,
-  Sparkles,
-  TrendingUp,
   X,
   Zap,
 } from 'lucide-react'
@@ -90,17 +87,20 @@ const processCards = [
   {
     title: 'Expert installation',
     text: 'Our team is skilled in designing and implementing energy systems for all types of properties.',
-    icon: Hammer,
+    bgIcon: 'https://framerusercontent.com/images/BO83huXhYMFSxdO9UgWaJSbE3WY.svg?width=101&height=119',
+    icon: 'https://framerusercontent.com/images/tnRaG5yDMMPNdIlZMhRWdhsdz4.svg?width=40&height=40',
   },
   {
     title: 'Long-term savings',
     text: 'We partner with leading manufacturers to bring you the best solar, battery, and EV charging solutions.',
-    icon: TrendingUp,
+    bgIcon: 'https://framerusercontent.com/images/Eg2EKP3kIaAyneFVfKaS8mEHY.svg?width=165&height=175',
+    icon: 'https://framerusercontent.com/images/gCRtudDexFs0DfuKSXfZMwncg.svg?width=40&height=40',
   },
   {
     title: 'Premium Technology',
     text: 'Our energy solutions are designed to reduce electricity costs and maximize efficiency.',
-    icon: Sparkles,
+    bgIcon: 'https://framerusercontent.com/images/JFxTKUr2lhTKQnucQGxdVRRdWOE.svg?width=175&height=175',
+    icon: 'https://framerusercontent.com/images/BtrwXmhlkgqQ8Usf3y6GCpH6c.svg?width=40&height=40',
   },
 ]
 
@@ -255,6 +255,15 @@ const testimonialReveal = {
     y: 0,
     transition: { type: 'spring', bounce: 0.2, duration: 1.1 },
   },
+}
+
+const processCardReveal = {
+  hidden: { opacity: 0, y: 75 },
+  show: (index = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', bounce: 0.2, duration: 0.9, delay: index * 0.08 },
+  }),
 }
 
 const surfaceHover = {
@@ -488,13 +497,13 @@ function BrandTicker() {
   return (
     <section className="trusted-strip">
       <p>Trusted by top agriculture leader</p>
-      <div className="logo-marquee">
+      <motion.div className="logo-marquee" initial="hidden" variants={sourceFade} viewport={{ once: true, amount: 0.4 }} whileInView="show">
         <div>
           {[...logoStrip, ...logoStrip, ...logoStrip].map((logo, index) => (
             <img src={logo} alt="" key={`${logo}-${index}`} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
@@ -645,23 +654,30 @@ function AwardsProcess() {
           <WordHeading>Implementation Process.</WordHeading>
           <p className="section-lede">Take a quick look at the intricate implementation process as our contributions grow everyday</p>
         </div>
-        <motion.div className="process-grid" variants={sourceFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
-          {processCards.map(({ title, text, icon: Icon }, index) => (
+        <div className="process-grid">
+          {processCards.map(({ title, text, icon, bgIcon }, index) => (
             <motion.article
               className="process-card"
+              custom={index}
               data-card-index={index + 1}
+              initial="hidden"
               key={title}
+              variants={processCardReveal}
+              viewport={{ once: true, amount: 0.45 }}
               whileHover={surfaceHover}
+              whileInView="show"
             >
-              <span className="round-icon">
-                <Icon size={24} />
+              <span className="process-icon">
+                <img src={icon} alt="" />
               </span>
-              <Icon className="process-faded-icon" size={120} strokeWidth={1.1} />
-              <h3>{title}</h3>
-              <p>{text}</p>
+              <img className="process-faded-icon" src={bgIcon} alt="" />
+              <div className="process-card-content">
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
             </motion.article>
           ))}
-        </motion.div>
+        </div>
       </section>
     </>
   )
