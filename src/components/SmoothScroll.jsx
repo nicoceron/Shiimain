@@ -20,42 +20,23 @@ export function SmoothScroll() {
   useEffect(() => {
     markNestedScrollAreas()
 
-    const lenis = new Lenis({ duration: 1, smoothWheel: true })
+    const lenis = new Lenis({
+      allowNestedScroll: true,
+      anchors: true,
+      autoRaf: true,
+      autoToggle: true,
+      duration: 1.2,
+      gestureOrientation: 'vertical',
+      orientation: 'vertical',
+      smoothWheel: true,
+      syncTouch: false,
+    })
     lenisRef.current = lenis
-    window.lenisVersion = '1.1.2'
-
-    let animationFrame = 0
-    const raf = (time) => {
-      lenis.raf(time)
-      animationFrame = window.requestAnimationFrame(raf)
-    }
-    animationFrame = window.requestAnimationFrame(raf)
-
-    const handleAnchorClick = (event) => {
-      if (event.defaultPrevented) return
-
-      const target = event.target instanceof Element ? event.target : event.target instanceof Node ? event.target.parentElement : null
-      const anchor = target?.closest('a[href]')
-      if (!(anchor instanceof HTMLAnchorElement)) return
-
-      const url = new URL(anchor.href, window.location.href)
-      if (url.origin !== window.location.origin || !url.hash) return
-
-      const targetElement = document.querySelector(decodeURIComponent(url.hash))
-      if (!(targetElement instanceof HTMLElement)) return
-
-      const scrollMarginTop = Number.parseInt(window.getComputedStyle(targetElement).scrollMarginTop, 10) || 0
-
-      event.preventDefault()
-      window.history.replaceState(null, '', url.hash)
-      lenis.scrollTo(targetElement, { offset: -scrollMarginTop })
-    }
-
-    document.addEventListener('click', handleAnchorClick, true)
+    window.lenis = lenis
+    window.lenisVersion = '1.3.8'
 
     return () => {
-      document.removeEventListener('click', handleAnchorClick, true)
-      window.cancelAnimationFrame(animationFrame)
+      if (window.lenis === lenis) window.lenis = undefined
       lenis.destroy()
       lenisRef.current = null
     }
