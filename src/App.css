@@ -122,7 +122,7 @@ input {
   position: absolute;
   right: 0;
   top: 0;
-  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 870ms cubic-bezier(0.3, 0.1, 0.3, 0.85) 130ms;
   transform-origin: 0 50%;
   z-index: 2;
 }
