@@ -339,8 +339,6 @@ function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-  const lastScrollY = useRef(0)
-  const upwardScroll = useRef(0)
   const { scrollYProgress } = useScroll()
   const links = [
     ['Home', '#home'],
@@ -357,22 +355,9 @@ function Header() {
       frame = 0
       const hero = document.getElementById('home')
       const nextScrollY = window.scrollY
-      const delta = nextScrollY - lastScrollY.current
 
       setScrolled(hero ? hero.getBoundingClientRect().bottom <= 0 : window.scrollY > 80)
-
-      if (open || nextScrollY <= 24) {
-        upwardScroll.current = 0
-        setHidden(false)
-      } else if (delta > 2) {
-        upwardScroll.current = 0
-        setHidden(true)
-      } else if (delta < -2) {
-        upwardScroll.current += Math.abs(delta)
-        if (upwardScroll.current > 180) setHidden(false)
-      }
-
-      lastScrollY.current = nextScrollY
+      setHidden(!open && nextScrollY > 1)
     }
 
     const handleScroll = () => {
