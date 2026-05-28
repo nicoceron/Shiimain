@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { animate, motion, useInView, useScroll, useTransform } from 'framer-motion'
 import {
   Leaf,
@@ -13,160 +13,126 @@ import {
 import { AnimatedButton } from './components/AnimatedButton.jsx'
 import { RollingLink } from './components/RollingLink.jsx'
 import { SmoothScroll } from './components/SmoothScroll.jsx'
+import guajiraMap from './assets/shiimain-territorial-context-user.png'
+import shiimainFoodBaskets from './assets/shiimain-food-baskets.webp'
+import shiimainFoodChildren from './assets/shiimain-food-children.webp'
+import shiimainFoodCommunityMeals from './assets/shiimain-food-community-meals.webp'
+import shiimainFoodDeliveryVerification from './assets/shiimain-food-delivery-verification.webp'
+import shiimainFoodHandoff from './assets/shiimain-food-handoff.webp'
+import shiimainHeroCactus from './assets/shiimain-hero-guajira-cactus.png'
+import shiimainFoodHouseholdValidation from './assets/shiimain-food-household-validation.webp'
+import shiimainFoodMealConfirmation from './assets/shiimain-food-meal-confirmation.webp'
+import shiimainFoodPacking from './assets/shiimain-food-packing.webp'
+import shiimainFoodRoute from './assets/shiimain-food-route.webp'
+import shiimainFoodSupplyIntake from './assets/shiimain-food-supply-intake.webp'
+import shiimainLogo from './assets/shiimain-logo.svg'
 import './App.css'
 
+const DemoDashboard = lazy(() =>
+  import('./components/DemoDashboard.jsx').then((module) => ({
+    default: module.DemoDashboard,
+  })),
+)
+
 const assets = {
-  logo: 'https://framerusercontent.com/images/AFwXQUK9MMdnMdYyZE79TctHdlE.svg?width=81&height=24',
-  footerLogo: 'https://framerusercontent.com/images/EikuxwDlcxDhExsrn77csIFZtB0.svg?width=208&height=58',
-  hero: 'https://framerusercontent.com/images/f9NvQ83dbDeuMAAoNh05FBHt1mw.png?width=2880&height=1640',
+  logo: shiimainLogo,
+  footerLogo: shiimainLogo,
+  hero: shiimainHeroCactus,
   tick: 'https://framerusercontent.com/images/kvdlB3iY4NmbRxGWFXTik82tWI.svg?width=16&height=17',
   arrow: 'https://framerusercontent.com/images/UiJU9i4Jlh4N9ihhIBlKvqycvYw.svg?width=16&height=8',
-  award: 'https://framerusercontent.com/images/ul8OXA8zB9JOEgXSYFnVkPOeV9k.svg?width=166&height=79',
-  map: 'https://framerusercontent.com/images/7kiFKxMsptIQUNn7F1EQA4ZZtlQ.png?width=1080&height=696',
+  map: guajiraMap,
 }
 
 const logoStrip = [
-  'https://framerusercontent.com/images/rHspQO7eR95Gmirx7c5uAclh8.svg?width=106&height=30',
-  'https://framerusercontent.com/images/kDgAc9jW9i9H9gsWMJzYbCSFJ6Q.svg?width=140&height=28',
-  'https://framerusercontent.com/images/1owsNx2phueT5YvR3zbGTuIJ7M.svg?width=120&height=28',
-  'https://framerusercontent.com/images/R5wytmc0EXBl0eI8FG666AhrRn0.svg?width=140&height=35',
-  'https://framerusercontent.com/images/vtbhJElO4uLy2RolPcM5TOM07Q.svg?width=106&height=34',
+  'SECOP II',
+  'Datos Abiertos',
+  'Facturas',
+  'Expedientes',
+  'Garantías',
+  'Patrones de auditoría',
+  'La Guajira',
 ]
 
 const strengths = [
-  'Visionary',
-  'Collaborative',
-  'Sustainable',
-  'Global',
-  'Impactful',
-  'Reliable',
-  'Adaptive',
-  'Efficient',
-  'Innovative',
+  'Pagos',
+  'Garantías',
+  'Facturas',
+  'SECOP',
+  'Patrones',
+  'Soportes',
+  'Contratistas',
+  'Auditable',
+  'Sin inventar datos',
 ]
 
 const featureCards = [
   {
-    title: "Boost Your Farm's Sustainability.",
-    image: 'https://framerusercontent.com/images/5veOm1AgLGYsc3zZY7VUGz7uCxc.png?width=1968&height=1005',
+    title: 'Decide qué pagos se retienen con evidencia.',
+    text: 'Convierte contratos, facturas, garantías y requisitos pendientes en una bandeja clara antes de liberar recursos.',
+    image: shiimainFoodPacking,
   },
   {
-    title: 'Maximize Farm Efficiency.',
-    image: 'https://framerusercontent.com/images/q7BKkWln3QR0t01C4Xi2k8NXVw.png?width=1968&height=1005',
+    title: 'Lee expedientes SECOP sin perder contexto.',
+    text: 'Separa TDR, CDP, contratos, actas, facturas y soportes para que cada decisión vuelva a su fuente pública.',
+    image: shiimainFoodChildren,
   },
   {
-    title: 'Generate Revenue from Waste.',
-    image:
-      'https://framerusercontent.com/images/1omJYtEJQPTdbDiLsyA4qx1lzQ.png?scale-down-to=2048&width=3936&height=2010',
-  },
-]
-
-const serviceCards = [
-  {
-    title: 'Waste-to-Energy Conversion',
-    text: 'Our expert engineers design custom biogas systems to maximize gas output, and reduce emissions',
-    image:
-      'https://framerusercontent.com/images/om7WTGKadTNlJ3HPkNyVDE5xXX4.png?scale-down-to=1024&width=2240&height=2600',
-    icon: 'https://framerusercontent.com/images/jdGLhtyddn2TylfYyeHTRE7Tlw.svg?width=60&height=60',
-  },
-  {
-    title: 'Biogas Plant Installation',
-    text: 'From site assessment to commissioning, we deliver full-scale biogas plant setups that are efficient, and durable',
-    image: 'https://framerusercontent.com/images/BuD1c6H5KDQ8NtQbVYwFqb4oDCo.png?width=840&height=975',
-    icon: 'https://framerusercontent.com/images/znqSZ4N9hgWJoFQhouLCmUL0V8.svg?width=61&height=61',
-  },
-  {
-    title: 'Biofertilizer Recovery & Soil Enrichment',
-    text: 'We upgrade outdated components and integrate modern technologies to improve efficiency and capacity',
-    image: 'https://framerusercontent.com/images/I5fjViChalLoQLnnaxpIAM1zzI.png?width=841&height=976',
-    icon: 'https://framerusercontent.com/images/fzifwFuaeIMNMtdy5uRE2e4NjWY.svg?width=60&height=60',
-  },
-]
-
-const processCards = [
-  {
-    title: 'Expert installation',
-    text: 'Our team is skilled in designing and implementing energy systems for all types of properties.',
-    bgIcon: 'https://framerusercontent.com/images/BO83huXhYMFSxdO9UgWaJSbE3WY.svg?width=101&height=119',
-    icon: 'https://framerusercontent.com/images/tnRaG5yDMMPNdIlZMhRWdhsdz4.svg?width=40&height=40',
-  },
-  {
-    title: 'Long-term savings',
-    text: 'We partner with leading manufacturers to bring you the best solar, battery, and EV charging solutions.',
-    bgIcon: 'https://framerusercontent.com/images/Eg2EKP3kIaAyneFVfKaS8mEHY.svg?width=165&height=175',
-    icon: 'https://framerusercontent.com/images/gCRtudDexFs0DfuKSXfZMwncg.svg?width=40&height=40',
-  },
-  {
-    title: 'Premium Technology',
-    text: 'Our energy solutions are designed to reduce electricity costs and maximize efficiency.',
-    bgIcon: 'https://framerusercontent.com/images/JFxTKUr2lhTKQnucQGxdVRRdWOE.svg?width=175&height=175',
-    icon: 'https://framerusercontent.com/images/BtrwXmhlkgqQ8Usf3y6GCpH6c.svg?width=40&height=40',
+    title: 'Prioriza patrones antes de escalar auditoría.',
+    text: 'Agrupa señales determinísticas sobre proveedores, valores, modificaciones, facturas y brechas de evidencia.',
+    image: shiimainFoodRoute,
   },
 ]
 
 const timelineItems = [
   {
-    title: 'Site Audit',
-    text: 'Performed waste and energy assessment; estimated 4–5 tons of daily cow dung.',
-    image: 'https://framerusercontent.com/images/gPvWkluhTZcaBGMARUCjYN07DhQ.jpg?width=876&height=584',
+    title: 'Cruce de identidad',
+    text: 'Une NIT base, entidad, proveedor y participación en UT para definir qué contratos están realmente en alcance.',
+    image: shiimainFoodSupplyIntake,
   },
   {
-    title: 'Construction',
-    text: 'Took 6 weeks with local masonry labor and prefabricated dome components.',
-    image: 'https://framerusercontent.com/images/eACpYOlzzfJnZBBboMbTCZb1Ck.png?width=438&height=213',
+    title: 'Lectura de soportes',
+    text: 'Ordena documentos SECOP, facturas, actas y extracciones para saber qué fuente sostiene cada alerta.',
+    image: shiimainFoodHouseholdValidation,
   },
   {
-    title: 'System Design',
-    text: 'Custom fixed-dome digester with gas storage, slurry outlet, and underground piping.',
-    image: 'https://framerusercontent.com/images/rZ1tNz9b9U8RSGNeIgbrTrSEkI.png?width=438&height=213',
+    title: 'Compuertas de pago',
+    text: 'Marca anticipos, pagos finales, garantías y evidencia pendiente antes de enviar recursos.',
+    image: shiimainFoodHandoff,
   },
   {
-    title: 'Installation & Integration',
-    text: 'Biogas piped directly to kitchen, milking parlor, and backup generator.',
-    image: 'https://framerusercontent.com/images/xWmOnWdE2aozIFHKMkfTqZS6Ok.png?width=438&height=212',
+    title: 'Patrones de auditoría',
+    text: 'Prioriza contratos con señales determinísticas y deja claro qué es evidencia, brecha o tarea pendiente.',
+    image: shiimainFoodMealConfirmation,
   },
 ]
 
 const projectImages = [
-  'https://framerusercontent.com/images/AFkdLzJhwZSOBtXcWOPnZUHSHxY.png?width=640&height=374',
-  'https://framerusercontent.com/images/Q0PuBQNfWFVjyE09cRYDZBWoSb0.png?width=640&height=374',
-  'https://framerusercontent.com/images/RFCpzxhpPZyZ0arCxpdMJnuHzg.png?width=640&height=374',
+  shiimainFoodBaskets,
+  shiimainFoodCommunityMeals,
+  shiimainFoodDeliveryVerification,
 ]
 
 const projects = [
-  'Savannah Agro-Processing Biogas Retrofit',
-  'Nyeri Co-Digestion Pilot',
-  'Green Pastures Dairy Biogas Plant',
+  'Compuertas de pago del caso público',
+  'Expediente SECOP y facturas',
+  'Patrones de contratación y auditoría',
 ].map((title, index) => ({
   title,
   image: projectImages[index],
-  text: 'We designed and installed a 60m³ anaerobic digester that now powers the entire milking and cold storage system.',
+  text: [
+    'Anticipos, pagos finales, garantías y requisitos faltantes se convierten en decisiones revisables.',
+    'Contratos, TDR, CDP, facturas, actas y extracciones quedan separados para no confundir contexto con prueba.',
+    'Señales determinísticas sobre valores, proveedores, modificaciones y brechas de evidencia priorizan revisión.',
+  ][index],
 }))
 
 const projectFacts = [
-  ['📍 Location', 'Eldoret, Kenya'],
-  ['♻️ Waste Used', 'Cow dung'],
-  ['🔋 Biogas Capacity', '60 m³/day'],
-  ['⚡ Energy Output', '~6,200 kWh/month'],
-  ['🏁 Completion', 'Aug 21, 2025'],
-  ['💰 ROI', 'Estimated 13 months'],
-]
-
-const blogPosts = [
-  {
-    title: 'The Science Behind Biogas',
-    text: 'A breakdown of the anaerobic digestion process and why it works so well on farms.',
-    category: 'General',
-    date: 'Jan 28, 2025',
-    image: projectImages[0],
-  },
-  {
-    title: 'How Biofertilizer Can Restore Soil Health Naturally',
-    text: 'hemical fertilizers degrade the soil. Learn how biogas byproducts offer a regenerative solution.',
-    category: 'Clean Energy',
-    date: 'Jan 28, 2025',
-    image: projectImages[1],
-  },
+  ['Territorio', 'La Guajira'],
+  ['Caso', 'Demo público'],
+  ['Fuente', 'SECOP'],
+  ['Control', 'Pagos'],
+  ['Señales', '167'],
+  ['Estado', 'Demo público'],
 ]
 
 const avatars = [
@@ -178,55 +144,55 @@ const avatars = [
 ]
 
 const testimonials = [
-  'Cooper Geidt',
-  'Maria',
-  'James Garry',
-  'Sabrina Kay',
-  'Mercy Gomes',
-  'Jason Roy',
-  'Garry Bones',
+  'Dirección financiera',
+  'Equipo de campo',
+  'Auditoría interna',
+  'Coordinación territorial',
+  'Supervisión contractual',
+  'Aliado implementador',
+  'Mesa directiva',
 ].map((name, index) => ({
   name,
-  role: index % 2 === 0 ? 'Farm Owner' : 'Agricultural Partner',
+  role: index % 2 === 0 ? 'Usuario operativo' : 'Equipo aliado',
   avatar: avatars[index % avatars.length],
   tone: index === 0 ? 'yellow' : index === 6 ? 'dark' : 'base',
 }))
 
 const partnerLogos = [
-  'https://framerusercontent.com/images/TCKhYzJ9089cauXsbX168cUVsr8.svg?width=104&height=24',
-  'https://framerusercontent.com/images/2bIy5NFM43MHYHka0m1XlfhiU.svg?width=128&height=32',
-  'https://framerusercontent.com/images/clmSLNFRhdZgxemZvHncscVt8I.svg?width=115&height=29',
-  'https://framerusercontent.com/images/IKECdWxzbYXhaBwOqHtSt9mr4Uk.svg?width=161&height=24',
-  'https://framerusercontent.com/images/FIOahvlVI8fgV49d39bbW3yXyo.svg?width=102&height=22',
-  'https://framerusercontent.com/images/clmSLNFRhdZgxemZvHncscVt8I.svg?width=115&height=29',
-  'https://framerusercontent.com/images/0cmdb7tIAegKeDoTF31HjW1gQQ.svg?width=105&height=28',
-  'https://framerusercontent.com/images/j9Z9NEHYEqmkWrVXHl3Hh1zMRhk.svg?width=77&height=22',
+  'ONGs',
+  'Fundaciones',
+  'Interventorías',
+  'Auditoría',
+  'Equipos de campo',
+  'Finanzas',
+  'Dirección',
+  'Aliados territoriales',
 ]
 
 const faqs = [
   [
-    'How long does it take to set up Planquo?',
-    'A digital one-stop shop offering premium Framer & Figma templates, resources, and digital designs. Specializing in web design, we deliver stunning and functional UI/UX solutions for B2B and B2C brands looking to make a lasting impact.',
+    '¿Shiimain reemplaza a SECOP?',
+    'No. Shiimain usa SECOP y otras fuentes públicas como evidencia base, pero organiza la información para decidir, priorizar y actuar.',
   ],
   [
-    'Do I need training to use Planquo?',
-    'The CustomAccordion component is designed to make it easier for users to organize content like FAQs. With this component, you don’t have to manually link each question and answer inside Framer. Instead, you can automatically generate as many questions and answers as you need by using a simple dropdown control—making it perfect for users of all experience levels.',
+    '¿Qué equipos usan el tablero?',
+    'Finanzas, supervisión, campo, auditoría y dirección pueden trabajar sobre la misma evidencia sin perder contexto entre áreas.',
   ],
   [
-    'Can I import tasks from another tool?',
-    'Absolutely! With CustomAccordion, you have full control over design elements like the background color, border radius, fonts, icons, and more. This allows you to integrate the component seamlessly into your project while maintaining a consistent look with your overall design.',
+    '¿Qué hace la inteligencia de precios?',
+    'Compara valores, cantidades públicas disponibles, facturas y patrones de contratación. Si la fuente no permite calcular precio unitario, marca la brecha.',
   ],
   [
-    'Do I need to install Planquo?',
-    'CustomAccordion is ideal for both beginners and experienced Framer users. If you’re not familiar with Framer’s inner workings, this component saves you time by automating the creation of questions and answers. For advanced users, it offers full customization options so you can tailor the design and functionality to meet your specific needs.',
+    '¿Qué pasa si falta información pública?',
+    'El sistema marca la brecha como tarea de evidencia. No inventa cantidades ni precios unitarios cuando la fuente no los soporta.',
   ],
   [
-    'Is there a free trial available?',
-    'Yes, the CustomAccordion component is fully responsive and mobile-friendly. It works seamlessly on both desktop and mobile devices, ensuring that your content remains organized and easily accessible, no matter what platform your users are on.',
+    '¿El demo está basado en datos reales?',
+    'Sí. El demo usa contratos, archivos, facturas, extracciones y señales públicas preparadas para mostrar el flujo de trabajo del producto.',
   ],
   [
-    'Does Planquo work for solo users?',
-    'Yes, the CustomAccordion component is fully responsive and mobile-friendly. It works seamlessly on both desktop and mobile devices, ensuring that your content remains organized and easily accessible, no matter what platform your users are on.',
+    '¿Shiimain trabaja solo en La Guajira?',
+    'El foco inicial está en La Guajira, pero la arquitectura sirve para otros territorios y programas con evidencia pública comparable.',
   ],
 ]
 
@@ -255,15 +221,6 @@ const testimonialReveal = {
     y: 0,
     transition: { type: 'spring', bounce: 0.2, duration: 1.1 },
   },
-}
-
-const processCardReveal = {
-  hidden: { opacity: 0, y: 75 },
-  show: (index = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { type: 'spring', bounce: 0.2, duration: 0.9, delay: index * 0.08 },
-  }),
 }
 
 const surfaceHover = {
@@ -359,11 +316,11 @@ function Header() {
   const [isMobile, setIsMobile] = useState(false)
   const { scrollYProgress } = useScroll()
   const links = [
-    ['Home', '#home'],
-    ['About', '#about'],
-    ['Services', '#services'],
-    ['Projects', '#projects'],
-    ['Blogs', '#blogs'],
+    ['Inicio', '#home'],
+    ['Qué hacemos', '#about'],
+    ['Casos', '#projects'],
+    ['Territorio', '#territory'],
+    ['Demo', '#/demo'],
   ]
 
   useEffect(() => {
@@ -413,10 +370,10 @@ function Header() {
       transition={{ type: 'spring', bounce: 0.2, duration: 1.1 }}
     >
       <motion.div className="nav-progress" style={{ scaleX: scrollYProgress }} />
-      <a className="brand" href="#home" aria-label="Biogax home">
-        <img src={assets.logo} alt="Brand logo" />
+      <a className="brand" href="#home" aria-label="Inicio Shiimain">
+        <img src={assets.logo} alt="Shiimain" />
       </a>
-      <motion.nav className={open ? 'nav-open' : ''} aria-label="Primary navigation" layout transition={navLayoutTransition}>
+      <motion.nav className={open ? 'nav-open' : ''} aria-label="Navegación principal" layout transition={navLayoutTransition}>
         {links.map(([label, href], index) => (
           <motion.span
             animate={isMobile ? (open ? 'open' : 'closed') : 'open'}
@@ -429,8 +386,8 @@ function Header() {
           </motion.span>
         ))}
       </motion.nav>
-      <Button className="header-cta">Free Energy Assessment</Button>
-      <button className="menu-toggle" type="button" aria-label="Toggle menu" onClick={() => setOpen((value) => !value)}>
+      <Button className="header-cta" href="#/demo">Ver demo</Button>
+      <button className="menu-toggle" type="button" aria-label={open ? 'Cerrar menú' : 'Abrir menú'} onClick={() => setOpen((value) => !value)}>
         {open ? <X size={20} /> : <Menu size={20} />}
       </button>
     </motion.header>
@@ -448,7 +405,7 @@ function Hero() {
       <motion.img
         className="hero-bg"
         src={assets.hero}
-        alt="Background image"
+        alt="La Guajira con capas de inteligencia territorial"
         initial={{ scale: 1.2 }}
         animate={{ scale: 1.1 }}
         style={{ y: backgroundY }}
@@ -457,18 +414,18 @@ function Hero() {
       <div className="hero-overlay" />
       <div className="hero-content">
         <motion.div className="hero-copy" initial="hidden" animate="show" variants={sourceReveal} style={{ y: contentY }}>
-          <span className="hero-pill">Farm-Powered Energy</span>
+          <span className="hero-pill">Control de pagos, contratos y señales públicas</span>
           <WordHeading as="h1" className="hero-title">
-            Sustainable Biogas Energy for Modern Agriculture
+            Shiimain organiza evidencia pública para decidir qué revisar antes de pagar
           </WordHeading>
           <div className="hero-actions">
-            <Button>Free Energy Assessment</Button>
-            <Button variant="white" href="#services">
-              See How It Works
+            <Button href="#/demo">Abrir demo</Button>
+            <Button variant="white" href="#projects">
+              Ver cómo funciona
             </Button>
           </div>
           <div className="hero-benefits">
-            {['Lower energy bills', 'Reduce emissions', 'Increase farm productivity'].map((item) => (
+            {['Pagos retenibles', 'Garantías faltantes', 'Patrones de auditoría'].map((item) => (
               <span key={item}>
                 <img src={assets.tick} alt="" width="16" height="17" />
                 {item}
@@ -478,9 +435,9 @@ function Hero() {
         </motion.div>
         <div className="hero-stats">
           {[
-            [350, 'Organic Waste Processed'],
-            [200, 'Clean Energy Installed'],
-            [120, 'Farms Empowered'],
+            [41, 'Contratos leídos'],
+            [2783, 'Archivos SECOP'],
+            [167, 'Señales de auditoría'],
           ].map(([value, label]) => (
             <motion.div className="stat" key={label} variants={sourceReveal} initial="hidden" whileInView="show" viewport={{ once: true }}>
               <Count value={value} />
@@ -496,11 +453,11 @@ function Hero() {
 function BrandTicker() {
   return (
     <section className="trusted-strip">
-      <p>Trusted by top agriculture leader</p>
+      <p>Construido desde evidencia pública: contratos, facturas, expedientes, garantías y señales de auditoría.</p>
       <motion.div className="logo-marquee" initial="hidden" variants={sourceFade} viewport={{ once: true, amount: 0.4 }} whileInView="show">
         <div>
-          {[...logoStrip, ...logoStrip, ...logoStrip].map((logo, index) => (
-            <img src={logo} alt="" key={`${logo}-${index}`} />
+          {[...logoStrip, ...logoStrip, ...logoStrip].map((source, index) => (
+            <span className="source-chip" key={`${source}-${index}`}>{source}</span>
           ))}
         </div>
       </motion.div>
@@ -525,8 +482,8 @@ function FeatureScrollCard({ card, index, progress }) {
       <img src={card.image} alt="" />
       <div>
         <h3>{card.title}</h3>
-        <p>Reduce carbon emissions and your environmental footprint with clean, renewable biogas energy.</p>
-        <Button variant="white">Free Energy Assessment</Button>
+        <p>{card.text}</p>
+        <Button variant="white" href="#/demo">Explorar demo</Button>
       </div>
     </motion.article>
   )
@@ -540,25 +497,25 @@ function Features() {
     <section className="section features-section" id="about" ref={sectionRef}>
       <div className="intro-top">
         <div>
-          <Eyebrow>WHAT WE DO</Eyebrow>
-          <WordHeading>Powering Farms with Clean, Circular Energy</WordHeading>
+          <Eyebrow>QUÉ HACEMOS</Eyebrow>
+          <WordHeading>Inteligencia de evidencia para pagos y contratos sensibles</WordHeading>
           <div className="strengths">
             {strengths.map((strength) => (
               <span key={strength}>{strength}</span>
             ))}
           </div>
-          <Button>Free Energy Assessment</Button>
+          <Button href="#/demo">Ver demo</Button>
         </div>
         <motion.div className="intro-copy" variants={sourceReveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.35 }}>
-          <h3>We're helping farmers turn waste into opportunity with sustainable biogas systems that fuel productivity.</h3>
+          <h3>Ayudamos a organizaciones a decidir con soporte antes de pagar, retener, pedir evidencia o escalar revisión.</h3>
           <p>
-            Our mission is simple: to make clean energy accessible to farmers by transforming everyday agricultural waste into reliable
-            biogas. We design and install complete systems that help reduce emissions, cut energy costs, and produce organic fertilizer as a
-            valuable byproduct.
+            Shiimain toma contratos, facturas, expedientes, garantías, documentos SECOP y señales de auditoría para convertirlos en una mesa de
+            control entendible. El objetivo es que una ONG, fundación, interventoría o equipo público pueda ver qué falta, qué riesgo pesa más y
+            quién debe actuar.
           </p>
           <p>
-            From small family farms to larger agricultural operations, our solutions are built to scale with your needs. We bring renewable
-            power and environmental benefits straight to the farm—empowering you to grow sustainably, today and for the future.
+            Empezamos en La Guajira porque el caso público tiene contratos, facturas, archivos y señales suficientes para mostrar el flujo real:
+            de evidencia pública a decisiones de pago y revisión.
           </p>
         </motion.div>
       </div>
@@ -568,118 +525,6 @@ function Features() {
         ))}
       </div>
     </section>
-  )
-}
-
-function ServiceScrollCard({ card, index, progress }) {
-  const scaleRanges = [
-    [0.98, 0.915, 0.9],
-    [0.99, 0.958, 0.95],
-    [1, 1, 1],
-  ]
-  const rotateRanges = [
-    ['-0.2deg', '-0.85deg', '-1deg'],
-    ['0.2deg', '0.85deg', '1deg'],
-    ['0deg', '0deg', '0deg'],
-  ]
-  const scale = useTransform(progress, [0.25, 0.62, 0.8], scaleRanges[index])
-  const rotate = useTransform(progress, [0.25, 0.62, 0.8], rotateRanges[index])
-
-  return (
-    <motion.article
-      className="service-card"
-      key={card.title}
-      style={{ rotate, scale, zIndex: index + 1, '--service-stack-offset': `${index * 10}px` }}
-      whileHover={surfaceHover}
-    >
-      <img className="service-bg" src={card.image} alt="" />
-      <div className="service-icon">
-        <img src={card.icon} alt="" />
-      </div>
-      <div className="service-body">
-        <h3>{card.title}</h3>
-        <p>{card.text}</p>
-        <Button>Free Energy Assessment</Button>
-      </div>
-    </motion.article>
-  )
-}
-
-function Services() {
-  const sectionRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
-
-  return (
-    <section className="section services-section" id="services" ref={sectionRef}>
-      <div className="section-center">
-        <Eyebrow>SERVICES WE OFFER</Eyebrow>
-        <WordHeading>Clean energy solutions built for farms</WordHeading>
-        <p className="section-lede">
-          We deliver farm-ready biogas systems that convert agricultural waste into clean energy, boosting sustainability, reducing fuel costs,
-          and unlocking new revenue streams.
-        </p>
-        <Button>View all services</Button>
-      </div>
-      <div className="service-stack">
-        {serviceCards.map((card, index) => (
-          <ServiceScrollCard card={card} index={index} key={card.title} progress={scrollYProgress} />
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function AwardsProcess() {
-  return (
-    <>
-      <section className="section awards-section">
-        <div className="awards-copy">
-          <Eyebrow>OUR AWARDS</Eyebrow>
-          <WordHeading>Awards & Recognition</WordHeading>
-          <p>Proudly Recognized for Impact, Innovation, and Sustainability</p>
-        </div>
-        <motion.div className="award-grid" variants={sourceFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }}>
-          {[1, 2, 3].map((item) => (
-            <motion.article className="award-card" key={item} whileHover={surfaceHover}>
-              <strong>5X</strong>
-              <img src={assets.award} alt="" />
-              <span>GreenTech Innovation Award 2024</span>
-            </motion.article>
-          ))}
-        </motion.div>
-      </section>
-      <section className="section process-section">
-        <div className="section-center">
-          <Eyebrow>OUR PROCESS</Eyebrow>
-          <WordHeading>Implementation Process.</WordHeading>
-          <p className="section-lede">Take a quick look at the intricate implementation process as our contributions grow everyday</p>
-        </div>
-        <div className="process-grid">
-          {processCards.map(({ title, text, icon, bgIcon }, index) => (
-            <motion.article
-              className="process-card"
-              custom={index}
-              data-card-index={index + 1}
-              initial="hidden"
-              key={title}
-              variants={processCardReveal}
-              viewport={{ once: true, amount: 0.45 }}
-              whileHover={surfaceHover}
-              whileInView="show"
-            >
-              <span className="process-icon">
-                <img src={icon} alt="" />
-              </span>
-              <img className="process-faded-icon" src={bgIcon} alt="" />
-              <div className="process-card-content">
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </section>
-    </>
   )
 }
 
@@ -725,10 +570,10 @@ function Benefits() {
   return (
     <section className="section benefits-section">
       <div className="section-center">
-        <Eyebrow>BENEFITS</Eyebrow>
-        <WordHeading>Practical Solutions for Real Farm Challenges.</WordHeading>
+        <Eyebrow>BENEFICIOS</Eyebrow>
+        <WordHeading>De SECOP a una decisión revisable</WordHeading>
         <p className="section-lede">
-          Our biogas systems are designed to solve the everyday problems farmers face — from rising fuel costs to waste management.
+          Shiimain reduce ruido operativo: qué contrato está en alcance, qué pago se retiene, qué soporte falta y qué patrón exige revisión.
         </p>
       </div>
       <div className="benefit-timeline" ref={timelineRef}>
@@ -768,7 +613,7 @@ function TestimonialCard({ index, item }) {
       <strong>
         <img className="testimonial-logo" src={assets.logo} alt="" />
       </strong>
-      <p>“A team of young people who wake up the market, have expertise in-house and gain experience in the field, offer a tailor-made solution to the customer.”</p>
+      <p>“Necesitamos ver contrato, factura, garantía y señal de riesgo antes de cerrar una decisión de pago.”</p>
       <div>
         <img src={item.avatar} alt="" />
         <span>{item.name}</span>
@@ -787,8 +632,8 @@ function Testimonials() {
 
   return (
     <section className="section testimonials-section" ref={sectionRef}>
-      <Eyebrow>TESTIMONIALS</Eyebrow>
-      <WordHeading>Trusted by Leading Agricultural Innovators</WordHeading>
+      <Eyebrow>USUARIOS</Eyebrow>
+      <WordHeading>Hecho para equipos que toman decisiones sensibles</WordHeading>
       <div className="testimonial-marquee">
         <div>
           {columns.map((column, columnIndex) => (
@@ -800,7 +645,7 @@ function Testimonials() {
           ))}
         </div>
       </div>
-      <Button className="testimonial-cta">Free Energy Assessment</Button>
+      <Button className="testimonial-cta" href="#/demo">Probar demo</Button>
     </section>
   )
 }
@@ -810,10 +655,10 @@ function Projects() {
     <section className="section projects-section" id="projects">
       <div className="section-row-heading">
         <div>
-          <Eyebrow>SEE OUR PROJECTS</Eyebrow>
-          <WordHeading>See How We’re Powering Change Around the World</WordHeading>
+          <Eyebrow>CASOS</Eyebrow>
+          <WordHeading>El demo se concentra en pagos, contratos y patrones de La Guajira</WordHeading>
         </div>
-        <Button>View all projects</Button>
+        <Button href="#/demo">Ver demo completo</Button>
       </div>
       <div className="project-list">
         {projects.map((project) => (
@@ -838,7 +683,7 @@ function Projects() {
                   </div>
                 ))}
               </div>
-              <Button>View Details</Button>
+              <Button href="#/demo">Ver detalle</Button>
             </div>
           </motion.article>
         ))}
@@ -846,67 +691,36 @@ function Projects() {
     </section>
   )
 }
-
-function Blog() {
-  return (
-    <section className="section blog-section" id="blogs">
-      <div className="section-row-heading">
-        <div>
-          <Eyebrow>OUR BLOG</Eyebrow>
-          <WordHeading>Our latest insights</WordHeading>
-        </div>
-        <Button>View all posts</Button>
-      </div>
-      <div className="blog-grid">
-        {blogPosts.map((post) => (
-          <motion.article className="blog-card" key={post.title} variants={sourceReveal} initial="hidden" whileHover={surfaceHover} whileInView="show" viewport={{ once: true }}>
-            <img src={post.image} alt="" />
-            <div className="blog-card-body">
-              <h3>{post.title}</h3>
-              <p>{post.text}</p>
-              <div>
-                <span>{post.category}</span>
-                <span>{post.date}</span>
-                <a href="#blogs">Read blog</a>
-              </div>
-            </div>
-          </motion.article>
-        ))}
-      </div>
-    </section>
-  )
-}
-
 
 function PartnersFaqLocation() {
-  const [activeTab, setActiveTab] = useState('Getting stared')
+  const [activeTab, setActiveTab] = useState('Implementación')
   const [openFaq, setOpenFaq] = useState(-1)
-  const tabs = ['Getting stared', 'Collaboration', 'Support']
+  const tabs = ['Implementación', 'Evidencia', 'Soporte']
 
   return (
     <>
       <section className="section partners-section">
         <div className="section-center">
-          <Eyebrow>OUR PARTNERS</Eyebrow>
-          <WordHeading>Brands we partner with</WordHeading>
+          <Eyebrow>PARA QUIÉN</Eyebrow>
+          <WordHeading>Equipos que trabajan con gasto crítico y evidencia pública</WordHeading>
         </div>
         <motion.div className="partner-grid" initial="hidden" variants={listContainer} viewport={{ once: true, amount: 0.25 }} whileInView="show">
-          {partnerLogos.map((logo, index) => (
-            <motion.article className="partner-card" key={`${logo}-${index}`} variants={sourceReveal} whileHover={surfaceHover}>
-              <img src={logo} alt="" />
-              <span>{index + 1}. Chain</span>
+          {partnerLogos.map((label, index) => (
+            <motion.article className="partner-card" key={`${label}-${index}`} variants={sourceReveal} whileHover={surfaceHover}>
+              <strong>{label}</strong>
+              <span>{String(index + 1).padStart(2, '0')}</span>
             </motion.article>
           ))}
         </motion.div>
       </section>
       <section className="section faq-section">
         <div className="faq-copy">
-          <Eyebrow>FAQs</Eyebrow>
-          <WordHeading>Got questions?</WordHeading>
-          <p>We’re here to make biogas easy to understand. Find answers to the most common questions below.</p>
+          <Eyebrow>PREGUNTAS</Eyebrow>
+          <WordHeading>Preguntas frecuentes</WordHeading>
+          <p>Shiimain está pensado para equipos que necesitan leer evidencia pública con trazabilidad, no para reemplazar la fuente pública.</p>
         </div>
         <motion.div className="faq-panel" variants={sourceFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }}>
-          <div className="faq-tabs" role="tablist" aria-label="FAQ categories">
+          <div className="faq-tabs" role="tablist" aria-label="Categorías de preguntas frecuentes">
             {tabs.map((tab) => (
               <button className={tab === activeTab ? 'active' : ''} key={tab} type="button" onClick={() => setActiveTab(tab)}>
                 {tab}
@@ -933,33 +747,15 @@ function PartnersFaqLocation() {
           </div>
         </motion.div>
         <div className="faq-contact">
-          <span>Still got questions?</span>
-          <a href="mailto:hey@biogax.com">hey@biogax.com</a>
+          <span>¿Hablamos del caso?</span>
+          <a href="mailto:hola@shiimain.ai">hola@shiimain.ai</a>
         </div>
       </section>
-      <section className="section locations-section">
-        <Eyebrow>LOCATIONS</Eyebrow>
-        <WordHeading>We’ve made impact all over the world</WordHeading>
+      <section className="section locations-section" id="territory">
+        <Eyebrow>TERRITORIO</Eyebrow>
+        <WordHeading>Empezamos donde el dato debe tocar campo: La Guajira</WordHeading>
         <div className="map-wrap">
-          <img src={assets.map} alt="" />
-          {[
-            ['83%', '47%'],
-            ['29%', '68%'],
-            ['65%', '39%'],
-            ['73%', '50%'],
-            ['65%', '56%'],
-            ['16%', '49%'],
-          ].map(([left, top], index) => (
-            <motion.span
-              animate={{ scale: [1, 1.18, 1] }}
-              className="map-pin"
-              key={`${left}-${top}`}
-              style={{ left, top }}
-              transition={{ delay: index * 0.2, duration: 2.4, repeat: Infinity, repeatType: 'loop' }}
-            >
-              <MapPin size={15} />
-            </motion.span>
-          ))}
+          <img src={assets.map} alt="Mapa de contexto territorial de Shiimain en La Guajira" />
         </div>
       </section>
     </>
@@ -970,58 +766,63 @@ function Footer() {
   return (
     <footer className="footer" id="contact">
       <div className="footer-cta">
-        <h2>Ready to Transform Your Farm With Biogax?</h2>
-        <Button>Free Energy Assessment</Button>
+        <h2>¿Listo para ver Shiimain sobre el demo territorial?</h2>
+        <Button href="#/demo">Abrir demo</Button>
       </div>
       <div className="footer-main">
-        <img src={assets.footerLogo} alt="Biogax" />
+        <img src={assets.footerLogo} alt="Shiimain" />
         <div>
-          <h3>Links</h3>
-          {['About', 'Services', 'Projects', 'Blog'].map((item) => (
-            <a key={item} href={item === 'Blog' ? '#blogs' : `#${item.toLowerCase()}`}>
+          <h3>Enlaces</h3>
+          {[
+            ['Qué hacemos', '#about'],
+            ['Casos', '#projects'],
+            ['Territorio', '#territory'],
+            ['Demo', '#/demo'],
+          ].map(([item, href]) => (
+            <a key={item} href={href}>
               {item}
             </a>
           ))}
         </div>
         <div>
-          <h3>Socials</h3>
-          {['LinkedIn', 'X', 'Instagram'].map((item) => (
+          <h3>Canales</h3>
+          {['LinkedIn', 'X', 'Correo'].map((item) => (
             <a key={item} href="#contact">
               {item}
             </a>
           ))}
         </div>
         <div>
-          <h3>Subscribe Newsletter</h3>
-          <p>Sign up to get updates & news.</p>
+          <h3>Recibe avances</h3>
+          <p>Déjanos tu correo para compartir nuevos casos y mejoras del demo.</p>
           <form>
-            <input aria-label="Email address" placeholder="Your email" type="email" />
-            <button type="button">Submit</button>
+            <input aria-label="Correo electrónico" placeholder="Tu correo" type="email" />
+            <button type="button">Enviar</button>
           </form>
         </div>
       </div>
       <div className="footer-contact">
         <div>
           <Phone />
-          <span>Phone No:</span>
-          <strong>+542 456 789 963</strong>
+          <span>Contacto:</span>
+          <strong>Demo bajo solicitud</strong>
         </div>
         <div>
           <Mail />
-          <span>Email Address:</span>
-          <strong>biogax@gmail.com</strong>
+          <span>Correo:</span>
+          <strong>hola@shiimain.ai</strong>
         </div>
         <div>
           <MapPin />
-          <span>Location:</span>
-          <strong>No: 59 A East Madison Street Baltimore, MD, USA, 4508</strong>
+          <span>Territorio:</span>
+          <strong>La Guajira, Colombia</strong>
         </div>
       </div>
       <div className="footer-bottom">
-        <span>©Biogax</span>
+        <span>©Shiimain</span>
         <div>
-          <a href="#contact">Privacy Policy</a>
-          <a href="#contact">Terms & Conditions</a>
+          <a href="#contact">Privacidad</a>
+          <a href="#contact">Términos</a>
         </div>
       </div>
     </footer>
@@ -1030,14 +831,46 @@ function Footer() {
 
 function TemplateBadge() {
   return (
-    <div className="template-badge" aria-label="Template badge">
-      <a href="#home">Get this template</a>
-      <span>Made in Framer</span>
+    <div className="template-badge" aria-label="Acceso rápido al demo">
+      <a href="#/demo">Abrir demo</a>
+      <span>Shiimain</span>
     </div>
   )
 }
 
+function DemoLoading() {
+  return (
+    <main className="demo-loading" aria-label="Cargando demo Shiimain">
+      <img src={assets.logo} alt="Shiimain" />
+      <span>Cargando demo</span>
+    </main>
+  )
+}
+
+function useHashRoute() {
+  const readRoute = () => window.location.hash.replace(/^#\/?/, '') || 'home'
+  const [route, setRoute] = useState(readRoute)
+
+  useEffect(() => {
+    const update = () => setRoute(readRoute())
+    window.addEventListener('hashchange', update)
+    return () => window.removeEventListener('hashchange', update)
+  }, [])
+
+  return route
+}
+
 function App() {
+  const route = useHashRoute()
+
+  if (route === 'demo') {
+    return (
+      <Suspense fallback={<DemoLoading />}>
+        <DemoDashboard />
+      </Suspense>
+    )
+  }
+
   return (
     <>
       <SmoothScroll />
@@ -1046,11 +879,8 @@ function App() {
         <Hero />
         <BrandTicker />
         <Features />
-        <Services />
-        <AwardsProcess />
         <Benefits />
         <Projects />
-        <Blog />
         <Testimonials />
         <PartnersFaqLocation />
       </main>

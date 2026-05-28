@@ -1,0 +1,950 @@
+{
+  "generated_at": "2026-05-28T07:49:54.420Z",
+  "generated_from": [
+    "SECOP territorial audit export",
+    "SECOP fulfillment audit export"
+  ],
+  "corruption_hunger": {
+    "summary": {
+      "fetched_unique_rows": 57122,
+      "matched_contract_count": 46194,
+      "unmapped_contract_count": 10928,
+      "municipalities_with_contracts": 902,
+      "municipalities_without_contracts": 220,
+      "high_hunger_gap_municipalities": 7,
+      "total_value": 31067743328373,
+      "total_value_label": "$31.1T",
+      "direct_contract_value": 8061731901024,
+      "direct_contract_value_label": "$8.1T",
+      "direct_contract_value_pct": 25.9,
+      "correlations": {
+        "hunger_vs_procurement_risk_all": -0.217,
+        "hunger_vs_procurement_risk_matched": 0.047,
+        "hunger_vs_log_food_value_matched": -0.128,
+        "hunger_vs_direct_value_pct_matched": 0.092
+      }
+    },
+    "flag_counts": [
+      {
+        "flag": "Direct contracting",
+        "count": 50
+      },
+      {
+        "flag": "Modified contract",
+        "count": 48
+      },
+      {
+        "flag": "Supplier concentration",
+        "count": 40
+      },
+      {
+        "flag": "School meals / PAE",
+        "count": 36
+      },
+      {
+        "flag": "Billion-peso contract",
+        "count": 32
+      },
+      {
+        "flag": "Very high value",
+        "count": 18
+      },
+      {
+        "flag": "High hunger municipality",
+        "count": 5
+      },
+      {
+        "flag": "Names 1 local place",
+        "count": 2
+      },
+      {
+        "flag": "Names 2 local places",
+        "count": 1
+      }
+    ],
+    "top_municipalities": [
+      {
+        "audit_priority_score": 83,
+        "contract_count": 61,
+        "department": "LA GUAJIRA",
+        "direct_contract_value_pct": 95.3,
+        "flags": [
+          "Direct contracting dominates food-adjacent spend",
+          "Billion-peso food-adjacent contracts",
+          "Repeated modified contracts",
+          "High hunger overlaps procurement risk",
+          "UNGRD shock without reported food kits"
+        ],
+        "hunger_score": 76.5,
+        "name": "MANAURE",
+        "procurement_risk_score": 76.7,
+        "relationship": "high hunger / high procurement risk",
+        "supplier_count": 42,
+        "top_supplier": "ASOATNATA",
+        "total_value_label": "$74.3B"
+      },
+      {
+        "audit_priority_score": 82.3,
+        "contract_count": 136,
+        "department": "LA GUAJIRA",
+        "direct_contract_value_pct": 99,
+        "flags": [
+          "Direct contracting dominates food-adjacent spend",
+          "Billion-peso food-adjacent contracts",
+          "Repeated modified contracts",
+          "High hunger overlaps procurement risk"
+        ],
+        "hunger_score": 74.5,
+        "name": "URIBIA",
+        "procurement_risk_score": 78.3,
+        "relationship": "high hunger / high procurement risk",
+        "supplier_count": 101,
+        "top_supplier": "ASOCIACION DE AUTORIDADES WAYUU ANATAS WAKUAIPA",
+        "total_value_label": "$592.8B"
+      },
+      {
+        "audit_priority_score": 71.3,
+        "contract_count": 90,
+        "department": "LA GUAJIRA",
+        "direct_contract_value_pct": 92.9,
+        "flags": [
+          "Direct contracting dominates food-adjacent spend",
+          "Billion-peso food-adjacent contracts",
+          "Repeated modified contracts",
+          "High hunger overlaps procurement risk",
+          "UNGRD shock without reported food kits"
+        ],
+        "hunger_score": 56.4,
+        "name": "MAICAO",
+        "procurement_risk_score": 77.6,
+        "relationship": "procurement watch",
+        "supplier_count": 66,
+        "top_supplier": "ASOCIACION DE AUTORIDADES TRADICIONALES WAYUU SUMUYWAJAT",
+        "total_value_label": "$291.4B"
+      },
+      {
+        "audit_priority_score": 68.8,
+        "contract_count": 17,
+        "department": "ANTIOQUIA",
+        "direct_contract_value_pct": 98.1,
+        "flags": [
+          "Direct contracting dominates food-adjacent spend",
+          "Supplier concentration",
+          "Billion-peso food-adjacent contracts",
+          "Repeated modified contracts",
+          "UNGRD shock without reported food kits"
+        ],
+        "hunger_score": 49,
+        "name": "ITUANGO",
+        "procurement_risk_score": 94,
+        "relationship": "procurement watch",
+        "supplier_count": 5,
+        "top_supplier": "MUNICIPIO DE ITUANGO",
+        "total_value_label": "$10.9B"
+      },
+      {
+        "audit_priority_score": 68.7,
+        "contract_count": 1,
+        "department": "NARIÑO",
+        "direct_contract_value_pct": 100,
+        "flags": [],
+        "hunger_score": 68.7,
+        "name": "MAGÜÍ",
+        "procurement_risk_score": 59.3,
+        "relationship": "high hunger / procurement present",
+        "supplier_count": 1,
+        "top_supplier": "JUAN ESTEBAN FIGUEROA GOMEZ",
+        "total_value_label": "$6.1M"
+      },
+      {
+        "audit_priority_score": 65.9,
+        "contract_count": 16,
+        "department": "LA GUAJIRA",
+        "direct_contract_value_pct": 95.7,
+        "flags": [
+          "Direct contracting dominates food-adjacent spend",
+          "Supplier concentration",
+          "Billion-peso food-adjacent contracts",
+          "Repeated modified contracts",
+          "UNGRD shock without reported food kits"
+        ],
+        "hunger_score": 46,
+        "name": "DIBULLA",
+        "procurement_risk_score": 91.2,
+        "relationship": "procurement watch",
+        "supplier_count": 10,
+        "top_supplier": "RESGUARDO KOGUI MALAYO ARHUACO",
+        "total_value_label": "$44.1B"
+      },
+      {
+        "audit_priority_score": 65.5,
+        "contract_count": 2,
+        "department": "LA GUAJIRA",
+        "direct_contract_value_pct": 100,
+        "flags": [
+          "Direct contracting dominates food-adjacent spend",
+          "Supplier concentration",
+          "Billion-peso food-adjacent contracts"
+        ],
+        "hunger_score": 50.3,
+        "name": "EL MOLINO",
+        "procurement_risk_score": 84.9,
+        "relationship": "procurement watch",
+        "supplier_count": 1,
+        "top_supplier": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+        "total_value_label": "$8.5B"
+      },
+      {
+        "audit_priority_score": 65.2,
+        "contract_count": 13,
+        "department": "ANTIOQUIA",
+        "direct_contract_value_pct": 100,
+        "flags": [
+          "Direct contracting dominates food-adjacent spend",
+          "Supplier concentration",
+          "Billion-peso food-adjacent contracts",
+          "Repeated modified contracts"
+        ],
+        "hunger_score": 49.6,
+        "name": "VIGÍA DEL FUERTE",
+        "procurement_risk_score": 85.1,
+        "relationship": "procurement watch",
+        "supplier_count": 1,
+        "top_supplier": "MUNICIPIO DE VIGIA  DEL FUERTE",
+        "total_value_label": "$6.1B"
+      }
+    ],
+    "top_red_flags": [
+      {
+        "audit_score": 100,
+        "category": "School meals / PAE",
+        "entity_name": "MUNICIPIO DE URIBIA",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "High hunger municipality",
+          "Names 2 local places",
+          "School meals / PAE"
+        ],
+        "hunger_score": 74.5,
+        "id": "CO1.PCCNTR.7429535",
+        "municipality": "URIBIA",
+        "object": "PRESTACIÓN DE SERVICIOS PARA LA EJECUCIÓN DEL PROGRAMA DE ALIMENTACIÓN\nESCOLAR (PAE) DIRIGIDO A PUEBLOS INDÍGENAS EN LA INSTITUCIÓN ETNOEDUCATIVA\nINTEGRAL RURAL CARASUA MADRE LAURA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL\nVILLA FÁTIMA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL DE NUESTRA SEÑORA DE\nFÁTIMA DE NAZARETH; INSTITUCION ETNOEDUCATIVA TECNICA AGROPECUARIA\nJUYASIRAIN; CENTRO ETNOEDUCATIVO INTEGRAL RURAL SUTCHIIN WAYUU; INSTITUCION\nETNOEDUCTIVA INTEGRAL RURAL ISABEL JUSAYU DURANTE EL CALEN",
+        "paid_value": 6461669944,
+        "place_hits": [
+          "VILLA FÁTIMA",
+          "NAZARETH"
+        ],
+        "reference": "CPS-056-2025",
+        "signed_at": "2025-02-06T00:00:00.000",
+        "state": "Modificado",
+        "supplier_name": "ASOCIACION DE AUTORIDADES WAYUU ANATAS WAKUAIPA",
+        "value": 8277807386,
+        "value_label": "$8.3B"
+      },
+      {
+        "audit_score": 100,
+        "category": "Food basket",
+        "entity_name": "MUNICIPIO DE URIBIA",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "High hunger municipality"
+        ],
+        "hunger_score": 74.5,
+        "id": "CO1.PCCNTR.7489410",
+        "municipality": "URIBIA",
+        "object": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCION ETNOEDUCATIVA TECNICA AGROPECUARIA JUYASIRAIN Y EL CENTRO ETNOEDUCATIVO INTEGRAL RURAL SUTCHIIN WAYUU UBICADAS EN EL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; COMPILADO EN EL DECRETO 10",
+        "paid_value": 9764135543,
+        "place_hits": [],
+        "reference": "CPS-101-2025",
+        "signed_at": "2025-02-13T00:00:00.000",
+        "state": "Modificado",
+        "supplier_name": "UNION TEMPORAL SUKUA>IPA TEPICHII",
+        "value": 12062791571,
+        "value_label": "$12.1B"
+      },
+      {
+        "audit_score": 100,
+        "category": "Food basket",
+        "entity_name": "MUNICIPIO DE URIBIA",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "High hunger municipality"
+        ],
+        "hunger_score": 74.5,
+        "id": "CO1.PCCNTR.5935342",
+        "municipality": "URIBIA",
+        "object": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL\nDE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA\nINTEGRAL RURAL DE MAPUAIN UBICADA EN EL MUNICIPIO DE URIBIA;\nLA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN\nPROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E\nIMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP)\nDE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO\n2500 DE 2010; COMPILADO EN EL DECRETO 1075 DE 2015",
+        "paid_value": 0,
+        "place_hits": [],
+        "reference": "CPS-033-2024",
+        "signed_at": "2024-02-13T00:00:00.000",
+        "state": "Modificado",
+        "supplier_name": "Akalinjirrawa 2024",
+        "value": 5843739227,
+        "value_label": "$5.8B"
+      },
+      {
+        "audit_score": 100,
+        "category": "Food basket",
+        "entity_name": "MUNICIPIO DE URIBIA",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "High hunger municipality",
+          "Names 1 local place"
+        ],
+        "hunger_score": 74.5,
+        "id": "CO1.PCCNTR.7488527",
+        "municipality": "URIBIA",
+        "object": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL INTERNADO DE SIAPANA; INSTITUCION EDUCATIVA JULIA SIERRA IGUARAN; CENTRO EDUCATIVO SAN JOSE Y LA INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL INTERNADO DE PUERTO ESTRELLA UBICADAS EN EL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE A",
+        "paid_value": 7912420488,
+        "place_hits": [
+          "PUERTO ESTRELLA"
+        ],
+        "reference": "CPS-098-2025",
+        "signed_at": "2025-02-13T00:00:00.000",
+        "state": "Modificado",
+        "supplier_name": "UNIÓN TEMPORAL ALII APÜLAA CANASTA 2025",
+        "value": 9774480358,
+        "value_label": "$9.8B"
+      },
+      {
+        "audit_score": 100,
+        "category": "Food basket",
+        "entity_name": "MUNICIPIO DE URIBIA",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "High hunger municipality"
+        ],
+        "hunger_score": 74.5,
+        "id": "CO1.PCCNTR.7445105",
+        "municipality": "URIBIA",
+        "object": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN\nÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL TEJIENDO SABERES Y LA\nINSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL YERICA GUTIÉRREZ FAJARDO UBICADAS EN\nEL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN\nPROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA\nEDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS\nEN EL DECRETO 2500 DE 2010; COMPILADO E",
+        "paid_value": 7279299118,
+        "place_hits": [],
+        "reference": "CPS-069-2025",
+        "signed_at": "2025-02-08T00:00:00.000",
+        "state": "Modificado",
+        "supplier_name": "UNION TEMPORAL AKANAJAAA",
+        "value": 17148433659,
+        "value_label": "$17.1B"
+      },
+      {
+        "audit_score": 100,
+        "category": "School meals / PAE",
+        "entity_name": "MUNICIPIO DE MAICAO",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "School meals / PAE"
+        ],
+        "hunger_score": 56.4,
+        "id": "CO1.PCCNTR.5982038",
+        "municipality": "MAICAO",
+        "object": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN LA INSTITUCIONES EDUCATIVAS INDIGENAS N° 1; 2; 3; 4; 5; 6; 8; 9 Y EN EL CENTRO EDUCATIVO INDIGENA N°5 UBICADAS EN LA ZONA RURAL ETNICA; DEL MUNICIPIO DE MAICAO; DURANTE EL CALENDARIO ESCOLAR; VIGENCIA 2024",
+        "paid_value": 12550638168,
+        "place_hits": [],
+        "reference": "CPS-PAIP- RE-MM-002-2024",
+        "signed_at": "2024-02-21T00:00:00.000",
+        "state": "Modificado",
+        "supplier_name": "KASUWA",
+        "value": 13216908412,
+        "value_label": "$13.2B"
+      },
+      {
+        "audit_score": 100,
+        "category": "School meals / PAE",
+        "entity_name": "MUNICIPIO DE MAICAO",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "School meals / PAE"
+        ],
+        "hunger_score": 56.4,
+        "id": "CO1.PCCNTR.7382419",
+        "municipality": "MAICAO",
+        "object": "PRESTACION DEL SERVICIO DE ALIMENTACION ESCOLAR EN SUS DIFERENTES MODALIDADES EN LAS INSTITUCIONES EDUCATIVAS INDIGENAS NO. 1; 2; 3; 4; 5; 6; 8; 9; 10 Y 13; UBICADAS EN LA ZONA RURAL ETNICA DEL MUNICIPIO DE MAICAO; DURANTE EL CALENDARIO ESCOLAR DE LA VIGENCIA 2025; DE ACUERDO CON LAS RESOLUCIONES 18858 DE 2018 EXPEDIDA POR EL MINISTERIO DE EDUCACION Y LA RESOLUCION NO. 421 DE 2023 EXPEDIDA POR LA UNIDAD ADMINISTRATIVA ESPECIAL DE ALIMENTACION ESCOLAR - ALIMENTOS PARA APRENDER (UAPA) Y DEMAS",
+        "paid_value": 0,
+        "place_hits": [],
+        "reference": "CPS-PAIP-003-2025",
+        "signed_at": "2025-01-31T00:00:00.000",
+        "state": "Modificado",
+        "supplier_name": "KASUWA",
+        "value": 11960293500,
+        "value_label": "$12.0B"
+      },
+      {
+        "audit_score": 100,
+        "category": "Food supply",
+        "entity_name": "MUNICIPIO DE MAICAO",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract"
+        ],
+        "hunger_score": 56.4,
+        "id": "CO1.PCCNTR.8581364",
+        "municipality": "MAICAO",
+        "object": "FORTALECIMIENTO DE LA CAPACIDAD PRODUCTIVA Y ECONOMICA MEDIANTE EL DESARROLLO DE PROYECTOS MICRO EMPRESARIALES AGROPECUARIOS PARA CONTRIBUIR O INCIDIR POSITIVAMENTE EN LA SEGURIDAD ALIMENTARIA Y EL MEJORAMIENTO INTEGRAL DE LOS RESGUARDOS INDÍGENAS ALTA Y MEDIA GUAJIRA; WOPUMUIN JUNAIN MAIKOU; SUMAIN WAYUU UULIANA; NUKAJAT MALEIWA; NUMAIN MALEIWA; CHIASALU; ALBERTO PUSHAINA Y OKOCHI DEL MUNICIPIO DE MAICAO; DEPARTAMENTO DE LA...",
+        "paid_value": 4837295925,
+        "place_hits": [],
+        "reference": "CD-CI-MM-020-2025",
+        "signed_at": "2025-11-12T00:00:00.000",
+        "state": "Modificado",
+        "supplier_name": "UT WA MURR? 2025",
+        "value": 9674591850,
+        "value_label": "$9.7B"
+      },
+      {
+        "audit_score": 100,
+        "category": "Food basket",
+        "entity_name": "MUNICIPIO DE MAICAO",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract"
+        ],
+        "hunger_score": 56.4,
+        "id": "CO1.PCCNTR.5915972",
+        "municipality": "MAICAO",
+        "object": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LAS INSTITUCIÓNES EDUCATIVAS INDIGENA No 3; 5 y 8 Y EL CENTRO ETNOEDUCATIVO No 5; UBICADOS EN EL MUNICIPIO DE MAICAO LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015.",
+        "paid_value": 15269641498,
+        "place_hits": [],
+        "reference": "SEIP-RE-MM-003-2024",
+        "signed_at": "2024-02-09T00:00:00.000",
+        "state": "Modificado",
+        "supplier_name": "ASOCIACION DE AUTORIDADES TRADICIONALES WAYUU SUMUYWAJAT",
+        "value": 15269641498,
+        "value_label": "$15.3B"
+      },
+      {
+        "audit_score": 100,
+        "category": "Food basket",
+        "entity_name": "MUNICIPIO DE MAICAO",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract"
+        ],
+        "hunger_score": 56.4,
+        "id": "CO1.PCCNTR.7479093",
+        "municipality": "MAICAO",
+        "object": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCIONES EDUCATIVA INDIGENA No 1; 4; Y 12; UBICADOS EN EL MUNICIPIO DE MAICAO LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015.",
+        "paid_value": 16775992549,
+        "place_hits": [],
+        "reference": "SEIP-RE-MM-029-2025",
+        "signed_at": "2025-02-13T00:00:00.000",
+        "state": "Modificado",
+        "supplier_name": "UNIÓN TEMPORAL  AYATALII WAYA",
+        "value": 18388437896,
+        "value_label": "$18.4B"
+      }
+    ],
+    "red_flag_contract_count": 50
+  },
+  "food_fulfillment": {
+    "summary": {
+      "contracts_checked": 67,
+      "total_value": 308325428103,
+      "urgent_count": 1,
+      "confirmed_count": 0,
+      "partial_count": 0,
+      "documentary_support_count": 66,
+      "no_public_execution_count": 67,
+      "contracts_with_supervisor": 67,
+      "contracts_with_evidence_files": 67,
+      "contracts_with_delivery_files": 67,
+      "contracts_with_financial_execution": 44,
+      "contracts_with_documentary_proxy": 67,
+      "financial_execution_value": 208337177220.04007,
+      "pdf_text_files_checked": 33,
+      "pdf_text_contracts_checked": 8,
+      "pdf_text_readable_files": 33,
+      "pdf_text_requires_ocr_files": 0,
+      "pdf_text_ocr_files": 10,
+      "pdf_text_ocr_readable_files": 10,
+      "pdf_text_ocr_unreadable_files": 0,
+      "pdf_text_ocr_error_files": 0,
+      "pdf_text_error_files": 0,
+      "execution_rows": 0,
+      "invoice_rows": 246,
+      "file_rows_checked": 4093,
+      "open_data_file_dataset_counts": [
+        {
+          "dataset": "dmgg-8hin",
+          "name": "SECOP II - Archivos Descarga Desde 2025",
+          "count": 2862
+        },
+        {
+          "dataset": "kgcd-kt7i",
+          "name": "SECOP II - Archivos Descarga Historico 2022",
+          "count": 651
+        },
+        {
+          "dataset": "3skv-9na7",
+          "name": "SECOP II - Archivos Descarga Historico 2023",
+          "count": 520
+        },
+        {
+          "dataset": "f8va-cf4m",
+          "name": "SECOP II - Archivos Descarga Historico Hasta 2021",
+          "count": 60
+        }
+      ],
+      "community_file_rows": 3766,
+      "community_invoice_attachment_rows": 1504
+    },
+    "status_counts": [
+      {
+        "state": "soporte_documental",
+        "count": 66
+      },
+      {
+        "state": "revisar_urgente",
+        "count": 1
+      }
+    ],
+    "flag_counts": [
+      {
+        "flag": "Direct contracting",
+        "count": 67
+      },
+      {
+        "flag": "Modified contract",
+        "count": 56
+      },
+      {
+        "flag": "Supplier concentration",
+        "count": 52
+      },
+      {
+        "flag": "School meals / PAE",
+        "count": 48
+      },
+      {
+        "flag": "Billion-peso contract",
+        "count": 38
+      },
+      {
+        "flag": "Billion-peso food-adjacent contracts",
+        "count": 31
+      },
+      {
+        "flag": "Direct contracting dominates food-adjacent spend",
+        "count": 31
+      },
+      {
+        "flag": "Repeated modified contracts",
+        "count": 26
+      },
+      {
+        "flag": "UNGRD shock without reported food kits",
+        "count": 22
+      },
+      {
+        "flag": "Very high value",
+        "count": 19
+      }
+    ],
+    "urgent_contracts": [
+      {
+        "audit_score": 100,
+        "category": "Food supply",
+        "city": "Maicao",
+        "department": "La Guajira",
+        "entity_name": "MUNICIPIO DE MAICAO",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "Direct contracting dominates food-adjacent spend",
+          "Billion-peso food-adjacent contracts",
+          "Repeated modified contracts"
+        ],
+        "hunger_score": 56.4,
+        "id": "CO1.PCCNTR.8581364",
+        "municipality": "MAICAO",
+        "object": "FORTALECIMIENTO DE LA CAPACIDAD PRODUCTIVA Y ECONOMICA MEDIANTE EL DESARROLLO DE PROYECTOS MICRO EMPRESARIALES AGROPECUARIOS PARA CONTRIBUIR O INCIDIR POSITIVAMENTE EN LA SEGURIDAD ALIMENTARIA Y EL MEJORAMIENTO INTEGRAL DE LOS RESGUARDOS INDÍGENAS ALTA Y MEDIA GUAJIRA; WOPUMUIN JUNAIN MAIKOU; SUMAIN WAYUU UULIANA; NUKAJAT MALEIWA; NUMAIN MALEIWA; CHIASALU; ALBERTO PUSHAINA Y OKOCHI DEL MUNICIPIO DE MAICAO; DEPARTAME...",
+        "paid_value": 4837295925,
+        "place_hits": [],
+        "priority": 283.8368979564118,
+        "procurement_risk_score": 77.6,
+        "reference": "CD-CI-MM-020-2025",
+        "signed_at": "2025-11-12T00:00:00.000",
+        "state": "Revisar entrega",
+        "supplier_name": "UT WA MURR? 2025",
+        "value": 9674591850,
+        "arrival_confidence": 11,
+        "arrival_state": "revisar_urgente",
+        "candidate_reasons": [
+          "red_flag",
+          "high_hunger_municipality"
+        ],
+        "delivery_evidence_file_rows": 73,
+        "documentary_delivery_strength": "strong",
+        "financial_execution_percent": 94.5,
+        "invoice_rows": 3,
+        "no_public_execution": true
+      }
+    ],
+    "top_contracts": [
+      {
+        "audit_score": 100,
+        "category": "School meals / PAE",
+        "city": "Uribia",
+        "department": "La Guajira",
+        "entity_name": "MUNICIPIO DE URIBIA",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "High hunger municipality",
+          "Names 2 local places",
+          "School meals / PAE"
+        ],
+        "hunger_score": 74.5,
+        "id": "CO1.PCCNTR.7429535",
+        "municipality": "URIBIA",
+        "object": "PRESTACIÓN DE SERVICIOS PARA LA EJECUCIÓN DEL PROGRAMA DE ALIMENTACIÓN ESCOLAR (PAE) DIRIGIDO A PUEBLOS INDÍGENAS EN LA INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL CARASUA MADRE LAURA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL VILLA FÁTIMA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL DE NUESTRA SEÑORA DE FÁTIMA DE NAZARETH; INSTITUCION ETNOEDUCATIVA TECNICA AGROPECUARIA JUYASIRAIN; CENTRO ETNOEDUCATIVO INTEGRAL RURAL SUTCH...",
+        "paid_value": 6461669944,
+        "place_hits": [
+          "VILLA FÁTIMA",
+          "NAZARETH"
+        ],
+        "priority": 306.77374595011406,
+        "procurement_risk_score": 78.3,
+        "reference": "CPS-056-2025",
+        "signed_at": "2025-02-06T00:00:00.000",
+        "state": "Soporte documental",
+        "supplier_name": "ASOCIACION DE AUTORIDADES WAYUU ANATAS WAKUAIPA",
+        "value": 8277807386,
+        "arrival_confidence": 19,
+        "arrival_state": "soporte_documental",
+        "candidate_reasons": [
+          "red_flag",
+          "high_hunger_municipality"
+        ],
+        "delivery_evidence_file_rows": 54,
+        "documentary_delivery_strength": "strong",
+        "financial_execution_percent": 98.9,
+        "invoice_rows": 10,
+        "no_public_execution": true
+      },
+      {
+        "audit_score": 100,
+        "category": "School meals / PAE",
+        "city": "Maicao",
+        "department": "La Guajira",
+        "entity_name": "MUNICIPIO DE MAICAO",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "School meals / PAE",
+          "Direct contracting dominates food-adjacent spend",
+          "Billion-peso food-adjacent contracts"
+        ],
+        "hunger_score": 56.4,
+        "id": "CO1.PCCNTR.5982038",
+        "municipality": "MAICAO",
+        "object": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN LA INSTITUCIONES EDUCATIVAS INDIGENAS N° 1; 2; 3; 4; 5; 6; 8; 9 Y EN EL CENTRO EDUCATIVO INDIGENA N°5 UBICADAS EN LA ZONA RURAL ETNICA; DEL MUNICIPIO DE MAICAO; DURANTE EL CALENDARIO ESCOLAR; VIGENCIA 2024",
+        "paid_value": 12550638168,
+        "place_hits": [],
+        "priority": 285.88,
+        "procurement_risk_score": 77.6,
+        "reference": "CPS-PAIP- RE-MM-002-2024",
+        "signed_at": "2024-02-21T00:00:00.000",
+        "state": "Soporte documental",
+        "supplier_name": "KASUWA",
+        "value": 13216908412,
+        "arrival_confidence": 27,
+        "arrival_state": "soporte_documental",
+        "candidate_reasons": [
+          "red_flag",
+          "high_hunger_municipality"
+        ],
+        "delivery_evidence_file_rows": 173,
+        "documentary_delivery_strength": "strong",
+        "financial_execution_percent": 95,
+        "invoice_rows": 11,
+        "no_public_execution": true
+      },
+      {
+        "audit_score": 95.8,
+        "category": "School meals / PAE",
+        "city": "Riohacha",
+        "department": "La Guajira",
+        "entity_name": "GOBERNACIÓN DE LA GUAJIRA",
+        "flags": [
+          "Direct contracting",
+          "Billion-peso contract",
+          "Modified contract",
+          "High hunger municipality",
+          "School meals / PAE",
+          "Direct contracting dominates food-adjacent spend"
+        ],
+        "hunger_score": 76.5,
+        "id": "CO1.PCCNTR.7505972",
+        "municipality": "MANAURE",
+        "object": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN LA INSTITUCION ETNOEDUCATIVA RURAL ANOUI UBICADA EN LA ENTIDAD TERRITORIAL NO CERTIFICADA - MUNICIPIO DE MANAURE; DURANTE EL CALENDARIO ESCOLAR VIGENCIA 2025 EN EL DEPARTAMENTO DE LA GUAJIRA; EN CUMPLIMIENTO DE LO DISPUESTO EN LA RESOLUCIÓN N° 018858 DE 2018; O SEGÚN CORRESPONDA",
+        "place_hits": [],
+        "priority": 285.3859973364589,
+        "procurement_risk_score": 76.7,
+        "reference": "CO1.PCCNTR.7505972",
+        "signed_at": "2025-02-17T00:00:00.000",
+        "state": "Soporte documental",
+        "supplier_name": "UNION TEMPORAL EKIRAJIA HURREM",
+        "value": 2164374684,
+        "arrival_confidence": 27,
+        "arrival_state": "soporte_documental",
+        "candidate_reasons": [
+          "high_hunger_municipality"
+        ],
+        "delivery_evidence_file_rows": 195,
+        "documentary_delivery_strength": "strong",
+        "financial_execution_percent": 95.4,
+        "invoice_rows": 11,
+        "no_public_execution": true
+      },
+      {
+        "audit_score": 100,
+        "category": "School meals / PAE",
+        "city": "Medellín",
+        "department": "Antioquia",
+        "entity_name": "DEPARTAMENTO DE ANTIOQUIA//",
+        "flags": [
+          "Direct contracting",
+          "Billion-peso contract",
+          "Supplier concentration",
+          "Modified contract",
+          "School meals / PAE",
+          "Direct contracting dominates food-adjacent spend"
+        ],
+        "hunger_score": 49,
+        "id": "CO1.PCCNTR.6413059",
+        "municipality": "ITUANGO",
+        "object": "Integrar esfuerzos para la ejecución del programa de alimentación escolar -PAE; para los niños; niñas y adolescentes de la matrícula oficial del municipio de ITUANGO -ANTIOQUIA; para la vigencia 2024-2",
+        "paid_value": 1259352948,
+        "place_hits": [],
+        "priority": 285.357653640742,
+        "procurement_risk_score": 94,
+        "reference": "4600017169",
+        "signed_at": "2024-06-13T00:00:00.000",
+        "state": "Soporte documental",
+        "supplier_name": "MUNICIPIO DE ITUANGO",
+        "value": 1315884830,
+        "arrival_confidence": 23,
+        "arrival_state": "soporte_documental",
+        "candidate_reasons": [
+          "red_flag",
+          "high_hunger_municipality"
+        ],
+        "delivery_evidence_file_rows": 10,
+        "documentary_delivery_strength": "strong",
+        "financial_execution_percent": 95.7,
+        "invoice_rows": 3,
+        "no_public_execution": true
+      },
+      {
+        "audit_score": 100,
+        "category": "School meals / PAE",
+        "city": "Medellín",
+        "department": "Antioquia",
+        "entity_name": "DEPARTAMENTO DE ANTIOQUIA//",
+        "flags": [
+          "Direct contracting",
+          "Billion-peso contract",
+          "Supplier concentration",
+          "Modified contract",
+          "School meals / PAE",
+          "Direct contracting dominates food-adjacent spend"
+        ],
+        "hunger_score": 49,
+        "id": "CO1.PCCNTR.5699421",
+        "municipality": "ITUANGO",
+        "object": "Integrar esfuerzos para la ejecución del Programa de Alimentación Escolar - PAE; para los niños; niñas y adolescentes de la matrícula oficial del municipio de ITUANGO - ANTIOQUIA; para la vigencia 2024-1.",
+        "paid_value": 379472148,
+        "place_hits": [],
+        "priority": 285.073361379273,
+        "procurement_risk_score": 94,
+        "reference": "24AS133D1580",
+        "signed_at": "2023-12-29T00:00:00.000",
+        "state": "Soporte documental",
+        "supplier_name": "MUNICIPIO DE ITUANGO",
+        "value": 1057922352,
+        "arrival_confidence": 23,
+        "arrival_state": "soporte_documental",
+        "candidate_reasons": [
+          "red_flag",
+          "high_hunger_municipality"
+        ],
+        "delivery_evidence_file_rows": 12,
+        "documentary_delivery_strength": "strong",
+        "financial_execution_percent": 94.3,
+        "invoice_rows": 3,
+        "no_public_execution": true
+      },
+      {
+        "audit_score": 100,
+        "category": "Food basket",
+        "city": "Maicao",
+        "department": "La Guajira",
+        "entity_name": "MUNICIPIO DE MAICAO",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "Direct contracting dominates food-adjacent spend",
+          "Billion-peso food-adjacent contracts",
+          "Repeated modified contracts"
+        ],
+        "hunger_score": 56.4,
+        "id": "CO1.PCCNTR.7479093",
+        "municipality": "MAICAO",
+        "object": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCIONES EDUCATIVA INDIGENA No 1; 4; Y 12; UBICADOS EN EL MUNICIPIO DE MAICAO LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN...",
+        "paid_value": 16775992549,
+        "place_hits": [],
+        "priority": 283.88,
+        "procurement_risk_score": 77.6,
+        "reference": "SEIP-RE-MM-029-2025",
+        "signed_at": "2025-02-13T00:00:00.000",
+        "state": "Soporte documental",
+        "supplier_name": "UNIÓN TEMPORAL  AYATALII WAYA",
+        "value": 18388437896,
+        "arrival_confidence": 23,
+        "arrival_state": "soporte_documental",
+        "candidate_reasons": [
+          "red_flag",
+          "high_hunger_municipality"
+        ],
+        "delivery_evidence_file_rows": 47,
+        "documentary_delivery_strength": "strong",
+        "financial_execution_percent": 100,
+        "invoice_rows": 8,
+        "no_public_execution": true
+      },
+      {
+        "audit_score": 100,
+        "category": "Food basket",
+        "city": "Maicao",
+        "department": "La Guajira",
+        "entity_name": "MUNICIPIO DE MAICAO",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "Direct contracting dominates food-adjacent spend",
+          "Billion-peso food-adjacent contracts",
+          "Repeated modified contracts"
+        ],
+        "hunger_score": 56.4,
+        "id": "CO1.PCCNTR.5915972",
+        "municipality": "MAICAO",
+        "object": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LAS INSTITUCIÓNES EDUCATIVAS INDIGENA No 3; 5 y 8 Y EL CENTRO ETNOEDUCATIVO No 5; UBICADOS EN EL MUNICIPIO DE MAICAO LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DEC...",
+        "paid_value": 15269641498,
+        "place_hits": [],
+        "priority": 283.88,
+        "procurement_risk_score": 77.6,
+        "reference": "SEIP-RE-MM-003-2024",
+        "signed_at": "2024-02-09T00:00:00.000",
+        "state": "Soporte documental",
+        "supplier_name": "ASOCIACION DE AUTORIDADES TRADICIONALES WAYUU SUMUYWAJAT",
+        "value": 15269641498,
+        "arrival_confidence": 27,
+        "arrival_state": "soporte_documental",
+        "candidate_reasons": [
+          "red_flag",
+          "high_hunger_municipality"
+        ],
+        "delivery_evidence_file_rows": 5,
+        "documentary_delivery_strength": "strong",
+        "financial_execution_percent": 100,
+        "invoice_rows": 6,
+        "no_public_execution": true
+      },
+      {
+        "audit_score": 100,
+        "category": "Food supply",
+        "city": "Maicao",
+        "department": "La Guajira",
+        "entity_name": "MUNICIPIO DE MAICAO",
+        "flags": [
+          "Direct contracting",
+          "Very high value",
+          "Modified contract",
+          "Direct contracting dominates food-adjacent spend",
+          "Billion-peso food-adjacent contracts",
+          "Repeated modified contracts"
+        ],
+        "hunger_score": 56.4,
+        "id": "CO1.PCCNTR.8581364",
+        "municipality": "MAICAO",
+        "object": "FORTALECIMIENTO DE LA CAPACIDAD PRODUCTIVA Y ECONOMICA MEDIANTE EL DESARROLLO DE PROYECTOS MICRO EMPRESARIALES AGROPECUARIOS PARA CONTRIBUIR O INCIDIR POSITIVAMENTE EN LA SEGURIDAD ALIMENTARIA Y EL MEJORAMIENTO INTEGRAL DE LOS RESGUARDOS INDÍGENAS ALTA Y MEDIA GUAJIRA; WOPUMUIN JUNAIN MAIKOU; SUMAIN WAYUU UULIANA; NUKAJAT MALEIWA; NUMAIN MALEIWA; CHIASALU; ALBERTO PUSHAINA Y OKOCHI DEL MUNICIPIO DE MAICAO; DEPARTAME...",
+        "paid_value": 4837295925,
+        "place_hits": [],
+        "priority": 283.8368979564118,
+        "procurement_risk_score": 77.6,
+        "reference": "CD-CI-MM-020-2025",
+        "signed_at": "2025-11-12T00:00:00.000",
+        "state": "Revisar entrega",
+        "supplier_name": "UT WA MURR? 2025",
+        "value": 9674591850,
+        "arrival_confidence": 11,
+        "arrival_state": "revisar_urgente",
+        "candidate_reasons": [
+          "red_flag",
+          "high_hunger_municipality"
+        ],
+        "delivery_evidence_file_rows": 73,
+        "documentary_delivery_strength": "strong",
+        "financial_execution_percent": 94.5,
+        "invoice_rows": 3,
+        "no_public_execution": true
+      }
+    ],
+    "contracts_checked_count": 67
+  },
+  "detector_backlog": [
+    {
+      "title": "Fraccionamiento contractual",
+      "detail": "Misma entidad, proveedor o comunidad con contratos similares cercanos en tiempo y bajo umbrales de control.",
+      "needed_source": "Secuencia completa SECOP + objeto normalizado + calendario fiscal"
+    },
+    {
+      "title": "Ventanas de competencia anómalas",
+      "detail": "Procesos con tiempos muy cortos para observaciones, pocos oferentes o adjudicación repetida al mismo proveedor.",
+      "needed_source": "Cronología del proceso y oferentes por oportunidad"
+    },
+    {
+      "title": "Redes de proveedores relacionados",
+      "detail": "Contratistas que comparten representante, dirección, teléfono, revisor fiscal o participación societaria.",
+      "needed_source": "RUES, SECOP proveedor y datos societarios"
+    },
+    {
+      "title": "Facturas duplicadas o recicladas",
+      "detail": "Soportes financieros reutilizados entre contratos, periodos o comunidades con valores inconsistentes.",
+      "needed_source": "OCR de anexos, número de factura, proveedor y fecha"
+    },
+    {
+      "title": "Picos de cierre fiscal",
+      "detail": "Pagos, adiciones o suspensiones concentrados al final del periodo presupuestal sin evidencia proporcional de entrega.",
+      "needed_source": "Historial de pagos, modificaciones y actas por fecha"
+    },
+    {
+      "title": "Contratación excepcional reiterada",
+      "detail": "Uso repetido de contratación directa o urgencia manifiesta en municipios con hambre alta y bajo soporte público.",
+      "needed_source": "Modalidad, causal, declaratoria y trazabilidad documental"
+    }
+  ]
+}

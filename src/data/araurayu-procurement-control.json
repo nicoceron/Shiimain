@@ -1,0 +1,287 @@
+{
+  "generated_at": "2026-05-27T00:00:00.000Z",
+  "summary": {
+    "contract_count": 2,
+    "total_value": 4337385795,
+    "advance_at_risk": 2168692897.5,
+    "required_assets": 400,
+    "beneficiary_units": 300,
+    "open_payment_gates": 4,
+    "blocked_payment_gates": 3,
+    "missing_guarantees": 8
+  },
+  "contracts": [
+    {
+      "contract_id": "CO1.PCCNTR.9296339",
+      "reference": "N\u00b0 013-2025",
+      "process_id": "CO1.BDOS.9274476",
+      "process_reference": "AWA-SGR--002",
+      "title": "Botes de fibra y motores fuera de borda para pesca artesanal",
+      "short_title": "50 botes + 50 motores",
+      "supplier_name": "EDUARDONO S.A.S.",
+      "supplier_document": "8909000825",
+      "value": 2137385795,
+      "status": "Borrador",
+      "project": "Mejoramiento del acceso a condiciones dignas de seguridad alimentaria de las familias pescadoras Wayuu de la Alta Zona Norte Extrema de La Guajira",
+      "location": "Manaure / Alta Zona Norte Extrema de La Guajira",
+      "beneficiaries": {
+        "direct_label": "50 UEP beneficiarias",
+        "direct_count": 50,
+        "indirect_label": "2.100 personas estimadas",
+        "indirect_count": 2100
+      },
+      "mission_fit": "Reactivar pesca artesanal como fuente local de proteina, ingresos y seguridad alimentaria.",
+      "terms": {
+        "duration_months": 4,
+        "execution_start_basis": "Desde cumplimiento de requisitos de ejecucion",
+        "delivery_place": "Municipio de Manaure, La Guajira",
+        "funding_source": "Sistema General de Regalias - asignaciones directas etnicas",
+        "estimated_contract_value": 2139500000
+      },
+      "source_documents": [
+        {
+          "type": "tdr",
+          "label": "TDR compra de botes y motores",
+          "document_id": "718239761",
+          "date": "2025-12-15",
+          "status": "found",
+          "url": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=718239761&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "type": "prior_study",
+          "label": "Estudios previos",
+          "document_id": "720330375",
+          "date": "2025-12-17",
+          "status": "found",
+          "url": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=720330375&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "type": "budget",
+          "label": "CDP BPIN 2023I00010069",
+          "document_id": "718239762",
+          "date": "2025-12-15",
+          "status": "found",
+          "url": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=718239762&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "type": "evaluation",
+          "label": "Acta comite de evaluacion",
+          "document_id": "746146028",
+          "date": "2026-01-30",
+          "status": "found",
+          "url": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=746146028&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "type": "contract",
+          "label": "Contrato suministro botes/motores",
+          "document_id": "746186784",
+          "date": "2026-01-30",
+          "status": "found_unreadable_text",
+          "url": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=746186784&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        }
+      ],
+      "payment_gates": [
+        {
+          "key": "advance",
+          "label": "Primer pago / anticipo",
+          "percent": 50,
+          "amount": 1068692897.5,
+          "status": "blocked",
+          "reason": "No hay factura ni polizas aprobadas visibles en SECOP.",
+          "requirements": [
+            { "label": "Contrato suscrito", "status": "partial", "evidence": "PDF de contrato encontrado, texto no legible" },
+            { "label": "Factura electronica", "status": "missing", "evidence": "Sin factura publica" },
+            { "label": "Cronograma definitivo de entrega y logistica", "status": "missing", "evidence": "No visible" },
+            { "label": "Polizas exigidas aprobadas", "status": "missing", "evidence": "Sin garantia visible" }
+          ]
+        },
+        {
+          "key": "final",
+          "label": "Segundo pago / entrega final",
+          "percent": 50,
+          "amount": 1068692897.5,
+          "status": "not_due",
+          "reason": "Depende de entrega total, actas e informe final del supervisor.",
+          "requirements": [
+            { "label": "50 botes recibidos", "status": "missing", "evidence": "Sin acta de entrega" },
+            { "label": "50 motores recibidos", "status": "missing", "evidence": "Sin acta de entrega" },
+            { "label": "Seriales, manuales, fichas y garantias", "status": "missing", "evidence": "No visible" },
+            { "label": "Informe final del supervisor", "status": "missing", "evidence": "No visible" }
+          ]
+        }
+      ],
+      "guarantees": [
+        { "label": "Buen manejo del anticipo", "required_percent": 100, "base": "advance", "required_amount": 1068692897.5, "status": "missing" },
+        { "label": "Cumplimiento", "required_percent": 10, "base": "contract", "required_amount": 213738579.5, "status": "missing" },
+        { "label": "Calidad y correcto funcionamiento", "required_percent": 10, "base": "contract", "required_amount": 213738579.5, "status": "missing" },
+        { "label": "Responsabilidad civil extracontractual", "required_percent": 5, "base": "contract", "required_amount": 106869289.75, "status": "missing" }
+      ],
+      "asset_ledger": [
+        {
+          "item": "Bote tipo Transporte 250/250X PRFV",
+          "required_quantity": 50,
+          "unit": "unidades",
+          "received_quantity": 0,
+          "verified_quantity": 0,
+          "proof_required": "Serial/marcacion, ficha tecnica, certificado, acta de entrega y prueba visual"
+        },
+        {
+          "item": "Motor fuera de borda 40 HP pata larga",
+          "required_quantity": 50,
+          "unit": "unidades",
+          "received_quantity": 0,
+          "verified_quantity": 0,
+          "proof_required": "Serial, garantia, manual, prueba de encendido y compatibilidad bote/motor"
+        }
+      ],
+      "risk_signals": [
+        { "severity": "high", "label": "Objeto SECOP aparece como No definido aunque los PDFs si tienen alcance." },
+        { "severity": "high", "label": "Anticipo de 50% requiere poliza de buen manejo por 100% del anticipo." },
+        { "severity": "medium", "label": "Solo una oferta registrada; requiere trazabilidad de evaluacion y razonabilidad economica." },
+        { "severity": "medium", "label": "Contrato hermano cancelado en el mismo proceso; conservar trazabilidad de reemplazo." }
+      ],
+      "next_actions": [
+        "Extraer automaticamente TDR, estudios previos, CDP, acta y contrato firmado al tablero.",
+        "Retener anticipo hasta que factura, cronograma y polizas aprobadas esten adjuntas.",
+        "Crear ledger de 50 botes y 50 motores con seriales, ubicacion, beneficiario UEP y acta.",
+        "Preparar formulario movil de recibo a satisfaccion para supervisor y comunidad."
+      ]
+    },
+    {
+      "contract_id": "CO1.PCCNTR.9301973",
+      "reference": "N\u00b0 003-2026",
+      "process_id": "CO1.BDOS.9854183",
+      "process_reference": "AWA-SGR-004",
+      "title": "Kits de pesca adicionados con paquetes de seguridad",
+      "short_title": "250 kits + 50 paquetes",
+      "supplier_name": "CORPORACION YENSHA",
+      "supplier_document": "901068346",
+      "value": 2200000000,
+      "status": "Borrador",
+      "project": "Dotacion mejoramiento del acceso a condiciones dignas de seguridad alimentaria de las familias pescadoras Wayuu de la Alta Zona Norte Extrema de La Guajira",
+      "location": "Alta Zona Norte Extrema de La Guajira",
+      "beneficiaries": {
+        "direct_label": "250 UEP beneficiarias",
+        "direct_count": 250,
+        "indirect_label": "Familias pescadoras Wayuu",
+        "indirect_count": 0
+      },
+      "mission_fit": "Entregar artes, herramientas y elementos de seguridad para que las UEP Wayuu puedan operar.",
+      "terms": {
+        "duration_months": 4,
+        "execution_start_basis": "Desde firma y expedicion de polizas",
+        "delivery_place": "Puntos indicados por Araurayu en la Alta Zona Norte Extrema",
+        "funding_source": "Sistema General de Regalias - asignaciones directas etnicas",
+        "estimated_contract_value": 2200000000
+      },
+      "source_documents": [
+        {
+          "type": "tdr",
+          "label": "TDR kits de pesca",
+          "document_id": "744664226",
+          "date": "2026-01-28",
+          "status": "found",
+          "url": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=744664226&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "type": "prior_study",
+          "label": "Estudios previos kits de pesca",
+          "document_id": "744664227",
+          "date": "2026-01-28",
+          "status": "found",
+          "url": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=744664227&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "type": "budget",
+          "label": "CDP BPIN 2023I00010069",
+          "document_id": "744542974",
+          "date": "2026-01-28",
+          "status": "found",
+          "url": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=744542974&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "type": "evaluation",
+          "label": "Acta comite de evaluacion",
+          "document_id": "746270778",
+          "date": "2026-01-30",
+          "status": "found",
+          "url": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=746270778&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        },
+        {
+          "type": "contract",
+          "label": "Contrato kit de pesca N 003-2026",
+          "document_id": "746290498",
+          "date": "2026-01-30",
+          "status": "found",
+          "url": "https://community.secop.gov.co/Public/Archive/RetrieveFile/Index?DocumentId=746290498&InCommunity=False&InPaymentGateway=False&DocUniqueIdentifier="
+        }
+      ],
+      "payment_gates": [
+        {
+          "key": "advance",
+          "label": "Primer pago / anticipo",
+          "percent": 50,
+          "amount": 1100000000,
+          "status": "blocked",
+          "reason": "Contrato dice que solo procede con garantias aprobadas; SECOP no muestra garantia.",
+          "requirements": [
+            { "label": "Contrato firmado", "status": "present", "evidence": "Contrato N 003-2026 encontrado" },
+            { "label": "Factura o cuenta de cobro", "status": "missing", "evidence": "Sin factura publica" },
+            { "label": "Garantias aprobadas", "status": "missing", "evidence": "Sin garantia visible" },
+            { "label": "Cronograma definitivo de entrega", "status": "missing", "evidence": "No visible" }
+          ]
+        },
+        {
+          "key": "final",
+          "label": "Segundo pago / entrega final",
+          "percent": 50,
+          "amount": 1100000000,
+          "status": "not_due",
+          "reason": "Debe esperar entrega final y recibo a conformidad del supervisor.",
+          "requirements": [
+            { "label": "250 kits recibidos", "status": "missing", "evidence": "Sin acta de entrega" },
+            { "label": "50 paquetes de seguridad recibidos", "status": "missing", "evidence": "Sin acta de entrega" },
+            { "label": "Componentes, accesorios, manuales y garantias", "status": "missing", "evidence": "No visible" },
+            { "label": "Supervisor certifica conformidad", "status": "missing", "evidence": "No visible" }
+          ]
+        }
+      ],
+      "guarantees": [
+        { "label": "Buen manejo del anticipo", "required_percent": 100, "base": "advance", "required_amount": 1100000000, "status": "missing" },
+        { "label": "Cumplimiento", "required_percent": 10, "base": "contract", "required_amount": 220000000, "status": "missing" },
+        { "label": "Calidad y correcto funcionamiento", "required_percent": 10, "base": "contract", "required_amount": 220000000, "status": "missing" },
+        { "label": "Responsabilidad civil extracontractual", "required_percent": 5, "base": "contract", "required_amount": 110000000, "status": "missing" }
+      ],
+      "asset_ledger": [
+        {
+          "item": "Kit de pesca",
+          "required_quantity": 250,
+          "unit": "kits",
+          "received_quantity": 0,
+          "verified_quantity": 0,
+          "proof_required": "Lista de componentes, acta por lote, evidencia fotografica, UEP beneficiaria"
+        },
+        {
+          "item": "Paquete de elementos de seguridad",
+          "required_quantity": 50,
+          "unit": "paquetes",
+          "received_quantity": 0,
+          "verified_quantity": 0,
+          "proof_required": "Checklist de elementos, acta de entrega y responsable comunitario"
+        }
+      ],
+      "risk_signals": [
+        { "severity": "high", "label": "Anticipo de $1.100M sin garantia visible en el expediente consolidado." },
+        { "severity": "high", "label": "El contrato exige supervisor formal, pero SECOP muestra supervisor No definido." },
+        { "severity": "medium", "label": "Unica oferta registrada; se debe conservar acta y soportes de evaluacion." },
+        { "severity": "medium", "label": "Proveedor no especializado por nombre; verificar experiencia especifica en kits y seguridad pesquera." }
+      ],
+      "next_actions": [
+        "Mostrar los TDR y el contrato como fuente primaria, no como actas genericas.",
+        "Retener anticipo hasta que la poliza de anticipo y cumplimiento esten adjuntas y aprobadas.",
+        "Crear ledger de 250 UEP con kit, paquete de seguridad, punto de entrega y responsable.",
+        "Exigir acta movil con foto, firma y georreferencia por lote recibido."
+      ]
+    }
+  ]
+}
