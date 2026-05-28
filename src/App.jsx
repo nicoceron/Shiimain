@@ -369,7 +369,7 @@ function Header() {
       style={{ pointerEvents: hidden ? 'none' : 'auto' }}
       transition={{ type: 'spring', bounce: 0.2, duration: 1.1 }}
     >
-      <motion.div className="nav-progress" style={{ scaleX: scrollYProgress }} />
+      <motion.div className="nav-progress" style={{ scaleX: open && isMobile ? 1 : scrollYProgress }} />
       <div className="nav-top-row">
         <a className="brand" href="#home" aria-label="Inicio Shiimain">
           <img src={assets.logo} alt="Shiimain" />
