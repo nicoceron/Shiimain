@@ -730,9 +730,7 @@ function Projects() {
 }
 
 function PartnersFaqLocation() {
-  const [activeTab, setActiveTab] = useState('Implementación')
   const [openFaq, setOpenFaq] = useState(-1)
-  const tabs = ['Implementación', 'Evidencia', 'Soporte']
 
   return (
     <>
@@ -757,14 +755,6 @@ function PartnersFaqLocation() {
           <p>Shiimain está pensado para equipos que necesitan leer evidencia pública con trazabilidad, no para reemplazar la fuente pública.</p>
         </div>
         <motion.div className="faq-panel" variants={sourceFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }}>
-          <div className="faq-tabs" role="tablist" aria-label="Categorías de preguntas frecuentes">
-            {tabs.map((tab) => (
-              <button className={tab === activeTab ? 'active' : ''} key={tab} type="button" onClick={() => setActiveTab(tab)}>
-                {tab}
-                {tab === activeTab ? <motion.span className="faq-tab-underline" layoutId="faq-tab-underline" /> : null}
-              </button>
-            ))}
-          </div>
           <div>
             {faqs.map(([question, answer], index) => (
               <article className={`faq-item ${openFaq === index ? 'open' : ''}`} key={question}>
