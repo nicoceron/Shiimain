@@ -1702,7 +1702,7 @@ input {
   }
 }
 
-@media (min-width: 1041px) {
+@media (min-width: 1200px) {
   .section {
     max-width: none;
     padding-left: 64px;
@@ -1933,7 +1933,7 @@ input {
   }
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1199.98px) {
   .site-header {
     width: calc(100% - 40px);
   }
@@ -2022,7 +2022,7 @@ input {
   }
 }
 
-@media (min-width: 721px) and (max-width: 1040px) {
+@media (min-width: 810px) and (max-width: 1199.98px) {
   .section {
     max-width: none;
     padding-left: 40px;
@@ -2037,6 +2037,11 @@ input {
 
   .hero-content {
     padding: 160px 40px 80px;
+  }
+
+  .hero-title {
+    font-size: 60px;
+    line-height: 1.05;
   }
 
   .trusted-strip {
@@ -2319,7 +2324,7 @@ input {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 809.98px) {
   .hero-section,
   .hero-content {
     min-height: 963px;
@@ -2332,7 +2337,8 @@ input {
   .hero-copy {
     flex: 0 0 auto;
     justify-content: flex-start;
-    max-width: 358px;
+    max-width: none;
+    width: 100%;
   }
 
   .hero-pill {
@@ -2343,9 +2349,9 @@ input {
   }
 
   .hero-title {
-    font-size: 40px;
-    line-height: 1.16;
-    max-width: 358px;
+    font-size: 44px;
+    line-height: 1.05;
+    max-width: none;
   }
 
   .hero-actions {
@@ -4235,7 +4241,7 @@ input {
   padding-top: 12px;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1199.98px) {
   .demo-header {
     width: calc(100% - 40px);
   }
@@ -4285,7 +4291,7 @@ input {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 809.98px) {
   .source-chip {
     font-size: 14px;
     min-height: 38px;
