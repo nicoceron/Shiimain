@@ -1,0 +1,1350 @@
+{
+  "generated_at": "2026-05-21T07:21:34.657296+00:00",
+  "municipality_count": 1122,
+  "sources": [
+    "DANE SAE XLSX FIES/Poverty/IPM 2024",
+    "DIVIPOLA gdxc-w37w",
+    "Sisbén Hogares cached aggregates",
+    "IRCA 2024 cached aggregate",
+    "ICBF UDS i8ww-5mcf",
+    "ICBF beneficiaries 5akr-u7t8",
+    "MEN PAE epkg-mphw",
+    "REPS c36g-9fc2",
+    "ReSA 5m78-fkmq",
+    "UNIDOS snvf-epj8",
+    "UNGRD rgre-6ak4",
+    "EVA uejq-wxrr",
+    "Agricultural frontier 6rau-hqeb",
+    "INVIMA food establishments uhs6-qp53"
+  ],
+  "municipalities": [
+    {
+      "code": "44560",
+      "name": "MANAURE",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 11.773767,
+        "lon": -72.438739
+      },
+      "risk": {
+        "score": 76.5,
+        "level": "critical",
+        "fies_2024": 0.8079463508202489,
+        "poverty_2024": 0.815605944876749,
+        "ipm_2024": 0.630031146984601
+      },
+      "household": {
+        "sample_households": 2572,
+        "no_fridge_pct": 0.8460342146189735,
+        "no_kitchen_pct": 0.3775272161741835
+      },
+      "water": {
+        "irca": 1.5,
+        "irca_level": "Sin riesgo",
+        "irca_rural": 11.3,
+        "irca_rural_level": "Bajo riesgo"
+      },
+      "children": {
+        "beneficiaries": 79137,
+        "pae_beneficiaries": 11732
+      },
+      "delivery": {
+        "uds_active": 1084,
+        "health_sites": 16
+      },
+      "coverage": {
+        "resa_active": 2547,
+        "unidos_active": 945
+      },
+      "shock": {
+        "people_affected": 37135,
+        "families_affected": 9985,
+        "food_kits_reported": 0,
+        "emergency_events": 23
+      },
+      "supply": {
+        "crop_production_tons": 0,
+        "crop_count": 0,
+        "frontier_ha": 48283.7
+      },
+      "market": {
+        "food_establishments": 0
+      },
+      "recommendation": {
+        "primary": "Hot meals / ready-to-eat",
+        "reason": "household cooking constraints are high",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Avoid raw/cook-heavy kits unless paired with cooking support.",
+          "Shock reported with no food kits in UNGRD records.",
+          "Possible coverage gap: high risk with low active ReSA signal."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "85% without fridge"
+          ],
+          [
+            "Sisbén Hogares",
+            "hog014",
+            "38% without kitchen"
+          ],
+          [
+            "UNGRD",
+            "personas + kits_de_alimento",
+            "37,135 affected / 0 kits"
+          ],
+          [
+            "ICBF",
+            "beneficiarios",
+            "79,137 child/program beneficiaries"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "1,084 active UDS"
+          ],
+          [
+            "ReSA",
+            "estadobeneficiario=ACTIVO",
+            "2,547 active beneficiaries"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44847",
+      "name": "URIBIA",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 11.711904,
+        "lon": -72.265906
+      },
+      "risk": {
+        "score": 74.5,
+        "level": "critical",
+        "fies_2024": 0.7447309761826623,
+        "poverty_2024": 0.835219036597584,
+        "ipm_2024": 0.656926825935337
+      },
+      "household": {
+        "sample_households": 3500,
+        "no_fridge_pct": 0.9151428571428571,
+        "no_kitchen_pct": 0.4482857142857143
+      },
+      "water": {
+        "irca": 3.2,
+        "irca_level": "Sin riesgo",
+        "irca_rural": 39.7,
+        "irca_rural_level": "Alto riesgo"
+      },
+      "children": {
+        "beneficiaries": 95515,
+        "pae_beneficiaries": 57405
+      },
+      "delivery": {
+        "uds_active": 1411,
+        "health_sites": 43
+      },
+      "coverage": {
+        "resa_active": 3253,
+        "unidos_active": 1349
+      },
+      "shock": {
+        "people_affected": 25870,
+        "families_affected": 12239,
+        "food_kits_reported": 4850,
+        "emergency_events": 6
+      },
+      "supply": {
+        "crop_production_tons": 8739.1,
+        "crop_count": 5,
+        "frontier_ha": 284001.5
+      },
+      "market": {
+        "food_establishments": 2
+      },
+      "recommendation": {
+        "primary": "Hot meals / ready-to-eat",
+        "reason": "household cooking constraints are high",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Avoid raw/cook-heavy kits unless paired with cooking support.",
+          "Add water-safe prep guidance or water treatment.",
+          "Possible coverage gap: high risk with low active ReSA signal."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "92% without fridge"
+          ],
+          [
+            "Sisbén Hogares",
+            "hog014",
+            "45% without kitchen"
+          ],
+          [
+            "IRCA",
+            "irca / ircarural",
+            "risk value 39.7"
+          ],
+          [
+            "ICBF",
+            "beneficiarios",
+            "95,515 child/program beneficiaries"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "1,411 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "2 food establishments"
+          ],
+          [
+            "ReSA",
+            "estadobeneficiario=ACTIVO",
+            "3,253 active beneficiaries"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44430",
+      "name": "MAICAO",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 11.378535,
+        "lon": -72.242738
+      },
+      "risk": {
+        "score": 56.4,
+        "level": "high",
+        "fies_2024": 0.6047207449859622,
+        "poverty_2024": 0.687059213543464,
+        "ipm_2024": 0.360256286351607
+      },
+      "household": {
+        "sample_households": 2174,
+        "no_fridge_pct": 0.6582336706531738,
+        "no_kitchen_pct": 0.22907083716651333
+      },
+      "water": {
+        "irca": 8.1,
+        "irca_level": "Bajo riesgo",
+        "irca_rural": null,
+        "irca_rural_level": "ND"
+      },
+      "children": {
+        "beneficiaries": 49104,
+        "pae_beneficiaries": 29294
+      },
+      "delivery": {
+        "uds_active": 601,
+        "health_sites": 79
+      },
+      "coverage": {
+        "resa_active": 3278,
+        "unidos_active": 5337
+      },
+      "shock": {
+        "people_affected": 8631,
+        "families_affected": 2685,
+        "food_kits_reported": 0,
+        "emergency_events": 44
+      },
+      "supply": {
+        "crop_production_tons": 24568,
+        "crop_count": 12,
+        "frontier_ha": 61569.4
+      },
+      "market": {
+        "food_establishments": 16
+      },
+      "recommendation": {
+        "primary": "Emergency food kits",
+        "reason": "recent emergency impact is high relative to reported food aid",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Shock reported with no food kits in UNGRD records."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "66% without fridge"
+          ],
+          [
+            "UNGRD",
+            "personas + kits_de_alimento",
+            "8,631 affected / 0 kits"
+          ],
+          [
+            "ICBF",
+            "beneficiarios",
+            "49,104 child/program beneficiaries"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "601 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "16 food establishments"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44110",
+      "name": "EL MOLINO",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 10.653505,
+        "lon": -72.92673
+      },
+      "risk": {
+        "score": 50.3,
+        "level": "watch",
+        "fies_2024": 0.5622233253563879,
+        "poverty_2024": 0.715331723932504,
+        "ipm_2024": 0.173564410872425
+      },
+      "household": {
+        "sample_households": 1103,
+        "no_fridge_pct": 0.5530371713508613,
+        "no_kitchen_pct": 0.39619220308250225
+      },
+      "water": {
+        "irca": 24,
+        "irca_level": "Riesgo medio",
+        "irca_rural": null,
+        "irca_rural_level": "ND"
+      },
+      "children": {
+        "beneficiaries": 354,
+        "pae_beneficiaries": 668
+      },
+      "delivery": {
+        "uds_active": 8,
+        "health_sites": 2
+      },
+      "coverage": {
+        "resa_active": 718,
+        "unidos_active": 190
+      },
+      "shock": {
+        "people_affected": 4,
+        "families_affected": 1,
+        "food_kits_reported": 0,
+        "emergency_events": 9
+      },
+      "supply": {
+        "crop_production_tons": 8334.9,
+        "crop_count": 19,
+        "frontier_ha": 14996.9
+      },
+      "market": {
+        "food_establishments": 1
+      },
+      "recommendation": {
+        "primary": "Hot meals / ready-to-eat",
+        "reason": "household cooking constraints are high",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Avoid raw/cook-heavy kits unless paired with cooking support.",
+          "Add water-safe prep guidance or water treatment."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "55% without fridge"
+          ],
+          [
+            "Sisbén Hogares",
+            "hog014",
+            "40% without kitchen"
+          ],
+          [
+            "IRCA",
+            "irca / ircarural",
+            "risk value 24.0"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "8 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "1 food establishments"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44378",
+      "name": "HATONUEVO",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 11.068864,
+        "lon": -72.75904
+      },
+      "risk": {
+        "score": 49.8,
+        "level": "watch",
+        "fies_2024": 0.6363732671250278,
+        "poverty_2024": 0.553903741414884,
+        "ipm_2024": 0.167107196207763
+      },
+      "household": {
+        "sample_households": 1914,
+        "no_fridge_pct": 0.6776384535005224,
+        "no_kitchen_pct": 0.2607105538140021
+      },
+      "water": {
+        "irca": 17.7,
+        "irca_level": "Riesgo medio",
+        "irca_rural": null,
+        "irca_rural_level": "ND"
+      },
+      "children": {
+        "beneficiaries": 2200,
+        "pae_beneficiaries": 1966
+      },
+      "delivery": {
+        "uds_active": 83,
+        "health_sites": 5
+      },
+      "coverage": {
+        "resa_active": 1070,
+        "unidos_active": 1088
+      },
+      "shock": {
+        "people_affected": 1164,
+        "families_affected": 356,
+        "food_kits_reported": 0,
+        "emergency_events": 4
+      },
+      "supply": {
+        "crop_production_tons": 1234.3,
+        "crop_count": 9,
+        "frontier_ha": 8788.1
+      },
+      "market": {
+        "food_establishments": 3
+      },
+      "recommendation": {
+        "primary": "Standard food kit",
+        "reason": "risk exists but no stronger modality trigger dominates",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Avoid raw/cook-heavy kits unless paired with cooking support.",
+          "Add water-safe prep guidance or water treatment.",
+          "Shock reported with no food kits in UNGRD records."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "68% without fridge"
+          ],
+          [
+            "Sisbén Hogares",
+            "hog014",
+            "26% without kitchen"
+          ],
+          [
+            "IRCA",
+            "irca / ircarural",
+            "risk value 17.7"
+          ],
+          [
+            "UNGRD",
+            "personas + kits_de_alimento",
+            "1,164 affected / 0 kits"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "83 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "3 food establishments"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44090",
+      "name": "DIBULLA",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 11.27155,
+        "lon": -73.307598
+      },
+      "risk": {
+        "score": 46,
+        "level": "watch",
+        "fies_2024": 0.3774045102342637,
+        "poverty_2024": 0.53261781711778,
+        "ipm_2024": 0.551607263177099
+      },
+      "household": {
+        "sample_households": 1732,
+        "no_fridge_pct": 0.7326789838337182,
+        "no_kitchen_pct": 0.1922632794457275
+      },
+      "water": {
+        "irca": 55,
+        "irca_level": "Alto riesgo",
+        "irca_rural": 43.5,
+        "irca_rural_level": "Alto riesgo"
+      },
+      "children": {
+        "beneficiaries": 3622,
+        "pae_beneficiaries": 1081
+      },
+      "delivery": {
+        "uds_active": 114,
+        "health_sites": 24
+      },
+      "coverage": {
+        "resa_active": 1596,
+        "unidos_active": 2671
+      },
+      "shock": {
+        "people_affected": 3912,
+        "families_affected": 781,
+        "food_kits_reported": 0,
+        "emergency_events": 3
+      },
+      "supply": {
+        "crop_production_tons": 38701.2,
+        "crop_count": 19,
+        "frontier_ha": 43412.8
+      },
+      "market": {
+        "food_establishments": 0
+      },
+      "recommendation": {
+        "primary": "Water-safe nutrition bundle",
+        "reason": "water quality risk changes what food can be safely prepared",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Add water-safe prep guidance or water treatment.",
+          "Shock reported with no food kits in UNGRD records."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "73% without fridge"
+          ],
+          [
+            "IRCA",
+            "irca / ircarural",
+            "risk value 55.0"
+          ],
+          [
+            "UNGRD",
+            "personas + kits_de_alimento",
+            "3,912 affected / 0 kits"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "114 active UDS"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44035",
+      "name": "ALBANIA",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 11.151628,
+        "lon": -72.61232
+      },
+      "risk": {
+        "score": 43.2,
+        "level": "watch",
+        "fies_2024": 0.4169273996720957,
+        "poverty_2024": 0.594588700631491,
+        "ipm_2024": 0.30141679347445
+      },
+      "household": {
+        "sample_households": 2968,
+        "no_fridge_pct": 0.8274932614555256,
+        "no_kitchen_pct": 0.4524932614555256
+      },
+      "water": {
+        "irca": 15.9,
+        "irca_level": "Riesgo medio",
+        "irca_rural": 29.5,
+        "irca_rural_level": "Riesgo medio"
+      },
+      "children": {
+        "beneficiaries": 2455,
+        "pae_beneficiaries": 3000
+      },
+      "delivery": {
+        "uds_active": 117,
+        "health_sites": 18
+      },
+      "coverage": {
+        "resa_active": 1234,
+        "unidos_active": 1550
+      },
+      "shock": {
+        "people_affected": 1391,
+        "families_affected": 432,
+        "food_kits_reported": 0,
+        "emergency_events": 27
+      },
+      "supply": {
+        "crop_production_tons": 1288.8,
+        "crop_count": 9,
+        "frontier_ha": 24217.9
+      },
+      "market": {
+        "food_establishments": 1
+      },
+      "recommendation": {
+        "primary": "Hot meals / ready-to-eat",
+        "reason": "household cooking constraints are high",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Avoid raw/cook-heavy kits unless paired with cooking support.",
+          "Add water-safe prep guidance or water treatment.",
+          "Shock reported with no food kits in UNGRD records."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "83% without fridge"
+          ],
+          [
+            "Sisbén Hogares",
+            "hog014",
+            "45% without kitchen"
+          ],
+          [
+            "IRCA",
+            "irca / ircarural",
+            "risk value 29.5"
+          ],
+          [
+            "UNGRD",
+            "personas + kits_de_alimento",
+            "1,391 affected / 0 kits"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "117 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "1 food establishments"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44855",
+      "name": "URUMITA",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 10.560169,
+        "lon": -73.012507
+      },
+      "risk": {
+        "score": 42.9,
+        "level": "watch",
+        "fies_2024": 0.3148416626490614,
+        "poverty_2024": 0.738633482417481,
+        "ipm_2024": 0.348463701704629
+      },
+      "household": {
+        "sample_households": 1602,
+        "no_fridge_pct": 0.700374531835206,
+        "no_kitchen_pct": 0.4126092384519351
+      },
+      "water": {
+        "irca": 25.8,
+        "irca_level": "Riesgo medio",
+        "irca_rural": null,
+        "irca_rural_level": "ND"
+      },
+      "children": {
+        "beneficiaries": 628,
+        "pae_beneficiaries": 5
+      },
+      "delivery": {
+        "uds_active": 12,
+        "health_sites": 10
+      },
+      "coverage": {
+        "resa_active": 738,
+        "unidos_active": 1504
+      },
+      "shock": {
+        "people_affected": 80,
+        "families_affected": 18,
+        "food_kits_reported": 0,
+        "emergency_events": 20
+      },
+      "supply": {
+        "crop_production_tons": 7287.9,
+        "crop_count": 18,
+        "frontier_ha": 13737
+      },
+      "market": {
+        "food_establishments": 1
+      },
+      "recommendation": {
+        "primary": "Hot meals / ready-to-eat",
+        "reason": "household cooking constraints are high",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Avoid raw/cook-heavy kits unless paired with cooking support.",
+          "Add water-safe prep guidance or water treatment."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "70% without fridge"
+          ],
+          [
+            "Sisbén Hogares",
+            "hog014",
+            "41% without kitchen"
+          ],
+          [
+            "IRCA",
+            "irca / ircarural",
+            "risk value 25.8"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "12 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "1 food establishments"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44279",
+      "name": "FONSECA",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 10.886734,
+        "lon": -72.846319
+      },
+      "risk": {
+        "score": 41.2,
+        "level": "watch",
+        "fies_2024": 0.4598571958056991,
+        "poverty_2024": 0.578627257679265,
+        "ipm_2024": 0.148967548016401
+      },
+      "household": {
+        "sample_households": 2320,
+        "no_fridge_pct": 0.6836206896551724,
+        "no_kitchen_pct": 0.4163793103448276
+      },
+      "water": {
+        "irca": 3.3,
+        "irca_level": "Sin riesgo",
+        "irca_rural": null,
+        "irca_rural_level": "ND"
+      },
+      "children": {
+        "beneficiaries": 4150,
+        "pae_beneficiaries": 2916
+      },
+      "delivery": {
+        "uds_active": 106,
+        "health_sites": 43
+      },
+      "coverage": {
+        "resa_active": 1356,
+        "unidos_active": 1634
+      },
+      "shock": {
+        "people_affected": 1883,
+        "families_affected": 462,
+        "food_kits_reported": 0,
+        "emergency_events": 28
+      },
+      "supply": {
+        "crop_production_tons": 14387.5,
+        "crop_count": 22,
+        "frontier_ha": 34053.3
+      },
+      "market": {
+        "food_establishments": 8
+      },
+      "recommendation": {
+        "primary": "Hot meals / ready-to-eat",
+        "reason": "household cooking constraints are high",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Avoid raw/cook-heavy kits unless paired with cooking support.",
+          "Shock reported with no food kits in UNGRD records."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "68% without fridge"
+          ],
+          [
+            "Sisbén Hogares",
+            "hog014",
+            "42% without kitchen"
+          ],
+          [
+            "UNGRD",
+            "personas + kits_de_alimento",
+            "1,883 affected / 0 kits"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "106 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "8 food establishments"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44078",
+      "name": "BARRANCAS",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 10.958669,
+        "lon": -72.793639
+      },
+      "risk": {
+        "score": 39.2,
+        "level": "lower",
+        "fies_2024": 0.3788231451154851,
+        "poverty_2024": 0.581764798685174,
+        "ipm_2024": 0.229526753796549
+      },
+      "household": {
+        "sample_households": 2677,
+        "no_fridge_pct": 0.691819200597684,
+        "no_kitchen_pct": 0.2443033246171087
+      },
+      "water": {
+        "irca": 3.3,
+        "irca_level": "Sin riesgo",
+        "irca_rural": null,
+        "irca_rural_level": "ND"
+      },
+      "children": {
+        "beneficiaries": 4471,
+        "pae_beneficiaries": 4231
+      },
+      "delivery": {
+        "uds_active": 148,
+        "health_sites": 29
+      },
+      "coverage": {
+        "resa_active": 1494,
+        "unidos_active": 1236
+      },
+      "shock": {
+        "people_affected": 248,
+        "families_affected": 62,
+        "food_kits_reported": 0,
+        "emergency_events": 5
+      },
+      "supply": {
+        "crop_production_tons": 9500.3,
+        "crop_count": 16,
+        "frontier_ha": 40886.3
+      },
+      "market": {
+        "food_establishments": 4
+      },
+      "recommendation": {
+        "primary": "Standard food kit",
+        "reason": "risk exists but no stronger modality trigger dominates",
+        "warnings": [
+          "Avoid perishables and cold-chain items."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "69% without fridge"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "148 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "4 food establishments"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44420",
+      "name": "LA JAGUA DEL PILAR",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 10.511862,
+        "lon": -73.072638
+      },
+      "risk": {
+        "score": 38,
+        "level": "lower",
+        "fies_2024": 0.3470160835202575,
+        "poverty_2024": 0.657293512554297,
+        "ipm_2024": 0.167527077715495
+      },
+      "household": {
+        "sample_households": 832,
+        "no_fridge_pct": 0.6117788461538461,
+        "no_kitchen_pct": 0.1935096153846154
+      },
+      "water": {
+        "irca": 39.5,
+        "irca_level": "Alto riesgo",
+        "irca_rural": null,
+        "irca_rural_level": "ND"
+      },
+      "children": {
+        "beneficiaries": 124,
+        "pae_beneficiaries": 578
+      },
+      "delivery": {
+        "uds_active": 5,
+        "health_sites": 2
+      },
+      "coverage": {
+        "resa_active": 302,
+        "unidos_active": 267
+      },
+      "shock": {
+        "people_affected": 20,
+        "families_affected": 5,
+        "food_kits_reported": 0,
+        "emergency_events": 10
+      },
+      "supply": {
+        "crop_production_tons": 3679.5,
+        "crop_count": 19,
+        "frontier_ha": 11051.2
+      },
+      "market": {
+        "food_establishments": 0
+      },
+      "recommendation": {
+        "primary": "Water-safe nutrition bundle",
+        "reason": "water quality risk changes what food can be safely prepared",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Add water-safe prep guidance or water treatment."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "61% without fridge"
+          ],
+          [
+            "IRCA",
+            "irca / ircarural",
+            "risk value 39.5"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "5 active UDS"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44098",
+      "name": "DISTRACCIÓN",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 10.898414,
+        "lon": -72.887405
+      },
+      "risk": {
+        "score": 37,
+        "level": "lower",
+        "fies_2024": 0.3746312841894961,
+        "poverty_2024": 0.556970298045179,
+        "ipm_2024": 0.173979519857327
+      },
+      "household": {
+        "sample_households": 1326,
+        "no_fridge_pct": 0.6025641025641025,
+        "no_kitchen_pct": 0.19532428355957768
+      },
+      "water": {
+        "irca": 3.4,
+        "irca_level": "Sin riesgo",
+        "irca_rural": null,
+        "irca_rural_level": "ND"
+      },
+      "children": {
+        "beneficiaries": 1239,
+        "pae_beneficiaries": 1335
+      },
+      "delivery": {
+        "uds_active": 42,
+        "health_sites": 7
+      },
+      "coverage": {
+        "resa_active": 712,
+        "unidos_active": 788
+      },
+      "shock": {
+        "people_affected": 1851,
+        "families_affected": 883,
+        "food_kits_reported": 0,
+        "emergency_events": 22
+      },
+      "supply": {
+        "crop_production_tons": 8240.5,
+        "crop_count": 18,
+        "frontier_ha": 12509.8
+      },
+      "market": {
+        "food_establishments": 2
+      },
+      "recommendation": {
+        "primary": "Standard food kit",
+        "reason": "risk exists but no stronger modality trigger dominates",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Shock reported with no food kits in UNGRD records."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "60% without fridge"
+          ],
+          [
+            "UNGRD",
+            "personas + kits_de_alimento",
+            "1,851 affected / 0 kits"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "42 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "2 food establishments"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44874",
+      "name": "VILLANUEVA",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 10.608774,
+        "lon": -72.977583
+      },
+      "risk": {
+        "score": 35.4,
+        "level": "lower",
+        "fies_2024": 0.2434128222623317,
+        "poverty_2024": 0.708158053873512,
+        "ipm_2024": 0.219148450451554
+      },
+      "household": {
+        "sample_households": 2872,
+        "no_fridge_pct": 0.8575905292479109,
+        "no_kitchen_pct": 0.7078690807799443
+      },
+      "water": {
+        "irca": 13.8,
+        "irca_level": "Bajo riesgo",
+        "irca_rural": null,
+        "irca_rural_level": "ND"
+      },
+      "children": {
+        "beneficiaries": 2019,
+        "pae_beneficiaries": 4979
+      },
+      "delivery": {
+        "uds_active": 65,
+        "health_sites": 17
+      },
+      "coverage": {
+        "resa_active": 604,
+        "unidos_active": 2029
+      },
+      "shock": {
+        "people_affected": 689,
+        "families_affected": 192,
+        "food_kits_reported": 0,
+        "emergency_events": 20
+      },
+      "supply": {
+        "crop_production_tons": 6651.5,
+        "crop_count": 20,
+        "frontier_ha": 17839.3
+      },
+      "market": {
+        "food_establishments": 2
+      },
+      "recommendation": {
+        "primary": "Hot meals / ready-to-eat",
+        "reason": "household cooking constraints are high",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Avoid raw/cook-heavy kits unless paired with cooking support."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "86% without fridge"
+          ],
+          [
+            "Sisbén Hogares",
+            "hog014",
+            "71% without kitchen"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "65 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "2 food establishments"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44001",
+      "name": "RIOHACHA",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 11.528588,
+        "lon": -72.911795
+      },
+      "risk": {
+        "score": 35.3,
+        "level": "lower",
+        "fies_2024": 0.3120346840387122,
+        "poverty_2024": 0.488000354588408,
+        "ipm_2024": 0.301286990313608
+      },
+      "household": {
+        "sample_households": 3680,
+        "no_fridge_pct": 0.8160326086956522,
+        "no_kitchen_pct": 0.3690217391304348
+      },
+      "water": {
+        "irca": 10.1,
+        "irca_level": "Bajo riesgo",
+        "irca_rural": 6.3,
+        "irca_rural_level": "Bajo riesgo"
+      },
+      "children": {
+        "beneficiaries": 73561,
+        "pae_beneficiaries": 40707
+      },
+      "delivery": {
+        "uds_active": 965,
+        "health_sites": 243
+      },
+      "coverage": {
+        "resa_active": 2882,
+        "unidos_active": 6574
+      },
+      "shock": {
+        "people_affected": 15480,
+        "families_affected": 3195,
+        "food_kits_reported": 0,
+        "emergency_events": 45
+      },
+      "supply": {
+        "crop_production_tons": 65221.3,
+        "crop_count": 23,
+        "frontier_ha": 128902
+      },
+      "market": {
+        "food_establishments": 17
+      },
+      "recommendation": {
+        "primary": "Hot meals / ready-to-eat",
+        "reason": "household cooking constraints are high",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Avoid raw/cook-heavy kits unless paired with cooking support.",
+          "Shock reported with no food kits in UNGRD records."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "82% without fridge"
+          ],
+          [
+            "Sisbén Hogares",
+            "hog014",
+            "37% without kitchen"
+          ],
+          [
+            "UNGRD",
+            "personas + kits_de_alimento",
+            "15,480 affected / 0 kits"
+          ],
+          [
+            "ICBF",
+            "beneficiarios",
+            "73,561 child/program beneficiaries"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "965 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "17 food establishments"
+          ]
+        ]
+      }
+    },
+    {
+      "code": "44650",
+      "name": "SAN JUAN DEL CESAR",
+      "department": "LA GUAJIRA",
+      "coords": {
+        "lat": 10.769546,
+        "lon": -73.000629
+      },
+      "risk": {
+        "score": 35,
+        "level": "lower",
+        "fies_2024": 0.3168271719806918,
+        "poverty_2024": 0.618558325442674,
+        "ipm_2024": 0.145867230208089
+      },
+      "household": {
+        "sample_households": 2844,
+        "no_fridge_pct": 0.6729957805907173,
+        "no_kitchen_pct": 0.4272151898734177
+      },
+      "water": {
+        "irca": 3.4,
+        "irca_level": "Sin riesgo",
+        "irca_rural": null,
+        "irca_rural_level": "ND"
+      },
+      "children": {
+        "beneficiaries": 3505,
+        "pae_beneficiaries": 5444
+      },
+      "delivery": {
+        "uds_active": 142,
+        "health_sites": 72
+      },
+      "coverage": {
+        "resa_active": 2504,
+        "unidos_active": 3637
+      },
+      "shock": {
+        "people_affected": 7119,
+        "families_affected": 2043,
+        "food_kits_reported": 0,
+        "emergency_events": 22
+      },
+      "supply": {
+        "crop_production_tons": 30387.4,
+        "crop_count": 21,
+        "frontier_ha": 70153.1
+      },
+      "market": {
+        "food_establishments": 5
+      },
+      "recommendation": {
+        "primary": "Hot meals / ready-to-eat",
+        "reason": "household cooking constraints are high",
+        "warnings": [
+          "Avoid perishables and cold-chain items.",
+          "Avoid raw/cook-heavy kits unless paired with cooking support.",
+          "Shock reported with no food kits in UNGRD records."
+        ],
+        "evidence": [
+          [
+            "Sisbén Hogares",
+            "hog018",
+            "67% without fridge"
+          ],
+          [
+            "Sisbén Hogares",
+            "hog014",
+            "43% without kitchen"
+          ],
+          [
+            "UNGRD",
+            "personas + kits_de_alimento",
+            "7,119 affected / 0 kits"
+          ],
+          [
+            "ICBF UDS",
+            "estado=ACTIVA",
+            "142 active UDS"
+          ],
+          [
+            "INVIMA",
+            "municipio",
+            "5 food establishments"
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -46,39 +46,40 @@ const assets = {
 const logoStrip = [
   'SECOP II',
   'Datos Abiertos',
-  'Facturas',
+  'Ejecución visible',
   'Expedientes',
-  'Garantías',
-  'Patrones de auditoría',
+  'SIWayuu',
+  'DANE',
+  'UNGRD',
   'La Guajira',
 ]
 
 const strengths = [
-  'Pagos',
-  'Garantías',
-  'Facturas',
+  'Territorio',
+  'Hambre',
+  'Agua',
+  'Niñez',
   'SECOP',
-  'Patrones',
-  'Soportes',
-  'Contratistas',
-  'Auditable',
+  'Evidencia',
+  'Entrega visible',
+  'Trazable',
   'Sin inventar datos',
 ]
 
 const featureCards = [
   {
-    title: 'Decide qué pagos se retienen con evidencia.',
-    text: 'Convierte contratos, facturas, garantías y requisitos pendientes en una bandeja clara antes de liberar recursos.',
+    title: 'Prioriza territorios con señales públicas.',
+    text: 'Cruza hambre, agua, niñez, aislamiento, contratos y evidencia visible para saber dónde mirar primero.',
     image: shiimainFoodPacking,
   },
   {
     title: 'Lee expedientes SECOP sin perder contexto.',
-    text: 'Separa TDR, CDP, contratos, actas, facturas y soportes para que cada decisión vuelva a su fuente pública.',
+    text: 'Separa contratos, actas, soportes y ejecución financiera visible para no confundir contexto con prueba.',
     image: shiimainFoodChildren,
   },
   {
-    title: 'Prioriza patrones antes de escalar auditoría.',
-    text: 'Agrupa señales determinísticas sobre proveedores, valores, modificaciones, facturas y brechas de evidencia.',
+    title: 'Expone brechas antes de afirmar cobertura.',
+    text: 'Muestra qué fuente sostiene cada lectura y qué falta comprobar en territorio, documentos o datos públicos.',
     image: shiimainFoodRoute,
   },
 ]
@@ -91,12 +92,12 @@ const timelineItems = [
   },
   {
     title: 'Lectura de soportes',
-    text: 'Ordena documentos SECOP, facturas, actas y extracciones para saber qué fuente sostiene cada alerta.',
+    text: 'Ordena documentos SECOP, actas y extracciones para saber qué fuente sostiene cada señal.',
     image: shiimainFoodHouseholdValidation,
   },
   {
-    title: 'Compuertas de pago',
-    text: 'Marca anticipos, pagos finales, garantías y evidencia pendiente antes de enviar recursos.',
+    title: 'Cruce territorial',
+    text: 'Une hambre, agua, niñez, choque reportado y contratación pública para priorizar lectura de campo.',
     image: shiimainFoodHandoff,
   },
   {
@@ -113,16 +114,16 @@ const projectImages = [
 ]
 
 const projects = [
-  'Compuertas de pago del caso público',
-  'Expediente SECOP y facturas',
-  'Patrones de contratación y auditoría',
+  'Prioridad territorial en La Guajira',
+  'Expediente público y ejecución visible',
+  'Patrones de contratación y evidencia',
 ].map((title, index) => ({
   title,
   image: projectImages[index],
   text: [
-    'Anticipos, pagos finales, garantías y requisitos faltantes se convierten en decisiones revisables.',
-    'Contratos, TDR, CDP, facturas, actas y extracciones quedan separados para no confundir contexto con prueba.',
-    'Señales determinísticas sobre valores, proveedores, modificaciones y brechas de evidencia priorizan revisión.',
+    'Territorios Wayuu, municipios críticos y lugares priorizados se leen desde necesidad, fuente y brecha.',
+    'Contratos, TDR, CDP, actas y extracciones quedan separados para no confundir contexto con prueba.',
+    'Señales determinísticas sobre valores, proveedores, modificaciones y brechas de evidencia priorizan análisis.',
   ][index],
 }))
 
@@ -130,7 +131,7 @@ const projectFacts = [
   ['Territorio', 'La Guajira'],
   ['Caso', 'Demo público'],
   ['Fuente', 'SECOP'],
-  ['Control', 'Pagos'],
+  ['Capa', 'Inteligencia'],
   ['Señales', '167'],
   ['Estado', 'Demo público'],
 ]
@@ -144,10 +145,10 @@ const avatars = [
 ]
 
 const testimonials = [
-  'Dirección financiera',
+  'Coordinación territorial',
   'Equipo de campo',
   'Auditoría interna',
-  'Coordinación territorial',
+  'Análisis de datos',
   'Supervisión contractual',
   'Aliado implementador',
   'Mesa directiva',
@@ -172,7 +173,7 @@ const partnerLogos = [
 const faqs = [
   [
     '¿Shiimain reemplaza a SECOP?',
-    'No. Shiimain usa SECOP y otras fuentes públicas como evidencia base, pero organiza la información para decidir, priorizar y actuar.',
+    'No. Shiimain usa SECOP y otras fuentes públicas como evidencia base, pero organiza la información para priorizar análisis territorial.',
   ],
   [
     '¿Qué equipos usan el tablero?',
@@ -180,7 +181,7 @@ const faqs = [
   ],
   [
     '¿Qué hace la inteligencia de precios?',
-    'Compara valores, cantidades públicas disponibles, facturas y patrones de contratación. Si la fuente no permite calcular precio unitario, marca la brecha.',
+    'Compara valores, cantidades públicas disponibles y patrones de contratación. Si la fuente no permite calcular precio unitario, marca la brecha.',
   ],
   [
     '¿Qué pasa si falta información pública?',
@@ -188,7 +189,7 @@ const faqs = [
   ],
   [
     '¿El demo está basado en datos reales?',
-    'Sí. El demo usa contratos, archivos, facturas, extracciones y señales públicas preparadas para mostrar el flujo de trabajo del producto.',
+    'Sí. El demo usa territorios Wayuu, municipios, contratos, archivos, extracciones y señales públicas preparadas para mostrar el flujo de inteligencia.',
   ],
   [
     '¿Shiimain trabaja solo en La Guajira?',
@@ -451,9 +452,9 @@ function Hero() {
       <div className="hero-overlay" />
       <div className="hero-content">
         <motion.div className="hero-copy" initial="hidden" animate="show" variants={sourceReveal} style={{ y: contentY }}>
-          <span className="hero-pill">Control de pagos, contratos y señales públicas</span>
+          <span className="hero-pill">Inteligencia territorial y evidencia pública</span>
           <WordHeading as="h1" className="hero-title">
-            Shiimain organiza evidencia pública para decidir qué revisar antes de pagar
+            Shiimain prioriza territorios donde necesidad, evidencia y contratación se cruzan
           </WordHeading>
           <div className="hero-actions">
             <Button href="#/demo">Abrir demo</Button>
@@ -462,7 +463,7 @@ function Hero() {
             </Button>
           </div>
           <div className="hero-benefits">
-            {['Pagos retenibles', 'Garantías faltantes', 'Patrones de auditoría'].map((item) => (
+            {['Brechas de evidencia', 'Entrega visible', 'Patrones públicos'].map((item) => (
               <span key={item}>
                 <img src={assets.tick} alt="" width="16" height="17" />
                 {item}
@@ -490,7 +491,7 @@ function Hero() {
 function BrandTicker() {
   return (
     <section className="trusted-strip">
-      <p>Construido desde evidencia pública: contratos, facturas, expedientes, garantías y señales de auditoría.</p>
+      <p>Construido desde evidencia pública: territorio, contratos, expedientes, datos municipales y señales de auditoría.</p>
       <motion.div className="logo-marquee" initial="hidden" variants={sourceFade} viewport={{ once: true, amount: 0.4 }} whileInView="show">
         <div>
           {[...logoStrip, ...logoStrip, ...logoStrip].map((source, index) => (
@@ -535,7 +536,7 @@ function Features() {
       <div className="intro-top">
         <div>
           <Eyebrow>QUÉ HACEMOS</Eyebrow>
-          <WordHeading>Inteligencia de evidencia para pagos y contratos sensibles</WordHeading>
+          <WordHeading>Inteligencia territorial para programas sensibles</WordHeading>
           <div className="strengths">
             {strengths.map((strength) => (
               <span key={strength}>{strength}</span>
@@ -544,15 +545,15 @@ function Features() {
           <Button href="#/demo">Ver demo</Button>
         </div>
         <motion.div className="intro-copy" variants={sourceReveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.35 }}>
-          <h3>Ayudamos a organizaciones a decidir con soporte antes de pagar, retener, pedir evidencia o escalar revisión.</h3>
+          <h3>Ayudamos a organizaciones a priorizar dónde mirar primero y qué evidencia pública sostiene cada lectura.</h3>
           <p>
-            Shiimain toma contratos, facturas, expedientes, garantías, documentos SECOP y señales de auditoría para convertirlos en una mesa de
-            control entendible. El objetivo es que una ONG, fundación, interventoría o equipo público pueda ver qué falta, qué riesgo pesa más y
-            quién debe actuar.
+            Shiimain toma territorios, contratos, expedientes, documentos SECOP, datos municipales y señales de auditoría para convertirlos en una
+            capa de inteligencia entendible. El objetivo es que una ONG, fundación, interventoría o equipo público pueda ver qué falta, qué riesgo
+            pesa más y qué fuente sostiene la lectura.
           </p>
           <p>
-            Empezamos en La Guajira porque el caso público tiene contratos, facturas, archivos y señales suficientes para mostrar el flujo real:
-            de evidencia pública a decisiones de pago y revisión.
+            Empezamos en La Guajira porque el caso público tiene territorios Wayuu, municipios críticos, contratos, archivos y señales suficientes
+            para mostrar el flujo real: de evidencia pública a priorización territorial.
           </p>
         </motion.div>
       </div>
@@ -608,9 +609,9 @@ function Benefits() {
     <section className="section benefits-section">
       <div className="section-center">
         <Eyebrow>BENEFICIOS</Eyebrow>
-        <WordHeading>De SECOP a una decisión revisable</WordHeading>
+        <WordHeading>De datos dispersos a una lectura territorial revisable</WordHeading>
         <p className="section-lede">
-          Shiimain reduce ruido operativo: qué contrato está en alcance, qué pago se retiene, qué soporte falta y qué patrón exige revisión.
+          Shiimain reduce ruido analítico: qué territorio concentra necesidad, qué evidencia pública existe y qué brecha exige verificación.
         </p>
       </div>
       <div className="benefit-timeline" ref={timelineRef}>
@@ -650,7 +651,7 @@ function TestimonialCard({ index, item }) {
       <strong>
         <img className="testimonial-logo" src={assets.logo} alt="" />
       </strong>
-      <p>“Necesitamos ver contrato, factura, garantía y señal de riesgo antes de cerrar una decisión de pago.”</p>
+      <p>“Necesitamos entender necesidad, evidencia pública y brecha territorial antes de afirmar cobertura.”</p>
       <div>
         <img src={item.avatar} alt="" />
         <span>{item.name}</span>
@@ -670,7 +671,7 @@ function Testimonials() {
   return (
     <section className="section testimonials-section" ref={sectionRef}>
       <Eyebrow>USUARIOS</Eyebrow>
-      <WordHeading>Hecho para equipos que toman decisiones sensibles</WordHeading>
+      <WordHeading>Hecho para equipos que leen territorios sensibles</WordHeading>
       <div className="testimonial-marquee">
         <div>
           {columns.map((column, columnIndex) => (
@@ -693,7 +694,7 @@ function Projects() {
       <div className="section-row-heading">
         <div>
           <Eyebrow>CASOS</Eyebrow>
-          <WordHeading>El demo se concentra en pagos, contratos y patrones de La Guajira</WordHeading>
+          <WordHeading>El demo se concentra en territorio, contratos y patrones de La Guajira</WordHeading>
         </div>
         <Button href="#/demo">Ver demo completo</Button>
       </div>
@@ -737,7 +738,7 @@ function PartnersFaqLocation() {
       <section className="section partners-section">
         <div className="section-center">
           <Eyebrow>PARA QUIÉN</Eyebrow>
-          <WordHeading>Equipos que trabajan con gasto crítico y evidencia pública</WordHeading>
+          <WordHeading>Equipos que trabajan con territorio crítico y evidencia pública</WordHeading>
         </div>
         <motion.div className="partner-grid" initial="hidden" variants={listContainer} viewport={{ once: true, amount: 0.25 }} whileInView="show">
           {partnerLogos.map((label, index) => (

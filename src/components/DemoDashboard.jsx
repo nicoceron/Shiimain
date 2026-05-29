@@ -1,68 +1,81 @@
 import { useMemo, useState } from 'react'
-import { motion } from 'framer-motion'
 import {
   Archive,
   ArrowLeft,
-  Ban,
   BarChart3,
   CheckCircle2,
-  ClipboardCheck,
-  CircleAlert,
+  Compass,
   Database,
   FileSearch,
+  FileText,
   FileWarning,
   FolderCheck,
-  GitCompareArrows,
   Landmark,
-  ListChecks,
   MapPin,
   Network,
-  OctagonAlert,
   PackageCheck,
   Radar,
   Search,
-  ShieldAlert,
   ShieldCheck,
   ShieldQuestion,
+  Users,
   WalletCards,
 } from 'lucide-react'
 import logo from '../assets/shiimain-logo.svg'
-import apExtracts from '../data/araurayu-ap-extractions.json'
 import controlCenter from '../data/araurayu-control-center.json'
 import corruptionPatterns from '../data/araurayu-corruption-patterns.json'
-import procurementControl from '../data/araurayu-procurement-control.json'
+import daneAdjustment from '../data/dane-2025-adjustment.json'
+import municipalResponse from '../data/municipal-response.json'
 import secopAuditPatterns from '../data/secop-audit-patterns-summary.json'
+import secopHunger from '../data/secop-corruption-hunger.json'
+import foodFulfillment from '../data/secop-food-fulfillment.json'
+import territorialPriorities from '../data/territorial-priorities.json'
+import timesfmForecast from '../data/timesfm-forecast.json'
+import wayuuMvp from '../data/wayuu-mvp.json'
 
-const procurementRows = procurementControl.contracts || []
 const controlContracts = controlCenter.contracts || []
-const riskRows = corruptionPatterns.contracts || []
-const liveContractIds = new Set(procurementRows.map((contract) => contract.contract_id))
-const archiveContracts = controlContracts.filter((contract) => !liveContractIds.has(contract.id))
+const patternContracts = corruptionPatterns.contracts || []
+const fulfillmentContracts = [
+  ...(foodFulfillment.urgent_contracts || []),
+  ...(foodFulfillment.top_contracts || []),
+].filter((contract, index, rows) => rows.findIndex((item) => (item.contract_id || item.id || item.reference) === (contract.contract_id || contract.id || contract.reference)) === index)
+const wayuuTerritories = wayuuMvp.territories || []
+const priorityLocations = territorialPriorities.locations || []
+const municipalRows = municipalResponse.municipalities || []
+const hungerMunicipalities = secopHunger.municipalities || []
+const fulfillmentMunicipalities = foodFulfillment.municipalities || []
+
+const patternsByContractId = new Map(patternContracts.map((contract) => [contract.contract_id, contract]))
+const fulfillmentByContractId = new Map(
+  fulfillmentContracts.flatMap((contract) =>
+    [contract.contract_id, contract.id, contract.reference].filter(Boolean).map((key) => [key, contract]),
+  ),
+)
 
 const pageTabs = [
   {
-    key: 'payments',
-    label: 'Pagos',
-    icon: WalletCards,
-    description: 'Compuertas, bloqueos y solicitudes',
+    key: 'territory',
+    label: 'Territorio',
+    icon: MapPin,
+    description: 'Necesidad, evidencia y exposición pública',
   },
   {
     key: 'contracts',
     label: 'Contratos',
     icon: FolderCheck,
-    description: 'Activos, garantías y fuentes',
+    description: 'Contexto contractual y fuentes visibles',
   },
   {
-    key: 'intelligence',
-    label: 'Patrones',
+    key: 'signals',
+    label: 'Señales',
     icon: Radar,
-    description: 'Señales de auditoría y contratistas',
+    description: 'Patrones, entrega y brechas públicas',
   },
   {
-    key: 'archive',
-    label: 'Archivo',
-    icon: Archive,
-    description: 'SECOP histórico y contexto',
+    key: 'evidence',
+    label: 'Evidencia',
+    icon: FileSearch,
+    description: 'Documentos, extracción y calidad de fuente',
   },
   {
     key: 'sources',
@@ -72,54 +85,11 @@ const pageTabs = [
   },
 ]
 
-const paymentFilters = [
-  ['all', 'Todos'],
-  ['blocked', 'Bloqueados'],
-  ['not_due', 'No vencen'],
-  ['ready', 'Listos'],
-]
-
-const statusCopy = {
-  blocked: 'Bloqueado',
-  not_due: 'No vence todavía',
-  present: 'Listo',
-  partial: 'Parcial',
-  missing: 'Falta',
-  found: 'Encontrado',
-  found_unreadable_text: 'Encontrado, texto débil',
-}
-
-const categoryCopy = {
-  food_service: 'Alimentos / atención',
-  productive_fishing: 'Pesca productiva',
-  other: 'Otros servicios',
-}
-
-const auditCategoryCopy = {
-  'Food basket': 'Canasta alimentaria',
-  'Nutrition services': 'Servicios de nutrición',
-  'School meals / PAE': 'PAE / alimentación escolar',
-}
-
-const roleCopy = {
-  buyer_entity: 'Entidad compra',
-  supplier_direct: 'Proveedor directo',
-  supplier_group_member: 'UT participada',
-}
-
-const patternSeverityCopy = {
-  critical: 'Crítico',
-  high: 'Alto',
-  medium: 'Medio',
-  low: 'Bajo',
-  none: 'Sin patrón',
-}
-
 const auditFlagCopy = {
   'Billion-peso contract': 'Contrato de miles de millones',
   'Billion-peso food-adjacent contracts': 'Contratos alimentarios de miles de millones',
   'Direct contracting': 'Contratación directa',
-  'Direct contracting dominates food-adjacent spend': 'La contratación directa domina el gasto alimentario',
+  'Direct contracting dominates food-adjacent spend': 'Contratación directa domina gasto alimentario',
   'High hunger municipality': 'Municipio con hambre alta',
   'High hunger overlaps procurement risk': 'Hambre alta cruza con riesgo contractual',
   'Modified contract': 'Contrato modificado',
@@ -132,9 +102,18 @@ const auditFlagCopy = {
   'Very high value': 'Valor muy alto',
 }
 
-const candidateReasonCopy = {
-  high_hunger_municipality: 'Municipio con hambre alta',
-  red_flag: 'Bandera roja contractual',
+const roleCopy = {
+  buyer_entity: 'Entidad relacionada',
+  supplier_direct: 'Proveedor directo',
+  supplier_group_member: 'UT participada',
+}
+
+const sourceStatusCopy = {
+  found: 'Fuente localizada',
+  found_unreadable_text: 'Texto público débil',
+  missing: 'Brecha de fuente',
+  partial: 'Parcial',
+  present: 'Fuente localizada',
 }
 
 const normalize = (value) =>
@@ -143,12 +122,19 @@ const normalize = (value) =>
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
 
+const normalizeKey = (value) => normalize(value).replace(/[^a-z0-9]/g, '')
+
 const money = (value) => {
   const parsed = Number(value || 0)
   return Number.isFinite(parsed) ? parsed : 0
 }
 
 const formatNumber = (value) => Number(value || 0).toLocaleString('es-CO', { maximumFractionDigits: 0 })
+
+const formatDecimal = (value, digits = 1) => {
+  const parsed = Number(value)
+  return Number.isFinite(parsed) ? parsed.toLocaleString('es-CO', { maximumFractionDigits: digits }) : 'Sin dato'
+}
 
 const formatPercent = (value) => {
   const parsed = Number(value)
@@ -158,6 +144,9 @@ const formatPercent = (value) => {
 const formatMoney = (value) => {
   const number = money(value)
   if (!number) return '$0'
+  if (Math.abs(number) >= 1_000_000_000_000) {
+    return `$${(number / 1_000_000_000_000).toLocaleString('es-CO', { maximumFractionDigits: 1 })}T`
+  }
   if (Math.abs(number) >= 1_000_000_000) {
     return `$${(number / 1_000_000_000).toLocaleString('es-CO', { maximumFractionDigits: 1 })}B`
   }
@@ -181,247 +170,360 @@ const shortText = (value, length = 170) => {
 
 const auditFlag = (value) => auditFlagCopy[value] || value
 
-const auditCategory = (value) => auditCategoryCopy[value] || value
+const sourceStatus = (value) => sourceStatusCopy[value] || value || 'Fuente pública'
 
-const candidateReason = (value) => candidateReasonCopy[value] || value
-
-const gateTone = (status, missingCount = 0) => {
-  if (status === 'blocked') return 'danger'
-  if (status === 'not_due') return 'warning'
-  if (missingCount) return 'warning'
-  return 'ready'
+const scoreTone = (score) => {
+  if (score >= 80) return 'danger'
+  if (score >= 60) return 'warning'
+  return ''
 }
 
-const requirementOwner = (requirement = {}) => {
-  const label = normalize(requirement.label)
-  if (/factura|cuenta/.test(label)) return 'Proveedor'
-  if (/poliza|garantia/.test(label)) return 'Proveedor + Finanzas'
-  if (/cronograma|logistica/.test(label)) return 'Supervisor + Proveedor'
-  if (/recibidos|acta|serial|manual|ficha|informe|conformidad|componentes|certifica/.test(label)) {
-    return 'Campo + Supervisor'
+const includesQuery = (row, query) => {
+  if (!query) return true
+  return normalize(JSON.stringify(row)).includes(normalize(query))
+}
+
+const safeSources = (sources) => {
+  if (Array.isArray(sources)) {
+    return sources.map((source) => (typeof source === 'string' ? { name: source, use: 'Fuente pública de contexto' } : source))
   }
-  return 'Finanzas'
+  if (sources && typeof sources === 'object') {
+    return Object.entries(sources).map(([name, url]) => ({ name, url, use: 'Fuente pública de contexto' }))
+  }
+  return []
 }
 
-const buildPaymentRows = () =>
-  procurementRows.flatMap((procurement) =>
-    (procurement.payment_gates || []).map((gate) => {
-      const missing = (gate.requirements || []).filter((requirement) => requirement.status !== 'present')
-      const tone = gateTone(gate.status, missing.length)
-      const action =
-        gate.status === 'blocked'
-          ? gate.key === 'advance'
-            ? 'Retener anticipo'
-            : 'Retener pago'
-          : gate.status === 'not_due'
-            ? 'No programar todavía'
-            : missing.length
-              ? 'Solicitar soporte'
-              : 'Listo para revisión financiera'
+const sourceLabel = (text) =>
+  String(text || '')
+    .replace(/Plan de pagos/gi, 'Ejecución financiera pública')
+    .replace(/pagos/gi, 'ejecución financiera')
+    .replace(/pago/gi, 'ejecución financiera')
+
+const recommendationSignal = (value) => {
+  const text = String(value || '').trim()
+  const key = normalize(text)
+
+  if (!text) return 'Sin señal pública específica'
+  if (key.includes('hot meals') || key.includes('ready-to-eat') || key.includes('comidas listas') || key.includes('calientes')) {
+    return 'Alimentación preparada: verificar raciones entregadas y soporte por comunidad'
+  }
+  if (key.includes('emergency food kits') || key.includes('kits alimentarios de emergencia')) {
+    return 'Kits de emergencia: verificar familias atendidas, fechas y soportes'
+  }
+  if (key.includes('standard food kit') || key.includes('kit alimentario estandar')) {
+    return 'Paquetes alimentarios: verificar beneficiarios, fechas y contenido'
+  }
+  if (key.includes('water-safe') || key.includes('agua')) {
+    return 'Agua segura + nutrición: verificar condiciones de preparación y entrega'
+  }
+
+  return text
+}
+
+const recommendationReason = (value) => {
+  const text = String(value || '').trim()
+  const key = normalize(text)
+
+  if (!text) return 'necesidad territorial visible en fuentes públicas'
+  if (key.includes('household cooking constraints')) return 'restricciones de cocina y almacenamiento en hogares'
+  if (key.includes('recent emergency impact')) return 'impacto reciente de emergencia alto frente a ayuda alimentaria reportada'
+  if (key.includes('risk exists')) return 'riesgo presente sin una modalidad dominante en los datos'
+  if (key.includes('water quality risk')) return 'riesgo de agua que condiciona la preparación segura de alimentos'
+
+  return text
+}
+
+const recommendationWarning = (value) => {
+  const text = String(value || '').trim()
+  const key = normalize(text)
+
+  if (!text) return ''
+  if (key.includes('avoid perishables')) return 'Verificar que la entrega no dependa de perecederos o cadena de frío sin evidencia operativa.'
+  if (key.includes('avoid raw')) return 'Si hay kits crudos, confirmar apoyo para cocción, agua y combustible.'
+  if (key.includes('shock reported')) return 'Contrastar choque UNGRD con evidencia de kits o entregas reportadas.'
+  if (key.includes('coverage gap')) return 'Revisar posible brecha de cobertura: riesgo alto con baja señal activa de programas alimentarios.'
+  if (key.includes('water-safe')) return 'Exigir evidencia de agua segura o tratamiento cuando la entrega requiera preparación.'
+
+  return text
+}
+
+const buildLookup = (items, getKey) => {
+  const lookup = new Map()
+  items.forEach((item) => {
+    const key = getKey(item)
+    if (key) lookup.set(normalizeKey(key), item)
+  })
+  return lookup
+}
+
+const municipalByCode = buildLookup(municipalRows, (row) => row.code)
+const municipalByName = buildLookup(municipalRows, (row) => `${row.name}-${row.department}`)
+const hungerByName = buildLookup(hungerMunicipalities, (row) => `${row.name}-${row.department}`)
+const timesfmByCode = buildLookup(timesfmForecast.municipalities || [], (row) => row.code)
+const daneByCode = buildLookup(daneAdjustment.municipalities || [], (row) => row.code)
+const fulfillmentByName = buildLookup(fulfillmentMunicipalities, (row) => `${row.municipality}-${row.department}`)
+
+const findMunicipal = (name, department = 'LA GUAJIRA') =>
+  municipalByName.get(normalizeKey(`${name}-${department}`)) || municipalRows.find((row) => normalize(row.name) === normalize(name))
+
+const findHunger = (name, department = 'LA GUAJIRA') =>
+  hungerByName.get(normalizeKey(`${name}-${department}`)) || hungerMunicipalities.find((row) => normalize(row.name) === normalize(name))
+
+const findFulfillment = (name, department = 'La Guajira') =>
+  fulfillmentByName.get(normalizeKey(`${name}-${department}`)) || fulfillmentMunicipalities.find((row) => normalize(row.municipality) === normalize(name))
+
+const buildTerritoryRows = () => {
+  const wayuuRows = wayuuTerritories
+    .map((territory) => {
+      const municipal = findMunicipal(territory.municipality)
+      const hunger = findHunger(territory.municipality)
+      const forecast = timesfmByCode.get(normalizeKey(municipal?.code || territory.code))
+      const dane = daneByCode.get(normalizeKey(municipal?.code || territory.code))
+      const fulfillment = findFulfillment(territory.municipality)
+      const relatedLocations = priorityLocations
+        .filter((location) => normalize(location.municipality) === normalize(territory.municipality))
+        .sort((left, right) => money(right.priority_score) - money(left.priority_score))
+        .slice(0, 4)
+      const localContracts = relatedLocations.flatMap((location) => location.contracts?.top_contracts || [])
+      const evidenceGaps = territory.evidence_gaps || []
+      const score = Math.max(money(territory.priority_score), money(hunger?.audit_priority_score), money(relatedLocations[0]?.priority_score))
 
       return {
-        key: `${procurement.contract_id}:${gate.key}`,
-        action,
-        gate,
-        missing,
-        procurement,
-        tone,
+        ...territory,
+        dane,
+        evidenceGaps,
+        filterText: [
+          territory.name,
+          territory.municipality,
+          territory.primary_issue,
+          territory.next_step,
+          territory.contracts?.summary,
+          evidenceGaps.join(' '),
+          relatedLocations.map((location) => [location.name, location.recommendation_label, recommendationSignal(location.recommendation_label || location.recommendation)].join(' ')).join(' '),
+          localContracts.map((contract) => [contract.proveedor, contract.objeto, contract.flags?.join(' ')].join(' ')).join(' '),
+        ].join(' '),
+        forecast,
+        fulfillment,
+        hunger,
+        localContracts,
+        municipal,
+        relatedLocations,
+        score,
       }
-    }),
-  )
+    })
 
-const buildSourceRows = () =>
-  procurementRows.flatMap((procurement) =>
-    (procurement.source_documents || []).map((document) => ({
-      ...document,
-      contract: procurement.reference,
-      supplier: procurement.supplier_name,
+  const municipalityRows = hungerMunicipalities
+    .filter((row) => normalize(row.department) === 'la guajira')
+    .map((row) => {
+      const municipal = municipalByCode.get(normalizeKey(row.code)) || findMunicipal(row.name)
+      const forecast = timesfmByCode.get(normalizeKey(row.code))
+      const dane = daneByCode.get(normalizeKey(row.code))
+      const fulfillment = findFulfillment(row.name)
+      const relatedLocations = priorityLocations
+        .filter((location) => normalize(location.municipality) === normalize(row.name))
+        .sort((left, right) => money(right.priority_score) - money(left.priority_score))
+        .slice(0, 4)
+      const localContracts = (row.top_contracts || []).slice(0, 5)
+      const warnings = (municipal?.recommendation?.warnings || []).map(recommendationWarning).filter(Boolean)
+      const evidenceGaps = [
+        ...warnings,
+        ...(row.flags || []).includes('UNGRD shock without reported food kits') ? ['Contrastar choque UNGRD con evidencia de kits o entregas reportadas'] : [],
+        !localContracts.length ? ['Identificar contrato alimentario que nombre el municipio o lugar específico'] : [],
+      ].slice(0, 5)
+
+      return {
+        code: row.code,
+        contracts: { summary: `${formatNumber(row.contract_count)} contratos alimentarios o adyacentes mapeados.` },
+        dane,
+        department: row.department,
+        evidenceGaps,
+        filterText: [
+          row.name,
+          row.department,
+          row.relationship,
+          row.top_supplier,
+          row.flags?.join(' '),
+          recommendationSignal(municipal?.recommendation?.primary),
+          recommendationReason(municipal?.recommendation?.reason),
+          warnings.join(' '),
+          localContracts.map((contract) => [contract.proveedor, contract.objeto, contract.flags?.join(' ')].join(' ')).join(' '),
+        ].join(' '),
+        forecast,
+        fulfillment,
+        hunger: row,
+        id: `municipality-${row.code}`,
+        localContracts,
+        municipal,
+        municipality: row.name,
+        name: row.name,
+        next_step: 'Comparar necesidad municipal con contratos que nombran lugares específicos, soportes de entrega y evidencia comunitaria.',
+        plain_answers: {
+          gap: evidenceGaps[0] || 'La fuente pública requiere verificación territorial complementaria.',
+          need: municipal?.recommendation?.reason
+            ? `${row.name} combina ${formatDecimal(row.hunger_score)} de hambre con ${recommendationReason(municipal.recommendation.reason)}.`
+            : row.relationship || 'Cruce municipal de necesidad y riesgo contractual.',
+          promise: `${formatNumber(row.contract_count)} contratos públicos mapeados por municipio; proveedor más visible: ${row.top_supplier || 'sin dato'}.`,
+        },
+        primary_issue: row.relationship || 'Municipio priorizado por cruce de necesidad y contratación pública.',
+        relatedLocations,
+        score: money(row.audit_priority_score),
+        type: 'Municipio',
+        user_summary: `${row.name} se lee como una ficha municipal: necesidad, exposición contractual, evidencia visible y brechas que deben comprobarse antes de afirmar cobertura.`,
+      }
+    })
+
+  return [...wayuuRows, ...municipalityRows].sort((left, right) => right.score - left.score)
+}
+
+const buildMunicipalityRows = () =>
+  hungerMunicipalities
+    .filter((row) => normalize(row.department) === 'la guajira')
+    .map((row) => {
+      const municipal = municipalByCode.get(normalizeKey(row.code)) || findMunicipal(row.name)
+      const forecast = timesfmByCode.get(normalizeKey(row.code))
+      const dane = daneByCode.get(normalizeKey(row.code))
+      const fulfillment = findFulfillment(row.name)
+      const locations = priorityLocations
+        .filter((location) => normalize(location.municipality) === normalize(row.name))
+        .sort((left, right) => money(right.priority_score) - money(left.priority_score))
+        .slice(0, 3)
+      return {
+        ...row,
+        dane,
+        filterText: [row.name, row.department, row.relationship, row.top_supplier, row.flags?.join(' '), row.top_contracts?.map((contract) => contract.proveedor).join(' ')].join(' '),
+        forecast,
+        fulfillment,
+        locations,
+        municipal,
+      }
+    })
+    .sort((left, right) => money(right.audit_priority_score) - money(left.audit_priority_score))
+
+const buildContractRows = () =>
+  controlContracts
+    .map((contract) => {
+      const pattern = patternsByContractId.get(contract.id)
+      const fulfillment = fulfillmentByContractId.get(contract.id) || fulfillmentByContractId.get(contract.reference)
+      const municipality = contract.municipality || contract.city || fulfillment?.municipality || 'La Guajira'
+      const evidenceFiles = [
+        ...(contract.files?.evidence_files || []),
+        ...(fulfillment?.public_fulfillment?.delivery_evidence_files || []),
+      ].filter((file, index, rows) => rows.findIndex((candidate) => (candidate.document_id || candidate.url) === (file.document_id || file.url)) === index)
+      return {
+        ...contract,
+        evidenceFiles,
+        filterText: [
+          contract.reference,
+          contract.id,
+          contract.object,
+          contract.supplier_name,
+          contract.counterparty,
+          contract.entity_name,
+          municipality,
+          contract.review?.all?.join(' '),
+          fulfillment?.flags?.join(' '),
+          pattern?.signals?.map((signal) => `${signal.title} ${signal.reason}`).join(' '),
+        ].join(' '),
+        fulfillment,
+        municipality,
+        pattern,
+      }
+    })
+    .sort((left, right) => money(right.value) - money(left.value))
+
+const buildSignalRows = (municipalityRows) => {
+  const territorySignals = municipalityRows.slice(0, 8).map((row) => ({
+    id: `municipality-${row.code}`,
+    category: 'Territorio',
+    detail: `${formatDecimal(row.hunger_score)} hambre · ${formatDecimal(row.procurement_risk_score)} riesgo contractual`,
+    flags: row.flags || [],
+    municipality: row.name,
+    score: row.audit_priority_score,
+    source: 'Cruce SECOP + DANE + UNGRD',
+    supplier: row.top_supplier,
+    text: row.relationship || 'Cruce de necesidad y contratación pública',
+    title: `${row.name}, ${row.department}`,
+    type: 'territory',
+  }))
+
+  const deliverySignals = fulfillmentContracts
+    .slice(0, 6)
+    .map((contract) => ({
+      id: `delivery-${contract.id || contract.reference}`,
+      category: 'Entrega visible',
+      detail: `${formatNumber(contract.delivery_evidence_file_rows)} archivos de entrega · confianza ${formatNumber(contract.arrival_confidence)}`,
+      flags: contract.flags || [],
+      municipality: contract.municipality || contract.city,
+      score: contract.audit_score,
+      source: 'SECOP archivos + ejecución pública',
+      supplier: contract.supplier_name,
+      text: shortText(contract.object, 190),
+      title: contract.reference || contract.id,
+      type: 'delivery',
+    }))
+
+  const contractSignals = patternContracts.slice(0, 8).map((contract) => ({
+    id: `pattern-${contract.contract_id}`,
+    category: 'Patrón contractual',
+    detail: `${formatNumber(contract.signal_count)} señales · ${formatNumber(contract.evidence_ref_count)} referencias`,
+    flags: (contract.signals || []).map((signal) => signal.title),
+    municipality: contract.municipality || 'La Guajira',
+    score: contract.risk_score,
+    source: 'Reglas determinísticas sobre expediente público',
+    supplier: contract.supplier_name,
+    text: contract.signals?.[0]?.reason || 'Patrón público para revisión analítica.',
+    title: contract.reference || contract.contract_id,
+    type: 'contract',
+  }))
+
+  return [...territorySignals, ...deliverySignals, ...contractSignals].sort((left, right) => money(right.score) - money(left.score))
+}
+
+const buildEvidenceRows = () => {
+  const deliveryDocs = fulfillmentContracts.flatMap((contract) =>
+    (contract.public_fulfillment?.delivery_evidence_files || []).slice(0, 5).map((document) => ({
+      category: 'Soporte de entrega',
+      detail: `${contract.reference || contract.contract_id} · ${contract.supplier_name}`,
+      id: `${contract.contract_id || contract.id}-${document.document_id || document.name}`,
+      name: document.name || document.description || 'Documento público',
+      status: document.pdf_text_readable === false ? 'found_unreadable_text' : 'found',
+      url: document.url,
     })),
   )
 
-const buildCategoryRows = () => {
-  const byCategory = controlContracts.reduce((acc, contract) => {
-    const key = contract.service_category || 'other'
-    if (!acc[key]) acc[key] = { key, value: 0, contracts: 0 }
-    acc[key].value += money(contract.value)
-    acc[key].contracts += 1
-    return acc
-  }, {})
-  return Object.values(byCategory).sort((left, right) => right.value - left.value)
+  const controlDocs = controlContracts.flatMap((contract) =>
+    (contract.files?.evidence_files || []).slice(0, 4).map((document) => ({
+      category: 'Archivo SECOP',
+      detail: `${contract.reference || contract.id} · ${contract.supplier_name || contract.counterparty || 'Sin contraparte'}`,
+      id: `${contract.id}-${document.document_id || document.name}`,
+      name: document.name || document.description || 'Documento público',
+      status: document.pdf_text_status || 'found',
+      url: document.url || document.download_url,
+    })),
+  )
+
+  return [...deliveryDocs, ...controlDocs]
 }
 
-const buildEvidenceTaskRows = (decisionRows) =>
-  decisionRows
-    .flatMap((decision) =>
-      decision.missing.map((requirement) => ({
-        key: `${decision.key}:${requirement.label}`,
-        contractId: decision.procurement.contract_id,
-        evidence: requirement.evidence || 'Sin evidencia registrada',
-        gate: decision.gate.label,
-        label: requirement.label,
-        owner: requirementOwner(requirement),
-        reference: decision.procurement.reference,
-        supplier: decision.procurement.supplier_name,
-        tone: decision.tone,
-      })),
-    )
-    .slice(0, 12)
-
-const buildSupplierRows = () =>
-  procurementRows.map((procurement) => {
-    const supplierKey = normalize(procurement.supplier_name)
-    const supplierDocument = String(procurement.supplier_document || '')
-    const relatedContracts = controlContracts.filter((contract) => {
-      const counterparty = normalize([contract.counterparty, contract.supplier_name].join(' '))
-      return (supplierKey && counterparty.includes(supplierKey)) || (supplierDocument && String(contract.supplier_document || '').includes(supplierDocument))
-    })
-    const missingGuarantees = (procurement.guarantees || []).filter((guarantee) => guarantee.status !== 'present').length
-    const blockedAmount = (procurement.payment_gates || [])
-      .filter((gate) => gate.status === 'blocked')
-      .reduce((sum, gate) => sum + money(gate.amount), 0)
-    return {
-      blockedAmount,
-      missingGuarantees,
-      procurement,
-      relatedContracts,
-      riskCount: (procurement.risk_signals || []).length,
-    }
-  })
-
-const buildMatchRows = (decisionRows) =>
-  decisionRows.map((decision) => {
-    const requirementText = normalize(decision.missing.map((item) => item.label).join(' '))
-    const sourceDocs = decision.procurement.source_documents || []
-    const hasTerms = sourceDocs.some((doc) => ['tdr', 'contract', 'prior_study'].includes(doc.type) && doc.status !== 'missing')
-    const hasInvoice = !/factura|cuenta/.test(requirementText)
-    const hasGuarantee = !/poliza|garantia/.test(requirementText)
-    const hasDelivery = !/recibidos|acta|serial|manual|ficha|informe|conformidad|componentes|certifica/.test(requirementText)
-
-    return {
-      checks: [
-        ['Términos / contrato', hasTerms, 'TDR o contrato extraído'],
-        ['Factura / cuenta', hasInvoice, hasInvoice ? 'No bloquea esta compuerta' : 'Proveedor debe adjuntar factura'],
-        ['Garantías', hasGuarantee, hasGuarantee ? 'Sin faltante en esta compuerta' : 'Pólizas requeridas no visibles'],
-        ['Entrega / campo', hasDelivery, hasDelivery ? 'No aplica o aún no vence' : 'Falta acta, seriales o supervisor'],
-      ],
-      decision,
-    }
-  })
-
-const buildContractorRows = () => {
-  const byCounterparty = new Map()
-  controlContracts.forEach((contract) => {
-    const name = contract.counterparty || contract.supplier_name || contract.entity_name || 'Sin contraparte'
-    const key = normalize(name)
-    if (!byCounterparty.has(key)) {
-      byCounterparty.set(key, {
-        contracts: [],
-        invoices: 0,
-        name,
-        paid: 0,
-        reviews: new Set(),
-        roles: new Set(),
-        statuses: new Set(),
-        supplierDocuments: new Set(),
-        value: 0,
-      })
-    }
-    const row = byCounterparty.get(key)
-    row.contracts.push(contract)
-    row.value += money(contract.value)
-    row.invoices += money(contract.telemetry?.invoice?.invoice_total)
-    row.paid += money(contract.telemetry?.invoice?.invoice_confirmed_paid_total || contract.paid_value)
-    ;(contract.role_keys || []).forEach((role) => row.roles.add(role))
-    row.reviews.add(contract.review?.state || 'sin_estado')
-    row.statuses.add(contract.status || 'sin_estado')
-    if (contract.supplier_document) row.supplierDocuments.add(contract.supplier_document)
-  })
-
-  return [...byCounterparty.values()]
-    .map((row) => ({
-      ...row,
-      reviews: [...row.reviews],
-      riskCount: row.contracts.filter((contract) => ['review', 'watch'].includes(contract.review?.state)).length,
-      roles: [...row.roles],
-      statuses: [...row.statuses],
-      supplierDocuments: [...row.supplierDocuments],
-    }))
-    .sort((left, right) => right.value - left.value)
-}
-
-const buildArchiveCards = () => {
-  const archiveApInvoices = archiveContracts.reduce((total, contract) => total + money(contract.telemetry?.invoice?.invoice_rows), 0)
-  const reviewContracts = archiveContracts.filter((contract) => ['review', 'watch'].includes(contract.review?.state))
-  return [
-    {
-      detail: 'Historial y contexto separado del flujo de pago vivo.',
-      icon: Archive,
-      label: 'Archivo SECOP',
-      value: `${formatNumber(archiveContracts.length)} contratos`,
-    },
-    {
-      detail: 'Facturas públicas normalizadas en contratos históricos.',
-      icon: FileSearch,
-      label: 'Facturas históricas',
-      value: `${formatNumber(archiveApInvoices)} facturas`,
-    },
-    {
-      detail: 'Contratos donde la entidad del caso presta servicios o ejecuta recursos.',
-      icon: Landmark,
-      label: 'Proveedor directo',
-      value: formatNumber(archiveContracts.filter((contract) => contract.role_keys?.includes('supplier_direct')).length),
-    },
-    {
-      detail: 'Contratos donde la entidad del caso aparece dentro de una unión temporal.',
-      icon: GitCompareArrows,
-      label: 'UT participada',
-      value: formatNumber(archiveContracts.filter((contract) => contract.role_keys?.includes('supplier_group_member')).length),
-    },
-    {
-      detail: 'Contratos en revisar o vigilar por señales internas.',
-      icon: ShieldAlert,
-      label: 'Riesgos de contexto',
-      tone: 'warning',
-      value: formatNumber(reviewContracts.length),
-    },
+const buildSourceRows = () => {
+  const sourceGroups = [
+    ['Territorio Wayuu', safeSources(wayuuMvp.sources)],
+    ['Prioridad territorial', safeSources(territorialPriorities.sources)],
+    ['Respuesta municipal', safeSources(municipalResponse.sources)],
+    ['SECOP + hambre', safeSources(secopHunger.sources)],
+    ['Cumplimiento visible', safeSources(foodFulfillment.sources)],
+    ['Caso Araurayu', safeSources(controlCenter.sources)],
   ]
-}
 
-const requestMessageForDecision = (decision) => {
-  const missingLines = decision.missing.length
-    ? decision.missing.map((item) => `- ${item.label} (${requirementOwner(item)})`).join('\n')
-    : '- Sin faltantes materiales'
-
-  return [
-    `Asunto: Soportes requeridos para ${decision.procurement.reference} - ${decision.gate.label}`,
-    '',
-    `Para revisar el pago de ${formatMoney(decision.gate.amount)}, Shiimain marca la compuerta como: ${decision.action}.`,
-    '',
-    'Falta cargar o confirmar:',
-    missingLines,
-    '',
-    `Fundamento: ${decision.gate.reason}`,
-    '',
-    'Mientras la evidencia no esté completa, la recomendación operativa es no liberar el pago.',
-  ].join('\n')
-}
-
-const fieldChecklistForContract = (contract) => {
-  const assets = (contract.asset_ledger || [])
-    .map((asset) => `- ${asset.item}: ${formatNumber(asset.required_quantity)} ${asset.unit}; prueba: ${asset.proof_required}`)
-    .join('\n')
-
-  return [
-    `Checklist territorial - ${contract.reference}`,
-    `Lugar: ${contract.terms?.delivery_place || contract.location}`,
-    '',
-    assets || '- Sin activos cargados',
-    '',
-    '- Registrar UEP/comunidad beneficiaria',
-    '- Adjuntar foto y GPS por lote o activo',
-    '- Capturar firma de supervisor y responsable comunitario',
-    '- Validar serial, garantía o ficha técnica cuando aplique',
-  ].join('\n')
+  return sourceGroups.flatMap(([category, sources]) =>
+    sources.map((source, index) => ({
+      category,
+      id: `${category}-${source.name || index}`,
+      name: sourceLabel(source.name || source.dataset || source.url || `Fuente ${index + 1}`),
+      use: sourceLabel(source.use || source.url || 'Fuente pública de contexto'),
+      url: source.url,
+    })),
+  )
 }
 
 function MetricCard({ detail, icon: Icon, label, tone = '', value }) {
@@ -443,33 +545,8 @@ function StatusPill({ children, tone = '' }) {
   return <span className={`demo-status ${tone}`}>{children}</span>
 }
 
-function PatternSignal({ signal }) {
-  const Icon = signal.severity === 'high' || signal.severity === 'critical' ? OctagonAlert : CircleAlert
-  return (
-    <span className={`pattern-signal ${signal.severity || 'medium'}`}>
-      <Icon size={15} />
-      {signal.title}
-    </span>
-  )
-}
-
 function AuditFlag({ children }) {
   return <span className="audit-flag">{children}</span>
-}
-
-function AuditMiniMetric({ detail, icon: Icon, label, value }) {
-  return (
-    <article className="audit-mini-metric">
-      <span>
-        <Icon size={18} />
-      </span>
-      <div>
-        <strong>{value}</strong>
-        <small>{label}</small>
-        {detail ? <em>{detail}</em> : null}
-      </div>
-    </article>
-  )
 }
 
 function DemoHeader() {
@@ -493,7 +570,7 @@ function PageNav({ activePage, counts, onChange }) {
   return (
     <nav className="demo-page-nav" aria-label="Secciones del demo">
       {pageTabs.map(({ description, icon: Icon, key, label }) => (
-        <button className={activePage === key ? 'active' : ''} key={key} type="button" onClick={() => onChange(key)}>
+        <button aria-label={label} className={activePage === key ? 'active' : ''} key={key} type="button" onClick={() => onChange(key)}>
           <span>
             <Icon size={20} />
           </span>
@@ -506,475 +583,402 @@ function PageNav({ activePage, counts, onChange }) {
   )
 }
 
-function PaymentsPage({ decisionRows }) {
-  const [filter, setFilter] = useState('all')
-  const [query, setQuery] = useState('')
-  const [packet, setPacket] = useState(() => requestMessageForDecision(decisionRows[0]))
-  const [activeKey, setActiveKey] = useState(decisionRows[0]?.key)
-
-  const filteredRows = useMemo(() => {
-    const needle = normalize(query)
-    return decisionRows.filter((row) => {
-      const filterMatch = filter === 'all' || row.gate.status === filter || (filter === 'ready' && row.tone === 'ready')
-      const queryMatch =
-        !needle ||
-        normalize([row.procurement.reference, row.procurement.short_title, row.procurement.supplier_name, row.action].join(' ')).includes(needle)
-      return filterMatch && queryMatch
-    })
-  }, [decisionRows, filter, query])
-
-  const openItems = decisionRows.reduce((total, row) => total + row.missing.length, 0)
-  const evidenceTasks = buildEvidenceTaskRows(decisionRows)
-  const supplierRows = buildSupplierRows()
-  const matchRows = buildMatchRows(decisionRows)
-
-  return (
-    <>
-      <section className="demo-grid-page">
-        <div className="demo-panel decision-list-panel">
-          <div className="demo-panel-head">
-            <div>
-              <span className="eyebrow">Bandeja de pagos</span>
-              <h2>{formatNumber(decisionRows.length)} compuertas bajo control</h2>
-              <p>{formatNumber(openItems)} evidencias pendientes antes de liberar recursos.</p>
-            </div>
-            <label className="demo-search">
-              <Search size={18} />
-              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar contrato, proveedor o acción" />
-            </label>
-          </div>
-          <div className="demo-filter-row">
-            {paymentFilters.map(([key, label]) => (
-              <button className={filter === key ? 'active' : ''} key={key} type="button" onClick={() => setFilter(key)}>
-                {label}
-              </button>
-            ))}
-          </div>
-          <div className="decision-list">
-            {filteredRows.map((row) => (
-              <motion.article
-                className={`decision-card ${row.tone} ${activeKey === row.key ? 'active' : ''}`}
-                key={row.key}
-                layout
-                onClick={() => {
-                  setActiveKey(row.key)
-                  setPacket(requestMessageForDecision(row))
-                }}
-                whileHover={{ y: -4 }}
-              >
-                <div>
-                  <StatusPill tone={row.tone}>{row.action}</StatusPill>
-                  <strong>{row.procurement.short_title}</strong>
-                  <p>{row.procurement.reference}</p>
-                </div>
-                <div>
-                  <b>{formatMoney(row.gate.amount)}</b>
-                  <small>{row.gate.label}</small>
-                </div>
-                <ul>
-                  {(row.missing.length ? row.missing : [{ label: 'Sin faltantes materiales', status: 'present' }]).slice(0, 4).map((item) => (
-                    <li key={`${row.key}-${item.label}`}>
-                      <span className={`dot ${gateTone(item.status)}`} />
-                      {item.label}
-                    </li>
-                  ))}
-                </ul>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-        <aside className="demo-panel packet-panel">
-          <span className="eyebrow">Salida operativa</span>
-          <h2>Solicitud lista para enviar</h2>
-          <p>El demo convierte faltantes de evidencia en instrucciones accionables para proveedor, campo y finanzas.</p>
-          <textarea readOnly value={packet} />
-        </aside>
-      </section>
-      <section className="payment-ops-grid">
-        <div className="demo-panel">
-          <div className="demo-panel-head compact">
-            <span className="eyebrow">Solicitudes de evidencia</span>
-            <h2>Tareas concretas por responsable</h2>
-          </div>
-          <div className="evidence-task-list">
-            {evidenceTasks.map((task) => (
-              <article className={`evidence-task ${task.tone}`} key={task.key}>
-                <StatusPill tone={task.tone}>{task.owner}</StatusPill>
-                <strong>{task.label}</strong>
-                <p>{task.reference} · {task.gate}</p>
-                <small>{task.evidence}</small>
-              </article>
-            ))}
-          </div>
-        </div>
-        <div className="demo-panel">
-          <div className="demo-panel-head compact">
-            <span className="eyebrow">Control de proveedores</span>
-            <h2>Exposición, garantías y riesgo</h2>
-          </div>
-          <div className="supplier-control-list">
-            {supplierRows.map((row) => (
-              <article className="supplier-control-card" key={row.procurement.contract_id}>
-                <div>
-                  <strong>{row.procurement.supplier_name}</strong>
-                  <small>{row.procurement.supplier_document || 'Sin documento'}</small>
-                </div>
-                <span><b>{formatMoney(row.blockedAmount)}</b><small>retenido</small></span>
-                <span><b>{formatNumber(row.missingGuarantees)}</b><small>garantías faltantes</small></span>
-                <span><b>{formatNumber(row.riskCount)}</b><small>riesgos</small></span>
-                <span><b>{formatNumber(row.relatedContracts.length)}</b><small>contratos relacionados</small></span>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="demo-panel match-panel-demo">
-        <div className="demo-panel-head compact">
-          <span className="eyebrow">Cruce de pago en cuatro pasos</span>
-          <h2>Contrato/TDR + factura + garantías + evidencia de entrega</h2>
-        </div>
-        <div className="match-list">
-          {matchRows.map((row) => (
-            <article className="match-card" key={row.decision.key}>
-              <header>
-                <strong>{row.decision.procurement.reference}</strong>
-                <small>{row.decision.gate.label}</small>
-              </header>
-              <div className="match-grid">
-                {row.checks.map(([label, ok, detail]) => (
-                  <span className={ok ? 'ok' : 'missing'} key={`${row.decision.key}-${label}`}>
-                    {ok ? <CheckCircle2 size={16} /> : <Ban size={16} />}
-                    <b>{label}</b>
-                    <small>{detail}</small>
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    </>
-  )
+function EmptyState({ children }) {
+  return <p className="demo-empty">{children}</p>
 }
 
-function ContractsPage({ selectedContract, setSelectedContract }) {
+function TerritoryPage({ municipalityRows, territoryRows }) {
   const [query, setQuery] = useState('')
-  const [checklist, setChecklist] = useState(() => fieldChecklistForContract(selectedContract))
+  const [filter, setFilter] = useState('all')
+  const [selectedId, setSelectedId] = useState(territoryRows[0]?.id)
 
-  const filteredContracts = useMemo(() => {
-    const needle = normalize(query)
-    return procurementRows.filter((contract) =>
-      normalize([contract.reference, contract.short_title, contract.title, contract.supplier_name, contract.project].join(' ')).includes(needle),
-    )
-  }, [query])
-
-  const handleSelect = (contract) => {
-    setSelectedContract(contract.contract_id)
-    setChecklist(fieldChecklistForContract(contract))
-  }
+  const filteredTerritories = territoryRows.filter((territory) => {
+    const matchesFilter =
+      filter === 'all' ||
+      (filter === 'gap' && territory.evidenceGaps.length) ||
+      (filter === 'contracts' && territory.localContracts.length) ||
+      (filter === 'critical' && territory.score >= 75)
+    return matchesFilter && includesQuery(territory.filterText, query)
+  })
+  const selected = filteredTerritories.find((territory) => territory.id === selectedId) || filteredTerritories[0] || territoryRows[0]
+  const topLocations = selected?.relatedLocations || []
 
   return (
-    <section className="contract-workbench">
-      <aside className="demo-panel contract-list-panel">
-        <div className="demo-panel-head compact">
+    <section className="territory-page">
+      <div className="demo-panel territory-command-panel">
+        <div className="demo-panel-head">
           <div>
-            <span className="eyebrow">Contratos vivos</span>
-            <h2>{formatNumber(procurementRows.length)} compras críticas</h2>
+            <span className="eyebrow">Inteligencia territorial</span>
+            <h2>Territorios priorizados en La Guajira</h2>
+            <p>
+              Cruza municipio, territorio, necesidad, exposición contractual y brechas de evidencia para decidir dónde mirar primero.
+            </p>
           </div>
           <label className="demo-search">
             <Search size={18} />
-            <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar contrato o proveedor" />
+            <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar territorio, municipio, proveedor o bandera" />
           </label>
         </div>
-        <div className="contract-list">
-          {filteredContracts.map((contract) => (
-            <button
-              className={selectedContract.contract_id === contract.contract_id ? 'active' : ''}
-              key={contract.contract_id}
-              type="button"
-              onClick={() => handleSelect(contract)}
-            >
-              <strong>{contract.short_title}</strong>
-              <span>{contract.reference}</span>
-              <small>{contract.supplier_name}</small>
+        <div className="demo-filter-row">
+          {[
+            ['all', 'Todos'],
+            ['critical', 'Alta prioridad'],
+            ['gap', 'Brecha de evidencia'],
+            ['contracts', 'Con contrato nombrado'],
+          ].map(([key, label]) => (
+            <button className={filter === key ? 'active' : ''} key={key} type="button" onClick={() => setFilter(key)}>
+              {label}
             </button>
           ))}
         </div>
-      </aside>
-      <div className="demo-panel contract-detail-panel">
-        <div className="contract-detail-title">
-          <div>
-            <span className="eyebrow">Ficha contractual</span>
-            <h2>{selectedContract.title}</h2>
-            <p>{selectedContract.project}</p>
+        <div className="territory-overview-grid">
+          <div className="territory-priority-list territory-selector-list">
+            {filteredTerritories.map((territory) => (
+              <button className={selected?.id === territory.id ? 'active territory-priority-card' : 'territory-priority-card'} key={territory.id} type="button" onClick={() => setSelectedId(territory.id)}>
+                <span className="pattern-score">{formatNumber(territory.score)}</span>
+                <div>
+                  <header>
+                    <strong>{territory.name}</strong>
+                    <small>{territory.type} · {territory.municipality}</small>
+                  </header>
+                  <p>{territory.primary_issue}</p>
+                  <div className="municipality-risk-line">
+                    <span>Hambre {formatDecimal(territory.hunger?.hunger_score)}</span>
+                    <span>{formatNumber(territory.evidenceGaps.length)} brechas</span>
+                    <span>{formatNumber(territory.localContracts.length)} contratos nombran zona</span>
+                  </div>
+                </div>
+              </button>
+            ))}
+            {!filteredTerritories.length ? <EmptyState>No hay territorios que coincidan con esa búsqueda.</EmptyState> : null}
           </div>
-          <StatusPill tone="warning">{selectedContract.status}</StatusPill>
         </div>
-        <div className="contract-detail-metrics">
-          <MetricCard icon={Landmark} label="Valor contractual" value={formatMoney(selectedContract.value)} />
-          <MetricCard icon={PackageCheck} label={selectedContract.beneficiaries?.direct_label || 'Beneficiarios'} value={formatNumber(selectedContract.beneficiaries?.direct_count)} />
-          <MetricCard icon={ShieldAlert} label="Garantías faltantes" tone="danger" value={formatNumber((selectedContract.guarantees || []).filter((item) => item.status !== 'present').length)} />
-        </div>
-        <div className="contract-columns">
-          <section>
-            <h3>Compuertas de pago</h3>
-            {(selectedContract.payment_gates || []).map((gate) => (
-              <article className="mini-row" key={gate.key}>
-                <div>
-                  <strong>{gate.label}</strong>
-                  <span>{gate.reason}</span>
-                </div>
-                <StatusPill tone={gateTone(gate.status)}>{statusCopy[gate.status] || gate.status}</StatusPill>
-              </article>
-            ))}
-          </section>
-          <section>
-            <h3>Ledger de activos</h3>
-            {(selectedContract.asset_ledger || []).map((asset) => (
-              <article className="asset-row" key={asset.item}>
-                <div>
-                  <strong>{asset.item}</strong>
-                  <span>{asset.proof_required}</span>
-                </div>
-                <b>
-                  {formatNumber(asset.verified_quantity)} / {formatNumber(asset.required_quantity)}
-                </b>
-              </article>
-            ))}
-          </section>
-        </div>
-        <div className="contract-columns contract-extra">
-          <section>
-            <h3>Riesgos de compra</h3>
-            {(selectedContract.risk_signals || []).map((risk) => (
-              <article className="mini-row" key={risk.label}>
-                <div>
-                  <strong>{risk.label}</strong>
-                  <span>Severidad {risk.severity}</span>
-                </div>
-                <StatusPill tone={risk.severity === 'high' ? 'danger' : 'warning'}>{risk.severity}</StatusPill>
-              </article>
-            ))}
-          </section>
-          <section>
-            <h3>Términos extraídos del contrato</h3>
-            {(selectedContract.source_documents || []).slice(0, 5).map((source) => (
-              <a className="mini-row mini-row-link" href={source.url || '#'} key={source.document_id} rel="noreferrer" target="_blank">
-                <div>
-                  <strong>{source.label}</strong>
-                  <span>{[source.type, source.document_id, formatDate(source.date)].filter(Boolean).join(' · ')}</span>
-                </div>
-                <StatusPill tone={source.status === 'found' ? '' : 'warning'}>{statusCopy[source.status] || source.status}</StatusPill>
-              </a>
-            ))}
-          </section>
-        </div>
-        <div className="checklist-box">
-          <div>
-            <ClipboardCheck size={20} />
-            <strong>Checklist de campo generado</strong>
+      </div>
+
+      {selected ? (
+        <div className="demo-panel territory-detail-panel">
+          <div className="contract-detail-title">
+            <div>
+              <span className="eyebrow">Ficha de territorio</span>
+              <h2>{selected.name}, {selected.municipality}</h2>
+              <p>{selected.user_summary}</p>
+            </div>
+            <StatusPill tone={scoreTone(selected.score)}>Prioridad {formatNumber(selected.score)}</StatusPill>
           </div>
-          <textarea readOnly value={checklist} />
+
+          <div className="territory-insight-grid">
+            <article>
+              <Compass size={20} />
+              <strong>Por qué importa</strong>
+              <p>{selected.plain_answers?.need || selected.primary_issue}</p>
+            </article>
+            <article>
+              <CheckCircle2 size={20} />
+              <strong>Promesa pública visible</strong>
+              <p>{selected.plain_answers?.promise || selected.contracts?.summary || 'Sin promesa específica en la fuente pública.'}</p>
+            </article>
+            <article>
+              <FileWarning size={20} />
+              <strong>Brecha que cambia la lectura</strong>
+              <p>{selected.plain_answers?.gap || selected.evidenceGaps[0] || 'No hay brecha principal registrada.'}</p>
+            </article>
+          </div>
+
+          <div className="territory-detail-columns">
+            <section>
+              <h3>Señales municipales</h3>
+              <div className="territory-stat-list">
+                <span><b>{formatDecimal(selected.hunger?.hunger_score)}</b><small>hambre municipal</small></span>
+                <span><b>{formatDecimal(selected.hunger?.procurement_risk_score)}</b><small>riesgo contractual</small></span>
+                <span><b>{formatPercent(selected.municipal?.household?.no_fridge_pct * 100)}</b><small>hogares sin nevera</small></span>
+                <span><b>{formatNumber(selected.municipal?.shock?.people_affected)}</b><small>personas afectadas UNGRD</small></span>
+                <span><b>{formatDecimal(selected.forecast?.timesfm_score)}</b><small>score forecast</small></span>
+                <span><b>{formatDecimal(selected.dane?.dane_timesfm_score)}</b><small>DANE + forecast</small></span>
+              </div>
+            </section>
+            <section>
+              <h3>Preguntas de inteligencia</h3>
+              <ol className="next-action-list intelligence-question-list">
+                <li>{selected.next_step}</li>
+                {selected.evidenceGaps.slice(0, 4).map((gap) => <li key={gap}>{gap}</li>)}
+              </ol>
+            </section>
+          </div>
+
+          <div className="territory-detail-columns">
+            <section>
+              <h3>Lugares cercanos y qué comprobar</h3>
+              <div className="source-table compact-source-table">
+                {topLocations.map((location) => (
+                  <a href="#/demo" key={location.id} onClick={(event) => event.preventDefault()}>
+                    <span>{formatNumber(location.priority_score)}</span>
+                    <strong>{location.name}</strong>
+                    <small>{recommendationSignal(location.recommendation_label || location.recommendation)}</small>
+                  </a>
+                ))}
+                {!topLocations.length ? <EmptyState>Sin lugares de prioridad asociados en esta ficha.</EmptyState> : null}
+              </div>
+            </section>
+            <section>
+              <h3>Contratos relacionados por mención territorial</h3>
+              <div className="risk-list">
+                {selected.localContracts.slice(0, 3).map((contract) => (
+                  <article key={`${contract.id_contrato}-${contract.referencia}`}>
+                    <div>
+                      <StatusPill tone={scoreTone(contract.audit_score)}>{formatNumber(contract.audit_score)} prioridad</StatusPill>
+                      <strong>{contract.referencia || contract.id_contrato}</strong>
+                    </div>
+                    <p>{shortText(contract.objeto, 160)}</p>
+                    <small>{contract.proveedor || 'Proveedor no visible'} · {contract.valor_label || formatMoney(contract.valor)}</small>
+                    <div className="audit-flag-list">
+                      {(contract.flags || []).slice(0, 4).map((flag) => <AuditFlag key={`${contract.id_contrato}-${flag}`}>{auditFlag(flag)}</AuditFlag>)}
+                    </div>
+                  </article>
+                ))}
+                {!selected.localContracts.length ? <EmptyState>No hay contrato público que nombre este territorio exacto.</EmptyState> : null}
+              </div>
+            </section>
+          </div>
+        </div>
+      ) : null}
+
+      <div className="demo-panel territory-audit-panel">
+        <div className="demo-panel-head compact">
+          <span className="eyebrow">Municipios priorizados</span>
+          <h2>La Guajira vista como mapa de riesgo público, no como lista de contratos</h2>
+          <p>Los municipios combinan hambre, condiciones de hogar, choque reportado, valor contractual, concentración y visibilidad documental.</p>
+        </div>
+        <div className="territory-priority-list">
+          {municipalityRows.slice(0, 6).map((municipality) => (
+            <article className="territory-priority-card" key={municipality.code}>
+              <span className="pattern-score">{formatNumber(municipality.audit_priority_score)}</span>
+              <div>
+                <header>
+                  <strong>{municipality.name}, {municipality.department}</strong>
+                  <small>{municipality.total_value_label} · {formatNumber(municipality.contract_count)} contratos alimentarios o adyacentes</small>
+                </header>
+                <div className="municipality-risk-line">
+                  <span>Hambre {formatDecimal(municipality.hunger_score)}</span>
+                  <span>Contratación directa {formatPercent(municipality.direct_contract_value_pct)}</span>
+                  <span>{formatNumber(municipality.locations.length)} lugares priorizados</span>
+                  <span>{municipality.fulfillment?.urgent_count || 0} entrega urgente</span>
+                </div>
+                <p>Proveedor más visible: {municipality.top_supplier || 'Sin dato'} · {recommendationSignal(municipality.municipal?.recommendation?.primary)}.</p>
+                <div className="audit-flag-list">
+                  {(municipality.flags || []).slice(0, 4).map((flag) => <AuditFlag key={`${municipality.code}-${flag}`}>{auditFlag(flag)}</AuditFlag>)}
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
   )
 }
 
-function IntelligencePage({ categoryRows }) {
-  const maxCategory = Math.max(...categoryRows.map((row) => row.value), 1)
-  const foodContractsMissingQuantity = controlContracts.filter(
-    (contract) => contract.service_category === 'food_service' && contract.telemetry?.price_monitor?.status === 'missing_public_quantity',
-  ).length
-  const contractorRows = useMemo(() => buildContractorRows(), [])
-  const patternSummary = corruptionPatterns.summary || {}
-  const territoryAudit = secopAuditPatterns.corruption_hunger || {}
-  const territorySummary = territoryAudit.summary || {}
-  const fulfillmentAudit = secopAuditPatterns.food_fulfillment || {}
-  const fulfillmentSummary = fulfillmentAudit.summary || {}
-  const fulfillmentRows = [
-    ...(fulfillmentAudit.urgent_contracts || []),
-    ...(fulfillmentAudit.top_contracts || []),
-  ].filter((contract, index, rows) => rows.findIndex((item) => item.id === contract.id || item.reference === contract.reference) === index).slice(0, 5)
+function ContractsPage({ contractRows }) {
+  const [query, setQuery] = useState('')
+  const [contextFilter, setContextFilter] = useState('all')
+  const [selectedId, setSelectedId] = useState(contractRows[0]?.id)
+
+  const filteredContracts = contractRows.filter((contract) => {
+    const matchesFilter =
+      contextFilter === 'all' ||
+      (contextFilter === 'araurayu' && contract.role_keys?.length) ||
+      (contextFilter === 'signals' && (contract.pattern?.signals?.length || ['review', 'watch'].includes(contract.review?.state))) ||
+      (contextFilter === 'evidence' && contract.evidenceFiles.length)
+    return matchesFilter && includesQuery(contract.filterText, query)
+  })
+  const selected = filteredContracts.find((contract) => contract.id === selectedId) || filteredContracts[0] || contractRows[0]
+  const invoice = selected?.telemetry?.invoice || {}
+  const execution = selected?.telemetry?.execution || {}
+  const fulfillment = selected?.fulfillment?.public_fulfillment || {}
+
+  return (
+    <section className="contract-workbench">
+      <aside className="demo-panel contract-list-panel">
+        <div className="demo-panel-head compact">
+          <span className="eyebrow">Contratos como contexto</span>
+          <h2>{formatNumber(filteredContracts.length)} registros públicos</h2>
+        </div>
+        <label className="demo-search">
+          <Search size={18} />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar municipio, proveedor, referencia o bandera" />
+        </label>
+        <div className="demo-filter-row">
+          {[
+            ['all', 'Todos'],
+            ['araurayu', 'Caso Araurayu'],
+            ['signals', 'Con señales'],
+            ['evidence', 'Con documentos'],
+          ].map(([key, label]) => (
+            <button className={contextFilter === key ? 'active' : ''} key={key} type="button" onClick={() => setContextFilter(key)}>
+              {label}
+            </button>
+          ))}
+        </div>
+        <div className="contract-list">
+          {filteredContracts.map((contract) => (
+            <button className={selected?.id === contract.id ? 'active' : ''} key={contract.id} type="button" onClick={() => setSelectedId(contract.id)}>
+              <strong>{contract.reference || contract.id}</strong>
+              <span>{shortText(contract.supplier_name || contract.counterparty || contract.entity_name, 70)}</span>
+              <small>{contract.municipality} · {formatMoney(contract.value)}</small>
+            </button>
+          ))}
+        </div>
+      </aside>
+
+      {selected ? (
+        <div className="demo-panel contract-detail-panel">
+          <div className="contract-detail-title">
+            <div>
+              <span className="eyebrow">Ficha pública</span>
+              <h2>{selected.reference || selected.id}</h2>
+              <p>{shortText(selected.object || selected.fulfillment?.object, 260)}</p>
+            </div>
+            <StatusPill tone={selected.pattern?.risk_score >= 70 ? 'warning' : ''}>
+              {roleCopy[selected.role_keys?.[0]] || selected.role_label || 'Contexto público'}
+            </StatusPill>
+          </div>
+          <div className="contract-detail-metrics">
+            <MetricCard icon={Landmark} label="Valor contractual" value={formatMoney(selected.value)} />
+            <MetricCard icon={WalletCards} label="Ejecución financiera visible" value={formatMoney(selected.paid_value || selected.fulfillment?.paid_value || invoice.invoice_confirmed_paid_total)} />
+            <MetricCard icon={FileText} label="Archivos fuente" value={formatNumber(selected.evidenceFiles.length || selected.files?.file_rows)} />
+          </div>
+
+          <div className="contract-columns">
+            <section>
+              <h3>Contexto financiero público</h3>
+              <article className="financial-context-card">
+                <p>Estos datos describen exposición visible en fuentes públicas. No representan una recomendación operacional.</p>
+                <div className="contract-audit-meta">
+                  <span><b>{formatNumber(invoice.invoice_rows || fulfillment.invoice_rows)}</b><small>filas de factura</small></span>
+                  <span><b>{formatMoney(invoice.invoice_total || fulfillment.invoice_total)}</b><small>valor facturado</small></span>
+                  <span><b>{formatPercent(selected.telemetry?.financial_execution_percent || fulfillment.financial_execution_percent)}</b><small>ejecución financiera</small></span>
+                  <span><b>{formatNumber(execution.actual_progress_max || fulfillment.actual_progress_max)}</b><small>avance público máximo</small></span>
+                </div>
+              </article>
+            </section>
+            <section>
+              <h3>Señales asociadas</h3>
+              <div className="pattern-signal-list">
+                {(selected.pattern?.signals || selected.review?.all || []).slice(0, 8).map((signal) => {
+                  const label = typeof signal === 'string' ? signal : signal.title
+                  return <AuditFlag key={`${selected.id}-${label}`}>{label}</AuditFlag>
+                })}
+                {!(selected.pattern?.signals || selected.review?.all || []).length ? <AuditFlag>Sin señal fuerte en esta capa</AuditFlag> : null}
+              </div>
+              <p>{selected.pattern?.signals?.[0]?.reason || selected.review?.label || 'La ficha conserva el contexto público disponible para análisis.'}</p>
+            </section>
+          </div>
+
+          <div className="contract-columns contract-extra">
+            <section>
+              <h3>Alcance territorial y evidencia</h3>
+              <div className="mini-row">
+                <div>
+                  <strong>{selected.fulfillment?.municipality || selected.municipality || selected.city || 'La Guajira'}</strong>
+                  <span>{selected.fulfillment?.arrival_label || selected.service_category || 'Sin detalle territorial específico'}</span>
+                </div>
+                <MapPin size={20} />
+              </div>
+              {(fulfillment.signals || []).slice(0, 4).map((signal) => (
+                <div className="asset-row" key={signal.label}>
+                  <span>
+                    <strong>{signal.label}</strong>
+                    <small>{signal.detail}</small>
+                  </span>
+                  <b>{signal.level}</b>
+                </div>
+              ))}
+              {!fulfillment.signals?.length ? <EmptyState>Esta ficha no tiene señales de entrega estructuradas en la capa pública.</EmptyState> : null}
+            </section>
+            <section>
+              <h3>Documentos fuente</h3>
+              <div className="source-table compact-source-table">
+                {selected.evidenceFiles.slice(0, 8).map((source) => (
+                  <a href={source.url || source.download_url || '#'} key={`${selected.id}-${source.document_id || source.name || source.label}`} rel="noreferrer" target="_blank">
+                    <span>{sourceStatus(source.status || source.pdf_text_status || 'found')}</span>
+                    <strong>{source.label || source.name || source.description || 'Documento público'}</strong>
+                    <small>{source.document_id || source.category || formatDate(source.date)}</small>
+                  </a>
+                ))}
+                {!selected.evidenceFiles.length ? <EmptyState>No hay documentos fuente normalizados para esta ficha.</EmptyState> : null}
+              </div>
+            </section>
+          </div>
+        </div>
+      ) : null}
+    </section>
+  )
+}
+
+function SignalsPage({ signalRows }) {
+  const [query, setQuery] = useState('')
+  const [type, setType] = useState('all')
+  const filteredSignals = signalRows.filter((signal) => (type === 'all' || signal.type === type) && includesQuery(signal, query))
 
   return (
     <section className="intelligence-layout intelligence-expanded">
       <div className="demo-panel pattern-demo-panel">
-        <div className="demo-panel-head compact">
+        <div className="demo-panel-head">
           <div>
-            <span className="eyebrow">Patrones de corrupción</span>
-            <h2>{formatNumber(patternSummary.total_signals)} señales determinísticas</h2>
-            <p>Priorizan auditoría con evidencia pública. No acusan; muestran contratos que necesitan revisión.</p>
+            <span className="eyebrow">Señales de inteligencia</span>
+            <h2>Patrones públicos para priorizar análisis, no para ejecutar decisiones</h2>
+            <p>Las señales combinan necesidad territorial, contratación, entrega visible, concentración y calidad documental.</p>
           </div>
+          <label className="demo-search">
+            <Search size={18} />
+            <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar bandera, proveedor, municipio o contrato" />
+          </label>
+        </div>
+        <div className="demo-filter-row">
+          {[
+            ['all', 'Todas'],
+            ['territory', 'Territorio'],
+            ['delivery', 'Entrega visible'],
+            ['contract', 'Contrato'],
+          ].map(([key, label]) => (
+            <button className={type === key ? 'active' : ''} key={key} type="button" onClick={() => setType(key)}>
+              {label}
+            </button>
+          ))}
         </div>
         <div className="corruption-metrics">
-          <span><strong>{formatNumber(patternSummary.contracts_flagged)}</strong> contratos con patrón</span>
-          <span><strong>{formatNumber(patternSummary.high_signals)}</strong> señales altas</span>
-          <span><strong>{formatNumber(patternSummary.supplier_clusters)}</strong> grupos de proveedor</span>
-          <span><strong>{formatNumber(patternSummary.buyer_supplier_clusters)}</strong> pares entidad-proveedor</span>
+          <span><strong>{formatNumber(secopHunger.summary?.matched_contract_count)}</strong> contratos georreferenciados</span>
+          <span><strong>{secopHunger.summary?.total_value_label || formatMoney(secopHunger.summary?.total_value)}</strong> valor revisado</span>
+          <span><strong>{formatNumber(foodFulfillment.summary?.contracts_checked)}</strong> contratos con entrega visible</span>
+          <span><strong>{formatNumber(corruptionPatterns.summary?.total_signals)}</strong> señales del caso</span>
         </div>
         <div className="pattern-ledger-list">
-          {riskRows.slice(0, 6).map((contract) => (
-            <article className={`pattern-ledger-row ${contract.top_severity}`} key={contract.contract_id}>
-              <span className="pattern-score">{formatNumber(contract.risk_score)}</span>
+          {filteredSignals.map((signal) => (
+            <article className="pattern-ledger-row" key={signal.id}>
+              <span className="pattern-score">{formatNumber(signal.score)}</span>
               <div className="pattern-ledger-main">
                 <div>
-                  <strong>{contract.reference || contract.contract_id}</strong>
-                  <small>{shortText(contract.supplier_name, 88)}</small>
+                  <StatusPill tone={scoreTone(signal.score)}>{signal.category}</StatusPill>
+                  <strong>{signal.title}</strong>
+                  <small>{signal.municipality} · {signal.supplier || 'Sin proveedor destacado'}</small>
                 </div>
-                <p>{contract.signals?.[0]?.reason || 'Señal de auditoría disponible para revisión.'}</p>
+                <p>{signal.text}</p>
                 <div className="pattern-signal-list">
-                  {(contract.signals || []).slice(0, 3).map((signal) => (
-                    <PatternSignal key={`${contract.contract_id}-${signal.id}-${signal.title}`} signal={signal} />
-                  ))}
+                  {signal.flags.slice(0, 5).map((flag) => <AuditFlag key={`${signal.id}-${flag}`}>{auditFlag(flag)}</AuditFlag>)}
                 </div>
               </div>
               <div className="pattern-ledger-meta">
-                <span>{patternSeverityCopy[contract.top_severity] || contract.top_severity}</span>
-                <strong>{formatNumber(contract.signal_count)} señales</strong>
-                <small>{formatNumber(contract.evidence_ref_count)} evidencias</small>
+                <span>{signal.source}</span>
+                <strong>{signal.detail}</strong>
               </div>
             </article>
           ))}
         </div>
       </div>
-      <div className="demo-panel territory-audit-panel">
-        <div className="demo-panel-head compact">
-          <div>
-            <span className="eyebrow">Corrupción-hambre territorial</span>
-            <h2>Municipios donde el riesgo contractual cruza con necesidad alimentaria</h2>
-            <p>Esta capa no declara culpables: ubica contratos y municipios donde el hambre, la contratación directa, las modificaciones y la concentración justifican revisión prioritaria.</p>
-          </div>
-        </div>
-        <div className="audit-mini-grid">
-          <AuditMiniMetric detail="Filas únicas consultadas" icon={Database} label="Registros SECOP" value={formatNumber(territorySummary.fetched_unique_rows)} />
-          <AuditMiniMetric detail="Contratos mapeados a municipio" icon={MapPin} label="Cruce territorial" value={formatNumber(territorySummary.matched_contract_count)} />
-          <AuditMiniMetric detail="Gasto alimentario y adyacente" icon={WalletCards} label="Valor revisado" value={territorySummary.total_value_label || formatMoney(territorySummary.total_value)} />
-          <AuditMiniMetric detail={`${formatPercent(territorySummary.direct_contract_value_pct)} del valor revisado`} icon={ShieldAlert} label="Contratación directa" value={territorySummary.direct_contract_value_label || formatMoney(territorySummary.direct_contract_value)} />
-          <AuditMiniMetric detail="Sin contrato alimentario mapeado" icon={FileWarning} label="Vacíos municipales" value={formatNumber(territorySummary.municipalities_without_contracts)} />
-          <AuditMiniMetric detail="Hambre alta con brecha contractual" icon={OctagonAlert} label="Municipios críticos" value={formatNumber(territorySummary.high_hunger_gap_municipalities)} />
-        </div>
-        <div className="territory-audit-grid">
-          <div>
-            <div className="audit-subhead">
-              <Network size={18} />
-              <strong>Prioridad municipal</strong>
-            </div>
-            <div className="territory-priority-list">
-              {(territoryAudit.top_municipalities || []).slice(0, 5).map((municipality) => (
-                <article className="territory-priority-card" key={`${municipality.department}-${municipality.name}`}>
-                  <span className="pattern-score">{formatNumber(municipality.audit_priority_score)}</span>
-                  <div>
-                    <header>
-                      <strong>{municipality.name}, {municipality.department}</strong>
-                      <small>{municipality.total_value_label} · {formatNumber(municipality.contract_count)} contratos</small>
-                    </header>
-                    <div className="municipality-risk-line">
-                      <span>Hambre {formatNumber(municipality.hunger_score)}</span>
-                      <span>Riesgo SECOP {formatNumber(municipality.procurement_risk_score)}</span>
-                      <span>{formatPercent(municipality.direct_contract_value_pct)} directo</span>
-                    </div>
-                    <p>Proveedor principal: {municipality.top_supplier || 'Sin dato'} · {formatNumber(municipality.supplier_count)} proveedores.</p>
-                    <div className="audit-flag-list">
-                      {(municipality.flags || []).slice(0, 4).map((flag) => <AuditFlag key={`${municipality.name}-${flag}`}>{auditFlag(flag)}</AuditFlag>)}
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-          <div>
-            <div className="audit-subhead">
-              <ListChecks size={18} />
-              <strong>Frecuencia de banderas</strong>
-            </div>
-            <div className="flag-frequency-list">
-              {(territoryAudit.flag_counts || []).slice(0, 8).map((row) => (
-                <article key={row.flag}>
-                  <span>{formatNumber(row.count)}</span>
-                  <strong>{auditFlag(row.flag)}</strong>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="audit-subhead audit-subhead-spaced">
-          <OctagonAlert size={18} />
-          <strong>Contratos que suben a revisión</strong>
-        </div>
-        <div className="red-flag-contract-grid">
-          {(territoryAudit.top_red_flags || []).slice(0, 4).map((contract) => (
-            <article className="red-flag-contract-card" key={`${contract.id}-${contract.reference}`}>
-              <header>
-                <span className="pattern-score">{formatNumber(contract.audit_score)}</span>
-                <div>
-                  <strong>{contract.reference}</strong>
-                  <small>{contract.municipality || contract.city} · {auditCategory(contract.category) || 'Contrato alimentario'}</small>
-                </div>
-              </header>
-              <p>{shortText(contract.object, 150)}</p>
-              <div className="contract-audit-meta">
-                <span><b>{contract.value_label || formatMoney(contract.value)}</b><small>valor</small></span>
-                <span><b>{formatMoney(contract.paid_value)}</b><small>pagado</small></span>
-                <span><b>{shortText(contract.supplier_name, 34)}</b><small>proveedor</small></span>
-              </div>
-              <div className="audit-flag-list">
-                {(contract.flags || []).slice(0, 4).map((flag) => <AuditFlag key={`${contract.reference}-${flag}`}>{auditFlag(flag)}</AuditFlag>)}
-              </div>
-              {contract.place_hits?.length ? <small className="place-hit-line">Lugares nombrados: {contract.place_hits.join(', ')}</small> : null}
-            </article>
-          ))}
-        </div>
-      </div>
-      <div className="demo-panel delivery-audit-panel">
-        <div className="demo-panel-head compact">
-          <div>
-            <span className="eyebrow">Cumplimiento y entrega</span>
-            <h2>La evidencia financiera no reemplaza la prueba de campo</h2>
-            <p>El detector separa factura, archivos, supervisión y evidencia pública de ejecución para no tratar un pago como entrega confirmada.</p>
-          </div>
-        </div>
-        <div className="audit-mini-grid fulfillment">
-          <AuditMiniMetric detail="Contratos alimentarios revisados" icon={FileSearch} label="Muestra auditada" value={formatNumber(fulfillmentSummary.contracts_checked)} />
-          <AuditMiniMetric detail="Entrega confirmada en fuente pública" icon={CheckCircle2} label="Confirmados" value={formatNumber(fulfillmentSummary.confirmed_count)} />
-          <AuditMiniMetric detail="Sin fila pública de ejecución" icon={Ban} label="Ejecución no visible" value={formatNumber(fulfillmentSummary.no_public_execution_count)} />
-          <AuditMiniMetric detail="Con ejecución financiera" icon={WalletCards} label="Movimiento financiero" value={formatNumber(fulfillmentSummary.contracts_with_financial_execution)} />
-          <AuditMiniMetric detail="Facturas o anexos detectados" icon={Archive} label="Facturas" value={formatNumber(fulfillmentSummary.invoice_rows)} />
-          <AuditMiniMetric detail="Archivos SECOP revisados" icon={FolderCheck} label="Soportes" value={formatNumber(fulfillmentSummary.file_rows_checked)} />
-        </div>
-        <div className="fulfillment-contract-list">
-          {fulfillmentRows.map((contract) => (
-            <article className={`fulfillment-contract-card ${contract.arrival_state === 'revisar_urgente' ? 'urgent' : ''}`} key={`${contract.id}-${contract.reference}`}>
-              <header>
-                <StatusPill tone={contract.arrival_state === 'revisar_urgente' ? 'danger' : 'warning'}>{contract.state || 'Soporte documental'}</StatusPill>
-                <strong>{contract.reference}</strong>
-                <small>{contract.municipality || contract.city} · {shortText(contract.supplier_name, 70)}</small>
-              </header>
-              <p>{shortText(contract.object, 160)}</p>
-              <div className="fulfillment-metrics">
-                <span><b>{formatNumber(contract.audit_score)}</b><small>riesgo</small></span>
-                <span><b>{formatMoney(contract.value)}</b><small>valor</small></span>
-                <span><b>{formatNumber(contract.invoice_rows)}</b><small>facturas</small></span>
-                <span><b>{formatNumber(contract.delivery_evidence_file_rows)}</b><small>archivos entrega</small></span>
-                <span><b>{formatPercent(contract.financial_execution_percent)}</b><small>ejecución financiera</small></span>
-              </div>
-              <div className="audit-flag-list">
-                {(contract.flags || []).slice(0, 5).map((flag) => <AuditFlag key={`${contract.reference}-${flag}`}>{auditFlag(flag)}</AuditFlag>)}
-              </div>
-              {contract.candidate_reasons?.length ? (
-                <small className="place-hit-line">Motivo: {contract.candidate_reasons.map(candidateReason).join(' / ')}</small>
-              ) : null}
-            </article>
-          ))}
-        </div>
-      </div>
+
       <div className="demo-panel detector-backlog-panel">
         <div className="demo-panel-head compact">
-          <div>
-            <span className="eyebrow">Próximas pruebas de control</span>
-            <h2>Patrones que el demo ya deja definidos sin fingir evidencia</h2>
-            <p>Estos detectores quedan visibles como cola de trabajo: se activan cuando la fuente externa o el OCR necesario esté conectado.</p>
-          </div>
+          <span className="eyebrow">Límites explícitos</span>
+          <h2>Lo que todavía necesita otra fuente o verificación</h2>
+          <p>El producto debe conservar la diferencia entre evidencia pública, inferencia razonable y dato que falta.</p>
         </div>
         <div className="detector-backlog-grid">
           {(secopAuditPatterns.detector_backlog || []).map((detector) => (
@@ -987,131 +991,77 @@ function IntelligencePage({ categoryRows }) {
           ))}
         </div>
       </div>
-      <div className="demo-panel">
-        <div className="demo-panel-head compact">
-          <div>
-            <span className="eyebrow">Radar de precios</span>
-            <h2>Valores, cantidades públicas y exposición</h2>
-            <p>Cuando SECOP no publica cantidad suficiente, Shiimain deja explícita la brecha en vez de inventar precio unitario.</p>
-          </div>
-        </div>
-        <div className="price-bars">
-          {categoryRows.map((row) => (
-            <article key={row.key}>
-              <div>
-                <strong>{categoryCopy[row.key] || row.key}</strong>
-                <span>
-                  {formatNumber(row.contracts)} contratos · {formatMoney(row.value)}
-                </span>
-              </div>
-              <i style={{ '--bar-width': `${Math.max(8, (row.value / maxCategory) * 100)}%` }} />
-            </article>
-          ))}
-        </div>
-        <div className="intelligence-callout">
-          <Ban size={20} />
-          <div>
-            <strong>{formatNumber(foodContractsMissingQuantity)} contratos de alimentos sin cantidad pública suficiente</strong>
-            <span>Eso bloquea una comparación honesta de precio por ración y se vuelve una tarea de evidencia.</span>
-          </div>
-        </div>
-      </div>
-      <div className="demo-panel">
-        <div className="demo-panel-head compact">
-          <div>
-            <span className="eyebrow">Términos extraídos</span>
-            <h2>Contratos leídos y organizados</h2>
-            <p>Objeto, valor, estado, supervisor, pólizas, hitos de pago, facturas y documentos fuente.</p>
-          </div>
-        </div>
-        <div className="risk-list extracted-term-list">
-          {controlContracts.slice(0, 6).map((contract) => (
-            <article key={contract.id}>
-              <div>
-                <StatusPill tone={['review', 'watch'].includes(contract.review?.state) ? 'warning' : ''}>
-                  {roleCopy[contract.role_keys?.[0]] || contract.role_label || 'SECOP'}
-                </StatusPill>
-                <strong>{contract.reference || contract.id}</strong>
-                <span>{shortText(contract.counterparty || contract.supplier_name || contract.entity_name, 82)}</span>
-              </div>
-              <p>
-                {formatMoney(contract.value)} · {formatNumber(contract.telemetry?.invoice?.invoice_rows)} facturas ·{' '}
-                {formatNumber(contract.telemetry?.guarantee_count)} garantías/pólizas
-              </p>
-            </article>
-          ))}
-        </div>
-      </div>
-      <div className="demo-panel">
-        <div className="demo-panel-head compact">
-          <div>
-            <span className="eyebrow">Contratistas</span>
-            <h2>Historial de contrapartes</h2>
-            <p>Historial interno de SECOP; sanciones externas quedan como verificación obligatoria.</p>
-          </div>
-        </div>
-        <div className="contractor-dossier-list">
-          {contractorRows.slice(0, 5).map((row) => (
-            <article className="contractor-dossier-card" key={row.name}>
-              <header>
-                <div>
-                  <strong>{row.name}</strong>
-                  <small>{row.supplierDocuments.join(' / ') || 'NIT no disponible en SECOP'}</small>
-                </div>
-                <StatusPill tone={row.riskCount ? 'warning' : ''}>{row.riskCount ? `${formatNumber(row.riskCount)} alertas` : 'Sin alerta interna'}</StatusPill>
-              </header>
-              <div className="dossier-metrics">
-                <span><b>{formatNumber(row.contracts.length)}</b><small>contratos</small></span>
-                <span><b>{formatMoney(row.value)}</b><small>valor histórico</small></span>
-                <span><b>{formatMoney(row.invoices)}</b><small>facturado</small></span>
-              </div>
-              <p>{row.roles.map((role) => roleCopy[role] || role).join(' / ') || 'Sin rol'} · estados: {row.statuses.slice(0, 3).join(', ')}</p>
-              <small><ShieldQuestion size={14} /> Fuentes a conectar: SIRI, Contraloría, RUES, SECOP proveedor.</small>
-            </article>
-          ))}
-        </div>
-      </div>
     </section>
   )
 }
 
-function ArchivePage() {
-  const archiveCards = useMemo(() => buildArchiveCards(), [])
-  const archiveRows = archiveContracts
-    .slice()
-    .sort((left, right) => money(right.value) - money(left.value))
-    .slice(0, 12)
+function EvidencePage({ evidenceRows, sourceRows }) {
+  const [query, setQuery] = useState('')
+  const [status, setStatus] = useState('all')
+  const filteredEvidence = evidenceRows.filter((row) => {
+    const rowStatus = row.status || 'found'
+    const matchesStatus = status === 'all' || (status === 'weak' && ['found_unreadable_text', 'partial'].includes(rowStatus)) || (status === 'gap' && rowStatus === 'missing') || (status === 'found' && rowStatus === 'found')
+    return matchesStatus && includesQuery(row, query)
+  })
 
   return (
-    <section className="sources-layout archive-layout">
+    <section className="sources-layout evidence-layout">
       <div className="demo-panel">
-        <span className="eyebrow">Archivo SECOP</span>
-        <h2>Los otros contratos no se ignoran</h2>
-        <p>El demo separa compras vivas, facturas históricas, contratos donde participa la entidad del caso y riesgos de contexto.</p>
-        <div className="archive-card-grid">
-          {archiveCards.map(({ detail, icon: Icon, label, tone = '', value }) => (
-            <article className={`archive-card ${tone}`} key={label}>
-              <span><Icon size={20} /></span>
-              <strong>{value}</strong>
-              <b>{label}</b>
-              <small>{detail}</small>
-            </article>
-          ))}
+        <div className="demo-panel-head compact">
+          <span className="eyebrow">Calidad documental</span>
+          <h2>La plataforma muestra de dónde sale cada lectura</h2>
+          <p>Los documentos estructurados son contexto de inteligencia. Cuando el texto es débil o falta una fuente, la brecha queda visible.</p>
+        </div>
+        <div className="source-summary-grid">
+          <MetricCard icon={FileSearch} label="Archivos SECOP revisados" value={formatNumber(foodFulfillment.summary?.file_rows_checked)} />
+          <MetricCard icon={CheckCircle2} label="Textos PDF legibles" value={formatNumber((foodFulfillment.summary?.pdf_text_readable_files || 0) + (foodFulfillment.summary?.pdf_text_ocr_readable_files || 0))} />
+          <MetricCard icon={Archive} label="Archivos SECOP revisados" value={formatNumber(foodFulfillment.summary?.file_rows_checked)} />
+          <MetricCard icon={ShieldCheck} label="Soportes de entrega" value={formatNumber(foodFulfillment.summary?.contracts_with_delivery_files)} />
         </div>
       </div>
       <div className="demo-panel">
         <div className="demo-panel-head compact">
-          <div>
-            <span className="eyebrow">Contexto histórico</span>
-            <h2>{formatNumber(archiveContracts.length)} contratos fuera del flujo vivo</h2>
-          </div>
+          <span className="eyebrow">Explorador de evidencia</span>
+          <h2>{formatNumber(filteredEvidence.length)} documentos filtrados</h2>
         </div>
-        <div className="source-table archive-table">
-          {archiveRows.map((contract) => (
-            <a href={contract.url || '#'} key={contract.id} rel="noreferrer" target="_blank">
-              <span>{roleCopy[contract.role_keys?.[0]] || contract.role_label || 'SECOP'}</span>
-              <strong>{contract.reference || contract.id}</strong>
-              <small>{formatMoney(contract.value)} · {formatNumber(contract.telemetry?.invoice?.invoice_rows)} facturas</small>
+        <label className="demo-search">
+          <Search size={18} />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar fuente, contrato, proveedor o estado" />
+        </label>
+        <div className="demo-filter-row">
+          {[
+            ['all', 'Todo'],
+            ['found', 'Localizada'],
+            ['weak', 'Texto débil'],
+            ['gap', 'Brecha'],
+          ].map(([key, label]) => (
+            <button className={status === key ? 'active' : ''} key={key} type="button" onClick={() => setStatus(key)}>
+              {label}
+            </button>
+          ))}
+        </div>
+        <div className="source-table">
+          {filteredEvidence.slice(0, 20).map((row) => (
+            <a href={row.url || '#'} key={row.id} rel="noreferrer" target="_blank">
+              <span>{row.category}</span>
+              <strong>{row.name}</strong>
+              <small>{sourceStatus(row.status)} · {row.detail}</small>
+            </a>
+          ))}
+          {!filteredEvidence.length ? <EmptyState>No hay documentos con ese filtro.</EmptyState> : null}
+        </div>
+      </div>
+      <div className="demo-panel source-panel-wide">
+        <div className="demo-panel-head compact">
+          <span className="eyebrow">Fuentes principales</span>
+          <h2>Las capas vienen de datos públicos, no de una caja negra</h2>
+        </div>
+        <div className="source-table">
+          {sourceRows.slice(0, 12).map((source) => (
+            <a href={source.url || '#'} key={source.id} rel="noreferrer" target="_blank">
+              <span>{source.category}</span>
+              <strong>{source.name}</strong>
+              <small>{source.use}</small>
             </a>
           ))}
         </div>
@@ -1121,34 +1071,37 @@ function ArchivePage() {
 }
 
 function SourcesPage({ sourceRows }) {
+  const [query, setQuery] = useState('')
+  const filteredSources = sourceRows.filter((source) => includesQuery(source, query))
+
   return (
     <section className="sources-layout">
       <div className="demo-panel">
-        <span className="eyebrow">Extracción documental</span>
-        <h2>El tablero no es una maqueta vacía</h2>
-        <p>
-          Esta versión trae datos públicos del caso demo: contratos, archivos SECOP, facturas, actas y extracciones estructuradas.
-        </p>
+        <span className="eyebrow">Trazabilidad</span>
+        <h2>Fuentes públicas conectadas al demo territorial</h2>
+        <p>El demo combina fuentes territoriales, municipales, contractuales y documentales. Cada fila conserva su origen.</p>
         <div className="source-summary-grid">
-          <MetricCard icon={FileSearch} label="Documentos extraídos" value={formatNumber(apExtracts.summary?.extracted_documents)} />
-          <MetricCard icon={CheckCircle2} label="Documentos legibles" value={formatNumber(apExtracts.summary?.readable_documents)} />
-          <MetricCard icon={ShieldCheck} label="Soportes de entrega" value={formatNumber(apExtracts.summary?.model_delivery_confirmed_documents)} />
-          <MetricCard icon={Archive} label="Filas de archivo" value={formatNumber(controlCenter.search_depth?.file_rows)} />
+          <MetricCard icon={Database} label="Capas de fuente" value={formatNumber(filteredSources.length)} />
+          <MetricCard icon={Network} label="Municipios analizados" value={formatNumber(secopHunger.summary?.municipalities_with_contracts)} />
+          <MetricCard icon={Users} label="Territorios Wayuu" value={formatNumber(wayuuMvp.summary?.territory_count)} />
+          <MetricCard icon={FileText} label="Filas únicas SECOP" value={formatNumber(secopHunger.summary?.fetched_unique_rows)} />
         </div>
       </div>
       <div className="demo-panel">
         <div className="demo-panel-head compact">
-          <div>
-            <span className="eyebrow">Documentos fuente</span>
-            <h2>{formatNumber(sourceRows.length)} soportes clave</h2>
-          </div>
+          <span className="eyebrow">Catálogo de fuentes</span>
+          <h2>Buscar por capa o uso</h2>
         </div>
-        <div className="source-table">
-          {sourceRows.slice(0, 12).map((source) => (
-            <a href={source.url || '#'} key={`${source.contract}-${source.document_id}`} rel="noreferrer" target="_blank">
-              <span>{source.contract}</span>
-              <strong>{source.label}</strong>
-              <small>{statusCopy[source.status] || source.status || 'Sin estado'}</small>
+        <label className="demo-search">
+          <Search size={18} />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar DANE, SECOP, SIWayuu, UNGRD..." />
+        </label>
+        <div className="source-table source-catalog-table">
+          {filteredSources.map((source) => (
+            <a href={source.url || '#'} key={source.id} rel="noreferrer" target="_blank">
+              <span>{source.category}</span>
+              <strong>{source.name}</strong>
+              <small>{source.use}</small>
             </a>
           ))}
         </div>
@@ -1158,69 +1111,60 @@ function SourcesPage({ sourceRows }) {
 }
 
 export function DemoDashboard() {
-  const [activePage, setActivePage] = useState('payments')
-  const [selectedContractId, setSelectedContractId] = useState(procurementRows[0]?.contract_id)
+  const [activePage, setActivePage] = useState('territory')
 
-  const decisionRows = useMemo(() => buildPaymentRows(), [])
+  const territoryRows = useMemo(() => buildTerritoryRows(), [])
+  const municipalityRows = useMemo(() => buildMunicipalityRows(), [])
+  const contractRows = useMemo(() => buildContractRows(), [])
+  const signalRows = useMemo(() => buildSignalRows(municipalityRows), [municipalityRows])
+  const evidenceRows = useMemo(() => buildEvidenceRows(), [])
   const sourceRows = useMemo(() => buildSourceRows(), [])
-  const categoryRows = useMemo(() => buildCategoryRows(), [])
-  const selectedContract = procurementRows.find((contract) => contract.contract_id === selectedContractId) || procurementRows[0]
-  const blockedRows = decisionRows.filter((row) => row.gate.status === 'blocked')
-  const missingGuarantees = procurementRows.reduce(
-    (total, contract) => total + (contract.guarantees || []).filter((guarantee) => guarantee.status !== 'present').length,
-    0,
-  )
-  const auditSignalTotal =
-    (corruptionPatterns.summary?.total_signals || 0) +
-    (secopAuditPatterns.corruption_hunger?.red_flag_contract_count || 0) +
-    (secopAuditPatterns.food_fulfillment?.summary?.contracts_checked || 0)
+
+  const highPriorityMunicipalities = municipalityRows.filter((row) => money(row.audit_priority_score) >= 75).length
+  const evidenceGapTerritories = territoryRows.filter((row) => row.evidenceGaps.length).length
+  const visibleDeliveryContracts = foodFulfillment.summary?.contracts_with_delivery_files || 0
   const counts = {
-    archive: formatNumber(archiveContracts.length),
-    contracts: formatNumber(procurementRows.length),
-    intelligence: formatNumber(
-      (corruptionPatterns.summary?.high_priority_contracts || 0) +
-        (secopAuditPatterns.corruption_hunger?.red_flag_contract_count || 0) +
-        (secopAuditPatterns.food_fulfillment?.summary?.urgent_count || 0),
-    ),
-    payments: `${formatNumber(blockedRows.length)}/${formatNumber(decisionRows.length)}`,
+    contracts: formatNumber(contractRows.length),
+    evidence: formatNumber(evidenceRows.length),
+    signals: formatNumber(signalRows.length),
     sources: formatNumber(sourceRows.length),
+    territory: formatNumber(territoryRows.length),
   }
 
   return (
     <>
       <DemoHeader />
       <main className="demo-shell">
-        <section className="demo-hero">
+        <section className="demo-hero territory-demo-hero">
           <div>
             <a className="demo-back-link" href="#home">
               <ArrowLeft size={17} />
               Volver al inicio
             </a>
             <span className="eyebrow eyebrow-dark">Demo Shiimain</span>
-            <h1>Control de pagos, contratos y patrones públicos para La Guajira</h1>
+            <h1>Inteligencia territorial para leer necesidad, evidencia y contratación pública</h1>
             <p>
-              Un tablero para decidir qué se paga, qué se retiene, qué evidencia falta y qué señales de auditoría priorizan revisión.
+              Un demo para priorizar territorios de La Guajira con señales públicas: hambre, agua, niñez, choque reportado,
+              documentos visibles, entrega verificable y exposición contractual.
             </p>
           </div>
           <div className="demo-hero-card">
-            <span>Actualizado {formatDate(controlCenter.generated_at)}</span>
-            <strong>{formatMoney(procurementControl.summary?.total_value)}</strong>
-            <small>valor controlado en compras críticas del caso público</small>
+            <span>Actualizado {formatDate(wayuuMvp.generated_at || secopHunger.generated_at)}</span>
+            <strong>{formatNumber(highPriorityMunicipalities)}</strong>
+            <small>municipios de La Guajira con prioridad territorial alta</small>
           </div>
         </section>
         <section className="demo-metrics-grid">
-          <MetricCard detail={`${formatNumber(blockedRows.length)} bloqueos activos`} icon={WalletCards} label="Compuertas de pago" tone="danger" value={formatNumber(decisionRows.length)} />
-          <MetricCard detail="Botes, motores, kits y seguridad" icon={PackageCheck} label="Activos por verificar" value={formatNumber(procurementControl.summary?.required_assets)} />
-          <MetricCard detail="Anticipos, cumplimiento, calidad y RCE" icon={ShieldAlert} label="Garantías faltantes" tone="warning" value={formatNumber(missingGuarantees)} />
-          <MetricCard detail="Caso público + corrupción-hambre + cumplimiento de entrega" icon={BarChart3} label="Señales y contratos auditados" value={formatNumber(auditSignalTotal)} />
+          <MetricCard detail="Corregimientos y fichas Wayuu del caso" icon={Compass} label="Territorios leídos" value={formatNumber(territoryRows.length)} />
+          <MetricCard detail="Contratos con cruce municipal y señales públicas" icon={BarChart3} label="Cruce SECOP-territorio" value={formatNumber(secopHunger.summary?.matched_contract_count)} />
+          <MetricCard detail="Territorios con tareas de fuente explícitas" icon={FileWarning} label="Brechas de evidencia" tone="warning" value={formatNumber(evidenceGapTerritories)} />
+          <MetricCard detail="Contratos alimentarios con archivos asociados" icon={PackageCheck} label="Entrega visible" value={formatNumber(visibleDeliveryContracts)} />
         </section>
         <PageNav activePage={activePage} counts={counts} onChange={setActivePage} />
-        {activePage === 'payments' ? <PaymentsPage decisionRows={decisionRows} /> : null}
-        {activePage === 'contracts' ? (
-          <ContractsPage selectedContract={selectedContract} setSelectedContract={setSelectedContractId} />
-        ) : null}
-        {activePage === 'intelligence' ? <IntelligencePage categoryRows={categoryRows} /> : null}
-        {activePage === 'archive' ? <ArchivePage /> : null}
+        {activePage === 'territory' ? <TerritoryPage municipalityRows={municipalityRows} territoryRows={territoryRows} /> : null}
+        {activePage === 'contracts' ? <ContractsPage contractRows={contractRows} /> : null}
+        {activePage === 'signals' ? <SignalsPage signalRows={signalRows} /> : null}
+        {activePage === 'evidence' ? <EvidencePage evidenceRows={evidenceRows} sourceRows={sourceRows} /> : null}
         {activePage === 'sources' ? <SourcesPage sourceRows={sourceRows} /> : null}
       </main>
     </>

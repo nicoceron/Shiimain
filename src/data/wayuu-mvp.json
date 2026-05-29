@@ -1,0 +1,773 @@
+{
+  "generated_at": "2026-05-25T21:38:29.799Z",
+  "organization_context": {
+    "territorial_footprint": {
+      "title": "Zona Norte Extrema de la Alta Guajira / Wuinpumüin",
+      "population_estimate": 61022,
+      "summary": "La capa de 9 corregimientos representa el territorio indígena y la zona de incidencia principal; no agota los focos políticos, culturales ni programáticos de Araurayu.",
+      "names": [
+        "Taroa",
+        "Puerto Estrella",
+        "Nazareth",
+        "Punta Espada",
+        "Castilletes",
+        "Puerto López",
+        "Siapana",
+        "Guaretpá/Walepá",
+        "Tawaira"
+      ]
+    },
+    "seats": [
+      {
+        "name": "Sede principal",
+        "place": "Nazareth",
+        "coords": {
+          "lat": 12.45,
+          "lon": -71.35
+        }
+      },
+      {
+        "name": "Sede Riohacha",
+        "place": "Carrera 11 #13-20",
+        "coords": {
+          "lat": 11.5444,
+          "lon": -72.9072
+        }
+      }
+    ],
+    "action_areas": [
+      "Ordenamiento territorial",
+      "Educación propia e intercultural",
+      "Cultura",
+      "Educación para adultos y formación universitaria",
+      "Seguridad alimentaria",
+      "Vivienda y suministro de agua potable",
+      "Salud y saneamiento básico",
+      "Medio ambiente",
+      "Administración de justicia propia",
+      "Fortalecimiento institucional y organizativo",
+      "Apoyo a tercera edad e infancia",
+      "Tecnologías y comunicaciones"
+    ],
+    "cultural_structure": {
+      "eirrukuu_identified": 20,
+      "predominant": [
+        "Uliana",
+        "Epieyu",
+        "Ipuana",
+        "Apushana"
+      ],
+      "reference_places": [
+        "Serranía de la Makuira",
+        "ojos de agua / ii",
+        "cementerios de E’irruku",
+        "yuja / huertas"
+      ]
+    },
+    "project_focal_points": [
+      {
+        "name": "Gobierno propio Findeter 2021",
+        "places": [
+          "Puerto Estrella",
+          "Taroa",
+          "Punta Espada",
+          "Puerto López"
+        ]
+      },
+      {
+        "name": "Cartografía social / jóvenes palabreros",
+        "places": [
+          "Siapana",
+          "Tawaira",
+          "Nazareth",
+          "Puerto Estrella",
+          "Carrizal",
+          "Taroa"
+        ]
+      },
+      {
+        "name": "Talleres y debida diligencia 2025",
+        "places": [
+          "Zona Norte Extrema de la Alta Guajira"
+        ]
+      },
+      {
+        "name": "Sedes institucionales",
+        "places": [
+          "Nazareth",
+          "Riohacha"
+        ]
+      }
+    ]
+  },
+  "summary": {
+    "territory_count": 9,
+    "water_sources_without_intervention": 632,
+    "improved_water_sources": 15,
+    "secop_target_contract_count": 51,
+    "secop_target_contract_value": 202192989619,
+    "secop_latest_date": "2026-01-30"
+  },
+  "territories": [
+    {
+      "id": "taroa",
+      "code": "44847001",
+      "name": "Taroa",
+      "aliases": [
+        "TAROA"
+      ],
+      "coords": {
+        "lat": 12.37,
+        "lon": -71.91
+      },
+      "type": "Corregimiento",
+      "municipality": "Uribia",
+      "department": "La Guajira",
+      "priority_score": 70.6,
+      "primary_issue": "No aparece contrato directo con el nombre del territorio.",
+      "next_step": "Buscar por rancherías de Taroa y pedir a municipio/operador el listado de entregas con soporte fotográfico.",
+      "user_summary": "Taroa se debe leer como una ficha de decisión, no como un tablero técnico: qué necesita, qué prometieron y qué falta comprobar antes de afirmar que llegó la ayuda.",
+      "metrics": {
+        "water_main_source": "Pozo artesanal",
+        "water_source_outside_pct": 28.7,
+        "water_without_intervention": 47,
+        "improved_water_sources": 0,
+        "first_childhood_pct": 17.9,
+        "school_absence_11_17_pct": 31.8,
+        "dependency_index": 79.7,
+        "icbf_first_infancy_units": 3,
+        "icbf_mai_units": 4,
+        "malnutrition_cases": 0
+      },
+      "plain_answers": {
+        "need": "La señal combina agua, niñez y aislamiento: 47 fuentes de agua sin intervención y 28.7% de viviendas con fuente principal fuera de la comunidad; 17.9% de población en primera infancia y 31.8% de jóvenes 11-17 con inasistencia escolar.",
+        "promise": "3 UDS de primera infancia",
+        "gap": "El dato público no dice si la comida llegó a cada ranchería ni si la fuente de agua funciona hoy. La ficha convierte ese hueco en tarea de verificación."
+      },
+      "evidence_gaps": [
+        "Entrega de alimentos por ranchería",
+        "Evidencia fotográfica fechada",
+        "Listado de familias beneficiarias",
+        "Estado operativo de fuentes de agua",
+        "Contrato o acta que nombre la comunidad exacta"
+      ],
+      "contracts": {
+        "summary": "Sin coincidencias por nombre de corregimiento en SECOP desde 2023.",
+        "items": []
+      }
+    },
+    {
+      "id": "tawaira-taguaira",
+      "code": "44847009",
+      "name": "Tawaira / Taguaira",
+      "aliases": [
+        "TAWAIRA",
+        "TAGUAIRA",
+        "TAGUAYRA"
+      ],
+      "coords": {
+        "lat": 12.1684,
+        "lon": -71.4313
+      },
+      "type": "Corregimiento / centro poblado",
+      "municipality": "Uribia",
+      "department": "La Guajira",
+      "priority_score": 69.9,
+      "primary_issue": "Agua crítica: muchas fuentes siguen sin intervención.",
+      "next_step": "Verificar en Tawaira / Taguaira cuáles fuentes de agua siguen sin funcionar y pedir evidencia de carrotanque, pozo o planta.",
+      "user_summary": "Tawaira / Taguaira se debe leer como una ficha de decisión, no como un tablero técnico: qué necesita, qué prometieron y qué falta comprobar antes de afirmar que llegó la ayuda.",
+      "metrics": {
+        "water_main_source": "Jagüey o reservorio",
+        "water_source_outside_pct": 56.5,
+        "water_without_intervention": 188,
+        "improved_water_sources": 1,
+        "first_childhood_pct": 17.8,
+        "school_absence_11_17_pct": 26.4,
+        "dependency_index": 82.8,
+        "icbf_first_infancy_units": 30,
+        "icbf_mai_units": 57,
+        "malnutrition_cases": 1
+      },
+      "plain_answers": {
+        "need": "La señal combina agua, niñez y aislamiento: 188 fuentes de agua sin intervención y 56.5% de viviendas con fuente principal fuera de la comunidad; 17.8% de población en primera infancia y 26.4% de jóvenes 11-17 con inasistencia escolar.",
+        "promise": "1 fuente de agua mejorada reportada. 30 UDS de primera infancia",
+        "gap": "El dato público no dice si la comida llegó a cada ranchería ni si la fuente de agua funciona hoy. La ficha convierte ese hueco en tarea de verificación."
+      },
+      "evidence_gaps": [
+        "Entrega de alimentos por ranchería",
+        "Evidencia fotográfica fechada",
+        "Listado de familias beneficiarias",
+        "Estado operativo de fuentes de agua",
+        "Contrato o acta que nombre la comunidad exacta"
+      ],
+      "contracts": {
+        "summary": "Sin coincidencias por nombre de corregimiento en SECOP desde 2023.",
+        "items": []
+      }
+    },
+    {
+      "id": "puerto-estrella",
+      "code": "44847002",
+      "name": "Puerto Estrella",
+      "aliases": [
+        "PUERTO ESTRELLA"
+      ],
+      "coords": {
+        "lat": 12.347091,
+        "lon": -71.311683
+      },
+      "type": "Corregimiento / centro poblado",
+      "municipality": "Uribia",
+      "department": "La Guajira",
+      "priority_score": 69.7,
+      "primary_issue": "Promesas existentes: falta comprobar entrega real.",
+      "next_step": "Verificar en Puerto Estrella cuáles fuentes de agua siguen sin funcionar y pedir evidencia de carrotanque, pozo o planta.",
+      "user_summary": "Puerto Estrella se debe leer como una ficha de decisión, no como un tablero técnico: qué necesita, qué prometieron y qué falta comprobar antes de afirmar que llegó la ayuda.",
+      "metrics": {
+        "water_main_source": "Jagüey o reservorio",
+        "water_source_outside_pct": 53.5,
+        "water_without_intervention": 86,
+        "improved_water_sources": 0,
+        "first_childhood_pct": 16.1,
+        "school_absence_11_17_pct": 29.2,
+        "dependency_index": 57.4,
+        "icbf_first_infancy_units": 24,
+        "icbf_mai_units": 31,
+        "malnutrition_cases": 2
+      },
+      "plain_answers": {
+        "need": "La señal combina agua, niñez y aislamiento: 86 fuentes de agua sin intervención y 53.5% de viviendas con fuente principal fuera de la comunidad; 16.1% de población en primera infancia y 29.2% de jóvenes 11-17 con inasistencia escolar.",
+        "promise": "24 UDS de primera infancia. 4 contratos SECOP que mencionan el territorio",
+        "gap": "El dato público no dice si la comida llegó a cada ranchería ni si la fuente de agua funciona hoy. La ficha convierte ese hueco en tarea de verificación."
+      },
+      "evidence_gaps": [
+        "Entrega de alimentos por ranchería",
+        "Evidencia fotográfica fechada",
+        "Listado de familias beneficiarias",
+        "Estado operativo de fuentes de agua"
+      ],
+      "contracts": {
+        "summary": "Hay 4 coincidencias recientes en SECOP; eso es promesa o gasto reportado, no prueba de entrega.",
+        "items": [
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL\nDE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN EDUCATIVA JULIA\nSIERRA IGUARÁN ;INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL\nINTERNADO DE SIAPANA; INSTITUCION ETNOEDUCATIVA INTEGRAL\nRURAL VILLA FÁTIMA; INSTITUCIÓN ETNOEDUCATIVA INTEGRAL\nRURAL CARASUA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL\nDE NUESTRA SEÑORA DE FÁTIMA DE NAZARETH; INSTITUCIÓN\nETNOEDUCATIVA INTEGRAL RURAL PUERTO ESTRELLA; INSTITUCION\nETNOEDUCTIVA INTEGRAL RURAL ISABEL JUSAYU; LA I",
+            "supplier": "UT EINUSHI WAKUAIPA",
+            "value": 29876518211,
+            "status": "En ejecución",
+            "modality": "Contratación Directa (con ofertas)",
+            "date": "2024-02-09",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5614642&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          },
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL INTERNADO DE SIAPANA; INSTITUCION EDUCATIVA JULIA SIERRA IGUARAN; CENTRO EDUCATIVO SAN JOSE Y LA INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL INTERNADO DE PUERTO ESTRELLA UBICADAS EN EL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE A",
+            "supplier": "UNIÓN TEMPORAL ALII APÜLAA CANASTA 2025",
+            "value": 9774480358,
+            "status": "Modificado",
+            "modality": "Contratación directa",
+            "date": "2025-02-13",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7627898&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          },
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN EL\nCENTRO ETNOEDUCATIVO INTEGRAL RURAL CARASUA; CENTRO\nETNOEDUCATIVO INTEGRAL RURAL DE VILLA FATIMA; CENTRO\nETNOEDUCATIVO INTEGRAL RURAL NUESTRA SEÑORA DE FATIMA;\nINSTITUCION ETNOEDUCATIVA INTEGRAL RURAL DE PUERTO ESTRELLA;\nCENTRO ETNOEDUCATIVO INTEGRAL RURAL ISABEL JUSAYU; CENTRO\nETNOEDUCATIVO INTEGRAL RURAL DE MEDIA LUNA JAWOU DURANTE LA\nVIGENCIA 2024; DE CONFORMIDAD CON LO DISPUESTO EN LA RESOLUCIÓN\n18858 DE 2018; POR LA CUAL SE E",
+            "supplier": "FUNDACION AYATASHI WAYAA",
+            "value": 8550533969,
+            "status": "Modificado",
+            "modality": "Contratación Directa (con ofertas)",
+            "date": "2024-02-06",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5578643&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          },
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN LA INSTITUCIÓN\nETNOEDUCATIVA INTEGRAL RURAL DE NUESTRA SEÑORA DE FÁTIMA DE NAZARETH;\nINSTITUCIÓN ETNOEDUCATIVO INTEGRAL RURAL CARASUA MADRE LAURA; INSTITUCIÓN\nETNOEDUCATIVA INTEGRAL RURAL PUERTO ESTRELLA; INSTITUCIÓN ETNOEDUCTIVA\nINTEGRAL RURAL ISABEL JUSAYU DURANTE LA VIGENCIA 2026; DE CONFORMIDAD CON LO\nDISPUESTO EN LA RESOLUCIÓN 18858 DE 2018; POR LA CUAL SE EXPIDEN LOS\nLINEAMIENTOS TÉCNICOS - ADMINISTRATIVOS; LOS ESTÁNDARES Y LAS",
+            "supplier": "ASOCIACION DE AUTORIDADES WAYUU ANATAS WAKUAIPA",
+            "value": 5778974958,
+            "status": "En ejecución",
+            "modality": "Contratación directa",
+            "date": "2026-01-28",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9830907&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "castilletes",
+      "code": "44847008",
+      "name": "Castilletes",
+      "aliases": [
+        "CASTILLETES"
+      ],
+      "coords": {
+        "lat": 11.85,
+        "lon": -71.32
+      },
+      "type": "Corregimiento",
+      "municipality": "Uribia",
+      "department": "La Guajira",
+      "priority_score": 65.7,
+      "primary_issue": "Promesas existentes: falta comprobar entrega real.",
+      "next_step": "Cruzar los contratos de Castilletes con actas, fotos y listado real de familias o UDS beneficiarias.",
+      "user_summary": "Castilletes se debe leer como una ficha de decisión, no como un tablero técnico: qué necesita, qué prometieron y qué falta comprobar antes de afirmar que llegó la ayuda.",
+      "metrics": {
+        "water_main_source": "Jagüey o reservorio",
+        "water_source_outside_pct": 54.6,
+        "water_without_intervention": 41,
+        "improved_water_sources": 1,
+        "first_childhood_pct": 16.1,
+        "school_absence_11_17_pct": 35.2,
+        "dependency_index": 83.2,
+        "icbf_first_infancy_units": 6,
+        "icbf_mai_units": 17,
+        "malnutrition_cases": 0
+      },
+      "plain_answers": {
+        "need": "La señal combina agua, niñez y aislamiento: 41 fuentes de agua sin intervención y 54.6% de viviendas con fuente principal fuera de la comunidad; 16.1% de población en primera infancia y 35.2% de jóvenes 11-17 con inasistencia escolar.",
+        "promise": "1 fuente de agua mejorada reportada. 6 UDS de primera infancia. 1 contratos SECOP que mencionan el territorio. SIWayuu registra una solución en Romana, Findeter - Araurayu, contrato 003 de 2023, entrega prevista 2025-06-30.",
+        "gap": "El dato público no dice si la comida llegó a cada ranchería ni si la fuente de agua funciona hoy. La ficha convierte ese hueco en tarea de verificación."
+      },
+      "evidence_gaps": [
+        "Entrega de alimentos por ranchería",
+        "Evidencia fotográfica fechada",
+        "Listado de familias beneficiarias",
+        "Estado operativo de fuentes de agua"
+      ],
+      "contracts": {
+        "summary": "Hay 1 coincidencias recientes en SECOP; eso es promesa o gasto reportado, no prueba de entrega.",
+        "items": [
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "AUNAR ESFUERZOS TÉCNICOS; ADMINISTRATIVOS Y FINANCIEROS PARA EL FORTALECIMIENTO DE COMPETENCIAS PRODUCTIVAS Y ESQUEMAS ASOCIATIVOS PARA LA COMERCIALIZACIÓN A LOS PESCADORES ARTESANALES DE LOS CORREGIMIENTOS DE PUERTO LÓPEZ Y CASTILLETES EN EL MUNICIPIO DE URIBIA",
+            "supplier": "FUNDACION PARA EL DESARROLLO URIBIA VIVE",
+            "value": 762137414,
+            "status": "En ejecución",
+            "modality": "Contratación régimen especial (con ofertas)",
+            "date": "2023-06-09",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.4423460&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "guarerpa-walepa",
+      "code": "44847004",
+      "name": "Guarerpa / Walepá",
+      "aliases": [
+        "GUARERPA",
+        "WALEPA",
+        "WALEPÁ",
+        "GUARETPA"
+      ],
+      "coords": {
+        "lat": 12.27,
+        "lon": -71.62
+      },
+      "type": "Corregimiento",
+      "municipality": "Uribia",
+      "department": "La Guajira",
+      "priority_score": 62.7,
+      "primary_issue": "Niñez y escuela: inasistencia alta para revisar con líderes.",
+      "next_step": "Buscar por rancherías de Guarerpa / Walepá y pedir a municipio/operador el listado de entregas con soporte fotográfico.",
+      "user_summary": "Guarerpa / Walepá se debe leer como una ficha de decisión, no como un tablero técnico: qué necesita, qué prometieron y qué falta comprobar antes de afirmar que llegó la ayuda.",
+      "metrics": {
+        "water_main_source": "Pozo artesanal",
+        "water_source_outside_pct": 31,
+        "water_without_intervention": 27,
+        "improved_water_sources": 0,
+        "first_childhood_pct": 13.1,
+        "school_absence_11_17_pct": 45.7,
+        "dependency_index": 82.2,
+        "icbf_first_infancy_units": 2,
+        "icbf_mai_units": 24,
+        "malnutrition_cases": 0
+      },
+      "plain_answers": {
+        "need": "La señal combina agua, niñez y aislamiento: 27 fuentes de agua sin intervención y 31.0% de viviendas con fuente principal fuera de la comunidad; 13.1% de población en primera infancia y 45.7% de jóvenes 11-17 con inasistencia escolar.",
+        "promise": "2 UDS de primera infancia",
+        "gap": "El dato público no dice si la comida llegó a cada ranchería ni si la fuente de agua funciona hoy. La ficha convierte ese hueco en tarea de verificación."
+      },
+      "evidence_gaps": [
+        "Entrega de alimentos por ranchería",
+        "Evidencia fotográfica fechada",
+        "Listado de familias beneficiarias",
+        "Estado operativo de fuentes de agua",
+        "Contrato o acta que nombre la comunidad exacta"
+      ],
+      "contracts": {
+        "summary": "Sin coincidencias por nombre de corregimiento en SECOP desde 2023.",
+        "items": []
+      }
+    },
+    {
+      "id": "puerto-lopez",
+      "code": "44847005",
+      "name": "Puerto López",
+      "aliases": [
+        "PUERTO LOPEZ",
+        "PUERTO LÓPEZ"
+      ],
+      "coords": {
+        "lat": 11.92,
+        "lon": -71.48
+      },
+      "type": "Corregimiento",
+      "municipality": "Uribia",
+      "department": "La Guajira",
+      "priority_score": 62.5,
+      "primary_issue": "Cobertura visible baja: pocas UDS registradas.",
+      "next_step": "Cruzar los contratos de Puerto López con actas, fotos y listado real de familias o UDS beneficiarias.",
+      "user_summary": "Puerto López se debe leer como una ficha de decisión, no como un tablero técnico: qué necesita, qué prometieron y qué falta comprobar antes de afirmar que llegó la ayuda.",
+      "metrics": {
+        "water_main_source": "Jagüey o reservorio",
+        "water_source_outside_pct": 28.3,
+        "water_without_intervention": 35,
+        "improved_water_sources": 0,
+        "first_childhood_pct": 15.6,
+        "school_absence_11_17_pct": 12.3,
+        "dependency_index": 42.5,
+        "icbf_first_infancy_units": 0,
+        "icbf_mai_units": 0,
+        "malnutrition_cases": 0
+      },
+      "plain_answers": {
+        "need": "La señal combina agua, niñez y aislamiento: 35 fuentes de agua sin intervención y 28.3% de viviendas con fuente principal fuera de la comunidad; 15.6% de población en primera infancia y 12.3% de jóvenes 11-17 con inasistencia escolar.",
+        "promise": "1 contratos SECOP que mencionan el territorio",
+        "gap": "El dato público no dice si la comida llegó a cada ranchería ni si la fuente de agua funciona hoy. La ficha convierte ese hueco en tarea de verificación."
+      },
+      "evidence_gaps": [
+        "Entrega de alimentos por ranchería",
+        "Evidencia fotográfica fechada",
+        "Listado de familias beneficiarias",
+        "Estado operativo de fuentes de agua"
+      ],
+      "contracts": {
+        "summary": "Hay 1 coincidencias recientes en SECOP; eso es promesa o gasto reportado, no prueba de entrega.",
+        "items": [
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "AUNAR ESFUERZOS TÉCNICOS; ADMINISTRATIVOS Y FINANCIEROS PARA EL FORTALECIMIENTO DE COMPETENCIAS PRODUCTIVAS Y ESQUEMAS ASOCIATIVOS PARA LA COMERCIALIZACIÓN A LOS PESCADORES ARTESANALES DE LOS CORREGIMIENTOS DE PUERTO LÓPEZ Y CASTILLETES EN EL MUNICIPIO DE URIBIA",
+            "supplier": "FUNDACION PARA EL DESARROLLO URIBIA VIVE",
+            "value": 762137414,
+            "status": "En ejecución",
+            "modality": "Contratación régimen especial (con ofertas)",
+            "date": "2023-06-09",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.4423460&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "nazareth",
+      "code": "44847007",
+      "name": "Nazareth",
+      "aliases": [
+        "NAZARETH"
+      ],
+      "coords": {
+        "lat": 12.174914,
+        "lon": -71.283524
+      },
+      "type": "Corregimiento / centro poblado",
+      "municipality": "Uribia",
+      "department": "La Guajira",
+      "priority_score": 62,
+      "primary_issue": "Agua crítica: muchas fuentes siguen sin intervención.",
+      "next_step": "Verificar en Nazareth cuáles fuentes de agua siguen sin funcionar y pedir evidencia de carrotanque, pozo o planta.",
+      "user_summary": "Nazareth se debe leer como una ficha de decisión, no como un tablero técnico: qué necesita, qué prometieron y qué falta comprobar antes de afirmar que llegó la ayuda.",
+      "metrics": {
+        "water_main_source": "Pozo artesanal",
+        "water_source_outside_pct": 35.5,
+        "water_without_intervention": 109,
+        "improved_water_sources": 8,
+        "first_childhood_pct": 14.7,
+        "school_absence_11_17_pct": 42.5,
+        "dependency_index": 60.2,
+        "icbf_first_infancy_units": 12,
+        "icbf_mai_units": 54,
+        "malnutrition_cases": 0
+      },
+      "plain_answers": {
+        "need": "La señal combina agua, niñez y aislamiento: 109 fuentes de agua sin intervención y 35.5% de viviendas con fuente principal fuera de la comunidad; 14.7% de población en primera infancia y 42.5% de jóvenes 11-17 con inasistencia escolar.",
+        "promise": "8 fuentes de agua mejorada reportadas. 12 UDS de primera infancia. 4 contratos SECOP que mencionan el territorio. SIWayuu registra varias fuentes mejoradas en Nazareth; hay que confirmar si están operando y a qué rancherías llegan.",
+        "gap": "El dato público no dice si la comida llegó a cada ranchería ni si la fuente de agua funciona hoy. La ficha convierte ese hueco en tarea de verificación."
+      },
+      "evidence_gaps": [
+        "Entrega de alimentos por ranchería",
+        "Evidencia fotográfica fechada",
+        "Listado de familias beneficiarias",
+        "Estado operativo de fuentes de agua"
+      ],
+      "contracts": {
+        "summary": "Hay 4 coincidencias recientes en SECOP; eso es promesa o gasto reportado, no prueba de entrega.",
+        "items": [
+          {
+            "entity": "EMPRESA SOCIAL DEL ESTADO HOSPITAL DE NAZARETH",
+            "title": "REPOSICIÓN DE LA INFRAESTRUCTURA FÍSICA DE LA E.S.E HOSPITAL DE NAZARETH DEL MUNICIPIO DE URIBIA.",
+            "supplier": "JC ARQUITECTURA Y CONSTRUCCION S.A.S",
+            "value": 35087496733,
+            "status": "Aprobado",
+            "modality": "Contratación régimen especial (con ofertas)",
+            "date": "2023-10-24",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.4880457&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          },
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL\nDE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN EDUCATIVA JULIA\nSIERRA IGUARÁN ;INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL\nINTERNADO DE SIAPANA; INSTITUCION ETNOEDUCATIVA INTEGRAL\nRURAL VILLA FÁTIMA; INSTITUCIÓN ETNOEDUCATIVA INTEGRAL\nRURAL CARASUA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL\nDE NUESTRA SEÑORA DE FÁTIMA DE NAZARETH; INSTITUCIÓN\nETNOEDUCATIVA INTEGRAL RURAL PUERTO ESTRELLA; INSTITUCION\nETNOEDUCTIVA INTEGRAL RURAL ISABEL JUSAYU; LA I",
+            "supplier": "UT EINUSHI WAKUAIPA",
+            "value": 29876518211,
+            "status": "En ejecución",
+            "modality": "Contratación Directa (con ofertas)",
+            "date": "2024-02-09",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5614642&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          },
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DE SERVICIO PARA LA PROMOCION E IMPLEMENTACION DE ESTRATEGIAS DE DESARROLLO PEDAGOGICO EN LA INSTITUCION EDUCATIVA RURAL INTERNADO DE NAZARETH E INSTITUCIÓN EDUCATIVA INTERNADO\nINDÍGENA SAN JOSÉ DE URIBIA; PARA EL CALENDARIO ACADÉMICO 2024.\nEDUCATIVA RURAL INTERNADO DE NAZARETH E INSTITUCIÓN EDUCATIVA INTERNADO\nINDÍGENA SAN JOSÉ DE URIBIA; PARA EL CALENDARIO ACADÉMICO 2024",
+            "supplier": "Diocesis de Riohacha",
+            "value": 10997643610,
+            "status": "En ejecución",
+            "modality": "Contratación Directa (con ofertas)",
+            "date": "2024-02-20",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5623807&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          },
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DE SERVICIO PARA LA PROMOCION E IMPLEMENTACION DE ESTRATEGIAS\nDE DESARROLLO PEDAGOGICO EN LA INSTITUCIÓN EDUCATIVA RURAL INTERNADO\nINDÍGENA NAZARETH E INSTITUCION EDUCATIVA INTERNADO INDIGENA SAN JOSE DEL\nMUNICIPIO DE URIBIA; PARA EL CALENDARIO ACADÉMICO 2025",
+            "supplier": "Diocesis de Riohacha",
+            "value": 10890804584,
+            "status": "En ejecución",
+            "modality": "Contratación directa",
+            "date": "2025-03-06",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7782494&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "punta-espada",
+      "code": "44847003",
+      "name": "Punta Espada",
+      "aliases": [
+        "PUNTA ESPADA"
+      ],
+      "coords": {
+        "lat": 12.215,
+        "lon": -71.08
+      },
+      "type": "Corregimiento",
+      "municipality": "Uribia",
+      "department": "La Guajira",
+      "priority_score": 60.5,
+      "primary_issue": "No aparece contrato directo con el nombre del territorio.",
+      "next_step": "Buscar por rancherías de Punta Espada y pedir a municipio/operador el listado de entregas con soporte fotográfico.",
+      "user_summary": "Punta Espada se debe leer como una ficha de decisión, no como un tablero técnico: qué necesita, qué prometieron y qué falta comprobar antes de afirmar que llegó la ayuda.",
+      "metrics": {
+        "water_main_source": "Pozo artesanal",
+        "water_source_outside_pct": 27,
+        "water_without_intervention": 24,
+        "improved_water_sources": 1,
+        "first_childhood_pct": 17.4,
+        "school_absence_11_17_pct": 16.7,
+        "dependency_index": 79.3,
+        "icbf_first_infancy_units": 1,
+        "icbf_mai_units": 4,
+        "malnutrition_cases": 0
+      },
+      "plain_answers": {
+        "need": "La señal combina agua, niñez y aislamiento: 24 fuentes de agua sin intervención y 27.0% de viviendas con fuente principal fuera de la comunidad; 17.4% de población en primera infancia y 16.7% de jóvenes 11-17 con inasistencia escolar.",
+        "promise": "1 fuente de agua mejorada reportada. 1 UDS de primera infancia. SIWayuu registra una solución de agua mejorada asociada a Jorroloupa/Talinapa, Findeter - Todos por La Guajira, contrato 003 de 2024, entrega prevista 2025-07-31.",
+        "gap": "El dato público no dice si la comida llegó a cada ranchería ni si la fuente de agua funciona hoy. La ficha convierte ese hueco en tarea de verificación."
+      },
+      "evidence_gaps": [
+        "Entrega de alimentos por ranchería",
+        "Evidencia fotográfica fechada",
+        "Listado de familias beneficiarias",
+        "Estado operativo de fuentes de agua",
+        "Contrato o acta que nombre la comunidad exacta"
+      ],
+      "contracts": {
+        "summary": "Sin coincidencias por nombre de corregimiento en SECOP desde 2023.",
+        "items": []
+      }
+    },
+    {
+      "id": "siapana",
+      "code": "44847006",
+      "name": "Siapana",
+      "aliases": [
+        "SIAPANA",
+        "SANTA FE DE SIAPANA"
+      ],
+      "coords": {
+        "lat": 12.057364,
+        "lon": -71.325335
+      },
+      "type": "Corregimiento / centro poblado",
+      "municipality": "Uribia",
+      "department": "La Guajira",
+      "priority_score": 60.1,
+      "primary_issue": "Promesas existentes: falta comprobar entrega real.",
+      "next_step": "Verificar en Siapana cuáles fuentes de agua siguen sin funcionar y pedir evidencia de carrotanque, pozo o planta.",
+      "user_summary": "Siapana se debe leer como una ficha de decisión, no como un tablero técnico: qué necesita, qué prometieron y qué falta comprobar antes de afirmar que llegó la ayuda.",
+      "metrics": {
+        "water_main_source": "Ojo de agua o nacimiento",
+        "water_source_outside_pct": 43.4,
+        "water_without_intervention": 75,
+        "improved_water_sources": 4,
+        "first_childhood_pct": 17.9,
+        "school_absence_11_17_pct": 20.9,
+        "dependency_index": 76.3,
+        "icbf_first_infancy_units": 30,
+        "icbf_mai_units": 21,
+        "malnutrition_cases": 0
+      },
+      "plain_answers": {
+        "need": "La señal combina agua, niñez y aislamiento: 75 fuentes de agua sin intervención y 43.4% de viviendas con fuente principal fuera de la comunidad; 17.9% de población en primera infancia y 20.9% de jóvenes 11-17 con inasistencia escolar.",
+        "promise": "4 fuentes de agua mejorada reportadas. 30 UDS de primera infancia. 4 contratos SECOP que mencionan el territorio",
+        "gap": "El dato público no dice si la comida llegó a cada ranchería ni si la fuente de agua funciona hoy. La ficha convierte ese hueco en tarea de verificación."
+      },
+      "evidence_gaps": [
+        "Entrega de alimentos por ranchería",
+        "Evidencia fotográfica fechada",
+        "Listado de familias beneficiarias",
+        "Estado operativo de fuentes de agua"
+      ],
+      "contracts": {
+        "summary": "Hay 4 coincidencias recientes en SECOP; eso es promesa o gasto reportado, no prueba de entrega.",
+        "items": [
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN\nÉTNICA DE LA INSTITUCION ETNOEDUCTIVA INTEGRAL RURAL ISABEL JUSAYU ;\nINSTITUCION ETNOEDUCATIVA INTEGRAL RURAL ANA FLOR FERNANDEZ; INSTITUCIÓN\nETNOEDUCATIVA INTEGRAL RURAL WEPIAPA>A; INSTITUCION ETNOEDUCATIVA INTEGRAL\nRURAL MEDIA LUNA- JAWOU; INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL INTERNADO\nDE SIAPANA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL CARASUA MADRE LAURA;\nINSTITUCION ETNOEDUCATIVA INTEGRAL RURAL DE NUESTRA SEÑOR",
+            "supplier": "ASOCIACION DE AUTORIDADES WAYUU ANATAS WAKUAIPA",
+            "value": 38481666096,
+            "status": "Modificado",
+            "modality": "Contratación directa",
+            "date": "2026-01-30",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9896767&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          },
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL\nDE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN EDUCATIVA JULIA\nSIERRA IGUARÁN ;INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL\nINTERNADO DE SIAPANA; INSTITUCION ETNOEDUCATIVA INTEGRAL\nRURAL VILLA FÁTIMA; INSTITUCIÓN ETNOEDUCATIVA INTEGRAL\nRURAL CARASUA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL\nDE NUESTRA SEÑORA DE FÁTIMA DE NAZARETH; INSTITUCIÓN\nETNOEDUCATIVA INTEGRAL RURAL PUERTO ESTRELLA; INSTITUCION\nETNOEDUCTIVA INTEGRAL RURAL ISABEL JUSAYU; LA I",
+            "supplier": "UT EINUSHI WAKUAIPA",
+            "value": 29876518211,
+            "status": "En ejecución",
+            "modality": "Contratación Directa (con ofertas)",
+            "date": "2024-02-09",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5614642&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          },
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL INTERNADO DE SIAPANA; INSTITUCION EDUCATIVA JULIA SIERRA IGUARAN; CENTRO EDUCATIVO SAN JOSE Y LA INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL INTERNADO DE PUERTO ESTRELLA UBICADAS EN EL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE A",
+            "supplier": "UNIÓN TEMPORAL ALII APÜLAA CANASTA 2025",
+            "value": 9774480358,
+            "status": "Modificado",
+            "modality": "Contratación directa",
+            "date": "2025-02-13",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7627898&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          },
+          {
+            "entity": "MUNICIPIO DE URIBIA",
+            "title": "PRESTACIÓN DE SERVICIOS PARA LA EJECUCIÓN DEL PROGRAMA DE ALIMENTACIÓN ESCOLAR (PAE) DIRIGIDO A PUEBLOS INDÍGENAS EN LAS INSTITUCIONES ETNOEDUCATIVAS INTEGRALES RURALES INTERNADO DE SIAPANA MARIA COLOMBIA; INTERNADO INDIGENA ANA FLOR FERNANDEZ BRUGES; INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL LUCINDA URIANA E INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL NUMAINA MALEIWA; DURANTE EL CALENDARIO ESCOLAR 2025; EN CUMPLIMIENTO DE LO ESTABLECIDO EN LA RESOLUCIÓN 18858 DE 2018.",
+            "supplier": "Fundacion Jeketi Achiijirawa Wayuu",
+            "value": 6430259173,
+            "status": "Modificado",
+            "modality": "Contratación directa",
+            "date": "2025-02-14",
+            "url": {
+              "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7634294&isFromPublicArea=True&isModal=true&asPopupView=true"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "SECOP muestra contrato o promesa administrativa; no demuestra entrega real en ranchería.",
+    "SIWayuu mejora la granularidad, pero algunas capas usan coordenadas aproximadas o tienen cobertura desigual.",
+    "Los casos de desnutrición por corregimiento tienen subregistro territorial: en boletines oficiales muchas filas aparecen sin corregimiento."
+  ],
+  "sources": [
+    {
+      "name": "Araurayu - ¿Quiénes Somos?",
+      "url": "https://araurayuwayuu.org/quienes-somos/",
+      "use": "Misión, visión, sedes y áreas de acción declaradas por la asociación."
+    },
+    {
+      "name": "Araurayu - Pueblo Wayuu",
+      "url": "https://araurayuwayuu.org/pueblo-wayuu/",
+      "use": "Territorio de incidencia, población aproximada, E’irruku y referentes culturales de la ZNEAG."
+    },
+    {
+      "name": "Araurayu - Decreto Wuinpumüin",
+      "url": "https://araurayuwayuu.org/noticia-3/",
+      "use": "Lista actual de los 9 corregimientos del territorio indígena de la Zona Norte Extrema."
+    },
+    {
+      "name": "Caracterización del Pueblo Wayuu Araurayu",
+      "url": "https://www.minjusticia.gov.co/programas-co/fortalecimiento-etnico/Documents/banco-2019/19.%20CARACTERIZACI%C3%93N%20DEL%20PUEBLO%20WAY%C3%9AU%20ARAURAYU.pdf",
+      "use": "Cartografía social, lugares de referencia, E’irruku, conflictos y relación territorial."
+    },
+    {
+      "name": "SIWayuu / DANE",
+      "url": "https://siwayuu.dane.gov.co/",
+      "use": "Variables por corregimiento: agua, primera infancia, educación, fuentes e infraestructura de atención."
+    },
+    {
+      "name": "Geovisor SIWayuu",
+      "url": "https://geoportal.dane.gov.co/geovisores/sociedad/sistema-informacion-wayuu/",
+      "use": "Capas de fuentes de agua, UDS ICBF, unidades móviles, centros de abastecimiento y sitios críticos."
+    },
+    {
+      "name": "SECOP II - Contratos electrónicos",
+      "url": "https://www.datos.gov.co/Gastos-Gubernamentales/SECOP-II-Contratos-Electr-nicos/jbjy-vk9h",
+      "use": "Contratos públicos que mencionan los corregimientos, alimentación, agua, niñez o infraestructura."
+    },
+    {
+      "name": "DNP Sinergia - Plan Provisional T-302",
+      "url": "https://sinergia.dnp.gov.co/seguimiento/Paginas/esp-guajira.aspx",
+      "use": "Seguimiento oficial de agua, canastas, atención nutricional y acciones intersectoriales en La Guajira."
+    },
+    {
+      "name": "ICBF - Canastas Wayuu",
+      "url": "https://www.icbf.gov.co/noticias/alimentos-para-preparar-llegan-mas-de-10000-familias-wayuu-en-la-guajira",
+      "use": "Reportes de canastas, raciones, agua y familias Wayuu atendidas en municipios T-302."
+    },
+    {
+      "name": "ICBF - Alerta de protección de alimentos",
+      "url": "https://www.icbf.gov.co/noticias/bienestar-familiar-hace-un-llamado-urgente-proteger-los-alimentos-destinados-la-ninez",
+      "use": "Validación del problema de evidencia: alimentos destinados a niñez pueden desviarse, venderse o no llegar."
+    },
+    {
+      "name": "MinAgricultura / Araurayu",
+      "url": "https://www.minagricultura.gov.co/noticias/Paginas/Ministerio-de-Agricultura-destina-%246-000-millones-para-combatir-la-inseguridad-alimentaria-en-La-Guajira.aspx",
+      "use": "Proyecto productivo con Araurayu para 9 corregimientos, familias y pescadores artesanales."
+    }
+  ]
+}

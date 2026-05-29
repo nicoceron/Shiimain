@@ -1,16 +1,30 @@
-# React + Vite
+# Shiimain
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Territory intelligence demo for La Guajira. Shiimain combines public territorial, municipal, contractual, documentary, and delivery-visibility signals so teams can prioritize analysis with traceable evidence.
 
-Currently, two official plugins are available:
+## Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Open the Vite URL and use `#/demo` for the intelligence dashboard.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Build
 
-## Expanding the ESLint configuration
+```bash
+npm run build
+npm run preview
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Demo Scope
+
+- Territory-first prioritization for Wayuu territories and La Guajira municipalities.
+- Public-source evidence from SIWayuu/DANE, SECOP, UNGRD, municipal response layers, document extraction, and delivery-visibility datasets.
+- Contract and invoice fields are shown only as public context signals, not workflow actions.
+- Missing or weak evidence is displayed as an intelligence gap; the demo does not infer facts that the source data cannot support.
+
+## Data
+
+Static JSON files in `src/data/` were adapted from the reference `hunger-response-os` project and are imported directly by the Vite app. The dashboard is fully client-side: no backend, auth, writes, or operational routing.

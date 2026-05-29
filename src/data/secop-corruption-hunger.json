@@ -1,0 +1,4736 @@
+{
+  "generated_at": "2026-05-25T03:10:53.962541+00:00",
+  "scope": {
+    "dataset": "SECOP II - Contratos Electronicos",
+    "dataset_id": "jbjy-vk9h",
+    "start_date": "2020-01-01T00:00:00",
+    "category_prefixes": [
+      "V1.50",
+      "V1.9010",
+      "V1.8515",
+      "V1.931316"
+    ],
+    "text_catch_terms": [
+      "PAE",
+      "PAIP",
+      "alimentacion escolar",
+      "seguridad alimentaria",
+      "canasta",
+      "mercado",
+      "viveres",
+      "racion",
+      "refrigerio",
+      "nutricion"
+    ],
+    "description": "Food, nutrition, restaurant/catering, PAE/PAIP, canasta, and food-security contracts matched to the 1,122 municipality hunger-risk frame."
+  },
+  "summary": {
+    "fetched_unique_rows": 57122,
+    "matched_contract_count": 46194,
+    "unmapped_contract_count": 10928,
+    "municipalities_with_contracts": 902,
+    "municipalities_without_contracts": 220,
+    "high_hunger_gap_municipalities": 7,
+    "total_value": 31067743328373,
+    "total_value_label": "$31.1T",
+    "direct_contract_value": 8061731901024,
+    "direct_contract_value_label": "$8.1T",
+    "direct_contract_value_pct": 25.9,
+    "correlations": {
+      "hunger_vs_procurement_risk_all": -0.217,
+      "hunger_vs_procurement_risk_matched": 0.047,
+      "hunger_vs_log_food_value_matched": -0.128,
+      "hunger_vs_direct_value_pct_matched": 0.092
+    }
+  },
+  "limitations": [
+    "These are audit leads, not proof of corruption.",
+    "SECOP city fields can be missing or recorded as No Definido; unmapped contracts are excluded from municipal scoring.",
+    "National or department-level food contracts may benefit municipalities without naming them in SECOP city fields.",
+    "Named centro-poblado hits are exact text matches against DANE DIVIPOLA populated-center names; generic names should be verified in the original contract.",
+    "The relationship score combines hunger need and procurement risk; it should be used to prioritize review, not to rank guilt."
+  ],
+  "sources": {
+    "secop_ii_contracts": "https://www.datos.gov.co/resource/jbjy-vk9h.json",
+    "dane_populated_centers": "https://www.datos.gov.co/resource/xaxy-8nri.json",
+    "municipal_response": "/data/municipal-response.json"
+  },
+  "municipalities": [
+    {
+      "code": "44560",
+      "name": "MANAURE",
+      "department": "LA GUAJIRA",
+      "hunger_score": 76.5,
+      "risk_level": "critical",
+      "procurement_risk_score": 76.7,
+      "audit_priority_score": 83,
+      "relationship": "high hunger / high procurement risk",
+      "flags": [
+        "Direct contracting dominates food-adjacent spend",
+        "Billion-peso food-adjacent contracts",
+        "Repeated modified contracts",
+        "High hunger overlaps procurement risk",
+        "UNGRD shock without reported food kits"
+      ],
+      "contract_count": 61,
+      "total_value": 74314546618,
+      "total_value_label": "$74.3B",
+      "direct_contract_count": 60,
+      "direct_contract_count_pct": 98.4,
+      "direct_contract_value": 70854633246,
+      "direct_contract_value_label": "$70.9B",
+      "direct_contract_value_pct": 95.3,
+      "supplier_count": 42,
+      "top_supplier": "ASOATNATA",
+      "top_supplier_value": 12785011400,
+      "top_supplier_value_label": "$12.8B",
+      "top_supplier_value_pct": 17.2,
+      "high_value_contract_count": 35,
+      "very_high_value_contract_count": 0,
+      "advance_payment_value": 0,
+      "advance_payment_value_pct": 0,
+      "modified_contract_count": 38,
+      "paid_value": 506207015,
+      "hunger_drivers": {
+        "fies_2024": 0.8079463508202489,
+        "poverty_2024": 0.815605944876749,
+        "ipm_2024": 0.630031146984601,
+        "no_kitchen_pct": 0.3775272161741835,
+        "no_fridge_pct": 0.8460342146189735,
+        "shock_people_affected": 37135,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "ASOATNATA",
+          "count": 6,
+          "value": 12785011400,
+          "value_label": "$12.8B",
+          "share_pct": 17.2
+        },
+        {
+          "supplier": "UNION TEMPORAL WATEPICHIN CANASTA 2026",
+          "count": 5,
+          "value": 6213228463,
+          "value_label": "$6.2B",
+          "share_pct": 8.4
+        },
+        {
+          "supplier": "UNION TEMPORAL EKIRAJIA HURREM",
+          "count": 3,
+          "value": 5841372910,
+          "value_label": "$5.8B",
+          "share_pct": 7.9
+        },
+        {
+          "supplier": "ASOCIACION ECOLOGICA RUTA VERDE",
+          "count": 1,
+          "value": 3459913372,
+          "value_label": "$3.5B",
+          "share_pct": 4.7
+        },
+        {
+          "supplier": "U.T. E´IRUKU CANASTA 2026",
+          "count": 2,
+          "value": 2959239604,
+          "value_label": "$3.0B",
+          "share_pct": 4
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 59,
+          "value": 74252748118,
+          "value_label": "$74.3B",
+          "direct_value": 70792834746,
+          "direct_value_label": "$70.8B",
+          "share_pct": 99.9,
+          "direct_value_pct": 95.3
+        },
+        {
+          "entity": "ICBF REGIONAL GUAJIRA",
+          "count": 2,
+          "value": 61798500,
+          "value_label": "$61.8M",
+          "direct_value": 61798500,
+          "direct_value_label": "$61.8M",
+          "share_pct": 0.1,
+          "direct_value_pct": 100
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "ASOATNATA",
+          "count": 6,
+          "direct_count": 6,
+          "value": 12785011400,
+          "value_label": "$12.8B",
+          "share_pct": 17.2
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL WATEPICHIN CANASTA 2026",
+          "count": 5,
+          "direct_count": 5,
+          "value": 6213228463,
+          "value_label": "$6.2B",
+          "share_pct": 8.4
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL EKIRAJIA HURREM",
+          "count": 3,
+          "direct_count": 3,
+          "value": 5841372910,
+          "value_label": "$5.8B",
+          "share_pct": 7.9
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "ASOCIACION ECOLOGICA RUTA VERDE",
+          "count": 1,
+          "direct_count": 0,
+          "value": 3459913372,
+          "value_label": "$3.5B",
+          "share_pct": 4.7
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "U.T. E´IRUKU CANASTA 2026",
+          "count": 2,
+          "direct_count": 2,
+          "value": 2959239604,
+          "value_label": "$3.0B",
+          "share_pct": 4
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL WATSUNJIRA CANASTA PARCIAL 2026",
+          "count": 2,
+          "direct_count": 2,
+          "value": 2698925995,
+          "value_label": "$2.7B",
+          "share_pct": 3.6
+        }
+      ],
+      "named_places": [
+        {
+          "code": "44560006",
+          "name": "SHIRURIA",
+          "type": "CP",
+          "count": 4,
+          "contract_count": 4,
+          "value": 4250240686,
+          "value_label": "$4.3B",
+          "share_pct": 5.7
+        },
+        {
+          "code": "44560010",
+          "name": "LA PAZ",
+          "type": "CP",
+          "count": 3,
+          "contract_count": 3,
+          "value": 3309739202,
+          "value_label": "$3.3B",
+          "share_pct": 4.5
+        },
+        {
+          "code": "44560009",
+          "name": "LA GLORIA",
+          "type": "CP",
+          "count": 1,
+          "contract_count": 1,
+          "value": 807928660,
+          "value_label": "$807.9M",
+          "share_pct": 1.1
+        }
+      ],
+      "categories": [
+        {
+          "name": "Food basket",
+          "count": 47,
+          "value": 58550024914,
+          "value_label": "$58.6B"
+        },
+        {
+          "name": "School meals / PAE",
+          "count": 12,
+          "value": 15702723204,
+          "value_label": "$15.7B"
+        },
+        {
+          "name": "Nutrition services",
+          "count": 2,
+          "value": 61798500,
+          "value_label": "$61.8M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 96,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract",
+            "Modified contract",
+            "High hunger municipality"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.7460821",
+          "referencia": "CO1.PCCNTR.7460821",
+          "fecha_de_firma": "2025-02-12T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 2382023360,
+          "valor_label": "$2.4B",
+          "valor_pagado": 0,
+          "proveedor": "ASOATNATA",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL ASHAJAA DE JAMUCHECHON Y LA INSTITUCION ETNOEDUCATIVA RURAL KANAAN UBICADAS EN EL MUNICIPIO DE MANAURE - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTE",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7593934&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44560",
+          "municipality": "MANAURE",
+          "hunger_score": 76.5
+        },
+        {
+          "audit_score": 95.8,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract",
+            "Modified contract",
+            "High hunger municipality",
+            "School meals / PAE"
+          ],
+          "category": "School meals / PAE",
+          "id_contrato": "CO1.PCCNTR.7505972",
+          "referencia": "CO1.PCCNTR.7505972",
+          "fecha_de_firma": "2025-02-17T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 2164374684,
+          "valor_label": "$2.2B",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL EKIRAJIA HURREM",
+          "objeto": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN LA INSTITUCION ETNOEDUCATIVA RURAL ANOUI UBICADA EN LA ENTIDAD TERRITORIAL NO CERTIFICADA - MUNICIPIO DE MANAURE; DURANTE EL CALENDARIO ESCOLAR VIGENCIA 2025 EN EL DEPARTAMENTO DE LA GUAJIRA; EN CUMPLIMIENTO DE LO DISPUESTO EN LA RESOLUCIÓN N° 018858 DE 2018; O SEGÚN CORRESPONDA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7649718&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44560",
+          "municipality": "MANAURE",
+          "hunger_score": 76.5
+        },
+        {
+          "audit_score": 95.8,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract",
+            "Modified contract",
+            "High hunger municipality"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.5902135",
+          "referencia": "CO1.PCCNTR.5902135",
+          "fecha_de_firma": "2024-02-07T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 2147206856,
+          "valor_label": "$2.1B",
+          "valor_pagado": 0,
+          "proveedor": "ASOATNATA",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL ASHAJAA DE JAMUCHECHON Y EL CENTRO ETNOEDUCATIVO RURAL LA KANAAN UBICADO EN EL MUNICIPIO DE MANAURE - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5605246&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44560",
+          "municipality": "MANAURE",
+          "hunger_score": 76.5
+        },
+        {
+          "audit_score": 95.7,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract",
+            "Modified contract",
+            "High hunger municipality"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.9117298",
+          "referencia": "CO1.PCCNTR.9117298",
+          "fecha_de_firma": "2026-01-27T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 1978560647,
+          "valor_label": "$2.0B",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL WATEPICHIN CANASTA 2026",
+          "objeto": "PRESTACION DEL SERVICIO PARA ADMINISTRAR LA CANASTA EDUCATIVA DE LA POBLACION ETNICA DE LAS INSTITUCIONES ETNOEDUCATIVAS CLAUDIO VANGRIEKEN DE SICHICHON Y MALAWAISAO; UBICADOS EN LA ZONA RURAL ETNICA DEL MUNICIPIO DE MANAURE; PARA GARANTIZAR EL DERECHO A LA EDUCACION PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCION E IMPLEMENTACION DEL SISTEMA EDUCATIVO INDIGENA PROPIO (SEIP); DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9753036&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44560",
+          "municipality": "MANAURE",
+          "hunger_score": 76.5
+        },
+        {
+          "audit_score": 95.5,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract",
+            "Modified contract",
+            "High hunger municipality"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.9096122",
+          "referencia": "CO1.PCCNTR.9096122",
+          "fecha_de_firma": "2026-01-23T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 1836999258,
+          "valor_label": "$1.8B",
+          "valor_pagado": 0,
+          "proveedor": "ASOCIACION DE AUTORIDADES TRADICIONALES INDÍGENAS WAYUU TERRITORIO ISHO",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA EDUCATIVA DE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA ISHASHIMANA;\nUBICADA EN LA ZONA RURAL ÉTNICA DEL MUNICIPIO DE MANAURE; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP); DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO\n2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015.",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9731913&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44560",
+          "municipality": "MANAURE",
+          "hunger_score": 76.5
+        }
+      ]
+    },
+    {
+      "code": "44847",
+      "name": "URIBIA",
+      "department": "LA GUAJIRA",
+      "hunger_score": 74.5,
+      "risk_level": "critical",
+      "procurement_risk_score": 78.3,
+      "audit_priority_score": 82.3,
+      "relationship": "high hunger / high procurement risk",
+      "flags": [
+        "Direct contracting dominates food-adjacent spend",
+        "Billion-peso food-adjacent contracts",
+        "Repeated modified contracts",
+        "High hunger overlaps procurement risk"
+      ],
+      "contract_count": 136,
+      "total_value": 592770371136,
+      "total_value_label": "$592.8B",
+      "direct_contract_count": 130,
+      "direct_contract_count_pct": 95.6,
+      "direct_contract_value": 586608988357,
+      "direct_contract_value_label": "$586.6B",
+      "direct_contract_value_pct": 99,
+      "supplier_count": 101,
+      "top_supplier": "ASOCIACION DE AUTORIDADES WAYUU ANATAS WAKUAIPA",
+      "top_supplier_value": 90141455739,
+      "top_supplier_value_label": "$90.1B",
+      "top_supplier_value_pct": 15.2,
+      "high_value_contract_count": 99,
+      "very_high_value_contract_count": 31,
+      "advance_payment_value": 6389942851,
+      "advance_payment_value_pct": 1.1,
+      "modified_contract_count": 68,
+      "paid_value": 236124626967,
+      "hunger_drivers": {
+        "fies_2024": 0.7447309761826623,
+        "poverty_2024": 0.835219036597584,
+        "ipm_2024": 0.656926825935337,
+        "no_kitchen_pct": 0.4482857142857143,
+        "no_fridge_pct": 0.9151428571428571,
+        "shock_people_affected": 25870,
+        "food_kits_reported": 4850
+      },
+      "top_suppliers": [
+        {
+          "supplier": "ASOCIACION DE AUTORIDADES WAYUU ANATAS WAKUAIPA",
+          "count": 6,
+          "value": 90141455739,
+          "value_label": "$90.1B",
+          "share_pct": 15.2
+        },
+        {
+          "supplier": "UNION TEMPORAL EKI´IRAJAA",
+          "count": 2,
+          "value": 43798302403,
+          "value_label": "$43.8B",
+          "share_pct": 7.4
+        },
+        {
+          "supplier": "UT EINUSHI WAKUAIPA",
+          "count": 1,
+          "value": 29876518211,
+          "value_label": "$29.9B",
+          "share_pct": 5
+        },
+        {
+          "supplier": "UNION TEMPORAL AKANAJAAA",
+          "count": 1,
+          "value": 17148433659,
+          "value_label": "$17.1B",
+          "share_pct": 2.9
+        },
+        {
+          "supplier": "UNION TEMPORAL EKI´IRAJAA AKUAIPA",
+          "count": 1,
+          "value": 16529127199,
+          "value_label": "$16.5B",
+          "share_pct": 2.8
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "MUNICIPIO DE URIBIA",
+          "count": 135,
+          "value": 592743877053,
+          "value_label": "$592.7B",
+          "direct_value": 586582494274,
+          "direct_value_label": "$586.6B",
+          "share_pct": 100,
+          "direct_value_pct": 99
+        },
+        {
+          "entity": "DEPARTAMENTO DE POLICIA GUAJIRA",
+          "count": 1,
+          "value": 26494083,
+          "value_label": "$26.5M",
+          "direct_value": 26494083,
+          "direct_value_label": "$26.5M",
+          "share_pct": 0,
+          "direct_value_pct": 100
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "MUNICIPIO DE URIBIA",
+          "supplier": "ASOCIACION DE AUTORIDADES WAYUU ANATAS WAKUAIPA",
+          "count": 6,
+          "direct_count": 6,
+          "value": 90141455739,
+          "value_label": "$90.1B",
+          "share_pct": 15.2
+        },
+        {
+          "entity": "MUNICIPIO DE URIBIA",
+          "supplier": "UNION TEMPORAL EKI´IRAJAA",
+          "count": 2,
+          "direct_count": 2,
+          "value": 43798302403,
+          "value_label": "$43.8B",
+          "share_pct": 7.4
+        },
+        {
+          "entity": "MUNICIPIO DE URIBIA",
+          "supplier": "UT EINUSHI WAKUAIPA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 29876518211,
+          "value_label": "$29.9B",
+          "share_pct": 5
+        },
+        {
+          "entity": "MUNICIPIO DE URIBIA",
+          "supplier": "UNION TEMPORAL AKANAJAAA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 17148433659,
+          "value_label": "$17.1B",
+          "share_pct": 2.9
+        },
+        {
+          "entity": "MUNICIPIO DE URIBIA",
+          "supplier": "UNION TEMPORAL EKI´IRAJAA AKUAIPA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 16529127199,
+          "value_label": "$16.5B",
+          "share_pct": 2.8
+        },
+        {
+          "entity": "MUNICIPIO DE URIBIA",
+          "supplier": "TERRITORIO ETNICO WAYUU",
+          "count": 5,
+          "direct_count": 5,
+          "value": 16014167386,
+          "value_label": "$16.0B",
+          "share_pct": 2.7
+        }
+      ],
+      "named_places": [
+        {
+          "code": "44847028",
+          "name": "MEDIA LUNA",
+          "type": "CP",
+          "count": 4,
+          "contract_count": 4,
+          "value": 77770458615,
+          "value_label": "$77.8B",
+          "share_pct": 13.1
+        },
+        {
+          "code": "44847012",
+          "name": "NAZARETH",
+          "type": "CP",
+          "count": 6,
+          "contract_count": 6,
+          "value": 46046974831,
+          "value_label": "$46.0B",
+          "share_pct": 7.8
+        },
+        {
+          "code": "44847013",
+          "name": "PUERTO ESTRELLA",
+          "type": "CP",
+          "count": 3,
+          "contract_count": 3,
+          "value": 45429973527,
+          "value_label": "$45.4B",
+          "share_pct": 7.7
+        },
+        {
+          "code": "44847029",
+          "name": "PARAÍSO",
+          "type": "CP",
+          "count": 2,
+          "contract_count": 2,
+          "value": 40480655141,
+          "value_label": "$40.5B",
+          "share_pct": 6.8
+        },
+        {
+          "code": "44847034",
+          "name": "VILLA FÁTIMA",
+          "type": "CP",
+          "count": 3,
+          "contract_count": 3,
+          "value": 38867831101,
+          "value_label": "$38.9B",
+          "share_pct": 6.6
+        },
+        {
+          "code": "44847031",
+          "name": "PUERTO NUEVO",
+          "type": "CP",
+          "count": 3,
+          "contract_count": 3,
+          "value": 35167530748,
+          "value_label": "$35.2B",
+          "share_pct": 5.9
+        },
+        {
+          "code": "44847003",
+          "name": "CABO DE LA VELA",
+          "type": "CP",
+          "count": 6,
+          "contract_count": 6,
+          "value": 28484566798,
+          "value_label": "$28.5B",
+          "share_pct": 4.8
+        }
+      ],
+      "categories": [
+        {
+          "name": "Food basket",
+          "count": 54,
+          "value": 454838911160,
+          "value_label": "$454.8B"
+        },
+        {
+          "name": "School meals / PAE",
+          "count": 70,
+          "value": 128454747784,
+          "value_label": "$128.5B"
+        },
+        {
+          "name": "Food supply",
+          "count": 3,
+          "value": 3274456503,
+          "value_label": "$3.3B"
+        },
+        {
+          "name": "Nutrition services",
+          "count": 7,
+          "value": 3175761606,
+          "value_label": "$3.2B"
+        },
+        {
+          "name": "Food-adjacent",
+          "count": 1,
+          "value": 3000000000,
+          "value_label": "$3.0B"
+        },
+        {
+          "name": "Catering / prepared food",
+          "count": 1,
+          "value": 26494083,
+          "value_label": "$26.5M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract",
+            "High hunger municipality",
+            "Names 2 local places",
+            "School meals / PAE"
+          ],
+          "category": "School meals / PAE",
+          "id_contrato": "CO1.PCCNTR.7429535",
+          "referencia": "CPS-056-2025",
+          "fecha_de_firma": "2025-02-06T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "MUNICIPIO DE URIBIA",
+          "ciudad": "Uribia",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 8277807386,
+          "valor_label": "$8.3B",
+          "valor_pagado": 6461669944,
+          "proveedor": "ASOCIACION DE AUTORIDADES WAYUU ANATAS WAKUAIPA",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA LA EJECUCIÓN DEL PROGRAMA DE ALIMENTACIÓN\nESCOLAR (PAE) DIRIGIDO A PUEBLOS INDÍGENAS EN LA INSTITUCIÓN ETNOEDUCATIVA\nINTEGRAL RURAL CARASUA MADRE LAURA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL\nVILLA FÁTIMA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL DE NUESTRA SEÑORA DE\nFÁTIMA DE NAZARETH; INSTITUCION ETNOEDUCATIVA TECNICA AGROPECUARIA\nJUYASIRAIN; CENTRO ETNOEDUCATIVO INTEGRAL RURAL SUTCHIIN WAYUU; INSTITUCION\nETNOEDUCTIVA INTEGRAL RURAL ISABEL JUSAYU DURANTE EL CALEN",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7560432&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [
+            {
+              "code": "44847034",
+              "name": "VILLA FÁTIMA",
+              "type": "CP"
+            },
+            {
+              "code": "44847012",
+              "name": "NAZARETH",
+              "type": "CP"
+            }
+          ],
+          "municipality_code": "44847",
+          "municipality": "URIBIA",
+          "hunger_score": 74.5
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract",
+            "High hunger municipality"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.7489410",
+          "referencia": "CPS-101-2025",
+          "fecha_de_firma": "2025-02-13T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "MUNICIPIO DE URIBIA",
+          "ciudad": "Uribia",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 12062791571,
+          "valor_label": "$12.1B",
+          "valor_pagado": 9764135543,
+          "proveedor": "UNION TEMPORAL SUKUA>IPA TEPICHII",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCION ETNOEDUCATIVA TECNICA AGROPECUARIA JUYASIRAIN Y EL CENTRO ETNOEDUCATIVO INTEGRAL RURAL SUTCHIIN WAYUU UBICADAS EN EL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; COMPILADO EN EL DECRETO 10",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7628948&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44847",
+          "municipality": "URIBIA",
+          "hunger_score": 74.5
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract",
+            "High hunger municipality"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.5935342",
+          "referencia": "CPS-033-2024",
+          "fecha_de_firma": "2024-02-13T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "MUNICIPIO DE URIBIA",
+          "ciudad": "Uribia",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación Directa (con ofertas)",
+          "tipo": "Otro",
+          "valor": 5843739227,
+          "valor_label": "$5.8B",
+          "valor_pagado": 0,
+          "proveedor": "Akalinjirrawa 2024",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL\nDE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA\nINTEGRAL RURAL DE MAPUAIN UBICADA EN EL MUNICIPIO DE URIBIA;\nLA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN\nPROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E\nIMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP)\nDE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO\n2500 DE 2010; COMPILADO EN EL DECRETO 1075 DE 2015",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5615799&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44847",
+          "municipality": "URIBIA",
+          "hunger_score": 74.5
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract",
+            "High hunger municipality",
+            "Names 1 local place"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.7488527",
+          "referencia": "CPS-098-2025",
+          "fecha_de_firma": "2025-02-13T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "MUNICIPIO DE URIBIA",
+          "ciudad": "Uribia",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 9774480358,
+          "valor_label": "$9.8B",
+          "valor_pagado": 7912420488,
+          "proveedor": "UNIÓN TEMPORAL ALII APÜLAA CANASTA 2025",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL INTERNADO DE SIAPANA; INSTITUCION EDUCATIVA JULIA SIERRA IGUARAN; CENTRO EDUCATIVO SAN JOSE Y LA INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL INTERNADO DE PUERTO ESTRELLA UBICADAS EN EL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE A",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7627898&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [
+            {
+              "code": "44847013",
+              "name": "PUERTO ESTRELLA",
+              "type": "CP"
+            }
+          ],
+          "municipality_code": "44847",
+          "municipality": "URIBIA",
+          "hunger_score": 74.5
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract",
+            "High hunger municipality"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.7445105",
+          "referencia": "CPS-069-2025",
+          "fecha_de_firma": "2025-02-08T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "MUNICIPIO DE URIBIA",
+          "ciudad": "Uribia",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 17148433659,
+          "valor_label": "$17.1B",
+          "valor_pagado": 7279299118,
+          "proveedor": "UNION TEMPORAL AKANAJAAA",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN\nÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL TEJIENDO SABERES Y LA\nINSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL YERICA GUTIÉRREZ FAJARDO UBICADAS EN\nEL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN\nPROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA\nEDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS\nEN EL DECRETO 2500 DE 2010; COMPILADO E",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7576703&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44847",
+          "municipality": "URIBIA",
+          "hunger_score": 74.5
+        }
+      ]
+    },
+    {
+      "code": "44430",
+      "name": "MAICAO",
+      "department": "LA GUAJIRA",
+      "hunger_score": 56.4,
+      "risk_level": "high",
+      "procurement_risk_score": 77.6,
+      "audit_priority_score": 71.3,
+      "relationship": "procurement watch",
+      "flags": [
+        "Direct contracting dominates food-adjacent spend",
+        "Billion-peso food-adjacent contracts",
+        "Repeated modified contracts",
+        "High hunger overlaps procurement risk",
+        "UNGRD shock without reported food kits"
+      ],
+      "contract_count": 90,
+      "total_value": 291383512029,
+      "total_value_label": "$291.4B",
+      "direct_contract_count": 75,
+      "direct_contract_count_pct": 83.3,
+      "direct_contract_value": 270717932961,
+      "direct_contract_value_label": "$270.7B",
+      "direct_contract_value_pct": 92.9,
+      "supplier_count": 66,
+      "top_supplier": "ASOCIACION DE AUTORIDADES TRADICIONALES WAYUU SUMUYWAJAT",
+      "top_supplier_value": 63543206901,
+      "top_supplier_value_label": "$63.5B",
+      "top_supplier_value_pct": 21.8,
+      "high_value_contract_count": 39,
+      "very_high_value_contract_count": 16,
+      "advance_payment_value": 0,
+      "advance_payment_value_pct": 0,
+      "modified_contract_count": 43,
+      "paid_value": 104568729448,
+      "hunger_drivers": {
+        "fies_2024": 0.6047207449859622,
+        "poverty_2024": 0.687059213543464,
+        "ipm_2024": 0.360256286351607,
+        "no_kitchen_pct": 0.22907083716651333,
+        "no_fridge_pct": 0.6582336706531738,
+        "shock_people_affected": 8631,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "ASOCIACION DE AUTORIDADES TRADICIONALES WAYUU SUMUYWAJAT",
+          "count": 4,
+          "value": 63543206901,
+          "value_label": "$63.5B",
+          "share_pct": 21.8
+        },
+        {
+          "supplier": "KASUWA",
+          "count": 7,
+          "value": 61806599912,
+          "value_label": "$61.8B",
+          "share_pct": 21.2
+        },
+        {
+          "supplier": "UNIÓN TEMPORAL  AYATALII WAYA",
+          "count": 3,
+          "value": 57366247229,
+          "value_label": "$57.4B",
+          "share_pct": 19.7
+        },
+        {
+          "supplier": "UT WA MURR? 2025",
+          "count": 2,
+          "value": 17415043797,
+          "value_label": "$17.4B",
+          "share_pct": 6
+        },
+        {
+          "supplier": "UNION TEMPORAL WAKUAIPAMAAJANA 2025",
+          "count": 1,
+          "value": 13770168948,
+          "value_label": "$13.8B",
+          "share_pct": 4.7
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "MUNICIPIO DE MAICAO",
+          "count": 85,
+          "value": 291299483038,
+          "value_label": "$291.3B",
+          "direct_value": 270653903970,
+          "direct_value_label": "$270.7B",
+          "share_pct": 100,
+          "direct_value_pct": 92.9
+        },
+        {
+          "entity": "ICBF REGIONAL GUAJIRA",
+          "count": 3,
+          "value": 49522254,
+          "value_label": "$49.5M",
+          "direct_value": 49522254,
+          "direct_value_label": "$49.5M",
+          "share_pct": 0,
+          "direct_value_pct": 100
+        },
+        {
+          "entity": "CONCEJO MUNICIPAL DE MACIAO",
+          "count": 1,
+          "value": 20000000,
+          "value_label": "$20.0M",
+          "direct_value": 0,
+          "direct_value_label": "$0",
+          "share_pct": 0,
+          "direct_value_pct": 0
+        },
+        {
+          "entity": "DEPARTAMENTO DE POLICIA GUAJIRA",
+          "count": 1,
+          "value": 14506737,
+          "value_label": "$14.5M",
+          "direct_value": 14506737,
+          "direct_value_label": "$14.5M",
+          "share_pct": 0,
+          "direct_value_pct": 100
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "MUNICIPIO DE MAICAO",
+          "supplier": "ASOCIACION DE AUTORIDADES TRADICIONALES WAYUU SUMUYWAJAT",
+          "count": 4,
+          "direct_count": 4,
+          "value": 63543206901,
+          "value_label": "$63.5B",
+          "share_pct": 21.8
+        },
+        {
+          "entity": "MUNICIPIO DE MAICAO",
+          "supplier": "KASUWA",
+          "count": 7,
+          "direct_count": 7,
+          "value": 61806599912,
+          "value_label": "$61.8B",
+          "share_pct": 21.2
+        },
+        {
+          "entity": "MUNICIPIO DE MAICAO",
+          "supplier": "UNIÓN TEMPORAL  AYATALII WAYA",
+          "count": 3,
+          "direct_count": 3,
+          "value": 57366247229,
+          "value_label": "$57.4B",
+          "share_pct": 19.7
+        },
+        {
+          "entity": "MUNICIPIO DE MAICAO",
+          "supplier": "UT WA MURR? 2025",
+          "count": 2,
+          "direct_count": 2,
+          "value": 17415043797,
+          "value_label": "$17.4B",
+          "share_pct": 6
+        },
+        {
+          "entity": "MUNICIPIO DE MAICAO",
+          "supplier": "UNION TEMPORAL WAKUAIPAMAAJANA 2025",
+          "count": 1,
+          "direct_count": 1,
+          "value": 13770168948,
+          "value_label": "$13.8B",
+          "share_pct": 4.7
+        },
+        {
+          "entity": "MUNICIPIO DE MAICAO",
+          "supplier": "UNION TEMPORAL WAKUAIPAMAAJANA 2026",
+          "count": 1,
+          "direct_count": 1,
+          "value": 11788046612,
+          "value_label": "$11.8B",
+          "share_pct": 4
+        }
+      ],
+      "named_places": [
+        {
+          "code": "44430025",
+          "name": "ICHICHON",
+          "type": "CP",
+          "count": 1,
+          "contract_count": 1,
+          "value": 101604300,
+          "value_label": "$101.6M",
+          "share_pct": 0
+        }
+      ],
+      "categories": [
+        {
+          "name": "Food basket",
+          "count": 23,
+          "value": 184745185720,
+          "value_label": "$184.7B"
+        },
+        {
+          "name": "School meals / PAE",
+          "count": 34,
+          "value": 74614874507,
+          "value_label": "$74.6B"
+        },
+        {
+          "name": "Food supply",
+          "count": 3,
+          "value": 17485043797,
+          "value_label": "$17.5B"
+        },
+        {
+          "name": "Nutrition services",
+          "count": 22,
+          "value": 14129049689,
+          "value_label": "$14.1B"
+        },
+        {
+          "name": "Catering / prepared food",
+          "count": 6,
+          "value": 360984983,
+          "value_label": "$361.0M"
+        },
+        {
+          "name": "Food-adjacent",
+          "count": 2,
+          "value": 48373333,
+          "value_label": "$48.4M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract",
+            "School meals / PAE"
+          ],
+          "category": "School meals / PAE",
+          "id_contrato": "CO1.PCCNTR.5982038",
+          "referencia": "CPS-PAIP- RE-MM-002-2024",
+          "fecha_de_firma": "2024-02-21T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "MUNICIPIO DE MAICAO",
+          "ciudad": "Maicao",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 13216908412,
+          "valor_label": "$13.2B",
+          "valor_pagado": 12550638168,
+          "proveedor": "KASUWA",
+          "objeto": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN LA INSTITUCIONES EDUCATIVAS INDIGENAS N° 1; 2; 3; 4; 5; 6; 8; 9 Y EN EL CENTRO EDUCATIVO INDIGENA N°5 UBICADAS EN LA ZONA RURAL ETNICA; DEL MUNICIPIO DE MAICAO; DURANTE EL CALENDARIO ESCOLAR; VIGENCIA 2024",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5701064&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44430",
+          "municipality": "MAICAO",
+          "hunger_score": 56.4
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract",
+            "School meals / PAE"
+          ],
+          "category": "School meals / PAE",
+          "id_contrato": "CO1.PCCNTR.7382419",
+          "referencia": "CPS-PAIP-003-2025",
+          "fecha_de_firma": "2025-01-31T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "MUNICIPIO DE MAICAO",
+          "ciudad": "Maicao",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 11960293500,
+          "valor_label": "$12.0B",
+          "valor_pagado": 0,
+          "proveedor": "KASUWA",
+          "objeto": "PRESTACION DEL SERVICIO DE ALIMENTACION ESCOLAR EN SUS DIFERENTES MODALIDADES EN LAS INSTITUCIONES EDUCATIVAS INDIGENAS NO. 1; 2; 3; 4; 5; 6; 8; 9; 10 Y 13; UBICADAS EN LA ZONA RURAL ETNICA DEL MUNICIPIO DE MAICAO; DURANTE EL CALENDARIO ESCOLAR DE LA VIGENCIA 2025; DE ACUERDO CON LAS RESOLUCIONES 18858 DE 2018 EXPEDIDA POR EL MINISTERIO DE EDUCACION Y LA RESOLUCION NO. 421 DE 2023 EXPEDIDA POR LA UNIDAD ADMINISTRATIVA ESPECIAL DE ALIMENTACION ESCOLAR - ALIMENTOS PARA APRENDER (UAPA) Y DEMAS",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7506192&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44430",
+          "municipality": "MAICAO",
+          "hunger_score": 56.4
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract"
+          ],
+          "category": "Food supply",
+          "id_contrato": "CO1.PCCNTR.8581364",
+          "referencia": "CD-CI-MM-020-2025",
+          "fecha_de_firma": "2025-11-12T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "MUNICIPIO DE MAICAO",
+          "ciudad": "Maicao",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación Directa (con ofertas)",
+          "tipo": "Otro",
+          "valor": 9674591850,
+          "valor_label": "$9.7B",
+          "valor_pagado": 4837295925,
+          "proveedor": "UT WA MURR? 2025",
+          "objeto": "FORTALECIMIENTO DE LA CAPACIDAD PRODUCTIVA Y ECONOMICA MEDIANTE EL DESARROLLO DE PROYECTOS MICRO EMPRESARIALES AGROPECUARIOS PARA CONTRIBUIR O INCIDIR POSITIVAMENTE EN LA SEGURIDAD ALIMENTARIA Y EL MEJORAMIENTO INTEGRAL DE LOS RESGUARDOS INDÍGENAS ALTA Y MEDIA GUAJIRA; WOPUMUIN JUNAIN MAIKOU; SUMAIN WAYUU UULIANA; NUKAJAT MALEIWA; NUMAIN MALEIWA; CHIASALU; ALBERTO PUSHAINA Y OKOCHI DEL MUNICIPIO DE MAICAO; DEPARTAMENTO DE LA...",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9078445&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44430",
+          "municipality": "MAICAO",
+          "hunger_score": 56.4
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.5915972",
+          "referencia": "SEIP-RE-MM-003-2024",
+          "fecha_de_firma": "2024-02-09T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "MUNICIPIO DE MAICAO",
+          "ciudad": "Maicao",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 15269641498,
+          "valor_label": "$15.3B",
+          "valor_pagado": 15269641498,
+          "proveedor": "ASOCIACION DE AUTORIDADES TRADICIONALES WAYUU SUMUYWAJAT",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LAS INSTITUCIÓNES EDUCATIVAS INDIGENA No 3; 5 y 8 Y EL CENTRO ETNOEDUCATIVO No 5; UBICADOS EN EL MUNICIPIO DE MAICAO LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015.",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5613776&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44430",
+          "municipality": "MAICAO",
+          "hunger_score": 56.4
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.7479093",
+          "referencia": "SEIP-RE-MM-029-2025",
+          "fecha_de_firma": "2025-02-13T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "MUNICIPIO DE MAICAO",
+          "ciudad": "Maicao",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 18388437896,
+          "valor_label": "$18.4B",
+          "valor_pagado": 16775992549,
+          "proveedor": "UNIÓN TEMPORAL  AYATALII WAYA",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCIONES EDUCATIVA INDIGENA No 1; 4; Y 12; UBICADOS EN EL MUNICIPIO DE MAICAO LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015.",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7616346&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44430",
+          "municipality": "MAICAO",
+          "hunger_score": 56.4
+        }
+      ]
+    },
+    {
+      "code": "44090",
+      "name": "DIBULLA",
+      "department": "LA GUAJIRA",
+      "hunger_score": 46,
+      "risk_level": "watch",
+      "procurement_risk_score": 91.2,
+      "audit_priority_score": 65.9,
+      "relationship": "procurement watch",
+      "flags": [
+        "Direct contracting dominates food-adjacent spend",
+        "Supplier concentration",
+        "Billion-peso food-adjacent contracts",
+        "Repeated modified contracts",
+        "UNGRD shock without reported food kits"
+      ],
+      "contract_count": 16,
+      "total_value": 44077010466,
+      "total_value_label": "$44.1B",
+      "direct_contract_count": 12,
+      "direct_contract_count_pct": 75,
+      "direct_contract_value": 42201060775,
+      "direct_contract_value_label": "$42.2B",
+      "direct_contract_value_pct": 95.7,
+      "supplier_count": 10,
+      "top_supplier": "RESGUARDO KOGUI MALAYO ARHUACO",
+      "top_supplier_value": 33958281671,
+      "top_supplier_value_label": "$34.0B",
+      "top_supplier_value_pct": 77,
+      "high_value_contract_count": 6,
+      "very_high_value_contract_count": 5,
+      "advance_payment_value": 240904506,
+      "advance_payment_value_pct": 0.5,
+      "modified_contract_count": 4,
+      "paid_value": 0,
+      "hunger_drivers": {
+        "fies_2024": 0.3774045102342637,
+        "poverty_2024": 0.53261781711778,
+        "ipm_2024": 0.551607263177099,
+        "no_kitchen_pct": 0.1922632794457275,
+        "no_fridge_pct": 0.7326789838337182,
+        "shock_people_affected": 3912,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "RESGUARDO KOGUI MALAYO ARHUACO",
+          "count": 4,
+          "value": 33958281671,
+          "value_label": "$34.0B",
+          "share_pct": 77
+        },
+        {
+          "supplier": "ASOCIACION DE JEFES FAMILIARES WAYUU DE LA ZONA NORTE  DE LA LA GUAJIRA",
+          "count": 1,
+          "value": 6259730266,
+          "value_label": "$6.3B",
+          "share_pct": 14.2
+        },
+        {
+          "supplier": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 2,
+          "value": 2172311826,
+          "value_label": "$2.2B",
+          "share_pct": 4.9
+        },
+        {
+          "supplier": "FUNDETO",
+          "count": 1,
+          "value": 996979000,
+          "value_label": "$997.0M",
+          "share_pct": 2.3
+        },
+        {
+          "supplier": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+          "count": 1,
+          "value": 245809012,
+          "value_label": "$245.8M",
+          "share_pct": 0.6
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 6,
+          "value": 41214990937,
+          "value_label": "$41.2B",
+          "direct_value": 40218011937,
+          "direct_value_label": "$40.2B",
+          "share_pct": 93.5,
+          "direct_value_pct": 97.6
+        },
+        {
+          "entity": "ALCALDIA DE DIBULLA",
+          "count": 10,
+          "value": 2862019529,
+          "value_label": "$2.9B",
+          "direct_value": 1983048838,
+          "direct_value_label": "$2.0B",
+          "share_pct": 6.5,
+          "direct_value_pct": 69.3
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "RESGUARDO KOGUI MALAYO ARHUACO",
+          "count": 4,
+          "direct_count": 4,
+          "value": 33958281671,
+          "value_label": "$34.0B",
+          "share_pct": 77
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "ASOCIACION DE JEFES FAMILIARES WAYUU DE LA ZONA NORTE  DE LA LA GUAJIRA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 6259730266,
+          "value_label": "$6.3B",
+          "share_pct": 14.2
+        },
+        {
+          "entity": "ALCALDIA DE DIBULLA",
+          "supplier": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 2,
+          "direct_count": 1,
+          "value": 2172311826,
+          "value_label": "$2.2B",
+          "share_pct": 4.9
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "FUNDETO",
+          "count": 1,
+          "direct_count": 0,
+          "value": 996979000,
+          "value_label": "$997.0M",
+          "share_pct": 2.3
+        },
+        {
+          "entity": "ALCALDIA DE DIBULLA",
+          "supplier": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 245809012,
+          "value_label": "$245.8M",
+          "share_pct": 0.6
+        },
+        {
+          "entity": "ALCALDIA DE DIBULLA",
+          "supplier": "ORGANIZACION WIWA GOLKUSHE TAYRONA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 200000000,
+          "value_label": "$200.0M",
+          "share_pct": 0.5
+        }
+      ],
+      "named_places": [],
+      "categories": [
+        {
+          "name": "Food basket",
+          "count": 5,
+          "value": 40218011937,
+          "value_label": "$40.2B"
+        },
+        {
+          "name": "School meals / PAE",
+          "count": 2,
+          "value": 2172311826,
+          "value_label": "$2.2B"
+        },
+        {
+          "name": "Catering / prepared food",
+          "count": 4,
+          "value": 1472788012,
+          "value_label": "$1.5B"
+        },
+        {
+          "name": "Food supply",
+          "count": 2,
+          "value": 134623905,
+          "value_label": "$134.6M"
+        },
+        {
+          "name": "Food-adjacent",
+          "count": 1,
+          "value": 49024786,
+          "value_label": "$49.0M"
+        },
+        {
+          "name": "Nutrition services",
+          "count": 2,
+          "value": 30250000,
+          "value_label": "$30.2M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Supplier concentration",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.9215520",
+          "referencia": "CO1.PCCNTR.9215520",
+          "fecha_de_firma": "2026-01-29T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 10264655312,
+          "valor_label": "$10.3B",
+          "valor_pagado": 0,
+          "proveedor": "RESGUARDO KOGUI MALAYO ARHUACO",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO DUMINGUEKA Y LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO KOGUI UBICADO EN EL MUNICIPIO DE DIBULLA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 20",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9848017&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44090",
+          "municipality": "DIBULLA",
+          "hunger_score": 46
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Supplier concentration",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.5903715",
+          "referencia": "CO1.PCCNTR.5903715",
+          "fecha_de_firma": "2024-02-08T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 7737625596,
+          "valor_label": "$7.7B",
+          "valor_pagado": 0,
+          "proveedor": "RESGUARDO KOGUI MALAYO ARHUACO",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO DUMINGUEKA Y LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO KOGUI UBICADO EN EL MUNICIPIO DE DIBULLA LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5607414&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44090",
+          "municipality": "DIBULLA",
+          "hunger_score": 46
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Supplier concentration",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.7482240",
+          "referencia": "CO1.PCCNTR.7482240",
+          "fecha_de_firma": "2025-02-14T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 9089088474,
+          "valor_label": "$9.1B",
+          "valor_pagado": 0,
+          "proveedor": "RESGUARDO KOGUI MALAYO ARHUACO",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO DUMINGUEKA Y LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO KOGUI UBICADO EN EL MUNICIPIO DE DIBULLA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 20",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7620442&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44090",
+          "municipality": "DIBULLA",
+          "hunger_score": 46
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Supplier concentration"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.4677855",
+          "referencia": "CO1.PCCNTR.4677855",
+          "fecha_de_firma": "2023-02-24T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 6866912289,
+          "valor_label": "$6.9B",
+          "valor_pagado": 0,
+          "proveedor": "RESGUARDO KOGUI MALAYO ARHUACO",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LAS INSTITUCIONES ETNOEDUCATIVAS RURALES INTERNADO ZHARNEKA Y KOGUI UBICADOS EN LA ENTIDAD NO CERTIFICADA MUNICIPIO DE DIBULLA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL D",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.4059614&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44090",
+          "municipality": "DIBULLA",
+          "hunger_score": 46
+        },
+        {
+          "audit_score": 90.3,
+          "flags": [
+            "Direct contracting",
+            "Very high value"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.3533901",
+          "referencia": "CO1.PCCNTR.3533901",
+          "fecha_de_firma": "2022-05-11T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 6259730266,
+          "valor_label": "$6.3B",
+          "valor_pagado": 0,
+          "proveedor": "ASOCIACION DE JEFES FAMILIARES WAYUU DE LA ZONA NORTE  DE LA LA GUAJIRA",
+          "objeto": "PRESTACIÓN DE SERVICIOS\nPARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN \nÉTNICA MATRICULADA EN A INSTITUCION ETNOEDUCATIVA INTERNADO DUMINGUEKA E INSTITUCION ETNOEDUCATIVA INTERNADO KOGUI UBICADOS EN EL MUNICIPIO DE DIBULLA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDIGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN E",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.2798901&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44090",
+          "municipality": "DIBULLA",
+          "hunger_score": 46
+        }
+      ]
+    },
+    {
+      "code": "44110",
+      "name": "EL MOLINO",
+      "department": "LA GUAJIRA",
+      "hunger_score": 50.3,
+      "risk_level": "watch",
+      "procurement_risk_score": 84.9,
+      "audit_priority_score": 65.5,
+      "relationship": "procurement watch",
+      "flags": [
+        "Direct contracting dominates food-adjacent spend",
+        "Supplier concentration",
+        "Billion-peso food-adjacent contracts"
+      ],
+      "contract_count": 2,
+      "total_value": 8548227379,
+      "total_value_label": "$8.5B",
+      "direct_contract_count": 2,
+      "direct_contract_count_pct": 100,
+      "direct_contract_value": 8548227379,
+      "direct_contract_value_label": "$8.5B",
+      "direct_contract_value_pct": 100,
+      "supplier_count": 1,
+      "top_supplier": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+      "top_supplier_value": 8548227379,
+      "top_supplier_value_label": "$8.5B",
+      "top_supplier_value_pct": 100,
+      "high_value_contract_count": 2,
+      "very_high_value_contract_count": 0,
+      "advance_payment_value": 0,
+      "advance_payment_value_pct": 0,
+      "modified_contract_count": 2,
+      "paid_value": 0,
+      "hunger_drivers": {
+        "fies_2024": 0.5622233253563879,
+        "poverty_2024": 0.715331723932504,
+        "ipm_2024": 0.173564410872425,
+        "no_kitchen_pct": 0.39619220308250225,
+        "no_fridge_pct": 0.5530371713508613,
+        "shock_people_affected": 4,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+          "count": 2,
+          "value": 8548227379,
+          "value_label": "$8.5B",
+          "share_pct": 100
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 2,
+          "value": 8548227379,
+          "value_label": "$8.5B",
+          "direct_value": 8548227379,
+          "direct_value_label": "$8.5B",
+          "share_pct": 100,
+          "direct_value_pct": 100
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+          "count": 2,
+          "direct_count": 2,
+          "value": 8548227379,
+          "value_label": "$8.5B",
+          "share_pct": 100
+        }
+      ],
+      "named_places": [],
+      "categories": [
+        {
+          "name": "Food basket",
+          "count": 2,
+          "value": 8548227379,
+          "value_label": "$8.5B"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract",
+            "Supplier concentration",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.9036395",
+          "referencia": "CO1.PCCNTR.9036395",
+          "fecha_de_firma": "2026-01-27T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 4778592630,
+          "valor_label": "$4.8B",
+          "valor_pagado": 0,
+          "proveedor": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO ZHARNEKA Y EL CENTRO ETNOEDUCATIVO RURAL LA LAGUNA UBICADO EN EL MUNICIPIO DE SAN JUAN Y EL CENTRO ETNOEDUCATIVO RURAL ABU SEYUMUN ZHIWA UBICADO EN EL MUNICIPIO EL MOLINO - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9671367&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44110",
+          "municipality": "EL MOLINO",
+          "hunger_score": 50.3
+        },
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract",
+            "Supplier concentration",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.7447703",
+          "referencia": "CO1.PCCNTR.7447703",
+          "fecha_de_firma": "2025-02-10T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 3769634749,
+          "valor_label": "$3.8B",
+          "valor_pagado": 0,
+          "proveedor": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO ZHARNEKA Y EL CENTRO ETNOEDUCATIVO RURAL LA LAGUNA UBICADOS EN EL MUNICIPIO DE SAN JUAN Y EL CENTRO ETNOEDUCATIVO RURAL ABU SEYUMUN ZHIWA UBICADO EN EL MUNICIPIO DE EL MOLINO - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7579096&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44110",
+          "municipality": "EL MOLINO",
+          "hunger_score": 50.3
+        }
+      ]
+    },
+    {
+      "code": "44378",
+      "name": "HATONUEVO",
+      "department": "LA GUAJIRA",
+      "hunger_score": 49.8,
+      "risk_level": "watch",
+      "procurement_risk_score": 66.7,
+      "audit_priority_score": 57.2,
+      "relationship": "lower priority",
+      "flags": [
+        "Billion-peso food-adjacent contracts",
+        "Repeated modified contracts",
+        "UNGRD shock without reported food kits"
+      ],
+      "contract_count": 14,
+      "total_value": 9749260650,
+      "total_value_label": "$9.7B",
+      "direct_contract_count": 9,
+      "direct_contract_count_pct": 64.3,
+      "direct_contract_value": 6200393050,
+      "direct_contract_value_label": "$6.2B",
+      "direct_contract_value_pct": 63.6,
+      "supplier_count": 11,
+      "top_supplier": "UNION TEMPORAL UCHUMUIN WAYAA - EKIRAJIA CANASTA EDUCATIVA -2026",
+      "top_supplier_value": 2862405237,
+      "top_supplier_value_label": "$2.9B",
+      "top_supplier_value_pct": 29.4,
+      "high_value_contract_count": 4,
+      "very_high_value_contract_count": 0,
+      "advance_payment_value": 0,
+      "advance_payment_value_pct": 0,
+      "modified_contract_count": 5,
+      "paid_value": 2462477764,
+      "hunger_drivers": {
+        "fies_2024": 0.6363732671250278,
+        "poverty_2024": 0.553903741414884,
+        "ipm_2024": 0.167107196207763,
+        "no_kitchen_pct": 0.2607105538140021,
+        "no_fridge_pct": 0.6776384535005224,
+        "shock_people_affected": 1164,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "UNION TEMPORAL UCHUMUIN WAYAA - EKIRAJIA CANASTA EDUCATIVA -2026",
+          "count": 2,
+          "value": 2862405237,
+          "value_label": "$2.9B",
+          "share_pct": 29.4
+        },
+        {
+          "supplier": "AKATCHINRRA",
+          "count": 1,
+          "value": 2230269928,
+          "value_label": "$2.2B",
+          "share_pct": 22.9
+        },
+        {
+          "supplier": "Alcaldía Municipal De Hatonuevo",
+          "count": 1,
+          "value": 1227187672,
+          "value_label": "$1.2B",
+          "share_pct": 12.6
+        },
+        {
+          "supplier": "UNION TEMPORAL MOCOCHIRRA",
+          "count": 1,
+          "value": 890591144,
+          "value_label": "$890.6M",
+          "share_pct": 9.1
+        },
+        {
+          "supplier": "UNION TEMPORAL KOTTO JUCHII TEPICHI CANASTA 2026",
+          "count": 1,
+          "value": 694093648,
+          "value_label": "$694.1M",
+          "share_pct": 7.1
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 8,
+          "value": 5836573408,
+          "value_label": "$5.8B",
+          "direct_value": 5836573408,
+          "direct_value_label": "$5.8B",
+          "share_pct": 59.9,
+          "direct_value_pct": 100
+        },
+        {
+          "entity": "Alcaldía Municipal De Hatonuevo",
+          "count": 5,
+          "value": 2685499570,
+          "value_label": "$2.7B",
+          "direct_value": 363819642,
+          "direct_value_label": "$363.8M",
+          "share_pct": 27.5,
+          "direct_value_pct": 13.5
+        },
+        {
+          "entity": "ICBF REGIONAL GUAJIRA",
+          "count": 1,
+          "value": 1227187672,
+          "value_label": "$1.2B",
+          "direct_value": 0,
+          "direct_value_label": "$0",
+          "share_pct": 12.6,
+          "direct_value_pct": 0
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL UCHUMUIN WAYAA - EKIRAJIA CANASTA EDUCATIVA -2026",
+          "count": 2,
+          "direct_count": 2,
+          "value": 2862405237,
+          "value_label": "$2.9B",
+          "share_pct": 29.4
+        },
+        {
+          "entity": "Alcaldía Municipal De Hatonuevo",
+          "supplier": "AKATCHINRRA",
+          "count": 1,
+          "direct_count": 0,
+          "value": 2230269928,
+          "value_label": "$2.2B",
+          "share_pct": 22.9
+        },
+        {
+          "entity": "ICBF REGIONAL GUAJIRA",
+          "supplier": "Alcaldía Municipal De Hatonuevo",
+          "count": 1,
+          "direct_count": 0,
+          "value": 1227187672,
+          "value_label": "$1.2B",
+          "share_pct": 12.6
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL MOCOCHIRRA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 890591144,
+          "value_label": "$890.6M",
+          "share_pct": 9.1
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL KOTTO JUCHII TEPICHI CANASTA 2026",
+          "count": 1,
+          "direct_count": 1,
+          "value": 694093648,
+          "value_label": "$694.1M",
+          "share_pct": 7.1
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL AIMAJA TEPICHI 2022  CANASTA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 499344693,
+          "value_label": "$499.3M",
+          "share_pct": 5.1
+        }
+      ],
+      "named_places": [
+        {
+          "code": "44378006",
+          "name": "GUAMACHITO",
+          "type": "CP",
+          "count": 1,
+          "contract_count": 1,
+          "value": 694093648,
+          "value_label": "$694.1M",
+          "share_pct": 7.1
+        }
+      ],
+      "categories": [
+        {
+          "name": "Food basket",
+          "count": 6,
+          "value": 5337531328,
+          "value_label": "$5.3B"
+        },
+        {
+          "name": "Nutrition services",
+          "count": 1,
+          "value": 2230269928,
+          "value_label": "$2.2B"
+        },
+        {
+          "name": "Food-adjacent",
+          "count": 1,
+          "value": 1227187672,
+          "value_label": "$1.2B"
+        },
+        {
+          "name": "School meals / PAE",
+          "count": 3,
+          "value": 862861722,
+          "value_label": "$862.9M"
+        },
+        {
+          "name": "Food supply",
+          "count": 3,
+          "value": 91410000,
+          "value_label": "$91.4M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 90.4,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.7496924",
+          "referencia": "CO1.PCCNTR.7496924",
+          "fecha_de_firma": "2025-02-14T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 1509125667,
+          "valor_label": "$1.5B",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL UCHUMUIN WAYAA - EKIRAJIA CANASTA EDUCATIVA -2026",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA EDUCATIVA DE LA POBLACIÓN DE LOS CENTROS ETNOEDUCATIVOS RURALES LA CRUZ Y EL CERRO UBICADOS EN EL MUNICIPIO DE HATONUEVO DEPARTAMENTO DE LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP); DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015.",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7638146&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44378",
+          "municipality": "HATONUEVO",
+          "hunger_score": 49.8
+        },
+        {
+          "audit_score": 82.1,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.5902603",
+          "referencia": "CO1.PCCNTR.5902603",
+          "fecha_de_firma": "2024-02-07T00:00:00.000",
+          "estado": "terminado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 1353279570,
+          "valor_label": "$1.4B",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL UCHUMUIN WAYAA - EKIRAJIA CANASTA EDUCATIVA -2026",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN EL CENTRO ETNOEDUCATIVO RURAL EL CERRO Y EL CENTRO ETNOEDUCATIVO RURAL LA CRUZ UBICADOS EN EL MUNICIPIO DE HATONUEVO - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 107",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5605925&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44378",
+          "municipality": "HATONUEVO",
+          "hunger_score": 49.8
+        },
+        {
+          "audit_score": 80.3,
+          "flags": [
+            "Direct contracting",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.3501878",
+          "referencia": "CO1.PCCNTR.3501878",
+          "fecha_de_firma": "2022-02-18T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 890591144,
+          "valor_label": "$890.6M",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL MOCOCHIRRA",
+          "objeto": "PRESTACIÓN DE SERVICIOS\nPARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA \nPOBLACIÓN ÉTNICA MATRICULADA EN CENTRO ETNOEDUCATIVO BALLENAS\nUBICADO EN EL MUNICIPIO DE BARRANCA Y CENTRO ETNOEDUCATIVO RURAL EL \nCERRO UBICADO EN EL MUNICIPIO DE HATONUEVO-LA GUAJIRA; PARA \nGARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO \nDE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA \nPROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL \nDECRETO 2500 DE 2010;",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.2774352&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44378",
+          "municipality": "HATONUEVO",
+          "hunger_score": 49.8
+        },
+        {
+          "audit_score": 79.9,
+          "flags": [
+            "Direct contracting",
+            "Modified contract",
+            "Names 1 local place"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.9235503",
+          "referencia": "CO1.PCCNTR.9235503",
+          "fecha_de_firma": "2026-01-29T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 694093648,
+          "valor_label": "$694.1M",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL KOTTO JUCHII TEPICHI CANASTA 2026",
+          "objeto": "PRESTACION DEL SERVICIO PARA ADMINISTRAR LA CANASTA EDUCATIVA DE LA POBLACION ETNICA DE LA INSTITUCION ETNOEDUCATIVA RURAL GUAMACHITO; UBICADOS EN LA ZONA RURAL ETNICA DEL MUNICIPIO DE HATONUEVO; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCION E IMPLEMENTACION DEL SISTEMA EDUCATIVO INDIGENA PROPIO (SEIP); DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9867566&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [
+            {
+              "code": "44378006",
+              "name": "GUAMACHITO",
+              "type": "CP"
+            }
+          ],
+          "municipality_code": "44378",
+          "municipality": "HATONUEVO",
+          "hunger_score": 49.8
+        },
+        {
+          "audit_score": 71.2,
+          "flags": [
+            "Direct contracting"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.3711119",
+          "referencia": "CO1.PCCNTR.3711119",
+          "fecha_de_firma": "2022-05-25T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 499344693,
+          "valor_label": "$499.3M",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL AIMAJA TEPICHI 2022  CANASTA",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA GUMACHITO UBICADO EN EL MUNICIPIO DE HATONUEVO - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.2781159&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44378",
+          "municipality": "HATONUEVO",
+          "hunger_score": 49.8
+        }
+      ]
+    },
+    {
+      "code": "44035",
+      "name": "ALBANIA",
+      "department": "LA GUAJIRA",
+      "hunger_score": 43.2,
+      "risk_level": "watch",
+      "procurement_risk_score": 69.4,
+      "audit_priority_score": 54.7,
+      "relationship": "lower priority",
+      "flags": [
+        "Direct contracting dominates food-adjacent spend",
+        "Supplier concentration",
+        "Billion-peso food-adjacent contracts",
+        "UNGRD shock without reported food kits"
+      ],
+      "contract_count": 4,
+      "total_value": 11734900666,
+      "total_value_label": "$11.7B",
+      "direct_contract_count": 2,
+      "direct_contract_count_pct": 50,
+      "direct_contract_value": 11159698699,
+      "direct_contract_value_label": "$11.2B",
+      "direct_contract_value_pct": 95.1,
+      "supplier_count": 3,
+      "top_supplier": "UNION TEMPORAL WAKUAIPA CANASTA 2023",
+      "top_supplier_value": 6039299813,
+      "top_supplier_value_label": "$6.0B",
+      "top_supplier_value_pct": 51.5,
+      "high_value_contract_count": 2,
+      "very_high_value_contract_count": 2,
+      "advance_payment_value": 0,
+      "advance_payment_value_pct": 0,
+      "modified_contract_count": 1,
+      "paid_value": 0,
+      "hunger_drivers": {
+        "fies_2024": 0.4169273996720957,
+        "poverty_2024": 0.594588700631491,
+        "ipm_2024": 0.30141679347445,
+        "no_kitchen_pct": 0.4524932614555256,
+        "no_fridge_pct": 0.8274932614555256,
+        "shock_people_affected": 1391,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "UNION TEMPORAL WAKUAIPA CANASTA 2023",
+          "count": 1,
+          "value": 6039299813,
+          "value_label": "$6.0B",
+          "share_pct": 51.5
+        },
+        {
+          "supplier": "UNIÓN TEMPORAL WAKUAIPA CANASTA 2022",
+          "count": 1,
+          "value": 5120398886,
+          "value_label": "$5.1B",
+          "share_pct": 43.6
+        },
+        {
+          "supplier": "FUNDACION SS SOLIDARIDAD Y SUEÑOS SIGLA FSS",
+          "count": 2,
+          "value": 575201967,
+          "value_label": "$575.2M",
+          "share_pct": 4.9
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 2,
+          "value": 11159698699,
+          "value_label": "$11.2B",
+          "direct_value": 11159698699,
+          "direct_value_label": "$11.2B",
+          "share_pct": 95.1,
+          "direct_value_pct": 100
+        },
+        {
+          "entity": "MUNICIPIO DE ALBANIA LA GUAJIRA",
+          "count": 2,
+          "value": 575201967,
+          "value_label": "$575.2M",
+          "direct_value": 0,
+          "direct_value_label": "$0",
+          "share_pct": 4.9,
+          "direct_value_pct": 0
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL WAKUAIPA CANASTA 2023",
+          "count": 1,
+          "direct_count": 1,
+          "value": 6039299813,
+          "value_label": "$6.0B",
+          "share_pct": 51.5
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNIÓN TEMPORAL WAKUAIPA CANASTA 2022",
+          "count": 1,
+          "direct_count": 1,
+          "value": 5120398886,
+          "value_label": "$5.1B",
+          "share_pct": 43.6
+        },
+        {
+          "entity": "MUNICIPIO DE ALBANIA LA GUAJIRA",
+          "supplier": "FUNDACION SS SOLIDARIDAD Y SUEÑOS SIGLA FSS",
+          "count": 2,
+          "direct_count": 0,
+          "value": 575201967,
+          "value_label": "$575.2M",
+          "share_pct": 4.9
+        }
+      ],
+      "named_places": [
+        {
+          "code": "44035002",
+          "name": "WARE WAREN",
+          "type": "CP",
+          "count": 2,
+          "contract_count": 2,
+          "value": 11159698699,
+          "value_label": "$11.2B",
+          "share_pct": 95.1
+        }
+      ],
+      "categories": [
+        {
+          "name": "Food basket",
+          "count": 2,
+          "value": 11159698699,
+          "value_label": "$11.2B"
+        },
+        {
+          "name": "Food-adjacent",
+          "count": 1,
+          "value": 313570367,
+          "value_label": "$313.6M"
+        },
+        {
+          "name": "Food supply",
+          "count": 1,
+          "value": 261631600,
+          "value_label": "$261.6M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 100,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Supplier concentration",
+            "Names 1 local place"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.4608930",
+          "referencia": "CO1.PCCNTR.4608930",
+          "fecha_de_firma": "2023-02-13T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 6039299813,
+          "valor_label": "$6.0B",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL WAKUAIPA CANASTA 2023",
+          "objeto": "PRESTAR SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO AKUAIPA Y EL CENTRO ETNOEDUCATIVO RURAL WARE WAREN UBICADO EN EL MUNICIPIO DEL ALBANIA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.3983668&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [
+            {
+              "code": "44035002",
+              "name": "WARE WAREN",
+              "type": "CP"
+            }
+          ],
+          "municipality_code": "44035",
+          "municipality": "ALBANIA",
+          "hunger_score": 43.2
+        },
+        {
+          "audit_score": 97.8,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract",
+            "Names 1 local place"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.3657544",
+          "referencia": "CO1.PCCNTR.3657544",
+          "fecha_de_firma": "2022-04-19T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 5120398886,
+          "valor_label": "$5.1B",
+          "valor_pagado": 0,
+          "proveedor": "UNIÓN TEMPORAL WAKUAIPA CANASTA 2022",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO AKUAIPA Y EL CENTRO ETNOEDUCATIVO RURAL WARE WAREN UBICADO EN EL MUNICIPIO DEL ALBANIA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTE",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.2798908&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [
+            {
+              "code": "44035002",
+              "name": "WARE WAREN",
+              "type": "CP"
+            }
+          ],
+          "municipality_code": "44035",
+          "municipality": "ALBANIA",
+          "hunger_score": 43.2
+        },
+        {
+          "audit_score": 45.2,
+          "flags": [],
+          "category": "Food-adjacent",
+          "id_contrato": "CO1.PCCNTR.6962749",
+          "referencia": "CA-009-2024",
+          "fecha_de_firma": "2024-10-30T00:00:00.000",
+          "estado": "Aprobado",
+          "entidad": "MUNICIPIO DE ALBANIA LA GUAJIRA",
+          "ciudad": "Albania",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación régimen especial (con ofertas)",
+          "tipo": "Decreto 092 de 2017",
+          "valor": 313570367,
+          "valor_label": "$313.6M",
+          "valor_pagado": 0,
+          "proveedor": "FUNDACION SS SOLIDARIDAD Y SUEÑOS SIGLA FSS",
+          "objeto": "AUNAR ESFUERZOS TÉCNICOS; ADMINISTRATIVOS Y FINANCIEROS PARA EL FORTALECIMIENTO DE LA SANIDAD DEL SECTOR PECUARIO Y BIOSEGURIDAD DE ANIMALES DOMESTICOS; MUNICIPIO DE ALBANIA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.6921005&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44035",
+          "municipality": "ALBANIA",
+          "hunger_score": 43.2
+        },
+        {
+          "audit_score": 44.8,
+          "flags": [],
+          "category": "Food supply",
+          "id_contrato": "CO1.PCCNTR.6962555",
+          "referencia": "CA-008-2024",
+          "fecha_de_firma": "2024-10-30T00:00:00.000",
+          "estado": "Aprobado",
+          "entidad": "MUNICIPIO DE ALBANIA LA GUAJIRA",
+          "ciudad": "Albania",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación régimen especial (con ofertas)",
+          "tipo": "Decreto 092 de 2017",
+          "valor": 261631600,
+          "valor_label": "$261.6M",
+          "valor_pagado": 0,
+          "proveedor": "FUNDACION SS SOLIDARIDAD Y SUEÑOS SIGLA FSS",
+          "objeto": "AUNAR ESFUERZOS TÉCNICOS; ADMINISTRATIVOS Y FINANCIEROS PARA EL FORTALECIMIENTO A PEQUEÑOS Y MEDIANOS PRODUCTORES AGROPECUARIOS CON EL FORTALECIMIENTO ALIMENTARIO PARA GANADO BOVINO; OVINO Y CAPRINO; EN EL DEPARTAMENTO DE LA GUAJIRA; MUNICIPIO DE ALBANIA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.6921004&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44035",
+          "municipality": "ALBANIA",
+          "hunger_score": 43.2
+        }
+      ]
+    },
+    {
+      "code": "44001",
+      "name": "RIOHACHA",
+      "department": "LA GUAJIRA",
+      "hunger_score": 35.3,
+      "risk_level": "lower",
+      "procurement_risk_score": 70,
+      "audit_priority_score": 50.6,
+      "relationship": "procurement watch",
+      "flags": [
+        "Direct contracting dominates food-adjacent spend",
+        "Billion-peso food-adjacent contracts",
+        "Repeated modified contracts",
+        "UNGRD shock without reported food kits"
+      ],
+      "contract_count": 402,
+      "total_value": 492951603269,
+      "total_value_label": "$493.0B",
+      "direct_contract_count": 335,
+      "direct_contract_count_pct": 83.3,
+      "direct_contract_value": 381351578728,
+      "direct_contract_value_label": "$381.4B",
+      "direct_contract_value_pct": 77.4,
+      "supplier_count": 243,
+      "top_supplier": "PMA",
+      "top_supplier_value": 57272827235,
+      "top_supplier_value_label": "$57.3B",
+      "top_supplier_value_pct": 11.6,
+      "high_value_contract_count": 104,
+      "very_high_value_contract_count": 22,
+      "advance_payment_value": 6096099612,
+      "advance_payment_value_pct": 1.2,
+      "modified_contract_count": 160,
+      "paid_value": 14809422758,
+      "hunger_drivers": {
+        "fies_2024": 0.3120346840387122,
+        "poverty_2024": 0.488000354588408,
+        "ipm_2024": 0.301286990313608,
+        "no_kitchen_pct": 0.3690217391304348,
+        "no_fridge_pct": 0.8160326086956522,
+        "shock_people_affected": 15480,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "PMA",
+          "count": 1,
+          "value": 57272827235,
+          "value_label": "$57.3B",
+          "share_pct": 11.6
+        },
+        {
+          "supplier": "SERVICIOS DE ALIMENTACION NP SA",
+          "count": 4,
+          "value": 43391213909,
+          "value_label": "$43.4B",
+          "share_pct": 8.8
+        },
+        {
+          "supplier": "UNION TEMPORAL WAYAJIRA CANASTA 2026",
+          "count": 3,
+          "value": 35560119861,
+          "value_label": "$35.6B",
+          "share_pct": 7.2
+        },
+        {
+          "supplier": "FUNDACION GUAJIRA NACIENTE",
+          "count": 5,
+          "value": 33429695971,
+          "value_label": "$33.4B",
+          "share_pct": 6.8
+        },
+        {
+          "supplier": "UNION TEMPORAL EKIRAJIA CANASTA EDUCATIVA 2026",
+          "count": 4,
+          "value": 21267473467,
+          "value_label": "$21.3B",
+          "share_pct": 4.3
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "ALCALDIA DISTRITO DE RIOHACHA",
+          "count": 198,
+          "value": 247202496238,
+          "value_label": "$247.2B",
+          "direct_value": 169280125267,
+          "direct_value_label": "$169.3B",
+          "share_pct": 50.1,
+          "direct_value_pct": 68.5
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 153,
+          "value": 240721779117,
+          "value_label": "$240.7B",
+          "direct_value": 209296140532,
+          "direct_value_label": "$209.3B",
+          "share_pct": 48.8,
+          "direct_value_pct": 86.9
+        },
+        {
+          "entity": "SENA REGIONAL GUAJIRA Grupo Mixto de Apoyo Administrativo",
+          "count": 27,
+          "value": 3454405281,
+          "value_label": "$3.5B",
+          "direct_value": 1843931824,
+          "direct_value_label": "$1.8B",
+          "share_pct": 0.7,
+          "direct_value_pct": 53.4
+        },
+        {
+          "entity": "CORPORACION AUTONOMA REGIONAL DE LA GUAJIRA",
+          "count": 10,
+          "value": 1160581044,
+          "value_label": "$1.2B",
+          "direct_value": 865986044,
+          "direct_value_label": "$866.0M",
+          "share_pct": 0.2,
+          "direct_value_pct": 74.6
+        },
+        {
+          "entity": "EPMSC RIOHACHA",
+          "count": 3,
+          "value": 252056178,
+          "value_label": "$252.1M",
+          "direct_value": 0,
+          "direct_value_label": "$0",
+          "share_pct": 0.1,
+          "direct_value_pct": 0
+        },
+        {
+          "entity": "Contraloria General del Departamento de La Guajira",
+          "count": 4,
+          "value": 88455650,
+          "value_label": "$88.5M",
+          "direct_value": 23600200,
+          "direct_value_label": "$23.6M",
+          "share_pct": 0,
+          "direct_value_pct": 26.7
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "PMA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 57272827235,
+          "value_label": "$57.3B",
+          "share_pct": 11.6
+        },
+        {
+          "entity": "ALCALDIA DISTRITO DE RIOHACHA",
+          "supplier": "SERVICIOS DE ALIMENTACION NP SA",
+          "count": 4,
+          "direct_count": 0,
+          "value": 43391213909,
+          "value_label": "$43.4B",
+          "share_pct": 8.8
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL WAYAJIRA CANASTA 2026",
+          "count": 3,
+          "direct_count": 3,
+          "value": 35560119861,
+          "value_label": "$35.6B",
+          "share_pct": 7.2
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "FUNDACION GUAJIRA NACIENTE",
+          "count": 4,
+          "direct_count": 1,
+          "value": 30013262531,
+          "value_label": "$30.0B",
+          "share_pct": 6.1
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL EKIRAJIA CANASTA EDUCATIVA 2026",
+          "count": 4,
+          "direct_count": 4,
+          "value": 21267473467,
+          "value_label": "$21.3B",
+          "share_pct": 4.3
+        },
+        {
+          "entity": "ALCALDIA DISTRITO DE RIOHACHA",
+          "supplier": "UNION TEMPORAL ALIMENTANDO A LA NIÑEZ DE RIOHACHA 2025",
+          "count": 1,
+          "direct_count": 0,
+          "value": 18826028417,
+          "value_label": "$18.8B",
+          "share_pct": 3.8
+        }
+      ],
+      "named_places": [
+        {
+          "code": "44001032",
+          "name": "CUCURUMANA",
+          "type": "CP",
+          "count": 2,
+          "contract_count": 2,
+          "value": 2872996969,
+          "value_label": "$2.9B",
+          "share_pct": 0.6
+        },
+        {
+          "code": "44001011",
+          "name": "MATITAS",
+          "type": "CP",
+          "count": 1,
+          "contract_count": 1,
+          "value": 1199004019,
+          "value_label": "$1.2B",
+          "share_pct": 0.2
+        },
+        {
+          "code": "44001020",
+          "name": "CHOLES",
+          "type": "CP",
+          "count": 1,
+          "contract_count": 1,
+          "value": 1199004019,
+          "value_label": "$1.2B",
+          "share_pct": 0.2
+        },
+        {
+          "code": "44001047",
+          "name": "LAS DELICIAS",
+          "type": "CP",
+          "count": 1,
+          "contract_count": 1,
+          "value": 910824377,
+          "value_label": "$910.8M",
+          "share_pct": 0.2
+        }
+      ],
+      "categories": [
+        {
+          "name": "School meals / PAE",
+          "count": 137,
+          "value": 244160507908,
+          "value_label": "$244.2B"
+        },
+        {
+          "name": "Food basket",
+          "count": 162,
+          "value": 226679496187,
+          "value_label": "$226.7B"
+        },
+        {
+          "name": "Food supply",
+          "count": 41,
+          "value": 14106784176,
+          "value_label": "$14.1B"
+        },
+        {
+          "name": "Food-adjacent",
+          "count": 8,
+          "value": 3433037595,
+          "value_label": "$3.4B"
+        },
+        {
+          "name": "Catering / prepared food",
+          "count": 16,
+          "value": 3017157224,
+          "value_label": "$3.0B"
+        },
+        {
+          "name": "Nutrition services",
+          "count": 38,
+          "value": 1554620179,
+          "value_label": "$1.6B"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 96.4,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract",
+            "School meals / PAE"
+          ],
+          "category": "School meals / PAE",
+          "id_contrato": "CO1.PCCNTR.7477348",
+          "referencia": "CO1.PCCNTR.7477348",
+          "fecha_de_firma": "2025-02-14T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 6659435966,
+          "valor_label": "$6.7B",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL WAYAJIRRA PAIP 2026",
+          "objeto": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN LA INSTITUCIÓN EDUCATIVA SAN RAFAEL DEL PAJARO; INSTITUCIÓN ETNOEDUCATIVA LAACHON MAYAPO SEDES ANEXAS; INSTITUCIÓN ETNOEDUCATIVA NUESTRA SEÑORA DE FATIMA; INSTITUCION ETNOEDUCATIVA LA GLORIA Y EL CENTRO POOLOSHI UBICADOS EN LA ENTIDAD TERRITORIAL NO CERTIFICADA - MUNICIPIO DE MANAURE Y EL CENTRO ETNOEDUCATIVO RURAL UTPURAI UBICADO EN LA ENTIDAD TERRITORIAL NO CERTIFICADA - MUNICIPIO DE ALBANIA; DURANTE EL CALENDARIO ESCOLAR VIGENCIA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7614074&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44001",
+          "municipality": "RIOHACHA",
+          "hunger_score": 35.3
+        },
+        {
+          "audit_score": 96.4,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract",
+            "School meals / PAE"
+          ],
+          "category": "School meals / PAE",
+          "id_contrato": "CO1.PCCNTR.4390538",
+          "referencia": "001 DE 2023",
+          "fecha_de_firma": "2023-01-30T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 57272827235,
+          "valor_label": "$57.3B",
+          "valor_pagado": 0,
+          "proveedor": "PMA",
+          "objeto": "APOYO AL PROGRAMA DE ALIMENTACION ESCOLAR COMO SERVICIO COMPLEMENTARIO A LA FORMACION ACADEMICA DE LOS ESTUDIANTES EN LOS MUNICIPIOS NO CERTIFICADOS DEL DEPARTAMENTO DE LA GUAJIRA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.3740840&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44001",
+          "municipality": "RIOHACHA",
+          "hunger_score": 35.3
+        },
+        {
+          "audit_score": 96.4,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract"
+          ],
+          "category": "Food supply",
+          "id_contrato": "CO1.PCCNTR.3029652",
+          "referencia": "CO1.PCCNTR.3029652",
+          "fecha_de_firma": "2021-11-12T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Otro",
+          "valor": 9665695751,
+          "valor_label": "$9.7B",
+          "valor_pagado": 0,
+          "proveedor": "UdeC (Proveedor)",
+          "objeto": "AUNAR ESFUERZOS Y RECURSOS TECNICOS; JURIDICOS; ADMINISTRATIVOS Y FINANCIEROS PARA EL DESARROLLO DE UN PROYECTO DE CTEI PARA LA PRODUCCIÓN DE BIENES Y SERVICIOS EN ACUICULTURA SOSTENIBLE Y SUBSECTORES CONEXOS QUE MEJORE LA PRODUCTIVIDAD LA SEGURIDAD ALIMENTARIA Y CONTRIBUYA AL DESARROLLO SOCIO -ECONÓMICO DEL DEPARTAMENTO DE LA GUAJIRA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.2390547&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44001",
+          "municipality": "RIOHACHA",
+          "hunger_score": 35.3
+        },
+        {
+          "audit_score": 96.4,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.3533905",
+          "referencia": "CO1.PCCNTR.3533905",
+          "fecha_de_firma": "2022-01-31T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 7898688778,
+          "valor_label": "$7.9B",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL EKIRAJIA CANASTA EDUCATIVA 2026",
+          "objeto": "PRESTACIÓN DE SERVICIOS\nPARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN \nÉTNICA MATRICULADA EN EL CENTRO ETNOEDUCAIVO RURAL UTPURAI UBICADO EN \nEL MUNICIPIO DEL ALBANIA; INSTITUCION ETNOEDUCATIVA RURAL ANOUI; \nINSTITUCION ETNOEDUCATIVO RURAL EL PAJARO; CENTRO ETNOEDUCATIVO RURAL \nSHIRURIA; INSTITUCION ETNOEDUCATIVA RURAL LA PAZ E INSTITUCION \nETNOEDUCATIVA RURAL E INTERNADO LANCHON MAYAPO UBICADOS EN EL \nMUNICIPIO DE MANAURE - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.2798904&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44001",
+          "municipality": "RIOHACHA",
+          "hunger_score": 35.3
+        },
+        {
+          "audit_score": 96.4,
+          "flags": [
+            "Direct contracting",
+            "Very high value",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.4608879",
+          "referencia": "009 DE 2023",
+          "fecha_de_firma": "2023-02-13T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 8865060409,
+          "valor_label": "$8.9B",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL EKIRAJIA CANASTA EDUCATIVA 2026",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN EL CENTRO ETNOEDUCAIVO RURAL UTPURAI UBICADO EN EL MUNICIPIO DEL ALBANIA; INSTITUCION ETNOEDUCATIVA RURAL ANOUI; INSTITUCION ETNOEDUCATIVO RURAL EL PAJARO; INSTITUCION ETNOEDUCATIVA RURAL LA PAZ E INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO LANCHON MAYAPO UBICADOS EN EL MUNICIPIO DE MANAURE - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO D",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.3984027&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44001",
+          "municipality": "RIOHACHA",
+          "hunger_score": 35.3
+        }
+      ]
+    },
+    {
+      "code": "44650",
+      "name": "SAN JUAN DEL CESAR",
+      "department": "LA GUAJIRA",
+      "hunger_score": 35,
+      "risk_level": "lower",
+      "procurement_risk_score": 66.4,
+      "audit_priority_score": 48.8,
+      "relationship": "lower priority",
+      "flags": [
+        "Billion-peso food-adjacent contracts",
+        "Repeated modified contracts",
+        "UNGRD shock without reported food kits"
+      ],
+      "contract_count": 14,
+      "total_value": 14878375321,
+      "total_value_label": "$14.9B",
+      "direct_contract_count": 10,
+      "direct_contract_count_pct": 71.4,
+      "direct_contract_value": 6021081474,
+      "direct_contract_value_label": "$6.0B",
+      "direct_contract_value_pct": 40.5,
+      "supplier_count": 10,
+      "top_supplier": "ASOCIACION AGROPECUARIA INTERNACIONAL",
+      "top_supplier_value": 7423164036,
+      "top_supplier_value_label": "$7.4B",
+      "top_supplier_value_pct": 49.9,
+      "high_value_contract_count": 4,
+      "very_high_value_contract_count": 1,
+      "advance_payment_value": 3711582018,
+      "advance_payment_value_pct": 24.9,
+      "modified_contract_count": 4,
+      "paid_value": 6716303628,
+      "hunger_drivers": {
+        "fies_2024": 0.3168271719806918,
+        "poverty_2024": 0.618558325442674,
+        "ipm_2024": 0.145867230208089,
+        "no_kitchen_pct": 0.4272151898734177,
+        "no_fridge_pct": 0.6729957805907173,
+        "shock_people_affected": 7119,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "ASOCIACION AGROPECUARIA INTERNACIONAL",
+          "count": 1,
+          "value": 7423164036,
+          "value_label": "$7.4B",
+          "share_pct": 49.9
+        },
+        {
+          "supplier": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+          "count": 2,
+          "value": 3663184921,
+          "value_label": "$3.7B",
+          "share_pct": 24.6
+        },
+        {
+          "supplier": "organizacion wiwa yugumaiun bunkuanarua tayrona",
+          "count": 1,
+          "value": 2204440553,
+          "value_label": "$2.2B",
+          "share_pct": 14.8
+        },
+        {
+          "supplier": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 1,
+          "value": 1019429811,
+          "value_label": "$1.0B",
+          "share_pct": 6.9
+        },
+        {
+          "supplier": "FUNDACION NUEVO FUTURO",
+          "count": 1,
+          "value": 354508000,
+          "value_label": "$354.5M",
+          "share_pct": 2.4
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "Alcaldia Municipal de San Juan del Cesar",
+          "count": 11,
+          "value": 9010749847,
+          "value_label": "$9.0B",
+          "direct_value": 153456000,
+          "direct_value_label": "$153.5M",
+          "share_pct": 60.6,
+          "direct_value_pct": 1.7
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 3,
+          "value": 5867625474,
+          "value_label": "$5.9B",
+          "direct_value": 5867625474,
+          "direct_value_label": "$5.9B",
+          "share_pct": 39.4,
+          "direct_value_pct": 100
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "Alcaldia Municipal de San Juan del Cesar",
+          "supplier": "ASOCIACION AGROPECUARIA INTERNACIONAL",
+          "count": 1,
+          "direct_count": 0,
+          "value": 7423164036,
+          "value_label": "$7.4B",
+          "share_pct": 49.9
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+          "count": 2,
+          "direct_count": 2,
+          "value": 3663184921,
+          "value_label": "$3.7B",
+          "share_pct": 24.6
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "organizacion wiwa yugumaiun bunkuanarua tayrona",
+          "count": 1,
+          "direct_count": 1,
+          "value": 2204440553,
+          "value_label": "$2.2B",
+          "share_pct": 14.8
+        },
+        {
+          "entity": "Alcaldia Municipal de San Juan del Cesar",
+          "supplier": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 1,
+          "direct_count": 0,
+          "value": 1019429811,
+          "value_label": "$1.0B",
+          "share_pct": 6.9
+        },
+        {
+          "entity": "Alcaldia Municipal de San Juan del Cesar",
+          "supplier": "FUNDACION NUEVO FUTURO",
+          "count": 1,
+          "direct_count": 0,
+          "value": 354508000,
+          "value_label": "$354.5M",
+          "share_pct": 2.4
+        },
+        {
+          "entity": "Alcaldia Municipal de San Juan del Cesar",
+          "supplier": "JUAN DAVID URBINA AMAYA",
+          "count": 3,
+          "direct_count": 3,
+          "value": 61100000,
+          "value_label": "$61.1M",
+          "share_pct": 0.4
+        }
+      ],
+      "named_places": [],
+      "categories": [
+        {
+          "name": "Food supply",
+          "count": 5,
+          "value": 7544456036,
+          "value_label": "$7.5B"
+        },
+        {
+          "name": "Food basket",
+          "count": 2,
+          "value": 5040882953,
+          "value_label": "$5.0B"
+        },
+        {
+          "name": "School meals / PAE",
+          "count": 2,
+          "value": 1846172332,
+          "value_label": "$1.8B"
+        },
+        {
+          "name": "Nutrition services",
+          "count": 3,
+          "value": 396464000,
+          "value_label": "$396.5M"
+        },
+        {
+          "name": "Catering / prepared food",
+          "count": 2,
+          "value": 50400000,
+          "value_label": "$50.4M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 88.4,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.3496330",
+          "referencia": "CO1.PCCNTR.3496330",
+          "fecha_de_firma": "2022-01-31T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 2204440553,
+          "valor_label": "$2.2B",
+          "valor_pagado": 0,
+          "proveedor": "organizacion wiwa yugumaiun bunkuanarua tayrona",
+          "objeto": "PRESTACIÓN DE SERVICIOS\nPARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN \nÉTNICA MATRICULADA EN EL CENTRO ETNOEDUCATIVO RURAL LA LAGUNA Y LA \nINSTITUCION ETNOEDUCATIVA RURAL INTERNADO ZHARNEKA UBICADOS EN LA \nENTIDAD NO CERTIFICADA MUNICIPIO DE SAN JUAN DEL CESAR - LA GUAJIRA; PARA \nGARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE \nCONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO \n(SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.2769571&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44650",
+          "municipality": "SAN JUAN DEL CESAR",
+          "hunger_score": 35
+        },
+        {
+          "audit_score": 80.9,
+          "flags": [
+            "Direct contracting",
+            "Billion-peso contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.4611253",
+          "referencia": "CO1.PCCNTR.4611253",
+          "fecha_de_firma": "2023-02-14T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 2836442400,
+          "valor_label": "$2.8B",
+          "valor_pagado": 0,
+          "proveedor": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO  CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN EL CENTRO ETNOEDUCATIVO RURAL LA LAGUNA Y LA INSTITUCION ETNOEDUCATIVA RURAL INTERNADO ZHARNEKA UBICADOS EN LA ENTIDAD NO CERTIFICADA MUNICIPIO DE SAN JUAN DEL CESAR  LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DE",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.3986764&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44650",
+          "municipality": "SAN JUAN DEL CESAR",
+          "hunger_score": 35
+        },
+        {
+          "audit_score": 77.5,
+          "flags": [
+            "Direct contracting",
+            "Modified contract",
+            "School meals / PAE"
+          ],
+          "category": "School meals / PAE",
+          "id_contrato": "CO1.PCCNTR.4687608",
+          "referencia": "CO1.PCCNTR.4687608",
+          "fecha_de_firma": "2023-02-25T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 826742521,
+          "valor_label": "$826.7M",
+          "valor_pagado": 0,
+          "proveedor": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+          "objeto": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN LA INSTITUCIÓN ETNOEDUCATIVA RURAL E INTERNADO ZARNEKA Y EL CENTRO ETNOEDUCATIVO LA LAGUNA UBICADOS EN LA ENTIDAD TERRITORIAL NO CERTIFICADA - MUNICIPIO DE SAN JUAN DEL CESAR; DURANTE EL CALENDARIO ESCOLAR VIGENCIA 2023 EN EL DEPARTAMENTO DE LA GUAJIRA; EN CUMPLIMIENTO DE LO DISPUESTO EN LA RESOLUCIÓN 18858 DE 2018; O SEGÚN CORRESPONDA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.4070232&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44650",
+          "municipality": "SAN JUAN DEL CESAR",
+          "hunger_score": 35
+        },
+        {
+          "audit_score": 76.3,
+          "flags": [
+            "Very high value",
+            "Supplier concentration",
+            "Advance payment enabled"
+          ],
+          "category": "Food supply",
+          "id_contrato": "CO1.PCCNTR.3625445",
+          "referencia": "ESAL 001-2022",
+          "fecha_de_firma": "2022-03-23T00:00:00.000",
+          "estado": "terminado",
+          "entidad": "Alcaldia Municipal de San Juan del Cesar",
+          "ciudad": "No Definido",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación régimen especial (con ofertas)",
+          "tipo": "Decreto 092 de 2017",
+          "valor": 7423164036,
+          "valor_label": "$7.4B",
+          "valor_pagado": 6680847628,
+          "proveedor": "ASOCIACION AGROPECUARIA INTERNACIONAL",
+          "objeto": "FORTALECIMIENTO DE LA ECONOMÍA CAMPESINA FAMILIAR A TRAVÉS DEL\nESTABLECIMIENTO DEL FIQUE ASOCIADO CON CULTIVOS DE SEGURIDAD\nALIMENTARIA Y ACOMPAÑAMIENTO TÉCNICO PARA LA CADENA PRODUCTIVA\nEN EL DEPARTAMENTO DE LA GUAJIRA; MUNICIPIO DE SAN JUAN DEL CESAR.",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.2846301&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44650",
+          "municipality": "SAN JUAN DEL CESAR",
+          "hunger_score": 35
+        },
+        {
+          "audit_score": 69.6,
+          "flags": [
+            "Direct contracting",
+            "Modified contract"
+          ],
+          "category": "Food supply",
+          "id_contrato": "CO1.PCCNTR.7560318",
+          "referencia": "2025058",
+          "fecha_de_firma": "2025-02-25T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "Alcaldia Municipal de San Juan del Cesar",
+          "ciudad": "No Definido",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 12900000,
+          "valor_label": "$12.9M",
+          "valor_pagado": 0,
+          "proveedor": "JUAN DAVID URBINA AMAYA",
+          "objeto": "PRESTACIÓN DE SERVICIOS PROFESIONALES EN LA SECRETARIA DE DESARROLLO ECONÓMICO PARA APOYAR LA ASISTENCIA TECNICA EN SEGURIDAD ALIMENTARIA PARA LOS PEQUEÑOS Y MEDIANOS PRODUCTORES DEL MUNICIPIO DE SAN JUAN DEL CESAR",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7717081&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44650",
+          "municipality": "SAN JUAN DEL CESAR",
+          "hunger_score": 35
+        }
+      ]
+    },
+    {
+      "code": "44098",
+      "name": "DISTRACCIÓN",
+      "department": "LA GUAJIRA",
+      "hunger_score": 37,
+      "risk_level": "lower",
+      "procurement_risk_score": 62.7,
+      "audit_priority_score": 48.3,
+      "relationship": "lower priority",
+      "flags": [
+        "Direct contracting dominates food-adjacent spend",
+        "Supplier concentration",
+        "UNGRD shock without reported food kits"
+      ],
+      "contract_count": 4,
+      "total_value": 2524508080,
+      "total_value_label": "$2.5B",
+      "direct_contract_count": 3,
+      "direct_contract_count_pct": 75,
+      "direct_contract_value": 2418008719,
+      "direct_contract_value_label": "$2.4B",
+      "direct_contract_value_pct": 95.8,
+      "supplier_count": 3,
+      "top_supplier": "UNION TEMPORAL JEMEISÜ CANASTA EDUCATIVA 2026",
+      "top_supplier_value": 1444764919,
+      "top_supplier_value_label": "$1.4B",
+      "top_supplier_value_pct": 57.2,
+      "high_value_contract_count": 0,
+      "very_high_value_contract_count": 0,
+      "advance_payment_value": 0,
+      "advance_payment_value_pct": 0,
+      "modified_contract_count": 2,
+      "paid_value": 217933048,
+      "hunger_drivers": {
+        "fies_2024": 0.3746312841894961,
+        "poverty_2024": 0.556970298045179,
+        "ipm_2024": 0.173979519857327,
+        "no_kitchen_pct": 0.19532428355957768,
+        "no_fridge_pct": 0.6025641025641025,
+        "shock_people_affected": 1851,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "UNION TEMPORAL JEMEISÜ CANASTA EDUCATIVA 2026",
+          "count": 2,
+          "value": 1444764919,
+          "value_label": "$1.4B",
+          "share_pct": 57.2
+        },
+        {
+          "supplier": "UNION TEMPORAL UCHUMUIN PAE 2024",
+          "count": 1,
+          "value": 973243800,
+          "value_label": "$973.2M",
+          "share_pct": 38.6
+        },
+        {
+          "supplier": "COOPERATIVA MULTIACTIVA DE LA REGION",
+          "count": 1,
+          "value": 106499361,
+          "value_label": "$106.5M",
+          "share_pct": 4.2
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 3,
+          "value": 2418008719,
+          "value_label": "$2.4B",
+          "direct_value": 2418008719,
+          "direct_value_label": "$2.4B",
+          "share_pct": 95.8,
+          "direct_value_pct": 100
+        },
+        {
+          "entity": "ALCALDIA DE DISTRACCION",
+          "count": 1,
+          "value": 106499361,
+          "value_label": "$106.5M",
+          "direct_value": 0,
+          "direct_value_label": "$0",
+          "share_pct": 4.2,
+          "direct_value_pct": 0
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL JEMEISÜ CANASTA EDUCATIVA 2026",
+          "count": 2,
+          "direct_count": 2,
+          "value": 1444764919,
+          "value_label": "$1.4B",
+          "share_pct": 57.2
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL UCHUMUIN PAE 2024",
+          "count": 1,
+          "direct_count": 1,
+          "value": 973243800,
+          "value_label": "$973.2M",
+          "share_pct": 38.6
+        },
+        {
+          "entity": "ALCALDIA DE DISTRACCION",
+          "supplier": "COOPERATIVA MULTIACTIVA DE LA REGION",
+          "count": 1,
+          "direct_count": 0,
+          "value": 106499361,
+          "value_label": "$106.5M",
+          "share_pct": 4.2
+        }
+      ],
+      "named_places": [
+        {
+          "code": "44098011",
+          "name": "POTRERITO",
+          "type": "CP",
+          "count": 1,
+          "contract_count": 1,
+          "value": 106499361,
+          "value_label": "$106.5M",
+          "share_pct": 4.2
+        }
+      ],
+      "categories": [
+        {
+          "name": "Food basket",
+          "count": 2,
+          "value": 1444764919,
+          "value_label": "$1.4B"
+        },
+        {
+          "name": "School meals / PAE",
+          "count": 1,
+          "value": 973243800,
+          "value_label": "$973.2M"
+        },
+        {
+          "name": "Food supply",
+          "count": 1,
+          "value": 106499361,
+          "value_label": "$106.5M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 89.9,
+          "flags": [
+            "Direct contracting",
+            "Supplier concentration",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.9075586",
+          "referencia": "CO1.PCCNTR.9075586",
+          "fecha_de_firma": "2026-01-26T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 844980021,
+          "valor_label": "$845.0M",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL JEMEISÜ CANASTA EDUCATIVA 2026",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA \nCANASTA EDUCATIVA DE LA POBLACIÓN ÉTNICA DEL CENTRO ETNOEDUCATIVO CAICEMAPA; UBICADO EN \nLA ZONA RURAL ÉTNICA DEL MUNICIPIO DE DISTRACCION; PARA GARANTIZAR EL DERECHO A LA \nEDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA \nEDUCATIVO INDÍGENA PROPIO (SEIP); DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO \n2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9710595&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44098",
+          "municipality": "DISTRACCIÓN",
+          "hunger_score": 37
+        },
+        {
+          "audit_score": 89.3,
+          "flags": [
+            "Direct contracting",
+            "Supplier concentration",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.7437884",
+          "referencia": "CO1.PCCNTR.7437884",
+          "fecha_de_firma": "2025-02-12T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 599784898,
+          "valor_label": "$599.8M",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL JEMEISÜ CANASTA EDUCATIVA 2026",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA EDUCATIVA DE LA POBLACIÓN ÉTNICA DEL CENTRO ETNOEDUCATIVO CAICEMAPA; UBICADO EN LA ZONA RURAL ÉTNICA DEL MUNICIPIO DE DISTRACCIÓN; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCION E IMPLEMENTACION DEL SISTEMA EDUCATIVO INDIGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7569639&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44098",
+          "municipality": "DISTRACCIÓN",
+          "hunger_score": 37
+        },
+        {
+          "audit_score": 70.2,
+          "flags": [
+            "Direct contracting",
+            "School meals / PAE"
+          ],
+          "category": "School meals / PAE",
+          "id_contrato": "CO1.PCCNTR.3560413",
+          "referencia": "CO1.PCCNTR.3560413",
+          "fecha_de_firma": "2022-02-08T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 973243800,
+          "valor_label": "$973.2M",
+          "valor_pagado": 217933048,
+          "proveedor": "UNION TEMPORAL UCHUMUIN PAE 2024",
+          "objeto": "PRESTACION DE SERVICIOS AL PRORGRAMA DE ALIMENTACION ESCOLAR EN EL CENTRO ETNOEDUCATIVO CAICEMAPA DEL MUNICIPIO DE DISTRACCION",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.2821851&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44098",
+          "municipality": "DISTRACCIÓN",
+          "hunger_score": 37
+        },
+        {
+          "audit_score": 42,
+          "flags": [
+            "Names 1 local place"
+          ],
+          "category": "Food supply",
+          "id_contrato": "CO1.PCCNTR.8736753",
+          "referencia": "CONVENIO ELECTRoNICO DE ASOCIACIoN NO. 003 DE 2025",
+          "fecha_de_firma": "2025-12-27T00:00:00.000",
+          "estado": "Aprobado",
+          "entidad": "ALCALDIA DE DISTRACCION",
+          "ciudad": "Distracción",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación régimen especial (con ofertas)",
+          "tipo": "Otro",
+          "valor": 106499361,
+          "valor_label": "$106.5M",
+          "valor_pagado": 0,
+          "proveedor": "COOPERATIVA MULTIACTIVA DE LA REGION",
+          "objeto": "FORTALECIMIENTO DE LA SEGURIDAD ALIMENTARIA DEL\nRESGUARDO INDÍGENA WAYUU DE POTRERITO; MUNICIPIO DE\nDISTRACCIÓN; LA GUAJIRA.",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9332244&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [
+            {
+              "code": "44098011",
+              "name": "POTRERITO",
+              "type": "CP"
+            }
+          ],
+          "municipality_code": "44098",
+          "municipality": "DISTRACCIÓN",
+          "hunger_score": 37
+        }
+      ]
+    },
+    {
+      "code": "44078",
+      "name": "BARRANCAS",
+      "department": "LA GUAJIRA",
+      "hunger_score": 39.2,
+      "risk_level": "lower",
+      "procurement_risk_score": 59.6,
+      "audit_priority_score": 48.2,
+      "relationship": "lower priority",
+      "flags": [
+        "Direct contracting dominates food-adjacent spend",
+        "Repeated modified contracts"
+      ],
+      "contract_count": 8,
+      "total_value": 3271261948,
+      "total_value_label": "$3.3B",
+      "direct_contract_count": 7,
+      "direct_contract_count_pct": 87.5,
+      "direct_contract_value": 3091261948,
+      "direct_contract_value_label": "$3.1B",
+      "direct_contract_value_pct": 94.5,
+      "supplier_count": 7,
+      "top_supplier": "UNION TEMPORAL EKIRAJIA WACHON PAIP 2026",
+      "top_supplier_value": 1134715844,
+      "top_supplier_value_label": "$1.1B",
+      "top_supplier_value_pct": 34.7,
+      "high_value_contract_count": 0,
+      "very_high_value_contract_count": 0,
+      "advance_payment_value": 0,
+      "advance_payment_value_pct": 0,
+      "modified_contract_count": 3,
+      "paid_value": 0,
+      "hunger_drivers": {
+        "fies_2024": 0.3788231451154851,
+        "poverty_2024": 0.581764798685174,
+        "ipm_2024": 0.229526753796549,
+        "no_kitchen_pct": 0.2443033246171087,
+        "no_fridge_pct": 0.691819200597684,
+        "shock_people_affected": 248,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "UNION TEMPORAL EKIRAJIA WACHON PAIP 2026",
+          "count": 2,
+          "value": 1134715844,
+          "value_label": "$1.1B",
+          "share_pct": 34.7
+        },
+        {
+          "supplier": "Unión temporal akalinjashi waya canasta departamento 2023",
+          "count": 1,
+          "value": 518176936,
+          "value_label": "$518.2M",
+          "share_pct": 15.8
+        },
+        {
+          "supplier": "UNION TEMPORAL KOTTO JUCHII TEPICHI CANASTA 2026",
+          "count": 1,
+          "value": 451582256,
+          "value_label": "$451.6M",
+          "share_pct": 13.8
+        },
+        {
+          "supplier": "ALUWATAJIRRAWA",
+          "count": 1,
+          "value": 408690784,
+          "value_label": "$408.7M",
+          "share_pct": 12.5
+        },
+        {
+          "supplier": "UNION TEMPORAL AKALINJASHI WAYA CANASTA DEPARTAMENTO 2024",
+          "count": 1,
+          "value": 311929654,
+          "value_label": "$311.9M",
+          "share_pct": 9.5
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 7,
+          "value": 3091261948,
+          "value_label": "$3.1B",
+          "direct_value": 3091261948,
+          "direct_value_label": "$3.1B",
+          "share_pct": 94.5,
+          "direct_value_pct": 100
+        },
+        {
+          "entity": "FONDO DE DESARROLLO EMPRESARIAL DE BARRANCAS",
+          "count": 1,
+          "value": 180000000,
+          "value_label": "$180.0M",
+          "direct_value": 0,
+          "direct_value_label": "$0",
+          "share_pct": 5.5,
+          "direct_value_pct": 0
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL EKIRAJIA WACHON PAIP 2026",
+          "count": 2,
+          "direct_count": 2,
+          "value": 1134715844,
+          "value_label": "$1.1B",
+          "share_pct": 34.7
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "Unión temporal akalinjashi waya canasta departamento 2023",
+          "count": 1,
+          "direct_count": 1,
+          "value": 518176936,
+          "value_label": "$518.2M",
+          "share_pct": 15.8
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL KOTTO JUCHII TEPICHI CANASTA 2026",
+          "count": 1,
+          "direct_count": 1,
+          "value": 451582256,
+          "value_label": "$451.6M",
+          "share_pct": 13.8
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "ALUWATAJIRRAWA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 408690784,
+          "value_label": "$408.7M",
+          "share_pct": 12.5
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UNION TEMPORAL AKALINJASHI WAYA CANASTA DEPARTAMENTO 2024",
+          "count": 1,
+          "direct_count": 1,
+          "value": 311929654,
+          "value_label": "$311.9M",
+          "share_pct": 9.5
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "UT Akalinjashi waya pae",
+          "count": 1,
+          "direct_count": 1,
+          "value": 266166474,
+          "value_label": "$266.2M",
+          "share_pct": 8.1
+        }
+      ],
+      "named_places": [
+        {
+          "code": "44078019",
+          "name": "PROVINCIAL",
+          "type": "CP",
+          "count": 4,
+          "contract_count": 4,
+          "value": 1504963848,
+          "value_label": "$1.5B",
+          "share_pct": 46
+        }
+      ],
+      "categories": [
+        {
+          "name": "Food basket",
+          "count": 4,
+          "value": 1690379630,
+          "value_label": "$1.7B"
+        },
+        {
+          "name": "School meals / PAE",
+          "count": 3,
+          "value": 1400882318,
+          "value_label": "$1.4B"
+        },
+        {
+          "name": "Food-adjacent",
+          "count": 1,
+          "value": 180000000,
+          "value_label": "$180.0M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 77.4,
+          "flags": [
+            "Direct contracting",
+            "Modified contract",
+            "School meals / PAE"
+          ],
+          "category": "School meals / PAE",
+          "id_contrato": "CO1.PCCNTR.7496021",
+          "referencia": "CO1.PCCNTR.7496021",
+          "fecha_de_firma": "2025-02-14T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 516821204,
+          "valor_label": "$516.8M",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL EKIRAJIA WACHON PAIP 2026",
+          "objeto": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN EL CENTRO ETNOEDUCATIVO RURAL WOTKASAINRU UBICADO EN LA ENTIDAD TERRITORIAL NO CERTIFICADA - MUNICIPIO DE BARRANCAS; DURANTE EL CALENDARIO ESCOLAR VIGENCIA 2025 EN EL DEPARTAMENTO DE LA GUAJIRA; EN CUMPLIMIENTO DE LO DISPUESTO EN LA RESOLUCIÓN N° 018858 DE 2018; O SEGÚN CORRESPONDA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7636784&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44078",
+          "municipality": "BARRANCAS",
+          "hunger_score": 39.2
+        },
+        {
+          "audit_score": 77.1,
+          "flags": [
+            "Direct contracting",
+            "Modified contract"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.9034701",
+          "referencia": "CO1.PCCNTR.9034701",
+          "fecha_de_firma": "2026-01-24T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 451582256,
+          "valor_label": "$451.6M",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL KOTTO JUCHII TEPICHI CANASTA 2026",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA EDUCATIVA DE LA POBLACION ETNICA DEL CENTRO ETNOEDUCATIVO BALLENAS DEL MUNICIPIO DE BARRANCAS; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DECONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO(SEIP); DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015.",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9668673&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44078",
+          "municipality": "BARRANCAS",
+          "hunger_score": 39.2
+        },
+        {
+          "audit_score": 76.9,
+          "flags": [
+            "Direct contracting",
+            "Modified contract",
+            "Names 1 local place"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.7486338",
+          "referencia": "CO1.PCCNTR.7486338",
+          "fecha_de_firma": "2025-02-14T00:00:00.000",
+          "estado": "Modificado",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 408690784,
+          "valor_label": "$408.7M",
+          "valor_pagado": 0,
+          "proveedor": "ALUWATAJIRRAWA",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN EL CENTRO ETNOEDUCATIVO PROVINCIAL UBICADO EN EL MUNICIPIO DE BARRANCAS - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7594263&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [
+            {
+              "code": "44078019",
+              "name": "PROVINCIAL",
+              "type": "CP"
+            }
+          ],
+          "municipality_code": "44078",
+          "municipality": "BARRANCAS",
+          "hunger_score": 39.2
+        },
+        {
+          "audit_score": 69.7,
+          "flags": [
+            "Direct contracting",
+            "School meals / PAE"
+          ],
+          "category": "School meals / PAE",
+          "id_contrato": "CO1.PCCNTR.9001219",
+          "referencia": "CO1.PCCNTR.9001219",
+          "fecha_de_firma": "2026-01-20T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 617894640,
+          "valor_label": "$617.9M",
+          "valor_pagado": 0,
+          "proveedor": "UNION TEMPORAL EKIRAJIA WACHON PAIP 2026",
+          "objeto": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE\nALIMENTACIÓN ESCOLAR EN EL CENTRO ETNOEDUCATIVO RURAL WOTKASAINRU UBICADO EN LA ENTIDAD\nTERRITORIAL NO CERTIFICADA  MUNICIPIO DE BARRANCAS; DURANTE EL CALENDARIO ESCOLAR VIGENCIA\n2026 EN EL DEPARTAMENTO DE LA GUAJIRA; EN CUMPLIMIENTO DE LO DISPUESTO EN LA RESOLUCIÓN N\n018858 DE 2018 O SEGÚN CORRESPONDA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9634168&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44078",
+          "municipality": "BARRANCAS",
+          "hunger_score": 39.2
+        },
+        {
+          "audit_score": 69.4,
+          "flags": [
+            "Direct contracting",
+            "Names 1 local place"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.4888124",
+          "referencia": "029",
+          "fecha_de_firma": "2023-04-24T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 518176936,
+          "valor_label": "$518.2M",
+          "valor_pagado": 0,
+          "proveedor": "Unión temporal akalinjashi waya canasta departamento 2023",
+          "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA EDUCATIVA DE LA POBLACIÓN ÉTNICA EN LOS CENTROS ETNOEDUCATIVOS PROVINCIAL Y BALLENAS DEL MUNICIPIO DE BARRANCAS  LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO SEIP; DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.4322868&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [
+            {
+              "code": "44078019",
+              "name": "PROVINCIAL",
+              "type": "CP"
+            }
+          ],
+          "municipality_code": "44078",
+          "municipality": "BARRANCAS",
+          "hunger_score": 39.2
+        }
+      ]
+    },
+    {
+      "code": "44279",
+      "name": "FONSECA",
+      "department": "LA GUAJIRA",
+      "hunger_score": 41.2,
+      "risk_level": "watch",
+      "procurement_risk_score": 39.1,
+      "audit_priority_score": 40.3,
+      "relationship": "lower priority",
+      "flags": [
+        "UNGRD shock without reported food kits"
+      ],
+      "contract_count": 12,
+      "total_value": 669748986,
+      "total_value_label": "$669.7M",
+      "direct_contract_count": 5,
+      "direct_contract_count_pct": 41.7,
+      "direct_contract_value": 363846386,
+      "direct_contract_value_label": "$363.8M",
+      "direct_contract_value_pct": 54.3,
+      "supplier_count": 8,
+      "top_supplier": "YANAMA",
+      "top_supplier_value": 326086386,
+      "top_supplier_value_label": "$326.1M",
+      "top_supplier_value_pct": 48.7,
+      "high_value_contract_count": 0,
+      "very_high_value_contract_count": 0,
+      "advance_payment_value": 81224800,
+      "advance_payment_value_pct": 12.1,
+      "modified_contract_count": 0,
+      "paid_value": 216041600,
+      "hunger_drivers": {
+        "fies_2024": 0.4598571958056991,
+        "poverty_2024": 0.578627257679265,
+        "ipm_2024": 0.148967548016401,
+        "no_kitchen_pct": 0.4163793103448276,
+        "no_fridge_pct": 0.6836206896551724,
+        "shock_people_affected": 1883,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "YANAMA",
+          "count": 1,
+          "value": 326086386,
+          "value_label": "$326.1M",
+          "share_pct": 48.7
+        },
+        {
+          "supplier": "FUNPROBIENPUBLICO",
+          "count": 3,
+          "value": 138449600,
+          "value_label": "$138.4M",
+          "share_pct": 20.7
+        },
+        {
+          "supplier": "elka bernal cerchar",
+          "count": 1,
+          "value": 69407000,
+          "value_label": "$69.4M",
+          "share_pct": 10.4
+        },
+        {
+          "supplier": "FUNDEJAR",
+          "count": 1,
+          "value": 35900000,
+          "value_label": "$35.9M",
+          "share_pct": 5.4
+        },
+        {
+          "supplier": "CONSUELO ELENA RINCONES NIEVES",
+          "count": 3,
+          "value": 34026667,
+          "value_label": "$34.0M",
+          "share_pct": 5.1
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 2,
+          "value": 395493386,
+          "value_label": "$395.5M",
+          "direct_value": 326086386,
+          "direct_value_label": "$326.1M",
+          "share_pct": 59.1,
+          "direct_value_pct": 82.5
+        },
+        {
+          "entity": "ALCALDIA MUNICIPAL DE FONSECA",
+          "count": 10,
+          "value": 274255600,
+          "value_label": "$274.3M",
+          "direct_value": 37760000,
+          "direct_value_label": "$37.8M",
+          "share_pct": 40.9,
+          "direct_value_pct": 13.8
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "YANAMA",
+          "count": 1,
+          "direct_count": 1,
+          "value": 326086386,
+          "value_label": "$326.1M",
+          "share_pct": 48.7
+        },
+        {
+          "entity": "ALCALDIA MUNICIPAL DE FONSECA",
+          "supplier": "FUNPROBIENPUBLICO",
+          "count": 3,
+          "direct_count": 0,
+          "value": 138449600,
+          "value_label": "$138.4M",
+          "share_pct": 20.7
+        },
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "elka bernal cerchar",
+          "count": 1,
+          "direct_count": 0,
+          "value": 69407000,
+          "value_label": "$69.4M",
+          "share_pct": 10.4
+        },
+        {
+          "entity": "ALCALDIA MUNICIPAL DE FONSECA",
+          "supplier": "FUNDEJAR",
+          "count": 1,
+          "direct_count": 0,
+          "value": 35900000,
+          "value_label": "$35.9M",
+          "share_pct": 5.4
+        },
+        {
+          "entity": "ALCALDIA MUNICIPAL DE FONSECA",
+          "supplier": "CONSUELO ELENA RINCONES NIEVES",
+          "count": 3,
+          "direct_count": 3,
+          "value": 34026667,
+          "value_label": "$34.0M",
+          "share_pct": 5.1
+        },
+        {
+          "entity": "ALCALDIA MUNICIPAL DE FONSECA",
+          "supplier": "JAIME LUIS SALINAS LACOUTURE",
+          "count": 1,
+          "direct_count": 0,
+          "value": 32146000,
+          "value_label": "$32.1M",
+          "share_pct": 4.8
+        }
+      ],
+      "named_places": [],
+      "categories": [
+        {
+          "name": "Food basket",
+          "count": 1,
+          "value": 326086386,
+          "value_label": "$326.1M"
+        },
+        {
+          "name": "Catering / prepared food",
+          "count": 3,
+          "value": 165566600,
+          "value_label": "$165.6M"
+        },
+        {
+          "name": "Food supply",
+          "count": 6,
+          "value": 158362667,
+          "value_label": "$158.4M"
+        },
+        {
+          "name": "Nutrition services",
+          "count": 2,
+          "value": 19733333,
+          "value_label": "$19.7M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 80.9,
+          "flags": [
+            "Direct contracting",
+            "Supplier concentration"
+          ],
+          "category": "Food basket",
+          "id_contrato": "CO1.PCCNTR.4676794",
+          "referencia": "CO1.PCCNTR.4676794",
+          "fecha_de_firma": "2023-02-24T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 326086386,
+          "valor_label": "$326.1M",
+          "valor_pagado": 0,
+          "proveedor": "YANAMA",
+          "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL MAYABANGLOMA UBICADO EN EL MUNICIPIO DE FONSECA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.4058647&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44279",
+          "municipality": "FONSECA",
+          "hunger_score": 41.2
+        },
+        {
+          "audit_score": 63.1,
+          "flags": [
+            "Direct contracting",
+            "Nutrition services"
+          ],
+          "category": "Nutrition services",
+          "id_contrato": "CO1.PCCNTR.9209105",
+          "referencia": "CPS-117-2026",
+          "fecha_de_firma": "2026-01-28T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "ALCALDIA MUNICIPAL DE FONSECA",
+          "ciudad": "Fonseca",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 16000000,
+          "valor_label": "$16.0M",
+          "valor_pagado": 9600000,
+          "proveedor": "CONSUELO ELENA RINCONES NIEVES",
+          "objeto": "PRESTACIÓN DE SERVICIOS PROFESIONALES PARA EL DISEÑO;\nIMPLEMENTACIÓN Y SEGUIMIENTO DE ACCIONES INTEGRALES EN\nSALUD PUBLICA RELACIONADAS CON LA SEGURIDAD\nALIMENTARIA Y NUTRICIONAL EN EL MUNICIPIO DE FONSECA\nDEPARTAMENTO DE LA GUAJIRA; DURANTE LA VIGENCIA 2026",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9840637&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44279",
+          "municipality": "FONSECA",
+          "hunger_score": 41.2
+        },
+        {
+          "audit_score": 62.2,
+          "flags": [
+            "Direct contracting"
+          ],
+          "category": "Food supply",
+          "id_contrato": "CO1.PCCNTR.7991744",
+          "referencia": "CPS-161-2025",
+          "fecha_de_firma": "2025-06-17T00:00:00.000",
+          "estado": "Cerrado",
+          "entidad": "ALCALDIA MUNICIPAL DE FONSECA",
+          "ciudad": "Fonseca",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 10026667,
+          "valor_label": "$10.0M",
+          "valor_pagado": 10026667,
+          "proveedor": "CONSUELO ELENA RINCONES NIEVES",
+          "objeto": "PRESTACION DE SERVICIOS PROFESIONALES EN EL EJE DE ATENCION\nPRIMARIA EN SALUD PARA EL FORTALECIMIENTO DE LAS ACCIONES\nREALCIONADAS CON LA SEGURIDAD ALIMENTARIA en el marco del\nproyecto de PREVENCIÓN Y PROMOCIÓN DE SALUD DENTRO DEL PLAN\nDE SALUD PUBLICA DE INTERVENCIONES COLECTIVAS DEL MUNICIPIO\nDE FONSECA; LA GUAJIRA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.8302202&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44279",
+          "municipality": "FONSECA",
+          "hunger_score": 41.2
+        },
+        {
+          "audit_score": 61.8,
+          "flags": [
+            "Direct contracting"
+          ],
+          "category": "Food supply",
+          "id_contrato": "CO1.PCCNTR.8401016",
+          "referencia": "CPS-244-2025",
+          "fecha_de_firma": "2025-10-01T00:00:00.000",
+          "estado": "Cerrado",
+          "entidad": "ALCALDIA MUNICIPAL DE FONSECA",
+          "ciudad": "Fonseca",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 8000000,
+          "valor_label": "$8.0M",
+          "valor_pagado": 8000000,
+          "proveedor": "CONSUELO ELENA RINCONES NIEVES",
+          "objeto": "PRESTACION DE SERVICIOS PROFESIONALES EN EL EJE DE ATENCION\nPRIMARIA EN SALUD PARA EL FORTALECIMIENTO DE LAS ACCIONES\nRELACIONADAS CON LA SEGURIDAD ALIMENTARIA en el marco del\nproyecto de PREVENCIÓN Y PROMOCIÓN DE SALUD DENTRO DEL PLAN\nDE SALUD PUBLICA DE INTERVENCIONES COLECTIVAS DEL MUNICIPIO\nDE FONSECA; LA GUAJIRA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.8875513&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44279",
+          "municipality": "FONSECA",
+          "hunger_score": 41.2
+        },
+        {
+          "audit_score": 60.3,
+          "flags": [
+            "Direct contracting",
+            "Nutrition services"
+          ],
+          "category": "Nutrition services",
+          "id_contrato": "CO1.PCCNTR.7041896",
+          "referencia": "CPS-232-2024",
+          "fecha_de_firma": "2024-11-20T00:00:00.000",
+          "estado": "terminado",
+          "entidad": "ALCALDIA MUNICIPAL DE FONSECA",
+          "ciudad": "Fonseca",
+          "departamento": "La Guajira",
+          "modalidad": "Contratación directa",
+          "tipo": "Prestación de servicios",
+          "valor": 3733333,
+          "valor_label": "$3.7M",
+          "valor_pagado": 3733333,
+          "proveedor": "IRMA DIGIRETH DIAZ RODRIGUEZ",
+          "objeto": "PRESTACIÓN DE SERVICIOS PROFESIONALES COMO\nNUTRICIONISTA EN LA DIMENSIÓN DE SEGURIDAD ALIMENTARIA Y\nNUTRICIÓN EN EL MARCO DEL PROYECTO IMPLEMENTACIÓN DE\nLAS ESTRATEGIAS PARA EL FORTALECIMIENTO DE LAS ACCIONES\nQUE GARANTICEN LA SEGURIDAD SANITARIA EN EL MUNICIPIO DE\nFONSECA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7071728&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44279",
+          "municipality": "FONSECA",
+          "hunger_score": 41.2
+        }
+      ]
+    },
+    {
+      "code": "44874",
+      "name": "VILLANUEVA",
+      "department": "LA GUAJIRA",
+      "hunger_score": 35.4,
+      "risk_level": "lower",
+      "procurement_risk_score": 27.4,
+      "audit_priority_score": 31.9,
+      "relationship": "lower priority",
+      "flags": [],
+      "contract_count": 1,
+      "total_value": 55920000,
+      "total_value_label": "$55.9M",
+      "direct_contract_count": 0,
+      "direct_contract_count_pct": 0,
+      "direct_contract_value": 0,
+      "direct_contract_value_label": "$0",
+      "direct_contract_value_pct": 0,
+      "supplier_count": 1,
+      "top_supplier": "funamass",
+      "top_supplier_value": 55920000,
+      "top_supplier_value_label": "$55.9M",
+      "top_supplier_value_pct": 100,
+      "high_value_contract_count": 0,
+      "very_high_value_contract_count": 0,
+      "advance_payment_value": 0,
+      "advance_payment_value_pct": 0,
+      "modified_contract_count": 0,
+      "paid_value": 0,
+      "hunger_drivers": {
+        "fies_2024": 0.2434128222623317,
+        "poverty_2024": 0.708158053873512,
+        "ipm_2024": 0.219148450451554,
+        "no_kitchen_pct": 0.7078690807799443,
+        "no_fridge_pct": 0.8575905292479109,
+        "shock_people_affected": 689,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [
+        {
+          "supplier": "funamass",
+          "count": 1,
+          "value": 55920000,
+          "value_label": "$55.9M",
+          "share_pct": 100
+        }
+      ],
+      "top_buyer_entities": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "count": 1,
+          "value": 55920000,
+          "value_label": "$55.9M",
+          "direct_value": 0,
+          "direct_value_label": "$0",
+          "share_pct": 100,
+          "direct_value_pct": 0
+        }
+      ],
+      "top_entity_supplier_pairs": [
+        {
+          "entity": "GOBERNACIÓN DE LA GUAJIRA",
+          "supplier": "funamass",
+          "count": 1,
+          "direct_count": 0,
+          "value": 55920000,
+          "value_label": "$55.9M",
+          "share_pct": 100
+        }
+      ],
+      "named_places": [],
+      "categories": [
+        {
+          "name": "Food supply",
+          "count": 1,
+          "value": 55920000,
+          "value_label": "$55.9M"
+        }
+      ],
+      "top_contracts": [
+        {
+          "audit_score": 52.5,
+          "flags": [
+            "Supplier concentration"
+          ],
+          "category": "Food supply",
+          "id_contrato": "CO1.PCCNTR.3133320",
+          "referencia": "CO1.PCCNTR.3133320",
+          "fecha_de_firma": "2021-12-29T00:00:00.000",
+          "estado": "En ejecución",
+          "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+          "ciudad": "Riohacha",
+          "departamento": "La Guajira",
+          "modalidad": "Mínima cuantía",
+          "tipo": "Suministros",
+          "valor": 55920000,
+          "valor_label": "$55.9M",
+          "valor_pagado": 0,
+          "proveedor": "funamass",
+          "objeto": "SUMINISTRO DE EQUIPOS E INSUMOS PARA EL FORTALECIMIENTO DE LA CAPACIDAD PRODUCTIVA; COMERCIAL DE HUEVOS SEMI-CRIOLLOS Y LA SOSTENIBILIDAD DEL PROYECTO DE GRANJAS DE GALLINAS PONEDORAS QUE BENEFICIA A LOS MINEROS DE SUBSISTENCIA EN LA VEREDA EL HORNO; MUNICIPIO DE VILLANUEVA - GUAJIRA",
+          "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.2459602&isFromPublicArea=True&isModal=true&asPopupView=true",
+          "place_hits": [],
+          "municipality_code": "44874",
+          "municipality": "VILLANUEVA",
+          "hunger_score": 35.4
+        }
+      ]
+    },
+    {
+      "code": "44855",
+      "name": "URUMITA",
+      "department": "LA GUAJIRA",
+      "hunger_score": 42.9,
+      "risk_level": "watch",
+      "procurement_risk_score": 0,
+      "audit_priority_score": 24,
+      "relationship": "lower priority",
+      "flags": [],
+      "contract_count": 0,
+      "total_value": 0,
+      "total_value_label": "$0",
+      "direct_contract_count": 0,
+      "direct_contract_count_pct": 0,
+      "direct_contract_value": 0,
+      "direct_contract_value_label": "$0",
+      "direct_contract_value_pct": 0,
+      "supplier_count": 0,
+      "top_supplier": "n/a",
+      "top_supplier_value": 0,
+      "top_supplier_value_label": "$0",
+      "top_supplier_value_pct": 0,
+      "high_value_contract_count": 0,
+      "very_high_value_contract_count": 0,
+      "advance_payment_value": 0,
+      "advance_payment_value_pct": 0,
+      "modified_contract_count": 0,
+      "paid_value": 0,
+      "hunger_drivers": {
+        "fies_2024": 0.3148416626490614,
+        "poverty_2024": 0.738633482417481,
+        "ipm_2024": 0.348463701704629,
+        "no_kitchen_pct": 0.4126092384519351,
+        "no_fridge_pct": 0.700374531835206,
+        "shock_people_affected": 80,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [],
+      "top_buyer_entities": [],
+      "top_entity_supplier_pairs": [],
+      "named_places": [],
+      "categories": [],
+      "top_contracts": []
+    },
+    {
+      "code": "44420",
+      "name": "LA JAGUA DEL PILAR",
+      "department": "LA GUAJIRA",
+      "hunger_score": 38,
+      "risk_level": "lower",
+      "procurement_risk_score": 0,
+      "audit_priority_score": 21.3,
+      "relationship": "lower priority",
+      "flags": [],
+      "contract_count": 0,
+      "total_value": 0,
+      "total_value_label": "$0",
+      "direct_contract_count": 0,
+      "direct_contract_count_pct": 0,
+      "direct_contract_value": 0,
+      "direct_contract_value_label": "$0",
+      "direct_contract_value_pct": 0,
+      "supplier_count": 0,
+      "top_supplier": "n/a",
+      "top_supplier_value": 0,
+      "top_supplier_value_label": "$0",
+      "top_supplier_value_pct": 0,
+      "high_value_contract_count": 0,
+      "very_high_value_contract_count": 0,
+      "advance_payment_value": 0,
+      "advance_payment_value_pct": 0,
+      "modified_contract_count": 0,
+      "paid_value": 0,
+      "hunger_drivers": {
+        "fies_2024": 0.3470160835202575,
+        "poverty_2024": 0.657293512554297,
+        "ipm_2024": 0.167527077715495,
+        "no_kitchen_pct": 0.1935096153846154,
+        "no_fridge_pct": 0.6117788461538461,
+        "shock_people_affected": 20,
+        "food_kits_reported": 0
+      },
+      "top_suppliers": [],
+      "top_buyer_entities": [],
+      "top_entity_supplier_pairs": [],
+      "named_places": [],
+      "categories": [],
+      "top_contracts": []
+    }
+  ],
+  "red_flags": [
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Modified contract",
+        "High hunger municipality",
+        "Names 2 local places",
+        "School meals / PAE"
+      ],
+      "category": "School meals / PAE",
+      "id_contrato": "CO1.PCCNTR.7429535",
+      "referencia": "CPS-056-2025",
+      "fecha_de_firma": "2025-02-06T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "MUNICIPIO DE URIBIA",
+      "ciudad": "Uribia",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 8277807386,
+      "valor_label": "$8.3B",
+      "valor_pagado": 6461669944,
+      "proveedor": "ASOCIACION DE AUTORIDADES WAYUU ANATAS WAKUAIPA",
+      "objeto": "PRESTACIÓN DE SERVICIOS PARA LA EJECUCIÓN DEL PROGRAMA DE ALIMENTACIÓN\nESCOLAR (PAE) DIRIGIDO A PUEBLOS INDÍGENAS EN LA INSTITUCIÓN ETNOEDUCATIVA\nINTEGRAL RURAL CARASUA MADRE LAURA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL\nVILLA FÁTIMA; INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL DE NUESTRA SEÑORA DE\nFÁTIMA DE NAZARETH; INSTITUCION ETNOEDUCATIVA TECNICA AGROPECUARIA\nJUYASIRAIN; CENTRO ETNOEDUCATIVO INTEGRAL RURAL SUTCHIIN WAYUU; INSTITUCION\nETNOEDUCTIVA INTEGRAL RURAL ISABEL JUSAYU DURANTE EL CALEN",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7560432&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [
+        {
+          "code": "44847034",
+          "name": "VILLA FÁTIMA",
+          "type": "CP"
+        },
+        {
+          "code": "44847012",
+          "name": "NAZARETH",
+          "type": "CP"
+        }
+      ],
+      "municipality_code": "44847",
+      "municipality": "URIBIA",
+      "hunger_score": 74.5
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Modified contract",
+        "High hunger municipality"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.7489410",
+      "referencia": "CPS-101-2025",
+      "fecha_de_firma": "2025-02-13T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "MUNICIPIO DE URIBIA",
+      "ciudad": "Uribia",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 12062791571,
+      "valor_label": "$12.1B",
+      "valor_pagado": 9764135543,
+      "proveedor": "UNION TEMPORAL SUKUA>IPA TEPICHII",
+      "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCION ETNOEDUCATIVA TECNICA AGROPECUARIA JUYASIRAIN Y EL CENTRO ETNOEDUCATIVO INTEGRAL RURAL SUTCHIIN WAYUU UBICADAS EN EL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; COMPILADO EN EL DECRETO 10",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7628948&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44847",
+      "municipality": "URIBIA",
+      "hunger_score": 74.5
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Modified contract",
+        "High hunger municipality"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.5935342",
+      "referencia": "CPS-033-2024",
+      "fecha_de_firma": "2024-02-13T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "MUNICIPIO DE URIBIA",
+      "ciudad": "Uribia",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación Directa (con ofertas)",
+      "tipo": "Otro",
+      "valor": 5843739227,
+      "valor_label": "$5.8B",
+      "valor_pagado": 0,
+      "proveedor": "Akalinjirrawa 2024",
+      "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL\nDE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA\nINTEGRAL RURAL DE MAPUAIN UBICADA EN EL MUNICIPIO DE URIBIA;\nLA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN\nPROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E\nIMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP)\nDE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO\n2500 DE 2010; COMPILADO EN EL DECRETO 1075 DE 2015",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5615799&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44847",
+      "municipality": "URIBIA",
+      "hunger_score": 74.5
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Modified contract",
+        "High hunger municipality",
+        "Names 1 local place"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.7488527",
+      "referencia": "CPS-098-2025",
+      "fecha_de_firma": "2025-02-13T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "MUNICIPIO DE URIBIA",
+      "ciudad": "Uribia",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 9774480358,
+      "valor_label": "$9.8B",
+      "valor_pagado": 7912420488,
+      "proveedor": "UNIÓN TEMPORAL ALII APÜLAA CANASTA 2025",
+      "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL INTERNADO DE SIAPANA; INSTITUCION EDUCATIVA JULIA SIERRA IGUARAN; CENTRO EDUCATIVO SAN JOSE Y LA INSTITUCION ETNOEDUCATIVA INTEGRAL RURAL INTERNADO DE PUERTO ESTRELLA UBICADAS EN EL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE A",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7627898&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [
+        {
+          "code": "44847013",
+          "name": "PUERTO ESTRELLA",
+          "type": "CP"
+        }
+      ],
+      "municipality_code": "44847",
+      "municipality": "URIBIA",
+      "hunger_score": 74.5
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Modified contract",
+        "High hunger municipality"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.7445105",
+      "referencia": "CPS-069-2025",
+      "fecha_de_firma": "2025-02-08T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "MUNICIPIO DE URIBIA",
+      "ciudad": "Uribia",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 17148433659,
+      "valor_label": "$17.1B",
+      "valor_pagado": 7279299118,
+      "proveedor": "UNION TEMPORAL AKANAJAAA",
+      "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN\nÉTNICA DE LA INSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL TEJIENDO SABERES Y LA\nINSTITUCIÓN ETNOEDUCATIVA INTEGRAL RURAL YERICA GUTIÉRREZ FAJARDO UBICADAS EN\nEL MUNICIPIO DE URIBIA; LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN\nPROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA\nEDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS\nEN EL DECRETO 2500 DE 2010; COMPILADO E",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7576703&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44847",
+      "municipality": "URIBIA",
+      "hunger_score": 74.5
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Modified contract",
+        "School meals / PAE"
+      ],
+      "category": "School meals / PAE",
+      "id_contrato": "CO1.PCCNTR.5982038",
+      "referencia": "CPS-PAIP- RE-MM-002-2024",
+      "fecha_de_firma": "2024-02-21T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "MUNICIPIO DE MAICAO",
+      "ciudad": "Maicao",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 13216908412,
+      "valor_label": "$13.2B",
+      "valor_pagado": 12550638168,
+      "proveedor": "KASUWA",
+      "objeto": "PRESTACIÓN DEL SERVICIO AL PROGRAMA DE ALIMENTACIÓN ESCOLAR EN LA INSTITUCIONES EDUCATIVAS INDIGENAS N° 1; 2; 3; 4; 5; 6; 8; 9 Y EN EL CENTRO EDUCATIVO INDIGENA N°5 UBICADAS EN LA ZONA RURAL ETNICA; DEL MUNICIPIO DE MAICAO; DURANTE EL CALENDARIO ESCOLAR; VIGENCIA 2024",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5701064&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44430",
+      "municipality": "MAICAO",
+      "hunger_score": 56.4
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Modified contract",
+        "School meals / PAE"
+      ],
+      "category": "School meals / PAE",
+      "id_contrato": "CO1.PCCNTR.7382419",
+      "referencia": "CPS-PAIP-003-2025",
+      "fecha_de_firma": "2025-01-31T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "MUNICIPIO DE MAICAO",
+      "ciudad": "Maicao",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 11960293500,
+      "valor_label": "$12.0B",
+      "valor_pagado": 0,
+      "proveedor": "KASUWA",
+      "objeto": "PRESTACION DEL SERVICIO DE ALIMENTACION ESCOLAR EN SUS DIFERENTES MODALIDADES EN LAS INSTITUCIONES EDUCATIVAS INDIGENAS NO. 1; 2; 3; 4; 5; 6; 8; 9; 10 Y 13; UBICADAS EN LA ZONA RURAL ETNICA DEL MUNICIPIO DE MAICAO; DURANTE EL CALENDARIO ESCOLAR DE LA VIGENCIA 2025; DE ACUERDO CON LAS RESOLUCIONES 18858 DE 2018 EXPEDIDA POR EL MINISTERIO DE EDUCACION Y LA RESOLUCION NO. 421 DE 2023 EXPEDIDA POR LA UNIDAD ADMINISTRATIVA ESPECIAL DE ALIMENTACION ESCOLAR - ALIMENTOS PARA APRENDER (UAPA) Y DEMAS",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7506192&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44430",
+      "municipality": "MAICAO",
+      "hunger_score": 56.4
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Modified contract"
+      ],
+      "category": "Food supply",
+      "id_contrato": "CO1.PCCNTR.8581364",
+      "referencia": "CD-CI-MM-020-2025",
+      "fecha_de_firma": "2025-11-12T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "MUNICIPIO DE MAICAO",
+      "ciudad": "Maicao",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación Directa (con ofertas)",
+      "tipo": "Otro",
+      "valor": 9674591850,
+      "valor_label": "$9.7B",
+      "valor_pagado": 4837295925,
+      "proveedor": "UT WA MURR? 2025",
+      "objeto": "FORTALECIMIENTO DE LA CAPACIDAD PRODUCTIVA Y ECONOMICA MEDIANTE EL DESARROLLO DE PROYECTOS MICRO EMPRESARIALES AGROPECUARIOS PARA CONTRIBUIR O INCIDIR POSITIVAMENTE EN LA SEGURIDAD ALIMENTARIA Y EL MEJORAMIENTO INTEGRAL DE LOS RESGUARDOS INDÍGENAS ALTA Y MEDIA GUAJIRA; WOPUMUIN JUNAIN MAIKOU; SUMAIN WAYUU UULIANA; NUKAJAT MALEIWA; NUMAIN MALEIWA; CHIASALU; ALBERTO PUSHAINA Y OKOCHI DEL MUNICIPIO DE MAICAO; DEPARTAMENTO DE LA...",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9078445&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44430",
+      "municipality": "MAICAO",
+      "hunger_score": 56.4
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Modified contract"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.5915972",
+      "referencia": "SEIP-RE-MM-003-2024",
+      "fecha_de_firma": "2024-02-09T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "MUNICIPIO DE MAICAO",
+      "ciudad": "Maicao",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 15269641498,
+      "valor_label": "$15.3B",
+      "valor_pagado": 15269641498,
+      "proveedor": "ASOCIACION DE AUTORIDADES TRADICIONALES WAYUU SUMUYWAJAT",
+      "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LAS INSTITUCIÓNES EDUCATIVAS INDIGENA No 3; 5 y 8 Y EL CENTRO ETNOEDUCATIVO No 5; UBICADOS EN EL MUNICIPIO DE MAICAO LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015.",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5613776&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44430",
+      "municipality": "MAICAO",
+      "hunger_score": 56.4
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Modified contract"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.7479093",
+      "referencia": "SEIP-RE-MM-029-2025",
+      "fecha_de_firma": "2025-02-13T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "MUNICIPIO DE MAICAO",
+      "ciudad": "Maicao",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 18388437896,
+      "valor_label": "$18.4B",
+      "valor_pagado": 16775992549,
+      "proveedor": "UNIÓN TEMPORAL  AYATALII WAYA",
+      "objeto": "PRESTACIÓN DEL SERVICIO PARA ADMINISTRAR LA CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA DE LA INSTITUCIONES EDUCATIVA INDIGENA No 1; 4; Y 12; UBICADOS EN EL MUNICIPIO DE MAICAO LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL DECRETO 1075 DE 2015.",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7616346&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44430",
+      "municipality": "MAICAO",
+      "hunger_score": 56.4
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Supplier concentration",
+        "Modified contract"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.9215520",
+      "referencia": "CO1.PCCNTR.9215520",
+      "fecha_de_firma": "2026-01-29T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+      "ciudad": "Riohacha",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 10264655312,
+      "valor_label": "$10.3B",
+      "valor_pagado": 0,
+      "proveedor": "RESGUARDO KOGUI MALAYO ARHUACO",
+      "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO DUMINGUEKA Y LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO KOGUI UBICADO EN EL MUNICIPIO DE DIBULLA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 20",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9848017&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44090",
+      "municipality": "DIBULLA",
+      "hunger_score": 46
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Supplier concentration",
+        "Modified contract"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.5903715",
+      "referencia": "CO1.PCCNTR.5903715",
+      "fecha_de_firma": "2024-02-08T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+      "ciudad": "Riohacha",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 7737625596,
+      "valor_label": "$7.7B",
+      "valor_pagado": 0,
+      "proveedor": "RESGUARDO KOGUI MALAYO ARHUACO",
+      "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO DUMINGUEKA Y LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO KOGUI UBICADO EN EL MUNICIPIO DE DIBULLA LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.5607414&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44090",
+      "municipality": "DIBULLA",
+      "hunger_score": 46
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Supplier concentration",
+        "Modified contract"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.7482240",
+      "referencia": "CO1.PCCNTR.7482240",
+      "fecha_de_firma": "2025-02-14T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+      "ciudad": "Riohacha",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 9089088474,
+      "valor_label": "$9.1B",
+      "valor_pagado": 0,
+      "proveedor": "RESGUARDO KOGUI MALAYO ARHUACO",
+      "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO DUMINGUEKA Y LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO KOGUI UBICADO EN EL MUNICIPIO DE DIBULLA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 20",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7620442&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44090",
+      "municipality": "DIBULLA",
+      "hunger_score": 46
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Supplier concentration"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.4677855",
+      "referencia": "CO1.PCCNTR.4677855",
+      "fecha_de_firma": "2023-02-24T00:00:00.000",
+      "estado": "En ejecución",
+      "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+      "ciudad": "Riohacha",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 6866912289,
+      "valor_label": "$6.9B",
+      "valor_pagado": 0,
+      "proveedor": "RESGUARDO KOGUI MALAYO ARHUACO",
+      "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LAS INSTITUCIONES ETNOEDUCATIVAS RURALES INTERNADO ZHARNEKA Y KOGUI UBICADOS EN LA ENTIDAD NO CERTIFICADA MUNICIPIO DE DIBULLA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL D",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.4059614&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44090",
+      "municipality": "DIBULLA",
+      "hunger_score": 46
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Billion-peso contract",
+        "Supplier concentration",
+        "Modified contract"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.9036395",
+      "referencia": "CO1.PCCNTR.9036395",
+      "fecha_de_firma": "2026-01-27T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+      "ciudad": "Riohacha",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 4778592630,
+      "valor_label": "$4.8B",
+      "valor_pagado": 0,
+      "proveedor": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+      "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO ZHARNEKA Y EL CENTRO ETNOEDUCATIVO RURAL LA LAGUNA UBICADO EN EL MUNICIPIO DE SAN JUAN Y EL CENTRO ETNOEDUCATIVO RURAL ABU SEYUMUN ZHIWA UBICADO EN EL MUNICIPIO EL MOLINO - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.9671367&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44110",
+      "municipality": "EL MOLINO",
+      "hunger_score": 50.3
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Billion-peso contract",
+        "Supplier concentration",
+        "Modified contract"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.7447703",
+      "referencia": "CO1.PCCNTR.7447703",
+      "fecha_de_firma": "2025-02-10T00:00:00.000",
+      "estado": "Modificado",
+      "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+      "ciudad": "Riohacha",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 3769634749,
+      "valor_label": "$3.8B",
+      "valor_pagado": 0,
+      "proveedor": "ORGANIZACION WIWA YUGUMAIUN BUNKUANARRUA TAYRONA",
+      "objeto": "PRESTACIÓN DE SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO ZHARNEKA Y EL CENTRO ETNOEDUCATIVO RURAL LA LAGUNA UBICADOS EN EL MUNICIPIO DE SAN JUAN Y EL CENTRO ETNOEDUCATIVO RURAL ABU SEYUMUN ZHIWA UBICADO EN EL MUNICIPIO DE EL MOLINO - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.7579096&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [],
+      "municipality_code": "44110",
+      "municipality": "EL MOLINO",
+      "hunger_score": 50.3
+    },
+    {
+      "audit_score": 100,
+      "flags": [
+        "Direct contracting",
+        "Very high value",
+        "Supplier concentration",
+        "Names 1 local place"
+      ],
+      "category": "Food basket",
+      "id_contrato": "CO1.PCCNTR.4608930",
+      "referencia": "CO1.PCCNTR.4608930",
+      "fecha_de_firma": "2023-02-13T00:00:00.000",
+      "estado": "En ejecución",
+      "entidad": "GOBERNACIÓN DE LA GUAJIRA",
+      "ciudad": "Riohacha",
+      "departamento": "La Guajira",
+      "modalidad": "Contratación directa",
+      "tipo": "Prestación de servicios",
+      "valor": 6039299813,
+      "valor_label": "$6.0B",
+      "valor_pagado": 0,
+      "proveedor": "UNION TEMPORAL WAKUAIPA CANASTA 2023",
+      "objeto": "PRESTAR SERVICIOS PARA ADMINISTRAR EL SERVICIO EDUCATIVO - CANASTA PARCIAL DE LA POBLACIÓN ÉTNICA MATRICULADA EN LA INSTITUCION ETNOEDUCATIVA RURAL E INTERNADO AKUAIPA Y EL CENTRO ETNOEDUCATIVO RURAL WARE WAREN UBICADO EN EL MUNICIPIO DEL ALBANIA - LA GUAJIRA; PARA GARANTIZAR EL DERECHO A LA EDUCACIÓN PROPIA EN EL MARCO DEL PROCESO DE CONSTRUCCIÓN E IMPLEMENTACIÓN DEL SISTEMA EDUCATIVO INDÍGENA PROPIO (SEIP) DE ACUERDO CON LAS DISPOSICIONES CONTENIDAS EN EL DECRETO 2500 DE 2010; CONTENIDO EN EL",
+      "url": "https://community.secop.gov.co/Public/Tendering/OpportunityDetail/Index?noticeUID=CO1.NTC.3983668&isFromPublicArea=True&isModal=true&asPopupView=true",
+      "place_hits": [
+        {
+          "code": "44035002",
+          "name": "WARE WAREN",
+          "type": "CP"
+        }
+      ],
+      "municipality_code": "44035",
+      "municipality": "ALBANIA",
+      "hunger_score": 43.2
+    }
+  ]
+}
