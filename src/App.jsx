@@ -485,7 +485,7 @@ function Hero() {
         <motion.div className="hero-copy" initial="hidden" animate="show" variants={sourceReveal} style={{ y: contentY }}>
           <span className="hero-pill">Inteligencia territorial y evidencia pública</span>
           <WordHeading as="h1" className="hero-title">
-            Shiimain prioriza territorios donde necesidad, evidencia y contratación se cruzan
+            Convierte señales públicas en prioridad territorial
           </WordHeading>
           <div className="hero-actions">
             <Button href="#/demo">Abrir demo</Button>
