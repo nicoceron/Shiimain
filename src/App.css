@@ -1115,11 +1115,169 @@ input {
   width: 42px;
 }
 
-.timeline-row img {
+.timeline-visual {
+  --visual-accent: var(--lime);
+  background:
+    linear-gradient(135deg, rgba(228, 255, 161, 0.24), rgba(255, 255, 255, 0) 44%),
+    #fbfcf8;
+  border: 1px solid rgba(0, 45, 37, 0.13);
   border-radius: 4px;
   height: 213px;
-  object-fit: cover;
+  overflow: hidden;
+  padding: 16px;
+  position: relative;
   width: 100%;
+}
+
+.timeline-visual-audit {
+  --visual-accent: #ffd9c8;
+}
+
+.timeline-visual-evidence {
+  --visual-accent: #d9ecff;
+}
+
+.timeline-visual-territory {
+  --visual-accent: #e4ffa1;
+}
+
+.timeline-visual-grid {
+  background-image:
+    linear-gradient(rgba(0, 45, 37, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 45, 37, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  inset: 0;
+  opacity: 0.74;
+  position: absolute;
+}
+
+.timeline-visual-head,
+.timeline-visual-canvas,
+.timeline-visual-chips {
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-visual-head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.timeline-visual-head span,
+.timeline-visual-output small,
+.timeline-visual-chips span {
+  color: rgba(0, 45, 37, 0.62);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.timeline-visual-head strong {
+  color: var(--deep);
+  font-family: 'Inter Display', Inter, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.timeline-visual-canvas {
+  align-items: center;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(112px, 1fr) 48px minmax(126px, 0.95fr);
+  min-height: 112px;
+}
+
+.timeline-visual-inputs {
+  display: grid;
+  gap: 8px;
+}
+
+.timeline-visual-inputs span,
+.timeline-visual-output {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(0, 45, 37, 0.14);
+  border-radius: 4px;
+  box-shadow: 0 8px 22px rgba(0, 45, 37, 0.05);
+}
+
+.timeline-visual-inputs span {
+  color: var(--deep);
+  display: block;
+  font-size: 13px;
+  line-height: 1.1;
+  min-height: 30px;
+  padding: 8px 10px;
+}
+
+.timeline-visual-bus {
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  position: relative;
+}
+
+.timeline-visual-bus::after {
+  background: var(--deep);
+  content: '';
+  height: 2px;
+  left: -2px;
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-visual-bus i {
+  background: var(--visual-accent);
+  border: 1px solid rgba(0, 45, 37, 0.22);
+  border-radius: 50%;
+  display: block;
+  height: 10px;
+  justify-self: center;
+  position: relative;
+  width: 10px;
+  z-index: 1;
+}
+
+.timeline-visual-output {
+  align-content: center;
+  background:
+    linear-gradient(135deg, rgba(0, 45, 37, 0.96), rgba(0, 45, 37, 0.9)),
+    var(--deep);
+  color: #fff;
+  display: grid;
+  gap: 8px;
+  min-height: 104px;
+  padding: 14px;
+}
+
+.timeline-visual-output small {
+  color: rgba(228, 255, 161, 0.72);
+}
+
+.timeline-visual-output strong {
+  font-family: 'Inter Display', Inter, system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.timeline-visual-chips {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.timeline-visual-chips span {
+  background: var(--visual-accent);
+  border: 1px solid rgba(0, 45, 37, 0.12);
+  border-radius: 999px;
+  color: var(--deep);
+  padding: 7px 9px;
 }
 
 .timeline-row .round-icon {
@@ -2370,6 +2528,10 @@ input {
     padding: 0 20px;
   }
 
+  .template-badge {
+    display: none;
+  }
+
   .hero-section,
   .hero-content {
     min-height: 963px;
@@ -2671,8 +2833,24 @@ input {
     display: none;
   }
 
-  .timeline-row img {
-    height: 260px;
+  .timeline-row .timeline-visual {
+    height: auto;
+    min-height: 260px;
+  }
+
+  .timeline-visual-canvas {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .timeline-visual-bus {
+    grid-template-columns: repeat(3, 1fr);
+    height: 24px;
+  }
+
+  .timeline-visual-output {
+    min-height: 78px;
   }
 
   .testimonial-marquee {

@@ -18,13 +18,9 @@ import shiimainFoodBaskets from './assets/shiimain-food-baskets.webp'
 import shiimainFoodChildren from './assets/shiimain-food-children.webp'
 import shiimainFoodCommunityMeals from './assets/shiimain-food-community-meals.webp'
 import shiimainFoodDeliveryVerification from './assets/shiimain-food-delivery-verification.webp'
-import shiimainFoodHandoff from './assets/shiimain-food-handoff.webp'
 import shiimainHeroCactus from './assets/shiimain-hero-guajira-cactus.png'
-import shiimainFoodHouseholdValidation from './assets/shiimain-food-household-validation.webp'
-import shiimainFoodMealConfirmation from './assets/shiimain-food-meal-confirmation.webp'
 import shiimainFoodPacking from './assets/shiimain-food-packing.webp'
 import shiimainFoodRoute from './assets/shiimain-food-route.webp'
-import shiimainFoodSupplyIntake from './assets/shiimain-food-supply-intake.webp'
 import shiimainLogo from './assets/shiimain-logo.svg'
 import './App.css'
 
@@ -88,24 +84,59 @@ const timelineItems = [
   {
     title: 'Cruce de identidad',
     text: 'Une NIT base, entidad, proveedor y participación en UT para definir qué contratos están realmente en alcance.',
-    image: shiimainFoodSupplyIntake,
+    visual: 'identity',
   },
   {
     title: 'Lectura de soportes',
     text: 'Ordena documentos SECOP, actas y extracciones para saber qué fuente sostiene cada señal.',
-    image: shiimainFoodHouseholdValidation,
+    visual: 'evidence',
   },
   {
     title: 'Cruce territorial',
     text: 'Une hambre, agua, niñez, choque reportado y contratación pública para priorizar lectura de campo.',
-    image: shiimainFoodHandoff,
+    visual: 'territory',
   },
   {
     title: 'Patrones de auditoría',
     text: 'Prioriza contratos con señales determinísticas y deja claro qué es evidencia, brecha o tarea pendiente.',
-    image: shiimainFoodMealConfirmation,
+    visual: 'audit',
   },
 ]
+
+const processVisuals = {
+  audit: {
+    chips: ['Evidencia', 'Brecha', 'Tarea'],
+    code: 'SIG-04',
+    inputs: ['Valor alto', 'Modificación', 'Soporte débil'],
+    label: 'Reglas determinísticas',
+    output: 'Prioridad de auditoría',
+    outputLabel: 'salida',
+  },
+  evidence: {
+    chips: ['SECOP', 'Actas', 'Extracción'],
+    code: 'DOC-02',
+    inputs: ['Contrato', 'Archivo', 'Campo extraído'],
+    label: 'Lectura de fuente',
+    output: 'Señal sustentada',
+    outputLabel: 'fuente',
+  },
+  identity: {
+    chips: ['NIT', 'Entidad', 'UT'],
+    code: 'ID-01',
+    inputs: ['NIT base', 'Entidad', 'Proveedor / UT'],
+    label: 'Grafo de alcance',
+    output: 'Contratos en alcance',
+    outputLabel: 'match',
+  },
+  territory: {
+    chips: ['Hambre', 'Agua', 'Niñez'],
+    code: 'TER-03',
+    inputs: ['Municipio', 'Necesidad', 'Contrato visible'],
+    label: 'Cruce territorial',
+    output: 'Territorio priorizado',
+    outputLabel: 'prioridad',
+  },
+}
 
 const projectImages = [
   shiimainFoodBaskets,
@@ -566,6 +597,41 @@ function Features() {
   )
 }
 
+function TimelineProcessVisual({ type }) {
+  const visual = processVisuals[type] || processVisuals.identity
+
+  return (
+    <div className={`timeline-visual timeline-visual-${type}`} aria-label={visual.label} role="img">
+      <div className="timeline-visual-grid" aria-hidden="true" />
+      <div className="timeline-visual-head">
+        <span>{visual.code}</span>
+        <strong>{visual.label}</strong>
+      </div>
+      <div className="timeline-visual-canvas">
+        <div className="timeline-visual-inputs">
+          {visual.inputs.map((input) => (
+            <span key={input}>{input}</span>
+          ))}
+        </div>
+        <div className="timeline-visual-bus" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
+        <div className="timeline-visual-output">
+          <small>{visual.outputLabel}</small>
+          <strong>{visual.output}</strong>
+        </div>
+      </div>
+      <div className="timeline-visual-chips">
+        {visual.chips.map((chip) => (
+          <span key={chip}>{chip}</span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function TimelineStep({ active, index, item, onActive }) {
   const rowRef = useRef(null)
   const inView = useInView(rowRef, { margin: '-42% 0px -42% 0px' })
@@ -594,7 +660,7 @@ function TimelineStep({ active, index, item, onActive }) {
         <h3>{item.title}</h3>
         <p>{item.text}</p>
       </div>
-      <img src={item.image} alt="" />
+      <TimelineProcessVisual type={item.visual} />
     </motion.article>
   )
 }
