@@ -39,17 +39,6 @@ const assets = {
   map: guajiraMap,
 }
 
-const logoStrip = [
-  'SECOP II',
-  'Datos Abiertos',
-  'Ejecución visible',
-  'Expedientes',
-  'SIWayuu',
-  'DANE',
-  'UNGRD',
-  'La Guajira',
-]
-
 const strengths = [
   'Territorio',
   'Hambre',
@@ -519,21 +508,6 @@ function Hero() {
   )
 }
 
-function BrandTicker() {
-  return (
-    <section className="trusted-strip">
-      <p>Construido desde evidencia pública: territorio, contratos, expedientes, datos municipales y señales de auditoría.</p>
-      <motion.div className="logo-marquee" initial="hidden" variants={sourceFade} viewport={{ once: true, amount: 0.4 }} whileInView="show">
-        <div>
-          {[...logoStrip, ...logoStrip, ...logoStrip].map((source, index) => (
-            <span className="source-chip" key={`${source}-${index}`}>{source}</span>
-          ))}
-        </div>
-      </motion.div>
-    </section>
-  )
-}
-
 function FeatureScrollCard({ card, index, progress }) {
   const scaleRanges = [
     [1, 0.8],
@@ -971,7 +945,6 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <BrandTicker />
         <Features />
         <Benefits />
         <Projects />
