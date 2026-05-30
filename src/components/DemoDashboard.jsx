@@ -81,7 +81,7 @@ const pageTabs = [
     key: 'sources',
     label: 'Fuentes',
     icon: Database,
-    description: 'Trazabilidad del demo público',
+    description: 'Trazabilidad pública',
   },
 ]
 
@@ -183,12 +183,21 @@ const includesQuery = (row, query) => {
   return normalize(JSON.stringify(row)).includes(normalize(query))
 }
 
+const documentKey = (document, fallback = 'documento') =>
+  String(document?.document_id || document?.id || document?.url || document?.download_url || document?.name || document?.label || fallback)
+
+const publicSourceLinkProps = (url) => ({
+  'aria-disabled': !url,
+  href: url || '#',
+  onClick: url ? undefined : (event) => event.preventDefault(),
+})
+
 const safeSources = (sources) => {
   if (Array.isArray(sources)) {
-    return sources.map((source) => (typeof source === 'string' ? { name: source, use: 'Fuente pública de contexto' } : source))
+    return sources.map((source) => (typeof source === 'string' ? { name: source, use: 'Contexto público' } : source))
   }
   if (sources && typeof sources === 'object') {
-    return Object.entries(sources).map(([name, url]) => ({ name, url, use: 'Fuente pública de contexto' }))
+    return Object.entries(sources).map(([name, url]) => ({ name, url, use: 'Contexto público' }))
   }
   return []
 }
@@ -469,7 +478,7 @@ const buildSignalRows = (municipalityRows) => {
     flags: (contract.signals || []).map((signal) => signal.title),
     municipality: contract.municipality || 'La Guajira',
     score: contract.risk_score,
-    source: 'Reglas determinísticas sobre expediente público',
+    source: 'Reglas sobre expediente público',
     supplier: contract.supplier_name,
     text: contract.signals?.[0]?.reason || 'Patrón público para revisión analítica.',
     title: contract.reference || contract.contract_id,
@@ -484,8 +493,12 @@ const buildEvidenceRows = () => {
     (contract.public_fulfillment?.delivery_evidence_files || []).slice(0, 5).map((document) => ({
       category: 'Soporte de entrega',
       detail: `${contract.reference || contract.contract_id} · ${contract.supplier_name}`,
+      documentId: document.document_id,
+      excerpt: document.pdf_text_excerpt,
+      extension: document.extension,
       id: `${contract.contract_id || contract.id}-${document.document_id || document.name}`,
       name: document.name || document.description || 'Documento público',
+      sourceUrl: document.url,
       status: document.pdf_text_readable === false ? 'found_unreadable_text' : 'found',
       url: document.url,
     })),
@@ -495,8 +508,12 @@ const buildEvidenceRows = () => {
     (contract.files?.evidence_files || []).slice(0, 4).map((document) => ({
       category: 'Archivo SECOP',
       detail: `${contract.reference || contract.id} · ${contract.supplier_name || contract.counterparty || 'Sin contraparte'}`,
+      documentId: document.document_id,
+      excerpt: document.pdf_text_excerpt,
+      extension: document.extension,
       id: `${contract.id}-${document.document_id || document.name}`,
       name: document.name || document.description || 'Documento público',
+      sourceUrl: document.url || document.download_url,
       status: document.pdf_text_status || 'found',
       url: document.url || document.download_url,
     })),
@@ -520,7 +537,7 @@ const buildSourceRows = () => {
       category,
       id: `${category}-${source.name || index}`,
       name: sourceLabel(source.name || source.dataset || source.url || `Fuente ${index + 1}`),
-      use: sourceLabel(source.use || source.url || 'Fuente pública de contexto'),
+      use: sourceLabel(source.use || source.url || 'Contexto público'),
       url: source.url,
     })),
   )
@@ -555,7 +572,7 @@ function DemoHeader() {
       <a className="demo-brand" href="#home" aria-label="Volver al inicio de Shiimain">
         <img src={logo} alt="Shiimain" />
       </a>
-      <nav aria-label="Navegación del demo">
+      <nav aria-label="Navegación de Shiimain">
         <a href="#home">
           <ArrowLeft size={16} />
           Inicio
@@ -568,7 +585,7 @@ function DemoHeader() {
 
 function PageNav({ activePage, counts, onChange }) {
   return (
-    <nav className="demo-page-nav" aria-label="Secciones del demo">
+    <nav className="demo-page-nav" aria-label="Secciones de inteligencia">
       {pageTabs.map(({ description, icon: Icon, key, label }) => (
         <button aria-label={label} className={activePage === key ? 'active' : ''} key={key} type="button" onClick={() => onChange(key)}>
           <span>
@@ -780,6 +797,7 @@ function ContractsPage({ contractRows }) {
   const [query, setQuery] = useState('')
   const [contextFilter, setContextFilter] = useState('all')
   const [selectedId, setSelectedId] = useState(contractRows[0]?.id)
+  const [selectedDocumentKey, setSelectedDocumentKey] = useState(null)
 
   const filteredContracts = contractRows.filter((contract) => {
     const matchesFilter =
@@ -793,6 +811,9 @@ function ContractsPage({ contractRows }) {
   const invoice = selected?.telemetry?.invoice || {}
   const execution = selected?.telemetry?.execution || {}
   const fulfillment = selected?.fulfillment?.public_fulfillment || {}
+  const selectedDocument =
+    selected?.evidenceFiles?.find((source) => documentKey(source) === selectedDocumentKey) ||
+    selected?.evidenceFiles?.[0]
 
   return (
     <section className="contract-workbench">
@@ -850,7 +871,7 @@ function ContractsPage({ contractRows }) {
             <section>
               <h3>Contexto financiero público</h3>
               <article className="financial-context-card">
-                <p>Estos datos describen exposición visible en fuentes públicas. No representan una recomendación operacional.</p>
+                <p>Exposición financiera visible para leer el contrato junto con territorio y evidencia.</p>
                 <div className="contract-audit-meta">
                   <span><b>{formatNumber(invoice.invoice_rows || fulfillment.invoice_rows)}</b><small>filas de factura</small></span>
                   <span><b>{formatMoney(invoice.invoice_total || fulfillment.invoice_total)}</b><small>valor facturado</small></span>
@@ -868,7 +889,7 @@ function ContractsPage({ contractRows }) {
                 })}
                 {!(selected.pattern?.signals || selected.review?.all || []).length ? <AuditFlag>Sin señal fuerte en esta capa</AuditFlag> : null}
               </div>
-              <p>{selected.pattern?.signals?.[0]?.reason || selected.review?.label || 'La ficha conserva el contexto público disponible para análisis.'}</p>
+              <p>{selected.pattern?.signals?.[0]?.reason || selected.review?.label || 'Señal disponible para orientar la siguiente revisión territorial.'}</p>
             </section>
           </div>
 
@@ -891,19 +912,27 @@ function ContractsPage({ contractRows }) {
                   <b>{signal.level}</b>
                 </div>
               ))}
-              {!fulfillment.signals?.length ? <EmptyState>Esta ficha no tiene señales de entrega estructuradas en la capa pública.</EmptyState> : null}
+              {!fulfillment.signals?.length ? <EmptyState>Sin señales de entrega visibles para esta ficha.</EmptyState> : null}
             </section>
             <section>
               <h3>Documentos fuente</h3>
+              {selectedDocument ? (
+                <article className="document-preview-card">
+                  <span>{sourceStatus(selectedDocument.status || selectedDocument.pdf_text_status || (selectedDocument.pdf_text_readable === false ? 'found_unreadable_text' : 'found'))}</span>
+                  <strong>{selectedDocument.label || selectedDocument.name || selectedDocument.description || 'Documento público'}</strong>
+                  <p>{selectedDocument.pdf_text_excerpt ? shortText(selectedDocument.pdf_text_excerpt, 220) : 'Sin resumen legible. Revisar soporte, fecha, entrega asociada y responsable.'}</p>
+                  <small>ID {selectedDocument.document_id || 'sin ID visible'} · {selectedDocument.extension || selectedDocument.category || 'archivo público'}</small>
+                </article>
+              ) : null}
               <div className="source-table compact-source-table">
                 {selected.evidenceFiles.slice(0, 8).map((source) => (
-                  <a href={source.url || source.download_url || '#'} key={`${selected.id}-${source.document_id || source.name || source.label}`} rel="noreferrer" target="_blank">
+                  <button className={documentKey(selectedDocument) === documentKey(source) ? 'active' : ''} key={`${selected.id}-${documentKey(source)}`} type="button" onClick={() => setSelectedDocumentKey(documentKey(source))}>
                     <span>{sourceStatus(source.status || source.pdf_text_status || 'found')}</span>
                     <strong>{source.label || source.name || source.description || 'Documento público'}</strong>
                     <small>{source.document_id || source.category || formatDate(source.date)}</small>
-                  </a>
+                  </button>
                 ))}
-                {!selected.evidenceFiles.length ? <EmptyState>No hay documentos fuente normalizados para esta ficha.</EmptyState> : null}
+                {!selected.evidenceFiles.length ? <EmptyState>Sin documentos fuente para esta ficha.</EmptyState> : null}
               </div>
             </section>
           </div>
@@ -924,8 +953,8 @@ function SignalsPage({ signalRows }) {
         <div className="demo-panel-head">
           <div>
             <span className="eyebrow">Señales de inteligencia</span>
-            <h2>Patrones públicos para priorizar análisis, no para ejecutar decisiones</h2>
-            <p>Las señales combinan necesidad territorial, contratación, entrega visible, concentración y calidad documental.</p>
+            <h2>Señales que muestran dónde mirar primero</h2>
+            <p>Necesidad territorial, contratación, entrega visible y calidad documental reunidas en una lista de priorización.</p>
           </div>
           <label className="demo-search">
             <Search size={18} />
@@ -976,9 +1005,9 @@ function SignalsPage({ signalRows }) {
 
       <div className="demo-panel detector-backlog-panel">
         <div className="demo-panel-head compact">
-          <span className="eyebrow">Límites explícitos</span>
-          <h2>Lo que todavía necesita otra fuente o verificación</h2>
-          <p>El producto debe conservar la diferencia entre evidencia pública, inferencia razonable y dato que falta.</p>
+          <span className="eyebrow">Pendientes de verificación</span>
+          <h2>Fuentes que faltan para cerrar la lectura</h2>
+          <p>Qué está sustentado, qué se infiere y qué falta por confirmar antes de cerrar la lectura.</p>
         </div>
         <div className="detector-backlog-grid">
           {(secopAuditPatterns.detector_backlog || []).map((detector) => (
@@ -997,20 +1026,22 @@ function SignalsPage({ signalRows }) {
 
 function EvidencePage({ evidenceRows, sourceRows }) {
   const [query, setQuery] = useState('')
+  const [selectedEvidenceId, setSelectedEvidenceId] = useState(null)
   const [status, setStatus] = useState('all')
   const filteredEvidence = evidenceRows.filter((row) => {
     const rowStatus = row.status || 'found'
     const matchesStatus = status === 'all' || (status === 'weak' && ['found_unreadable_text', 'partial'].includes(rowStatus)) || (status === 'gap' && rowStatus === 'missing') || (status === 'found' && rowStatus === 'found')
     return matchesStatus && includesQuery(row, query)
   })
+  const selectedEvidence = filteredEvidence.find((row) => row.id === selectedEvidenceId) || filteredEvidence[0]
 
   return (
     <section className="sources-layout evidence-layout">
       <div className="demo-panel">
         <div className="demo-panel-head compact">
           <span className="eyebrow">Calidad documental</span>
-          <h2>La plataforma muestra de dónde sale cada lectura</h2>
-          <p>Los documentos estructurados son contexto de inteligencia. Cuando el texto es débil o falta una fuente, la brecha queda visible.</p>
+          <h2>Evidencia detrás de cada lectura</h2>
+          <p>Contratos, actas, soportes y extracciones se ordenan por estado de lectura y vínculo territorial.</p>
         </div>
         <div className="source-summary-grid">
           <MetricCard icon={FileSearch} label="Archivos SECOP revisados" value={formatNumber(foodFulfillment.summary?.file_rows_checked)} />
@@ -1040,13 +1071,37 @@ function EvidencePage({ evidenceRows, sourceRows }) {
             </button>
           ))}
         </div>
+        {selectedEvidence ? (
+          <article className="evidence-preview-card">
+            <div>
+              <span>{selectedEvidence.category}</span>
+              <StatusPill>{sourceStatus(selectedEvidence.status)}</StatusPill>
+            </div>
+            <h3>{selectedEvidence.name}</h3>
+            <p>{selectedEvidence.excerpt ? shortText(selectedEvidence.excerpt, 420) : 'Sin resumen legible. Revisar soporte, fecha, entrega asociada y responsable.'}</p>
+            <dl>
+              <div>
+                <dt>Contrato / fuente</dt>
+                <dd>{selectedEvidence.detail}</dd>
+              </div>
+              <div>
+                <dt>ID documento</dt>
+                <dd>{selectedEvidence.documentId || 'Sin ID visible'}</dd>
+              </div>
+              <div>
+                <dt>Tipo</dt>
+                <dd>{selectedEvidence.extension || 'Sin extensión'}</dd>
+              </div>
+            </dl>
+          </article>
+        ) : null}
         <div className="source-table">
           {filteredEvidence.slice(0, 20).map((row) => (
-            <a href={row.url || '#'} key={row.id} rel="noreferrer" target="_blank">
+            <button className={selectedEvidence?.id === row.id ? 'active' : ''} key={row.id} type="button" onClick={() => setSelectedEvidenceId(row.id)}>
               <span>{row.category}</span>
               <strong>{row.name}</strong>
               <small>{sourceStatus(row.status)} · {row.detail}</small>
-            </a>
+            </button>
           ))}
           {!filteredEvidence.length ? <EmptyState>No hay documentos con ese filtro.</EmptyState> : null}
         </div>
@@ -1054,11 +1109,11 @@ function EvidencePage({ evidenceRows, sourceRows }) {
       <div className="demo-panel source-panel-wide">
         <div className="demo-panel-head compact">
           <span className="eyebrow">Fuentes principales</span>
-          <h2>Las capas vienen de datos públicos, no de una caja negra</h2>
+          <h2>Capas públicas que sostienen la lectura</h2>
         </div>
         <div className="source-table">
           {sourceRows.slice(0, 12).map((source) => (
-            <a href={source.url || '#'} key={source.id} rel="noreferrer" target="_blank">
+            <a key={source.id} {...publicSourceLinkProps(source.url)}>
               <span>{source.category}</span>
               <strong>{source.name}</strong>
               <small>{source.use}</small>
@@ -1078,8 +1133,8 @@ function SourcesPage({ sourceRows }) {
     <section className="sources-layout">
       <div className="demo-panel">
         <span className="eyebrow">Trazabilidad</span>
-        <h2>Fuentes públicas conectadas al demo territorial</h2>
-        <p>El demo combina fuentes territoriales, municipales, contractuales y documentales. Cada fila conserva su origen.</p>
+        <h2>Fuentes públicas conectadas a la lectura territorial</h2>
+        <p>Territorio, municipio, contratación y documentos conectados con fuentes trazables.</p>
         <div className="source-summary-grid">
           <MetricCard icon={Database} label="Capas de fuente" value={formatNumber(filteredSources.length)} />
           <MetricCard icon={Network} label="Municipios analizados" value={formatNumber(secopHunger.summary?.municipalities_with_contracts)} />
@@ -1098,7 +1153,7 @@ function SourcesPage({ sourceRows }) {
         </label>
         <div className="source-table source-catalog-table">
           {filteredSources.map((source) => (
-            <a href={source.url || '#'} key={source.id} rel="noreferrer" target="_blank">
+            <a key={source.id} {...publicSourceLinkProps(source.url)}>
               <span>{source.category}</span>
               <strong>{source.name}</strong>
               <small>{source.use}</small>
@@ -1141,10 +1196,9 @@ export function DemoDashboard() {
               <ArrowLeft size={17} />
               Volver al inicio
             </a>
-            <span className="eyebrow eyebrow-dark">Demo Shiimain</span>
             <h1>Inteligencia territorial para leer necesidad, evidencia y contratación pública</h1>
             <p>
-              Un demo para priorizar territorios de La Guajira con señales públicas: hambre, agua, niñez, choque reportado,
+              Prioriza territorios de La Guajira con señales públicas: hambre, agua, niñez, choque reportado,
               documentos visibles, entrega verificable y exposición contractual.
             </p>
           </div>

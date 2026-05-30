@@ -3154,7 +3154,7 @@ input {
   display: flex;
   justify-content: space-between;
   left: 50%;
-  max-width: 1240px;
+  max-width: none;
   padding: 22px 0;
   position: fixed;
   top: 0;
@@ -3243,11 +3243,12 @@ input {
   gap: 40px;
   grid-template-columns: minmax(0, 1fr) 360px;
   margin: 0 auto;
-  max-width: 1240px;
+  max-width: none;
   min-height: 490px;
   overflow: hidden;
   padding: 72px;
   position: relative;
+  width: 100%;
 }
 
 .demo-hero::after {
@@ -3313,7 +3314,8 @@ input {
   gap: 14px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 16px auto 0;
-  max-width: 1240px;
+  max-width: none;
+  width: 100%;
 }
 
 .demo-metric {
@@ -3373,7 +3375,8 @@ input {
   gap: 12px;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   margin: 16px auto;
-  max-width: 1240px;
+  max-width: none;
+  width: 100%;
 }
 
 .demo-page-nav button {
@@ -3436,7 +3439,8 @@ input {
   display: grid;
   gap: 16px;
   margin: 0 auto;
-  max-width: 1240px;
+  max-width: none;
+  width: 100%;
 }
 
 .demo-grid-page {
@@ -3857,13 +3861,28 @@ input {
   color: var(--muted);
 }
 
-.source-table a {
+.source-table a,
+.source-table button {
   align-items: center;
+  background: transparent;
   border-bottom: 1px solid var(--line);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  color: inherit;
+  cursor: pointer;
   display: grid;
   gap: 14px;
   grid-template-columns: 110px minmax(0, 1fr) 150px;
+  font: inherit;
   min-height: 58px;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.source-table button.active {
+  background: #f4f7ef;
 }
 
 .source-table span,
@@ -3877,11 +3896,68 @@ input {
   line-height: 1.35;
 }
 
+.evidence-preview-card {
+  background: #f9f9f7;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 14px;
+  margin: 18px 0;
+  padding: 18px;
+}
+
+.evidence-preview-card > div {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.evidence-preview-card h3 {
+  font-family: 'Inter Display', Inter, system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.12;
+  margin: 0;
+}
+
+.evidence-preview-card p {
+  color: #3d413f;
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.evidence-preview-card dl {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+}
+
+.evidence-preview-card dt,
+.evidence-source-url {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.evidence-preview-card dd {
+  font-size: 14px;
+  line-height: 1.35;
+  margin: 4px 0 0;
+}
+
+.evidence-source-url {
+  overflow-wrap: anywhere;
+}
+
 .match-panel-demo {
   display: grid;
   gap: 16px;
   margin: 16px auto 0;
-  max-width: 1240px;
+  max-width: none;
+  width: 100%;
 }
 
 .evidence-task-list,
@@ -4450,7 +4526,8 @@ input {
   gap: 16px;
   grid-template-columns: minmax(400px, 0.96fr) minmax(0, 1.04fr);
   margin: 0 auto;
-  max-width: 1240px;
+  max-width: none;
+  width: 100%;
 }
 
 .territory-command-panel,
@@ -4601,7 +4678,8 @@ button.territory-priority-card:hover {
   margin-top: 12px;
 }
 
-.compact-source-table a {
+.compact-source-table a,
+.compact-source-table button {
   align-items: start;
   gap: 4px 14px;
   grid-template-columns: 58px minmax(0, 1fr);
@@ -4609,10 +4687,40 @@ button.territory-priority-card:hover {
   padding: 12px 0;
 }
 
-.compact-source-table a small {
+.compact-source-table a small,
+.compact-source-table button small {
   display: block;
   grid-column: 2;
   line-height: 1.35;
+}
+
+.document-preview-card {
+  background: #f9f9f7;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 14px;
+}
+
+.document-preview-card span,
+.document-preview-card small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.document-preview-card strong {
+  font-weight: 550;
+  line-height: 1.25;
+}
+
+.document-preview-card p {
+  color: #3d413f;
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 0;
 }
 
 .source-panel-wide,
@@ -4750,11 +4858,13 @@ button.territory-priority-card:hover {
   }
 
   .territory-stat-list,
-  .compact-source-table a {
+  .compact-source-table a,
+  .compact-source-table button {
     grid-template-columns: 1fr;
   }
 
-  .compact-source-table a small {
+  .compact-source-table a small,
+  .compact-source-table button small {
     grid-column: auto;
   }
 
@@ -4767,7 +4877,8 @@ button.territory-priority-card:hover {
     min-height: 340px;
   }
 
-  .source-table a {
+  .source-table a,
+  .source-table button {
     align-items: start;
     grid-template-columns: 1fr;
     padding: 14px 0;

@@ -87,7 +87,7 @@ const timelineItems = [
   },
   {
     title: 'Patrones de auditoría',
-    text: 'Prioriza contratos con señales determinísticas y deja claro qué es evidencia, brecha o tarea pendiente.',
+    text: 'Ordena contratos por señales verificables, evidencia disponible y puntos que todavía necesitan revisión.',
     visual: 'audit',
   },
 ]
@@ -97,7 +97,7 @@ const processVisuals = {
     chips: ['Evidencia', 'Brecha', 'Tarea'],
     code: 'SIG-04',
     inputs: ['Valor alto', 'Modificación', 'Soporte débil'],
-    label: 'Reglas determinísticas',
+    label: 'Reglas verificables',
     output: 'Prioridad de auditoría',
     outputLabel: 'salida',
   },
@@ -155,7 +155,7 @@ const projects = [
       ['Lectura', 'Contrato + soportes'],
       ['Fuente base', 'SECOP y anexos'],
       ['Pregunta', 'Qué está documentado'],
-      ['Límite', 'No decide pagos'],
+      ['Límite', 'Solo lectura pública'],
     ],
   },
   {
@@ -164,10 +164,10 @@ const projects = [
     text: 'Detecta valores atípicos, modificaciones, concentración de proveedores y vacíos de evidencia para orientar revisión humana.',
     cta: 'Explorar señales',
     facts: [
-      ['Lectura', 'Reglas determinísticas'],
+      ['Lectura', 'Reglas verificables'],
       ['Señal base', 'Valor, proveedor, cambio'],
       ['Pregunta', 'Qué requiere auditoría'],
-      ['Límite', 'No acusa ni sanciona'],
+      ['Límite', 'Requiere verificación'],
     ],
   },
 ]
@@ -203,7 +203,7 @@ const testimonials = [
   },
   {
     name: 'Supervisión contractual',
-    quote: 'Lee ejecución visible como contexto público, no como instrucción operativa de pago.',
+    quote: 'Lee ejecución visible junto con soportes, territorio y señales de cumplimiento.',
     role: 'Seguimiento público',
   },
   {
@@ -526,7 +526,7 @@ function Hero() {
             </Button>
           </div>
           <div className="hero-benefits">
-            {['Brechas de evidencia', 'Entrega visible', 'Patrones públicos'].map((item) => (
+            {['Brechas de evidencia', 'Entrega visible', 'Señales de prioridad'].map((item) => (
               <span key={item}>
                 <img src={assets.tick} alt="" width="16" height="17" />
                 {item}
@@ -859,7 +859,7 @@ function PartnersFaqLocation() {
         <div className="faq-copy">
           <Eyebrow>PREGUNTAS</Eyebrow>
           <WordHeading>Preguntas frecuentes</WordHeading>
-          <p>Shiimain está pensado para equipos que necesitan leer evidencia pública con trazabilidad, no para reemplazar la fuente pública.</p>
+          <p>Shiimain ayuda a leer evidencia pública con trazabilidad y volver a la fuente cuando haga falta.</p>
         </div>
         <motion.div className="faq-panel" variants={sourceFade} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }}>
           <div>
