@@ -825,35 +825,13 @@ function TerritoryMapPanel() {
       viewport={{ once: true, amount: 0.28 }}
       whileInView="show"
     >
-      <div className="territory-map-header">
-        <span>Lectura territorial</span>
-        <strong>Necesidad, evidencia y campo</strong>
-      </div>
-      <div className="territory-map-body">
-        <div className="territory-map-embed-frame">
-          <iframe
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            src={territoryMapUrl}
-            title="Mapa de La Guajira en Google Maps"
-          />
-        </div>
-        <div className="territory-map-legend" aria-label="Capas de lectura">
-          <article>
-            <span>Dato público</span>
-            <strong>SECOP, DANE, reportes y expedientes</strong>
-          </article>
-          <article>
-            <span>Pregunta</span>
-            <strong>Qué territorio exige contraste en campo</strong>
-          </article>
-          <article>
-            <span>Salida</span>
-            <strong>Prioridad con fuente, brecha y límite</strong>
-          </article>
-        </div>
-      </div>
+      <iframe
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        src={territoryMapUrl}
+        title="Mapa de La Guajira en Google Maps"
+      />
     </motion.figure>
   )
 }
