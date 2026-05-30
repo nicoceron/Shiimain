@@ -13,7 +13,6 @@ import {
 import { AnimatedButton } from './components/AnimatedButton.jsx'
 import { RollingLink } from './components/RollingLink.jsx'
 import { SmoothScroll } from './components/SmoothScroll.jsx'
-import guajiraMap from './assets/shiimain-territorial-context-user.png'
 import shiimainFoodBaskets from './assets/shiimain-food-baskets.webp'
 import shiimainFoodChildren from './assets/shiimain-food-children.webp'
 import shiimainFoodCommunityMeals from './assets/shiimain-food-community-meals.webp'
@@ -36,8 +35,9 @@ const assets = {
   hero: shiimainHeroCactus,
   tick: 'https://framerusercontent.com/images/kvdlB3iY4NmbRxGWFXTik82tWI.svg?width=16&height=17',
   arrow: 'https://framerusercontent.com/images/UiJU9i4Jlh4N9ihhIBlKvqycvYw.svg?width=16&height=8',
-  map: guajiraMap,
 }
+
+const territoryMapUrl = 'https://www.google.com/maps?hl=es&q=La%20Guajira%2C%20Colombia&z=8&output=embed'
 
 const strengths = [
   'Territorio',
@@ -134,26 +134,42 @@ const projectImages = [
 ]
 
 const projects = [
-  'Prioridad territorial en La Guajira',
-  'Expediente público y ejecución visible',
-  'Patrones de contratación y evidencia',
-].map((title, index) => ({
-  title,
-  image: projectImages[index],
-  text: [
-    'Territorios Wayuu, municipios críticos y lugares priorizados se leen desde necesidad, fuente y brecha.',
-    'Contratos, TDR, CDP, actas y extracciones quedan separados para no confundir contexto con prueba.',
-    'Señales determinísticas sobre valores, proveedores, modificaciones y brechas de evidencia priorizan análisis.',
-  ][index],
-}))
-
-const projectFacts = [
-  ['Territorio', 'La Guajira'],
-  ['Caso', 'Demo público'],
-  ['Fuente', 'SECOP'],
-  ['Capa', 'Inteligencia'],
-  ['Señales', '167'],
-  ['Estado', 'Demo público'],
+  {
+    title: 'Prioridad territorial en La Guajira',
+    image: projectImages[0],
+    text: 'Ordena municipios y territorios Wayuu por necesidad reportada, evidencia disponible y brechas que exigen verificación.',
+    cta: 'Abrir territorio',
+    facts: [
+      ['Lectura', 'Municipio + territorio'],
+      ['Señal base', 'Hambre, agua, niñez'],
+      ['Pregunta', 'Dónde mirar primero'],
+      ['Límite', 'Datos públicos incompletos'],
+    ],
+  },
+  {
+    title: 'Expediente público y ejecución visible',
+    image: projectImages[1],
+    text: 'Separa contrato, TDR, CDP, actas, facturas y archivos soporte para ver qué fuente sostiene cada hallazgo.',
+    cta: 'Ver expediente',
+    facts: [
+      ['Lectura', 'Contrato + soportes'],
+      ['Fuente base', 'SECOP y anexos'],
+      ['Pregunta', 'Qué está documentado'],
+      ['Límite', 'No decide pagos'],
+    ],
+  },
+  {
+    title: 'Patrones de contratación y evidencia',
+    image: projectImages[2],
+    text: 'Detecta valores atípicos, modificaciones, concentración de proveedores y vacíos de evidencia para orientar revisión humana.',
+    cta: 'Explorar señales',
+    facts: [
+      ['Lectura', 'Reglas determinísticas'],
+      ['Señal base', 'Valor, proveedor, cambio'],
+      ['Pregunta', 'Qué requiere auditoría'],
+      ['Límite', 'No acusa ni sanciona'],
+    ],
+  },
 ]
 
 const avatars = [
@@ -165,16 +181,43 @@ const avatars = [
 ]
 
 const testimonials = [
-  'Coordinación territorial',
-  'Equipo de campo',
-  'Auditoría interna',
-  'Análisis de datos',
-  'Supervisión contractual',
-  'Aliado implementador',
-  'Mesa directiva',
-].map((name, index) => ({
-  name,
-  role: index % 2 === 0 ? 'Usuario operativo' : 'Equipo aliado',
+  {
+    name: 'Coordinación territorial',
+    quote: 'Prioriza municipios cuando hambre, agua y contratación pública apuntan al mismo lugar.',
+    role: 'Lectura de necesidad',
+  },
+  {
+    name: 'Equipo de campo',
+    quote: 'Llega con una pregunta clara: qué evidencia falta y qué soporte debe verificarse.',
+    role: 'Verificación local',
+  },
+  {
+    name: 'Auditoría interna',
+    quote: 'Distingue indicios, fuentes y brechas antes de convertir una señal en hallazgo.',
+    role: 'Control y revisión',
+  },
+  {
+    name: 'Análisis de datos',
+    quote: 'Une municipios, contratos, proveedores y documentos sin perder trazabilidad de fuente.',
+    role: 'Cruce de capas',
+  },
+  {
+    name: 'Supervisión contractual',
+    quote: 'Lee ejecución visible como contexto público, no como instrucción operativa de pago.',
+    role: 'Seguimiento público',
+  },
+  {
+    name: 'Aliado implementador',
+    quote: 'Identifica dónde una promesa pública tiene soporte suficiente y dónde falta evidencia.',
+    role: 'Gestión de programas',
+  },
+  {
+    name: 'Mesa directiva',
+    quote: 'Resume prioridad, confianza y limitaciones para decidir dónde profundizar análisis.',
+    role: 'Decisión estratégica',
+  },
+].map((item, index) => ({
+  ...item,
   avatar: avatars[index % avatars.length],
   tone: index === 0 ? 'yellow' : index === 6 ? 'dark' : 'base',
 }))
@@ -691,10 +734,13 @@ function TestimonialCard({ index, item }) {
       <strong>
         <img className="testimonial-logo" src={assets.logo} alt="" />
       </strong>
-      <p>“Necesitamos entender necesidad, evidencia pública y brecha territorial antes de afirmar cobertura.”</p>
+      <p>{item.quote}</p>
       <div>
         <img src={item.avatar} alt="" />
-        <span>{item.name}</span>
+        <span>
+          <b>{item.name}</b>
+          <small>{item.role}</small>
+        </span>
       </div>
     </motion.article>
   )
@@ -754,19 +800,61 @@ function Projects() {
               <h3>{project.title}</h3>
               <p>{project.text}</p>
               <div className="project-facts">
-                {projectFacts.map(([label, value]) => (
+                {project.facts.map(([label, value]) => (
                   <div key={label}>
                     <span>{label}</span>
                     <strong>{value}</strong>
                   </div>
                 ))}
               </div>
-              <Button href="#/demo">Ver detalle</Button>
+              <Button href="#/demo">{project.cta}</Button>
             </div>
           </motion.article>
         ))}
       </div>
     </section>
+  )
+}
+
+function TerritoryMapPanel() {
+  return (
+    <motion.figure
+      className="territory-map-panel"
+      initial="hidden"
+      variants={sourceFade}
+      viewport={{ once: true, amount: 0.28 }}
+      whileInView="show"
+    >
+      <div className="territory-map-header">
+        <span>Lectura territorial</span>
+        <strong>Necesidad, evidencia y campo</strong>
+      </div>
+      <div className="territory-map-body">
+        <div className="territory-map-embed-frame">
+          <iframe
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            src={territoryMapUrl}
+            title="Mapa de La Guajira en Google Maps"
+          />
+        </div>
+        <div className="territory-map-legend" aria-label="Capas de lectura">
+          <article>
+            <span>Dato público</span>
+            <strong>SECOP, DANE, reportes y expedientes</strong>
+          </article>
+          <article>
+            <span>Pregunta</span>
+            <strong>Qué territorio exige contraste en campo</strong>
+          </article>
+          <article>
+            <span>Salida</span>
+            <strong>Prioridad con fuente, brecha y límite</strong>
+          </article>
+        </div>
+      </div>
+    </motion.figure>
   )
 }
 
@@ -822,9 +910,7 @@ function PartnersFaqLocation() {
       <section className="section locations-section" id="territory">
         <Eyebrow>TERRITORIO</Eyebrow>
         <WordHeading>Empezamos donde el dato debe tocar campo: La Guajira</WordHeading>
-        <div className="map-wrap">
-          <img src={assets.map} alt="Mapa de contexto territorial de Shiimain en La Guajira" />
-        </div>
+        <TerritoryMapPanel />
       </section>
     </>
   )
@@ -897,15 +983,6 @@ function Footer() {
   )
 }
 
-function TemplateBadge() {
-  return (
-    <div className="template-badge" aria-label="Acceso rápido al demo">
-      <a href="#/demo">Abrir demo</a>
-      <span>Shiimain</span>
-    </div>
-  )
-}
-
 function DemoLoading() {
   return (
     <main className="demo-loading" aria-label="Cargando demo Shiimain">
@@ -952,7 +1029,6 @@ function App() {
         <PartnersFaqLocation />
       </main>
       <Footer />
-      <TemplateBadge />
     </>
   )
 }

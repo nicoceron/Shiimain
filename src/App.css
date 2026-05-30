@@ -300,6 +300,14 @@ input {
   white-space: pre;
 }
 
+.button-title-stack::after {
+  content: attr(data-label);
+  display: block;
+  line-height: 1;
+  pointer-events: none;
+  white-space: pre;
+}
+
 .button-arrow-track {
   display: inline-grid;
   height: 10px;
@@ -1533,6 +1541,26 @@ input {
   gap: 12px;
 }
 
+.testimonial-card div span {
+  display: grid;
+  gap: 3px;
+}
+
+.testimonial-card div b {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.testimonial-card div small {
+  color: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.testimonial-card.dark div b {
+  color: #fff;
+}
+
 .testimonial-card img {
   border-radius: 50%;
   height: 40px;
@@ -1659,24 +1687,84 @@ input {
 .locations-section > .word-heading {
   font-size: clamp(40px, 4.4vw, 52px);
   margin-bottom: 50px;
-  max-width: 620px;
+  max-width: 760px;
 }
 
-.map-wrap {
+.territory-map-panel {
+  background: #0b1714;
+  border: 1px solid rgba(0, 45, 37, 0.14);
   border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(0, 45, 37, 0.07);
   margin: 0 auto;
-  max-width: min(100%, 860px);
+  max-width: min(100%, 1040px);
   overflow: hidden;
   position: relative;
 }
 
-.map-wrap > img {
+.territory-map-header {
+  align-items: center;
+  border-bottom: 1px solid rgba(228, 255, 161, 0.16);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 24px;
+}
+
+.territory-map-header span,
+.territory-map-legend span {
+  color: rgba(228, 255, 161, 0.72);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.territory-map-header strong {
+  color: #fff;
+  font-family: 'Inter Display', Inter, system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.territory-map-body {
+  display: grid;
+  gap: 0;
+}
+
+.territory-map-embed-frame {
+  aspect-ratio: 16 / 9;
+  background: #e5e3df;
+  overflow: hidden;
+  position: relative;
+}
+
+.territory-map-embed-frame iframe {
+  border: 0;
   display: block;
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
-  opacity: 1;
+  height: 100%;
   width: 100%;
+}
+
+.territory-map-legend {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  background: rgba(228, 255, 161, 0.13);
+}
+
+.territory-map-legend article {
+  background: rgba(5, 17, 14, 0.92);
+  display: grid;
+  gap: 10px;
+  padding: 18px 20px;
+}
+
+.territory-map-legend strong {
+  color: #fff;
+  font-family: 'Inter Display', Inter, system-ui, sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.14;
 }
 
 .footer {
@@ -1686,39 +1774,6 @@ input {
   margin-top: 0;
   min-height: 852px;
   padding: 48px 64px;
-}
-
-.template-badge {
-  align-items: center;
-  background: rgba(8, 10, 10, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
-  bottom: 22px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
-  color: #fff;
-  display: flex;
-  gap: 12px;
-  padding: 7px;
-  position: fixed;
-  right: 22px;
-  z-index: 40;
-}
-
-.template-badge a,
-.template-badge span {
-  border-radius: 999px;
-  font-size: 13px;
-  line-height: 1;
-  padding: 9px 12px;
-}
-
-.template-badge a {
-  background: #fff;
-  color: #080808;
-}
-
-.template-badge span {
-  color: rgba(255, 255, 255, 0.72);
 }
 
 .footer-cta {
@@ -2040,11 +2095,11 @@ input {
   }
 
   .locations-section {
-    min-height: 943px;
+    min-height: 720px;
   }
 
-  .map-wrap > img {
-    object-fit: contain;
+  .territory-map-panel {
+    max-width: 1040px;
   }
 
   .footer {
@@ -2490,7 +2545,15 @@ input {
   }
 
   .locations-section {
-    min-height: 803px;
+    min-height: 700px;
+  }
+
+  .territory-map-body {
+    grid-template-columns: 1fr;
+  }
+
+  .territory-map-legend {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .footer {
@@ -2528,10 +2591,6 @@ input {
 @media (max-width: 809.98px) {
   .site-header {
     padding: 0 20px;
-  }
-
-  .template-badge {
-    display: none;
   }
 
   .hero-section,
@@ -3040,8 +3099,8 @@ input {
   }
 
   .locations-section {
-    min-height: 446px;
-    padding-bottom: 0;
+    min-height: auto;
+    padding-bottom: 72px;
     padding-top: 0;
   }
 
@@ -3055,13 +3114,25 @@ input {
     margin-bottom: 30px;
   }
 
-  .map-wrap {
-    height: auto;
+  .territory-map-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px;
   }
 
-  .map-wrap > img {
-    height: auto;
-    object-fit: contain;
+  .territory-map-body {
+    gap: 0;
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .territory-map-embed-frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .territory-map-legend {
+    grid-template-columns: 1fr;
   }
 
   .footer {

@@ -19,8 +19,7 @@ export function AnimatedButton({ arrow, className = '', href = '#contact', label
       whileTap={{ scale: 0.985, y: 0 }}
     >
       <span className="button-title-wrap" aria-hidden="true">
-        <span className="button-title-stack">
-          <span className="button-title">{label}</span>
+        <span className="button-title-stack" data-label={label}>
           <span className="button-title">{label}</span>
         </span>
       </span>
