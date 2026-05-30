@@ -882,7 +882,7 @@ function PartnersFaqLocation() {
         </motion.div>
         <div className="faq-contact">
           <span>¿Hablamos del caso?</span>
-          <a href="mailto:hola@shiimain.ai">hola@shiimain.ai</a>
+          <a href="mailto:nicolasceron.d@gmail.com">nicolasceron.d@gmail.com</a>
         </div>
       </section>
       <section className="section locations-section" id="territory">
@@ -942,7 +942,7 @@ function Footer() {
         <div>
           <Mail />
           <span>Correo:</span>
-          <strong>hola@shiimain.ai</strong>
+          <strong>nicolasceron.d@gmail.com</strong>
         </div>
         <div>
           <MapPin />

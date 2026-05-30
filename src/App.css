@@ -1716,54 +1716,55 @@ input {
   border-radius: 16px 16px 0 0;
   color: #fff;
   margin-top: 0;
-  min-height: 852px;
-  padding: 48px 64px;
+  padding: 56px 64px 40px;
 }
 
 .footer-cta {
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
+  gap: 32px;
   justify-content: space-between;
-  padding-bottom: 56px;
+  padding-bottom: 42px;
 }
 
 .footer-cta h2 {
   font-family: 'Inter Display', Inter, system-ui, sans-serif;
-  font-size: clamp(42px, 5vw, 68px);
+  font-size: clamp(38px, 4.2vw, 58px);
   font-weight: 500;
   line-height: 1.05;
   margin: 0;
-  max-width: 640px;
+  max-width: 760px;
 }
 
 .footer-main {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: grid;
-  gap: 56px;
-  grid-template-columns: 1.7fr 0.55fr 0.55fr 1.1fr;
-  padding: 56px 0;
+  gap: 48px;
+  grid-template-columns: minmax(260px, 1.2fr) minmax(120px, 0.45fr) minmax(120px, 0.45fr) minmax(300px, 0.9fr);
+  padding: 40px 0;
 }
 
 .footer-main > img {
   filter: brightness(0) invert(1);
-  height: 58px;
+  height: 48px;
   object-fit: contain;
-  width: 208px;
+  width: 214px;
 }
 
 .footer h3 {
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 400;
-  margin: 0 0 28px;
+  margin: 0 0 20px;
 }
 
 .footer-main a,
 .footer-main p {
   color: rgba(255, 255, 255, 0.66);
   display: block;
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.35;
+  margin-bottom: 14px;
 }
 
 .footer form input {
@@ -1790,16 +1791,16 @@ input {
 .footer-contact {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: grid;
-  gap: 26px;
+  gap: 32px;
   grid-template-columns: repeat(3, 1fr);
-  padding: 48px 0;
+  padding: 28px 0;
 }
 
 .footer-contact div {
   align-items: center;
   display: grid;
-  gap: 6px 16px;
-  grid-template-columns: 80px 1fr;
+  gap: 5px 14px;
+  grid-template-columns: 52px 1fr;
 }
 
 .footer-contact svg {
@@ -1807,14 +1808,14 @@ input {
   background: #14171f;
   border-radius: 50%;
   grid-row: span 2;
-  height: 80px;
-  padding: 24px;
-  width: 80px;
+  height: 52px;
+  padding: 15px;
+  width: 52px;
 }
 
 .footer-contact span {
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .footer-contact strong {
@@ -1829,7 +1830,7 @@ input {
   display: flex;
   font-size: 16px;
   justify-content: space-between;
-  padding-top: 36px;
+  padding-top: 28px;
 }
 
 .footer-bottom div {
@@ -2047,37 +2048,29 @@ input {
   }
 
   .footer {
-    display: flex;
-    flex-direction: column;
-    gap: 95px;
-    min-height: 852px;
-    padding: 100px 64px 40px;
+    padding: 64px 64px 36px;
   }
 
   .footer-cta {
-    height: 110px;
-    padding-bottom: 0;
+    padding-bottom: 42px;
   }
 
   .footer-cta h2 {
-    font-size: 52px;
+    font-size: 56px;
     line-height: 1.06;
-    max-width: 520px;
+    max-width: 760px;
   }
 
   .footer-main {
-    height: 201px;
-    padding: 0;
+    padding: 40px 0;
   }
 
   .footer-contact {
-    height: 83px;
-    padding: 0;
+    padding: 28px 0;
   }
 
   .footer-bottom {
-    height: 27px;
-    padding-top: 0;
+    padding-top: 28px;
   }
 }
 
@@ -2497,34 +2490,52 @@ input {
   }
 
   .footer {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    min-height: 1479px;
-    padding: 80px 40px 40px;
+    padding: 56px 40px 36px;
+  }
+
+  .footer-cta {
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 36px;
+  }
+
+  .footer-cta h2 {
+    font-size: 44px;
+    max-width: 650px;
   }
 
   .footer-main {
-    display: flex;
-    flex-direction: column;
-    gap: 23px;
-    padding: 0;
+    display: grid;
+    gap: 32px;
+    grid-template-columns: minmax(190px, 1fr) minmax(100px, 0.45fr) minmax(100px, 0.45fr) minmax(260px, 0.9fr);
+    padding: 36px 0;
   }
 
   .footer-main > img {
-    display: none;
+    display: block;
+    height: 42px;
+    width: 188px;
   }
 
   .footer-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    padding: 0;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 28px 0;
+  }
+
+  .footer-contact div {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .footer-contact svg {
+    height: 44px;
+    padding: 13px;
+    width: 44px;
   }
 
   .footer-bottom {
-    min-height: 24px;
-    padding-top: 0;
+    padding-top: 28px;
   }
 }
 
@@ -3062,15 +3073,15 @@ input {
     border-radius: 12px 12px 0 0;
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    min-height: 1493px;
-    padding: 50px 20px;
+    gap: 0;
+    padding: 44px 20px 32px;
   }
 
   .footer-cta {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-direction: column;
     gap: 20px;
-    padding-bottom: 0;
+    padding-bottom: 32px;
   }
 
   .footer-cta h2 {
@@ -3082,8 +3093,8 @@ input {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    padding: 0;
+    gap: 28px;
+    padding: 32px 0;
   }
 
   .footer-main > img {
@@ -3091,18 +3102,18 @@ input {
   }
 
   .footer h3 {
-    margin-bottom: 28px;
+    margin-bottom: 16px;
   }
 
   .footer-main a,
   .footer-main p {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   .footer-contact {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    gap: 24px;
-    padding: 0;
+    gap: 22px;
+    padding: 28px 0;
   }
 
   .footer-bottom {
@@ -3110,8 +3121,7 @@ input {
     flex-direction: column;
     gap: 16px;
     justify-content: flex-start;
-    min-height: 104px;
-    padding-top: 0;
+    padding-top: 28px;
   }
 
   .footer-bottom div {
